@@ -1,0 +1,1021 @@
+\chapter{多复变函数}
+
+\section{多元全纯函数}
+首先快速回顾单复变函数的知识。
+我们通常用$\Omg$来表示$\bbC$的开子集，
+$z=x+iy$为$\bbC$的坐标。对于$z\in\bbC$以及实数$R>0$，我们令
+$$\bbD(z,R):=\{w\in\bbC|\,|w-z|< R\}$$
+为以$z$为圆心$R$为半径的开圆盘。
+
+此外，我们有如下常用记号：
+$$\left\{\begin{array}{l}
+\td z:=\td x + i\td y\\
+\td \bar{z} := \td x- i\td y
+\end{array}\right.\quad
+\left\{\begin{array}{l}
+\pp{z}:=\frac{1}{2}
+\left(\pp{x}-i\pp{y}\right)\\
+\pp{\bar{z}} := \frac{1}{2}
+\left(\pp{x}+i\pp{y}\right)
+\end{array}\right.
+$$
+对于函数$f:\Omg\to\bbC$，
+称$f$是\textbf{全纯}（holomorphic）的，
+若在$\Omg$中成立
+$$\pbar f:=\pfrac{f}{\bar{z}}\td\zbar=0$$
+我们知道，$f$是全纯的当且仅当$f$在$\Omg$
+处处能够局部地展开为收敛幂级数。
+
+对于$\bbC$中的紧致集$K$，称函数$f:K\to\bbC$是全纯的，
+如果存在$K$的开邻域$\Omg\supseteq K$，
+使得$f$可延拓为$\Omg$上的全纯函数。
+
+单复变函数论中有如下重要结果：
+
+\begin{thm}（柯西积分公式）
+设$\bbD\subseteq\bbC$为$\bbC$中的开圆盘，$f:\bbD\to\bbC$为
+$\bbD$上的全纯函数，且在$\p\bbD$连续，
+则对于任意$w\in\bbD$，成立
+$$f(w)=\frac{1}{2\pi i}\int_{\p\bbD}\frac{f(z)}{z-w}\td z$$
+\end{thm}
+
+此定理能推导出单变量全纯函数理论的“almost everything”.
+这里不再赘述。
+
+我们开始考虑多变量全纯函数。
+
+\begin{definition}
+设$\Omg\subseteq\bbC^n$为$\bbC^n$的开子集，函数$f:\Omg\to\bbC$
+称为（多变量）\textbf{全纯函数}，如果满足以下条件：
+
+（1）$f$是连续函数；
+
+（2）对任意$1\leq j\leq n$，以及任意固定的
+$z_1,...,z_{j-1};z_{j+1},...,z_n\in\bbC$，关于$z_j$的单变量函数
+$$z_j\mapsto f(z_1,...,z_{j-1};z_j;z_{j+1},...,z_n)$$
+是（单变量）全纯函数。
+\end{definition}
+
+事实上，如果该定义中的（2）成立，那么能推出（1）成立，
+也就是说此定义中的（1）可以去掉。其证明比较复杂，我们承认之。
+
+\begin{notation}
+对于$\bbC^n$的开子集$\Omg$，我们记
+$$\mcalO(\Omg):=\{f:\Omg\to\bbC|f\text{是$\Omg$上的全纯函数}\}$$
+\end{notation}
+容易知道$\mcalO(\Omg)$有显然的$\bbC$-代数结构。\vs
+
+本节将说明，多变量全纯函数具有一些与单变量全纯函数类似的性质。
+
+\begin{notation}
+对于$z=(z_1,z_2,...,z_n)\in\bbC^n$以及$R=(R_1,R_2,...,R_n)\in\bbR^n$，
+并且$R_j>0\,\,(\forall 1\leq j\leq n)$，则我们记
+$$\bbD(z,R):=\bbD(z_1,R_1)\times\bbD(z_2,R_2)\times
+\cdots\times\bbD(z_n,R_n)$$
+称为以$z$为中心，$R$为半径的\textbf{多圆柱}。
+
+对于多圆柱$\bbD(z,R)$，我们记
+$$\Gamma(z,R):=\p\bbD(z_1,R_1)\times\p\bbD(z_2,R_2)\times
+\cdots\times\p\bbD(z_n,R_n)$$
+称为$\bbD(z,R)$的\textbf{特征边界}。
+\end{notation}
+特别注意特征边界$\Gamma(z,R)$
+并不等于该多圆柱的边界$\p\bbD(z,R)$.
+
+\begin{thm}（多变量全纯函数的柯西积分公式）
+
+设$f:\overline{\bbD(z,R)}\to\bbC$为全纯函数，
+则对任意的$w\in\bbD(z,R)$，成立
+$$
+  f(w)=
+       \frac{1}{(2\pi i)^n}\int_{\Gamma(z,R)}
+         \frac{f(\xi)\td\xi_1\td\xi_2\cdots\td\xi_n}
+              {(\xi_1-w_1)(\xi_2-w_2)\cdots(\xi_n-w_n)}
+$$
+\end{thm}
+\begin{proof}
+由多变量全纯函数的定义，
+反复使用单变量全纯函数的柯西积分公式即可。这是容易的。
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       2019.3.21启用电子稿                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{层与层上同调}
+\section{层的上同调}
+Today:
+
+Sheaf cohomology
+
+$X$ a topological space, $\mcalF$- sheaf (of abelian groups).
+
+\begin{definition}  (resolution)
+
+(1)a resolution of $\mcalF$ is an exact sequence
+
+$$0\to \mcalF\xra{j}\mcalF\xra{d^0}\mcalF\xra{d^1}\to\cdots$$
+
+\end{definition}
+
+\begin{definition}
+A sheaf $\mcalA$ is called injective, if
+if for any injective morphism $j:\mcalA\to \mcalB$
+and for any morphism $\fai:\mcalA\to\mcalS$，
+there exists an extension $\psi :\mcalB\to \mcalS$,such that
+%%%%%diagram%%%
+\end{definition}
+\begin{thm}
+the category of sheaves of abelian sheaves have enough
+injective objects, i.e.  any $\mcalF$ can be
+embedded in some injective sheaf.
+\end{thm}
+
+\begin{definition}
+Consider an injective resolution of $\mcalF$, i.e. an exact sequence
+$$0\to\mcalF\to\mcalI^0\xra{\td}\mcalI^1\xra{\td}\mcalI^2\to\cdots$$
+where every $\mcalI^k(k\geq 0)$ is injective.
+
+
+$\rightsquigarrow $induces a sequence
+$$0\to\Gamma(X,\mcalF)
+\to\Gamma(X,\mcalI^0)\xra{\td}
+\Gamma(X,\mcalI^1)\xra{\td}
+\Gamma(X,\mcalI^2)\to\cdots$$
+
+Then
+$$H^q(X,\mcalF):=H^q(\Gamma(X,\mcalI\updot))$$
+
+\end{definition}
+
+then, $H^0(X,\mcalF)=\Gamma(X,\mcalF)$.
+
+\begin{definition}
+A sheaf $\mcalS$ is called a flabby (flasque ,in France) ,if
+for any open set $\Omg\subseteq X$, the morphism
+$$\mcalS(X)\to\mcalS(\Omg)$$
+is surjective.
+\end{definition}
+
+\begin{definition}
+$$0\to\mcalF\xra{j}\mcalF^0\xra{d^0}\to\mcalF^1$$
+is an exact sequence is called a flabby resolution, if
+any $\mcalF^k$ is flabby.
+\end{definition}
+
+\begin{definition}
+$$H^q(X,\mcalF):=...\text{by flabby resolution...}$$
+\end{definition}
+
+\begin{proof}
+Homological Algebra...omit.
+\end{proof}
+
+the two definitions of Sheaf Cohomology are isomorphic.
+
+
+Godement's construction
+
+$$God(\mcalF)(U):=
+\{f:U\to\bigcup_{x\in U}\mcalF_x|
+f(y)\in\mcalF_y,\forall y\in U\}
+:=\prod_{x\in U}\mcalF_x$$
+
+$God(\mcalF)$ is a sheaf, and it is flabby. and there is a canonical
+morphism $\mcalF(U)\to God(F)(U)$ by $x\mapsto(x\mapsto s_x)$ is injective.
+
+$$\mcalF^0:=God(\mcalF)$$
+$$0\to\mcalF\xra{j}\mcalF^0\surj\coker(j)=\mcalF^0\big/\mcalF$$
+and consider
+$$\mcalF^1:=God(\coker(j))$$
+......then construct by induction... this is a flabby resolution of $\mcalF$.
+
+\begin{definition}(resolution by fine sheaves)
+
+$\mcalA$ is a sheaf of ring,
+$X$ is a paracompact topological space, $\mcalA$
+is called a fine sheaf, if for any open covering
+$$X=\bigcup_{\alpha}V_{\alpha}\quad,\mcalV:=\{V_{\alpha}\}$$
+there exists a partition of unit subordinate to $\mcalV$,
+(i.e. $\exists f_{\alpha}\in\mcalA(V_{\alpha}),supp(\alpha)
+:=\overline{\{x\in V_{\alpha}|f_{\alpha,x}\neq 0\}}\subseteq V_{\alpha}$, and
+$\sum_{\alpha}f_{\alpha}=1$(the sum is locally finite)
+ )
+\end{definition}
+
+\begin{example}
+$X$ is a differential manifold,
+$\mcalC^{\infty}$ is the sheaf of smooth functions,
+then $\mcalC^{\infty}$ is a fine sheaf.
+\end{example}
+
+\begin{thm}
+$\mcalS$ is a sheaf of $\mcalA$-modules,
+$\mcalA$ is a fine sheaf. then for any $q\geq 1$,
+$$H^q(X,\mcalS)=0$$
+\end{thm}
+\begin{proof}
+Consider a flabby(or injective) resolution
+$$0\to\mcalS\xra{j}\mcalI^0\xra{\td}\mcalI^1\xra{\td}\mcalI^2\cdots$$
+where any $\mcalI^k(k\geq 0)$ is a sheaf of $\mcalA$-modules.
+
+by definition,
+$$H^q(X,m\mcalS):=\frac{\ker\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})}
+                       {\Im\td:\Gamma(\mcalI^{q-1})\to\Gamma(\mcalI^{q})}$$
+
+Let $\alpha\in\ker\{\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})\}$
+by the exactness of resolution, $\exists$ an open covering $\mcalU=(U_{i})_{i}$,
+s.t. $\alpha|_{U_{i}}=\td\beta_{i}$
+where $\beta_{i}\in\mcalT^{q-1}(U_{i})$.
+Let $(\beta_{i})_{i}$ be the partition of unit w.r.t. $\mcalU$.
+consider
+$$\beta:=\sum_{i}f_i\beta_i$$
+(well defined). Then $\td\beta=\alpha$....
+\end{proof}
+
+\section{\u{C}ech上同调}
+\textbf{\u{C}ech cohomology}
+
+$X$- a topological space, $\mcalF$- a sheaf of abelian group.
+$$\mcalU=(U_{\alpha})_{\alpha\in I}$$
+is an open covering.
+
+notation:$U_{\alpha_1,...,\alpha_q}:=\bigcap_{i=1}^qU_{\alpha_i}$.
+
+\u{C}ech $q$-chain w.r.t $\mcalU$:
+
+$$C^q(\mcalU,\mcalF):=\prod_{(\alpha_1,...,\alpha_q)
+\in\mcalI^{q+1}}\mcalF(U_{\alpha_1,...,\alpha_q})$$
+
+$$c\in C^q(\mcalU,\mcalF)$$
+means that we have a family of sections
+$C_{\alpha_1,...,\alpha_q}\in\mcalF(U_{\alpha_1,...,\alpha_q})$
+with the relation
+$$C_{\alpha_0,...,\alpha_j,...,\alpha_i,...}=-C_{...}$$
+
+\u(C)ech differential:
+$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
+$$\delta^q(c)_{\alpha_0,...,\alpha_{q+1}}
+:=\sum_{0\leq k\leq q+1}(-1)^k
+c_{...\hat{\alpha_k}...}|_{U_{\alpha_0,...,\alpha_{q+1}}}$$
+
+\begin{prop}
+$$\delta^q\circ\delta^q=0$$
+\end{prop}
+
+so, we have \u{C}ech cohomology
+$$H^q(\mcalU,\mcalF):=\ker\delta^q\big/\im\delta^{q-1}$$
+
+example:
+$$C^0(\mcalU,\mcalF):=\prod_{\alpha\in I}\mcalF(U_{\alpha})$$
+$$c=(c_{\alpha})_{\alpha\in I}\in C^0(\mcalU,\mcalF)$$
+$$\delta^0c=0\iff(\delta^0c)_{\alpha_0\alpha_1}
+:=(c_{\alpha_1}-c_{\alpha_0})|_{U_{\alpha_0\alpha_1}}=0$$
+so, $c_{\alpha_0}=c_{\alpha_1}$ on $U_{\alpha_0\alpha_1}$.
+
+$\rightsquigarrow$ $H^0(\mcalU,\mcalF)=\mcalF(X)$.
+
+\begin{example}
+(1) consider $X=\triangle\setminus\{0\}$, where $\triangle=
+\{(z_1,z_2)||z_1|<1,|z_2|<1\}$. Consider the covering
+$$\mcalU=U_1\cup U_2$$
+where
+$$U_1:=\{(z_1,z_2)\in\triangle|z_1\neq 0\}=\bbD^*\times\bbD$$
+$$U_2:=\{(z_1,z_2)\in\triangle|z_2\neq 0\}=\bbD\times\bbD^*$$
+
+then
+$$U_1\cap U_2=\bbD^*\times\bbD^*$$
+
+consider $H^0(X,\mcalO)=\mcalO(X)\cong\mcalO(\triangle)
+=\{f:\triangle\to\bbC\text{holomorphic}\}$.
+
+$$H^1(\mcalU,\mcalO)=\ker\delta^1\big/\im\delta^0$$
+$$\delta^1:C^1(\mcalU,\mcalO)\to C^2(\mcalU,\mcalO)\subseteq
+\prod_{\alpha_0,\alpha_1,\alpha_2}\mcalO(U_{\alpha_0,\alpha_1,\alpha_2})=0$$
+$$\ker\delta^1=
+C^1(\mcalU,\mcalO)=\{c=c(\alpha_0,\alpha_1)|c_{\alpha_0,\alpha_1}\in\mcalO(U_{\alpha_0\alpha_1})\}
+=\{c\in\mcalO(U_1\cap U_2)\}=\{c=\sum_{m,n\in\bbZ}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+
+$$\delta^0:C^0(\mcalU,\mcalO)\to\mcalC^1(\mcalU,\mcalO)$$
+$$(\delta^0c)_{12}=(c_2-c_1)|_{U_{12}}$$
+where $c_2\in\mcalO(U_2)$ and $c_1\in\mcalO(U_1)$.
+note that
+$$\mcalO(U_1)=\{c(z_1,z_2)=\sum_{m\in\bbZ,n\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+$$\mcalO(U_2)=\{c(z_1,z_2)=\sum_{n\in\bbZ,m\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+
+So, $H^1(\mcalU,\mcalO)=
+\{c(z_1,z_2)=\sum_{m,n<0}a_{mn}z_1^mz_2^n\}$
+\end{example}
+
+\begin{example}(complex projective space)
+
+$$\bbC P^n:=(\bbC^{n+1}\setminus\{0\})\big/\sim$$
+$$(z_0,...,z_n)\sim\lmd(z_0,...,z_n)$$
+for some $\lmd\in\bbC^*$.
+
+$$\bbC P^n=\{[z_0,...,z_n]|\text{not all $z_k=0$},z_i\in\bbC\}
+=\bigcup_{0\leq p\leq n}V_k$$
+where
+$$V_k=\{[z_0,...,z_n]|z_k\neq 0\}
+\cong \{(\frac{z_0}{z_k},...,1,...,\frac{z_n}{z_k})|
+z_i\in\bbC,i\neq k, z_k\neq 0\}\cong \bbC^n$$
+this is a holo chart.
+
+$$\bbC P^1=V_0\cup V_1,\mcalV=\{V_0,\mcalV_1\}$$
+HW: compute $H^q(\mcalV,\mcalO)$.
+
+Answer:
+$$H^0\cong\bbC,H^1\cong 0$$
+\end{example}
+
+%%%%%%%%%%%%%%%%2019.3.26 第五周 周二%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Correction}:
+
+$\mcalA$: Sheaf of rings (with unit)
+
+$X$: paracompact topological space,
+
+\begin{definition}
+$\mcalA$ is called fine, if for any open covering
+$\mcalU=(V_{\alpha})_{\alpha\in\mcalI}$,there exist
+$s_{\alpha}\in\mcalA(X)$
+such that such that $supp(s_{\alpha})\subseteq V_{\alpha}$,
+$$\sum_{\alpha}s_{\alpha}=1$$
+(this is a locally finite sum)
+\end{definition}
+
+\begin{rem}
+we call $\mcalA$ is a \textbf{soft sheaf},
+if for any closed set $K\subseteq X$,
+the morphism
+$$\mcalA(X)\to \mcalA(K)$$
+is surjective.
+where $\mcalA(K):=\Gamma(K,\mcalA|_K)$
+\end{rem}
+
+fact: $\mcalA$ is fine if and only if
+$\mcalH om(\mcalA,\mcalA)$ is soft.
+(omit)
+
+Recall：
+
+Cech cohomology: $X$ topological space,
+$\mcalU=(U_{\alpha})_{\alpha\in\mcalI}$,
+$$C^q(\mcalU,\mcalF)=
+\prod_{\alpha_0<...<\alpha_q}\mcalF(\U_{\alpha_1,...,\alpha_q})$$
+$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
+
+fact: $H^0(\mcalU,\mcalF)=\Gamma(X,\mcalF)$.
+
+Today:
+
+\begin{definition}
+Let $\mcalV=(V_{\beta})_{\beta\in J}$ be another open covering,
+then $\mcalV$ is called a refinement of $\mcalU$, if there exists a map
+$$\rho:\mcalJ\to\mcalI$$
+such that
+$$V_{\beta}\subseteq U_{\rho(\beta)}$$
+\end{definition}
+
+\begin{prop}
+Let $\mcalV$ be a refinement of $\mcalU$, then $\rho$ induces a map
+$$\rho^q:C^q(\mcalU,\mcalF)\to C^q(\mcalV,\mcalF)$$
+$$(\rho^qC)_{\beta_0,...,\beta_q}\mapsto
+C_{\rho(\beta_0),...,\rho(\beta_q)}|_{V_{\beta_0,...,\beta_q}}$$
+$\rho$ is a morphism of complexes.
+\end{prop}
+
+%%%%%%改用电子版了%%%%%%
+so, $\rho$ induces a map
+$$H^q(\rho):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$$
+
+Let $\tilde{\rho}:\mcalJ\to\mcalI$ be another refinement of $\mcalU$
+
+(induces $H^q(\tilde{\rho}):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$)
+then $\rho,\tilde{\rho}$ are homotopic
+%%%homotopy%%%
+(chain homotopy$\rightsquigarrow H^q(\rho)=H^q(\tilde(\rho))$)
+
+so, if $\rho:\mcalJ\to \mcalI$ is refinement, then
+$$H^q(\rho)$$
+is independent of the refinement.
+
+\begin{definition}
+$$\check{H}^q(X,\mcalF):=\lim_{\to\atop\mcalU} H^q(\mcalU,\mcalF)$$
+i.e. $a\in H^q(\mcalU,\mcalF)\sim\in H^q(\mcalV,\mcalF)$ iff
+$\exists$ a refinement $\mcalW$ of $\mcalU$ and $\mcalV$ such that
+$a,b$ have the same image in $H^q(\mcalW,\mcalF)$
+\end{definition}
+
+\begin{rem}
+$$\check{H}^0(X,\mcalF)=\Gamma(X,\mcalF)$$
+
+Exercise: For $q=1$, if $\mcalV$ is a refinement of $\mcalU$,
+then
+$$H^1(\mcalU,\mcalF)\to H^1(\mcalV,\mcalF)$$
+is injective.
+\end{rem}
+
+so ,for any open cover $\mcalU$,
+$$H^1(\mcalU,\mcalF)\to \check{H}^1(X,\mcalF)$$
+is injective.
+
+\textbf{Homological Algebra}
+recall：let $(K\updot,\td_k),(L\updot,\td_l)$ and $(M\updot,\td_M)$,
+if we have a short exact sequence
+$$0\to K\updot\xra{\fai} L\updot\xra{\psi}M\updot\to 0$$
+then it induces a long exact sequence :
+$$
+  \cdots\to H^q(K\updot)\to
+  H^q(L\updot)\to
+  H^q(M\updot)\to
+  H^{q+1}(K\updot)\to\cdots
+$$
+
+analogy of Cech cohomology: $X$ is a topological space,
+$\mcalU$ is an open covering of $X$.
+$\mcalA$ and $\mcalB$ sheaves on $X$, Let
+$$\fai:\mcalA\to\mcalB$$
+be a morphism, then it induces
+$$\fai\updot:C\updot(\mcalU,\mcalA)\to C\updot(\mcalU,\mcalB)$$
+
+Let
+$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$
+be an exact sequence of sheaves, then we have:
+for any open set $\Omg$,
+$$0\to \mcalA(\Omg)\to \mcalB(\Omg)\to\mcalC(\Omg)$$
+left exact.
+
+Example: consider
+$$0\to\bbZ\to\mcalO\xra{exp}\to0$$
+is exact on $bbC^{\times}:=\bbC\setminus\{0\}$
+
+but we have :
+$$0\to\mcalA(\Omg)\xra{\psi}\mcalB(\Omg)\to\im\psi(\Omg)\to 0$$
+is exact.
+
+First we have the following exact sequence
+$$C^q(\mcalU,\mcalA)\to C^q(\mcalU,\mcalB)\to C^q_{\mcalB}(\mcalU,\mcalC)\to 0$$
+where $C_{\mcalB}^q$ is the image of ...
+
+then we get an exact sequence
+$$0\to (C\updot(\mcalU,\mcalA),\delta)\to
+(C\updot(\mcalU,\mcalB),\delta)\to
+(C\updot_{\mcalB}(\mcalU,\mcalC),\delta)\to 0$$
+
+it induces a long exact sequence
+$$\cdots\to
+H^q(\mcalU,\mcalA)\to
+H^q(\mcalU,\mcalB)\to
+H^q_{\mcalB}(\mcalU,\mcalC)\to
+H^{q+1}(\mcalU,\mcalA)\to\cdots
+$$
+
+\begin{thm}
+If $X$ is paracompact,
+$$0\to\mcalA\to\mcalB\to\mcalC\to 0$$
+is a sheaf exact sequence.
+Then there is a long exact sequence
+$$
+\cdots\to
+\check{H}^q(X,\mcalA)\to
+\check{H}^q(X,\mcalB)\to
+\check{H}^q(X,\mcalC)\to
+\check{H}^{q+1}(X,\mcalZ)\to \cdots
+$$
+\end{thm}
+\begin{proof}
+
+Key lemma: need to prove
+$$\lim_{\to\atop\mcalU}H^q(\mcalU,\mcalC)=
+\lim_{\to\atop\mcalU}H^q_{\mcalB}(\mcalU,\mcalC)
+$$
+if $X$ is paracompact.
+
+Omit.
+\end{proof}
+
+
+if
+$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$
+exact,
+
+recall:(cohomology by resolutions)
+$$
+0\to\mcalA\to\mcalF^0\to\mcalF^1\to\cdots
+$$
+flabby resolution. then it induces
+$$0\to\Gamma(X,\mcalA)\to\Gamma(X,\mcalF^0)\to\Gamma(X,\mcalF^1)\to\cdots$$
+then define the sheaf cohomology...
+
+we have a long exact sequence
+$$
+\cdots\to H^q(X,\mcalA)\to H^q(X,\mcalB)\to H^q(X,\mcalC)\to H^{q+1}(X,\mcalA)\to\cdots
+$$
+it is homological algebra...
+
+\begin{thm}(Leray's acyclic theorem)
+Let $\mcalU=(U_{\alpha})_{\alpha\in\mcalI}$ be an open covering of $X$,
+($\mcalF$ is a sheaf on $X$), if satisfying
+$$H^k(U_{\alpha_0,...,\alpha_q})=0$$
+for any $k \geq 1$ ,then
+$$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)$$
+
+and if $X$ is paracompact ,we also have
+$$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)\cong H^q(X,\mcalF)$$
+
+\end{thm}
+(this $\mcalU$ is called acyclic covering)
+
+\textbf{de Rham- Weil theorem}
+\begin{definition}
+$\mcalF$ is a sheaf on $X$, $\Omg$ is an open set of $X$,
+then $\mcalF$ is called \textbf{acyclic sheaf} if
+$$H^q(\Omg,\mcalF)=0$$
+for any $q\geq 1$.
+\end{definition}
+
+\begin{thm}
+Let
+$$0\to\mcalF\to(L\updot,\td)$$
+be an acyclic resolution of $\mcalF$
+(i.e. $L^q$is acyclic on $X$)
+then
+$$H^q(X,\mcalF)\cong H^q(\Gamma(X,L\updot),\td)$$
+for any $q\geq 0$.
+\end{thm}
+
+(先看例子)
+
+\begin{example}
+Let $X$ be a differential manifold,
+$\mcalE^p$:sheaf of smooth $p$-forms, then we have a resolution
+(de Rham complex)
+$$0\to\bbR\inj\mcalE^0\xra{\td}\mcalE^1
+\xra{\td}\mcalE^2\xra{\td}\mcalE^3\to\cdots$$
+where $\td$ differential operators.
+(Why it is a resolution? because of Poincare lemma...locally solvable..)
+
+Note that
+$$\mcalE^0=\mcalC^{\infty}$$
+$\mcalE^p$ is a sheaf of $C^{\infty}$-modules..
+
+then we have
+$$H^q(X,\mcalE^p)=0$$
+for all $q\geq1$
+
+and then
+$$H^q(X,\bbR)\cong
+\frac{\ker(\td:\Gamma(X,\mcalE^q)\to\Gamma(X,\mcalE^{q+1}))}
+     {\im(\td:\Gamma(X,\mcalE^{q-1})\to\Gamma(X,\mcalE^q))}
+=H_{DR}^q(X,\mcalR)
+$$
+\end{example}
+
+\begin{example}
+Let $X$ be a complex manifold,
+$\mcalE^{p,q}$ sheaf of smooth $(p,q)$ forms,
+$\Omg^p$ is the sheaf of holomorphic $p$-forms
+(i.e. $(p,0)$-form $\fai$ with $\pbar\fai=0$).
+
+Then we have resolution
+$$0\to \Omg^p\xra{j}\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
+(Why it is a resolution?  because of the Dolbeault lemma),remain to Exercise...
+
+$$H^q(X,\Omg^p)\cong H^{p,q}_{\pbar}(X,\bbC)$$
+\end{example}
+
+%%%%%%%%%%%%%%%%%2019.3.28第五周周四%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Today： de Rham-Weil Isomorphism Thm
+
+\begin{thm}
+Let $X$ be a topological space, $\mcalF$ be a sheaf of abelian groups on $X$,
+$$0\to\mcalF\to(\mcalL\updot,\td)$$
+be an acyclic resolution, i.e.
+$$H^k(X,\mcalL^q)=0$$
+for all $k\geq 1$ and $q\geq 0$.
+Then,
+$$H^q(X,\mcalF)\cong H^q((\Gamma(\mcalL\updot),\td))$$
+\end{thm}
+
+\begin{proof}
+Since
+$$
+0\to \mcalF\xra{j}\mcalL^0\xra{\td^0}\mcalL^1\xra{\td^1}\mcalL^2\to\cdots
+$$
+be an exact sequence, denote
+$$\mcalZ^q:=\ker \td^q$$
+then we have short exact sequences
+$$0\to \mcalZ^q\to\mcalL^q\to\mcalZ^{q+1}\to 0$$
+for any $q$. They induce long exact sequence of cohomology groups:
+$$\cdots\to H^k(X,\mcalZ^q)\to H^k(X,\mcalL^q)\to H^k(X,\mcalZ^{q+1})\xra{\p}
+H^{k+1}(X,\mcalL^q)\to H^{q+1}(X,\mcalL^q)\to\cdots$$
+For any $k\geq 1$, since $\mcalL^q$ are acyclic on $X$,
+$$H^k(X,\mcalZ^{q+1})\cong H^{k+1}(X,\mcalZ^q)$$
+and for $k=0$, we have
+$$
+0\to H^0(X,\mcalZ^q)\to H^0(X,\mcalL^q)\to H^0(X,\mcalZ^{q+1})\to
+H^1(X,\mcalZ^q)\to H^1(X,\mcalL^q)=0\to\cdots
+$$
+so,
+$$H^1(X,\mcalZ^q)\cong H^0(X,\mcalZ^{q+1})\big/\im\td^q
+\cong H^{q+1}((\Gamma(\mcalL\updot),\td))$$
+
+$$H^{q+1}(\Gamma(\mcalL\updot))\cong H^1(X,\mcalZ^q)\cong H^2(X,\mcalZ^{q-1})\cong\cdots
+H^{q+1}(X,\mcalZ^0)=H^{q+1}(X,\mcalF)$$
+\end{proof}
+
+%%%%%%%上次课讲了两个经典例子：De Rham cohomology and Doulbeault cohomology%%%%%%55
+
+$$0\to\bbR\to\mcalE^0\xra{\td}\mcalE^1\xra{\td}\mcalE^2\to\cdots$$
+(de Rham resolution) then we have
+$$H^k(X,\mcalR)\cong H_{DR}^k(X;\mcalR)$$
+(if $X$ is compact ,then by Hodge theory, it also isomorphic to $\ker(\td\td^*+\td^*\td)$)
+
+Another example:$X$ is a complex manifold, then
+$$0\to\Omg^p\to\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
+then
+$$H^{q}(X,\Omg^p)\cong H_{\pbar}^{p,q}(X,\bbC)$$
+(RHS$=$ Dolbeault cohomology)
+
+
+$X$ be a smooth manifold, we define
+$$C_q(X,\bbZ):=\text{the free abelian group generated by continuous map}$$
+$$\phi:\triangle_q:=\{(t_1,...,t_{q+1})\in[0,1]^{q+1}|\sum_{i=1}^nt_i=1\}$$
+and we define (for $\phi\in C_q(X,\bbZ)$)
+$$\p\phi:=\sum_{i=1}^{q+1}(-1)^q\phi|_{\triangle_{q,i}}$$
+$$\triangle_{q,i}:=\{t\in\triangle_q|t_i=0\}$$
+we define
+$$(C_{sing}\updot,\p)$$
+be the dual complex of $(C^{sing}\downdot),\p$.
+
+(These are all Basic Algebraic Topology)
+
+For any open $U\subseteq X$, we have
+$$U\to C_{sing}^q(U,\bbZ)$$
+we get a sheaf
+$$\mcalC_{sing}^q$$
+
+FACT: $(\mcalC_{sing}\updot,\p)$ is a flabby resolution of $\bbZ$. (check!)So,
+$$H^q_{sing}(X,\bbZ)= H^q(\Gamma(\mcalC_{sing}\updot),\p)
+\cong H^q(X,\bbZ)$$
+
+%%%%%%%%%%%%%%%以后还要讲谱序列，so scared...好怕怕……%%%%%%%%%%%%%%%%%%%5
+%推荐读一读，现在学的东西应该能读懂了。。。
+%Tate : rigid analytic spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Hermite向量丛}
+\section{联络与曲率}
+
+Recall: $X$ is a smooth manifold, $E$ is a vector bundle of rank $r$, if
+
+(1)$\pi:E\to X$ is smooth map,
+
+(2)for any $x\in X$, $E_x:=\pi^{-1}(x)$ is a vector space over $\bbK$
+($\bbK=\bbR$ or $\bbC$) of dimension $r$.
+
+(3)there an open covering $\mcalU=(\mcalU_{\alpha})_{\alpha\in I}$ and trivializations
+$$\theta_\alpha: E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^r$$
+and for any intersection $U_{\alpha}\cap U_{\beta}$, we have
+%%%%%%%见笔记%%%%%%%%%5
+
+\begin{rem}
+$$g_{\alpha\beta}=g_{\beta\alpha}^{-1}$$
+$$g_{\alpha\beta}g_{\beta\gamma}g_{\gamma\alpha}=1$$
+(cocycle condition)
+\end{rem}
+
+\textbf{Special Case: line bundle}
+rank $E$=1.
+
+then $g_{\alpha\beta}\in C^{\infty}(U_{\alpha\beta},\bbK^*)=\mcalE^*(U_{\alpha\beta})$
+invertible smooth function on $U_{\alpha\beta}$.
+then, Cech cohomology,
+$$(\delta g)_{\alpha\beta\gamma}=g_{\beta\gamma}g_{\alpha\gamma}^{-1}g_{\alpha\beta}=1$$
+so,
+$$(g_{\alpha,\beta})\in\mcalZ^1(\mcalU,\mcalE^*)
+\surj H^1(\mcalU,\mcalE^*)\inj\check{H}^1(X,\mcalE^*)$$
+we get a map
+$$\{\text{line bundles}\}\to \check{H}^1(X,\mcalE^*)$$
+actually, we have
+$$\{\text{isomorphic classes of line bundles}\}
+\longleftrightarrow H^1(X,\mcalE^*)$$
+1-1 correspondence.
+
+Now, $X$ be a complex manifold,
+a complex vector bundle $E$ is called homomorphic,
+if ... the transition matrix $g_{\alpha\beta}$ is holomorphic...
+
+Holomorphic line bundles :
+$$g_{\alpha\beta}\in\mcalO^*(U_{\alpha\beta})$$
+$\mcalO^*$:sheaf of invertible holomorphic functions...
+
+FACT: there is a map
+$$\{\text{holomorphic line bundle}\}\to\check{H}^1(X,\mcalO^*)$$
+
+\begin{example}trivial vector bundle $X\times\bbK^r$
+\end{example}
+
+\begin{example}Tangent bundle $TX$.
+(transition matrix $g_{\alpha\beta}$ are given by Jacobi matrix..)
+\end{example}
+
+\begin{definition}(Local frame of vector bundles)
+
+$$\theta_{\alpha}:E|_{U_{\alpha}}\xra{\sim} U_{\alpha}\times\bbK^r$$
+be a trivialization, we define
+$$
+  e_{\lmd}(x):=
+  \theta_{\alpha}^{-1}
+  (x,\begin{pmatrix}
+       0\\
+       \ldots\\
+       1(\leftarrow i\text{th})\\
+       \ldots\\
+       0
+     \end{pmatrix})
+$$
+then, $\{e_1,...,e_r\}$ be a local smooth section
+$s\in\Gamma(U_{\alpha},E)$ can be written as
+$$s(x)=\sum\sigma_{\lmd}(x)$$
+where $\sigma_{\lmd}\in C^{\infty}(U_\alpha,\bbK)$.
+\end{definition}
+
+\textbf{(Connection)}
+
+\begin{notation}
+
+For $X$ be a smooth manifold, $E$ is a vector bundle(real or complex), denote
+$$C_p^k(\Omg,E):=C^k(\Omg,\wedgeform{p}T^*M\ten E)$$
+is the space of $k$-differential $p$-forms with values in $E$.
+
+Locally, consider a trivialization of $E$,
+$$\theta_{\alpha}E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^{r}$$
+($\rightsquigarrow$ frame $(e_1,...e_r)$)
+$$s\in \sum\fai_{\lmd}(x)\ten e_{\lmd}(x)$$
+where $\fai_{\lmd}$ is a $p$-form.
+\end{notation}
+
+\begin{definition}
+a (linear) connection on $E$ is a linear differential operator of order $1$ acting on
+$C^{\infty}\downdot(X,E)$:
+$$D:C_{p}^{\infty}(X,E)\to C_{p+1}^{\infty}(X,E)$$
+$$D(f\wedge x):= \td f\wedge s+(-1)^p f\wedge Ds$$
+where $f\in C^{\infty}(X,\wedgeform{p}T^*M)$, $s\in C^{\infty}(X,E)$.
+\end{definition}
+
+Locally, consider a local trivialization
+$$\theta:E|_{\Omg}\xra{\sim}\Omg\times\bbK^r$$
+with a frame $\{e_1,...,e_r\}$. any section
+$t\in C^{\infty}_p(\Omg,E)$ can be written as
+$$t=\sum_{1\leq\lmd\leq r}\sgm_{\lmd}\ten e_{\lmd}$$
+$$Ds=\sum_{\lmd=1}^r\td\sgm_{\lmd}\wedge e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge De_{\lmd}$$
+where
+$$De_{\lmd}\in C_1^{\infty}(\Omg, E)$$
+can be written as
+$$De_{\lmd}=\sum_{\mu=1}^r
+             a_{\mu\lmd}\ten e_{\mu}$$
+where "$a_{\mu \lmd}$" is called the coefficients of $D$
+ with respect to frame $\{e_1,...,e_r\}$ .
+
+so,
+$$D(t)=
+\sum_{\lmd,\mu}
+  \td\sgm_{\lmd}\wedge e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge a_{\mu\lmd}\wedge e_{\mu}
+=\sum_{\mu}
+   \sum_{\lmd}
+     \left(
+       \td\sgm_{\mu}+
+       a_{\mu\lmd}\wedge\sgm_{\lmd}
+     \right)$$
+%平凡化下，用矩阵再写一下，自己脑补%
+$$Dt=\td\sgm+A\wedge\sgm$$
+where $A=(a_{\mu\lmd})$.
+
+RMK: connection always exists!
+
+%%%%%%%2019.4.2第六周周二%%%%%%%%%%%%%%
+
+Recall: for any (connected) smooth manifold, 
+$E\to X$ is a smooth vector bundle, 
+
+Connection: 
+$$D:C^\infty_p(X,E)\to C_{p+1}^\infty(X,E)$$
+where $C^\infty_p(X,E):=C^\infty(X,\wedge^pT^*M\ten E)$
+
+$$D(f\wedge s)=\td f\wedge s+(-1)^{\deg f}f\wedge Ds$$
+Essentially, 
+$$D:C^\infty(X,E)\to C_1^\infty(X,E)$$
+
+Locally, consider a trivialization 
+$\theta:E|_\Omg\xra{\sim}\Omg\times \bbK^r$, and a local frame 
+$(e_1,...,e_r)$ where $e_k(x)=\theta^{-1}(x,\begin{pmatrix}
+0\\\vdots\\1 (k^{th})\\
+\vdots\\0
+\end{pmatrix})$.
+
+Let $s\in C^\infty(\Omg,E)$, i.e. 
+$$s=\sum_{i=1}^r\sgm_ie_i$$
+where $\sgm_i$ are smooth functions.
+$$Ds=\td\sgm+A\wedge\sgm$$
+where 
+$$
+  \sgm=
+  \begin{pmatrix}
+  \sgm_1\\\vdots\\\sgm_r
+  \end{pmatrix}
+  \quad
+  A={a_{ij}}
+$$ 
+
+consider another trivialization 
+$$\tilde\theta:E|_\Omg\xra{\sim}\Omg\times\bbK^r$$
+$\rightsquigarrow$ a local frame $(\tilde{e_1},...,\tilde{e_r})$.
+Then there exists a invertible linear transform s.t. 
+$$\tilde{e_k}=g_k^me_m$$
+assume 
+$$De_k=a_k^le_l\qquad
+D\tilde{e_k}=\tilde{a}_k^l\tilde{e}_l$$
+we have 
+$$\td g_k^ne_n+g_k^ma_m^ne_n=\tilde{a}_k^lg_l^ne_n$$
+$$\rightsquigarrow\quad
+\tilde{a}_k^lg_l^n(g^{-1})^p_n=\td g_k^n(g^{-1})^p_n+g_k^ma_m^n(g^{-1})^p_n$$
+$$\rightsquigarrow\quad
+\tilde{a}_l^p=\td g_k^n(g^{-1})^p_n)+g_k^ma^n_m(g^{-1})^p_n
+$$
+$$\rightsquigarrow\quad
+\tilde{A}=\td g\cdot g^{-1}+g\cdot A\cdot g^{-1}$$
+
+\textbf{Curvature}
+
+$$H_D:=D^2$$%H要加一个圈。。。
+locally, 
+$$D^2s=D(\td\sgm+A\wedge\sgm)=
+\td(\td\sgm+A\wedge\sgm)+A\wedge(\td\sgm+A\wedge\sgm)$$
+$$
+  =\td A\wedge\sgm-A\wedge\td\sgm+A\wedge\td\sgm+A\wedge A\wedge\sgm
+  =(\td A+A\wedge A)\wedge\sgm 
+$$
+so we have 
+$$H=\td A+A\wedge A$$
+
+Similarly to $\tilde{A},A$ we have 
+
+Exercise:
+$$\tilde{H}=gHg^{-1}$$
+曲率在不同平凡化下的表达式。where 
+$$\tilde{e}=ge$$
+
+$\rightsquigarrow H$ can be considered as a section of $C^\infty_2(X,\Hom(E,E))$.
+because
+$$\tilde{H}\tilde{e}=gHg^{-1}\tilde{e}=gHe$$
+independent of the choice of local frames.
+
+\section{向量丛的构造}
+\begin{definition}(dual of vector bundles)
+$E\to X$, and $g_{\alpha\beta}$ :transition matrix of $E$, 
+the dual is given by 
+$(g_{\alpha\beta})^{-1}$.
+（用转移函数来定义向量丛）
+\end{definition}
+
+\begin{definition}
+direct sum of two vector bundles $(E,F)\to E\oplus F$.
+locally,
+$$(g_{\alpha,\beta})\oplus(h_{\alpha\beta})$$
+direct sum of transition matrices. 
+\end{definition}
+
+\begin{definition}
+tensor product of two vector bundles.
+
+locally, tensor product of two transition matrices.
+\end{definition}
+
+fact: let $D_E$ be a connection on $E$,then it induces a connection $D_{E^*}$.
+Let $u$ be a local section of $E^*$, $s$ local section of $E$, 
+then we define 
+$$\td\langle u,s\rangle=\langle D_{E^*}u,s\rangle+\langle u,D_{E}s\rangle$$
+
+Exercise:
+$$H(D_{E^*})=-H(D_E)^T$$
+
+and for two vector bundles $E,F$, connections $D_E,D_F$, then 
+$$D_{E\oplus F}:=D_E\oplus D_F$$
+$$H(E\oplus F)=H_E\oplus H_F$$
+
+as for tensor product, 
+we define $D_{E\ten F}$ as follows:
+$$D_{E\ten F}(s\ten t)=D_Es\ten t+s\ten D_Ft$$
+check the curvature
+$$H_{E\ten F}=H_E\ten id_F+id_E\ten H_F$$
+
+\begin{rem}
+we can also consider wedge product of vector bundles.
+Consider vector bundles $E_1,...,E_k$,
+with connections $D_{E_1},...,D_{E_k}$,
+let $s_i\in C_{p_i}^\infty(X,E^i)$
+then 
+$$D_{E_1\wedge,...,\wedge E_k}(s_1\wedge...\wedge s_k)
+=\sum_{i=1}^k(-1)^{p_1+...+p_{i-1}}s_1
+\wedge...\wedge D_{E_i}s_i\wedge...\wedge s_k$$
+\end{rem}
+
+Let $E$ be a vector bundle of rank $r$, 
+then $\wedgeform{r}E$ is a line bundle, 
+with transition matrix by $\det(g_{\alpha\beta})$.
+this bundle is denoted by $\det E$.(Det-bundle)
+
+Let $s_1,...,s_r$ be local sections of $E$, 
+then we have 
+$$D_{\det E}(s_1\wedge\cdots\wedge s_r)= tr(H_E)s_1\wedge\cdots\wedge s_r$$
+
+\section{陈省身示性类}
+chern classes (defined by curvature).
+
+Let $E\to X$ be a smooth complex vector bundle of rank $r$, 
+where $X$ be a complex manifold.
+
+(Chern-Weil theory)
+
+$V$ be a complex vector space, $f:\underbrace{V\times\cdots\times V}_k\to \bbC$
+be a symmetric multi-linear form of degree $k$. 
+
+$\rightsquigarrow f(v):=f(v,v,...,v)$ is a homogeneous polynomial of degree $k$.
+\begin{definition}
+assume $G$ is a group (left) acting on $V$, s.t. 
+$$f(g(v_1),...,g(v_k))=f(v_1,...,v_k)$$
+for any $g\in G,v_i\in V$, then we say $f$ is $G$-invariant. 
+\end{definition} 
+
+Special case: $G=GL(r,\bbC)$ and $V=Lie G=\mfkgl{r,\bbC}$ be the Lie algebra of $G$.
+the action is 
+$$(g,M)\mapsto gMg^{-1}$$
+
+Consider 
+$$\det(I+\frac{i}{2\pi}tm)=I+tf_1(M)+t^2f_2(M)+\cdots t^rf_r(M)$$
+
+$\rightsquigarrow\forall 1\leq k\leq r$, $f_k$ is $G$-invariant.
+
+Let $E\to X$ complex vector bundle on a complex manifold, 
+let $D_E$ be a connection, 
+curvature $H_E\in C_2^\infty(X,\Hom(E,E))$.
+ Let $f\in GL(r,\bbC)$- invariant "$k$-form",then
+
+(1)Let $H_{\alpha},H_{\beta}$ be the curvature forms of $E$ in different trivialization, 
+then $f(H_\alpha)=f(H_{\beta})$ , so we get a globally defined $2k$-form.
+
+assume $H_\alpha=gH_\beta g^{-1}$, then 
+$$f(H_\alpha)=f(g H_\beta g^{-1})=f(H_\beta)$$
+
+(2) we also have 
+$$\td f(H)=0$$
+locally , $H=H_\alpha=\td a_\alpha+A_\alpha\wedge A_\alpha$,then 
+$$\td f(H)=\td f(H_\alpha,H_\alpha,...,H_\alpha)
+=\sum_{i=1}^kf(H_\alpha,...,\underbrace{\td H_\alpha}_{i},...,\H_\alpha)$$
+$$
+=\sum_{i=1}^kf(H_\alpha,...,\td A_\alpha\wedge A_\alpha-A_\alpha\wedge\td A_\alpha,...,H_\alpha)
+$$ 
+
+Fact:(in Riemannian geometry) For any $x\in X$, 
+we always can find a local frame s.t. 
+$A_\alpha(x)=0$.
+
+so, choose this frame, 
+$$\td f(H)=0$$
+
+So, $[f(H)]\in H^{2k}(X,\bbC)$
+
+(3) Claim : the class $[f(H)]$ is independent of the choice of the connections $D_E$.
+
+Let $D_0,D_1$ be two connections, consider 
+$$D_t=(1-t)D_0+tD_1$$
+$t\in[0,1]$, curvature $H_t$
+%%%%%%%%将以上所有的H都换成\Theta%%%%%%%%%
+
+Fact: $\alpha:=A_1-A_0$ is globally defined, and in $C_1^\infty(X,\Hom(E,E))$.
+
+Fact: $$\frac{\td}{\td t}f(H_t)=k\td f(\alpha,H_t,H_t,...,H_t)$$
+
+So, 
+$$f(H_1)-f(H_0)=
+\int_0^1\frac{\td}{\td t}f(H_t)\td t
+=\td\int_0^1f(\alpha,H_t,H_t,...,H_t)\td t$$
+So, 
+$$[f(H_1)]-[f(H_0)]$$
+
+\begin{definition}
+the $k$-th Chern class of $E$ 
+$$c_k(E):=[f_k(\Theta_E)]\in H^{2k}(X,\bbC)$$
+\end{definition}
+
+
+
+
+
+
