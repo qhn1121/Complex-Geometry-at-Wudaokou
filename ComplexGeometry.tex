@@ -1,0 +1,156 @@
+\documentclass[oneside,b5papar,11pt]{book}
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx,wrapfig} % Required for including pictures
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{amscd,amsmath}
+\usepackage{tikz,stmaryrd}
+\usepackage{latexsym,amsbsy,bbold, fullpage}
+\usepackage{amssymb,amsthm,amsfonts}
+\usepackage{pdfsync,yfonts}
+\usepackage{tkz-graph,tikz-cd}
+\usepackage[all,pdf]{xy}
+\usepackage{ctex}
+\usepackage{titlesec}
+\usepackage{color,xcolor,tcolorbox}
+\usepackage{framed}
+\usepackage{hyperref,url}
+\usepackage{makeidx}
+\usepackage[annataritalic]{tengwarscript}%支持Tengwa字母，可以写精灵语了
+\usepackage{enumitem}
+
+\def\UrlBreaks{\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J
+\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V
+\do\W\do\X\do\Y\do\Z\do\[\do\\\do\]\do\^\do\_\do\`\do\a\do\b
+\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n
+\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\,
+\do\?\do\'\do+\do\=\do\#}%URL换行咒语
+
+\usetikzlibrary{matrix, calc, arrows}
+\usetikzlibrary{patterns,trees,snakes}
+
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%在此处调整 定义、定理、性质、引理、公理 的背景颜色%
+\newcommand{\chapterbackgroundcolor}{
+  \definecolor{shadecolor}{RGB}{255,227,170}
+}
+
+\newcommand*{\thmcolor}{185,181,134}
+\newcommand*{\propcolor}{201,198,160}
+\newcommand*{\lemmacolor}{225,225,200}
+\newcommand*{\axiomcolor}{247,247,249}
+\newcommand*{\definitioncolor}{173,197,165}
+\newcommand*{\notationcolor}{208,222,203}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%这里调用了曲豆豆的独家秘籍%%%%%
+\include{曲豆豆的私房符号}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\linespread{1.2} % 调整行间距
+
+\makeatletter
+%\renewcommand\@biblabel[1]{\textbf{#1.}}
+% 将参考文献的方括号 '[1]' 换成 '1.'
+
+\renewcommand{\@listI}{\itemsep=0pt}
+% Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{
+% Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{center} % Right align 可以换成 “flushleft”
+{\Huge\@title} % Increase the font size of the title
+
+\vspace{50pt} % 标题与作者之间的行间距
+
+{\Large\@author} % 作者姓名
+\\\@date % Date
+
+\vspace{20pt} % 作者与摘要之间的行间距
+\end{center}
+}
+
+
+%\renewcommand{\abstractname}{摘要}
+% Uncomment to change the name of the abstract to something else
+
+\renewcommand{\bibname}{参考文献}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\proofname}{证明}
+\renewcommand{\indexname}{术语索引}
+
+\titleformat{\chapter}
+  {\color{blue}
+    \huge\bfseries}
+  {第\,\thechapter\,章}
+{1em}{}
+
+\newcommand{\mchapter}[1]{
+  \begin{shaded}
+    \chapter{#1}
+  \end{shaded}
+}
+
+
+
+\title{\textbf{复几何}% Title
+} % Subtitle
+
+\author{\textsc{曲豆豆\,\,\,码字} % Author
+\\{\textit{南七技校福利社\,\,五道口分社}}}
+
+\date{\today\\
+第01稿}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\vspp
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]
+  {IMAG1546.jpg}
+
+图：中国科学技术大学西校区-也西湖雪景
+
+拍摄于2015.1.28 - 11：30
+\end{figure}
+
+本课程参考以下教材：
+
+1. \verb"Demailly: Complex analytic and differential geometry."
+
+2.  \verb"Huybrechts: Complex geometry: an introduction."
+
+3.  \verb"Morrow, Kodaira: Complex manifolds."
+
+4. \verb"Grauert, Remmert: Coherent analytic sheaves."
+
+5. \verb"Hormander: An introduction to complex analysis in several variables."
+
+6. \verb"Griffiths, Harris: Principles of algebraic geometry."
+
+\fengexian
+
+\begin{center}
+在五道口也要红专并进、理实交融呀$\sim$
+\end{center}
+
+\tableofcontents
+
+
+
+\include{notes/Lec1}
+
+
+\printindex
+\end{document} 
