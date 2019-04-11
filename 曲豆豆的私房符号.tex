@@ -9,8 +9,9 @@
 \newtheorem{mydefinition}[mythm]{定义}
 \newtheorem{mynotation}[mythm]{记号}
 \newtheorem{example}[mythm]{例子}
+\newtheorem{PreImportantExample}[mythm]{重要例子}
 \newtheorem{rem}[mythm]{注记}
-\newtheorem{cor}[mythm]{推论}
+\newtheorem{mycor}[mythm]{推论}
 \newtheorem{claim}[mythm]{断言}
 \newtheorem{prob}{习题}[section]
 
@@ -42,6 +43,12 @@
   {\end{myaxiom}\end{shaded}
   \chapterbackgroundcolor}
 
+\newenvironment{cor}
+  {\definecolor{shadecolor}{RGB}{\lemmacolor}
+    \begin{shaded}\begin{mycor}}
+  {\end{mycor}\end{shaded}
+  \chapterbackgroundcolor}
+
 \newenvironment{definition}
   {\definecolor{shadecolor}{RGB}{\definitioncolor}
     \begin{shaded}\begin{mydefinition}}
@@ -54,6 +61,12 @@
   {\end{mynotation}\end{shaded}
   \chapterbackgroundcolor}
 
+\newenvironment{Example}
+  {\definecolor{shadecolor}{RGB}{\examplecolor}
+    \begin{shaded}\begin{PreImportantExample}}
+  {\end{PreImportantExample}\end{shaded}
+  \chapterbackgroundcolor}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*{\vs}{\vspace{5pt}}
 \newcommand*{\vsp}{\vspace{10pt}}
@@ -62,6 +75,9 @@
 \newcommand*{\fengexian}{
   \rule[0pt]{14.3cm}{0.01em}
 \vs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\Langle}{\left\langle}
+\newcommand*{\Rangle}{\right\rangle}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand*{\bbA}{\mathbb{A}}
 \newcommand*{\bbB}{\mathbb{B}}
@@ -117,8 +133,11 @@
 \newcommand*{\mcalY}{\mathcal{Y}}
 \newcommand*{\mcalZ}{\mathcal{Z}}
 
-\newcommand*{\mfkg}{\mathfrak{g}}
+\newcommand*{\mfkg}{\mathfrak{g}}    %Lie algebra
 \newcommand*{\mfkh}{\mathfrak{h}}
+\newcommand*{\mfkm}{\mathfrak{m}}    %maximal ideal
+\newcommand*{\mfkp}{\mathfrak{p}}    %prime ideal
+\newcommand*{\mfkq}{\mathfrak{q}}
 
 \newcommand*{\mfkgl}{\mathfrak{gl}}
 \newcommand*{\mfksl}{\mathfrak{sl}}
@@ -126,18 +145,37 @@
 \newcommand*{\mfksp}{\mathfrak{sp}}
 
 \newcommand*{\bfk}{\boldsymbol{k}}
+\newcommand*{\bfp}{\boldsymbol{p}}
+\newcommand*{\bfq}{\boldsymbol{q}}
+\newcommand*{\bfu}{\boldsymbol{u}}
+\newcommand*{\bfv}{\boldsymbol{v}}
+\newcommand*{\bfw}{\boldsymbol{w}}
+\newcommand*{\bfx}{\boldsymbol{x}}
+\newcommand*{\bfy}{\boldsymbol{y}}
+\newcommand*{\bfz}{\boldsymbol{z}}
 
 \newcommand*{\Ahat}{\hat{A}}
 \newcommand*{\Bhat}{\hat{B}}
 \newcommand*{\Chat}{\hat{C}}
 \newcommand*{\Dhat}{\hat{D}}
+\newcommand*{\Ehat}{\hat{E}}
+\newcommand*{\Fhat}{\hat{F}}
+\newcommand*{\Ghat}{\hat{G}}
+\newcommand*{\Hhat}{\hat{H}}
 
-\newcommand*{\zbar}{\bar{z}}
+\newcommand*{\zbar}{\bar{z}}            %complex number
 \newcommand*{\wbar}{\bar{w}}
 
+\newcommand*{\afa}{\alpha}
 \newcommand*{\lmd}{\lambda}
-\newcommand*{\omg}{\omega}
+\newcommand*{\Lmd}{\Lambda}
 \newcommand*{\sgm}{\sigma}
+\newcommand*{\Sgm}{\Sigma}
+\newcommand*{\gma}{\gamma}
+\newcommand*{\Gma}{\Gamma}
+\newcommand*{\dta}{\delta}
+\newcommand*{\Dta}{\Delta}
+\newcommand*{\omg}{\omega}
 \newcommand*{\Omg}{\Omega}
 \newcommand*{\veps}{\varepsilon}
 \newcommand*{\fai}{\varphi}
@@ -149,24 +187,44 @@
 \newcommand*{\surj}{\twoheadrightarrow}
 \newcommand*{\xra}{\xrightarrow}
 \newcommand*{\xla}{\xleftarrow}
+\newcommand*{\llra}{\longleftrightarrow}
+\newcommand*{\Llra}{\Longleftrightarrow}
+\newcommand*{\rlim}{\varinjlim}                 %colimit，余极限，归纳极限，正向极限
+\newcommand*{\llim}{\varprojlim}                %limit，极限，投射极限，逆向极限
+\newcommand*{\suobing}{\lrcorner\,}             %张量的缩并
 
-\newcommand*{\p}{\partial}
-\newcommand*{\td}{\mathrm{d}}
-\newcommand*{\pbar}{\overline{\partial}}
-\newcommand*{\ten}{\otimes}
+\newcommand*{\xybigrow}{\xymatrixrowsep{5pc}}   %交换图排版专用
+\newcommand*{\xybigcol}{\xymatrixcolsep{5pc}}   %增大行、列间距
+\newcommand*{\tabularbigrow}{\specialrule{0em}{4pt}{4pt}}
+
+\newcommand*{\pz}{\text{---}}                   %破折号
+\newcommand*{\yc}{\triangle}                    %余代数的乘法，co-product
+\newcommand*{\p}{\partial}                      %偏微分、边缘算子partial
+\newcommand*{\td}{\mathrm{d}}                   %微分算子d
+\newcommand*{\pbar}{\overline{\partial}}        %Dolbeaut算子partial-bar
+\newcommand*{\ten}{\otimes}                     %张量积tensor product
 \newcommand*{\bigten}{\bigotimes}
 \newcommand*{\op}{^{\text{op}}}
-\newcommand*{\downdot}{_{\bullet}}
+\newcommand*{\downdot}{_{\bullet}}              %下方黑点，用于同调代数中的链复形
+\newcommand*{\ddowndot}{_{\bullet\bullet}}
 \newcommand*{\updot}{^{\bullet}}
 \newcommand*{\wedgeform}{\bigwedge\nolimits^}
-
+\newcommand*{\vkong}{\varnothing}               %空集
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\lbar}[1]{\overline{#1}}    %比较长的上横线
+
+\newcommand*{\fps}[1]{[\![#1]\!]}        %Formal power series形式幂级数
+\newcommand*{\Ls}[1]{(\!(#1)\!)}         %Laurent series     洛朗级数
+
 \newcommand*{\Choose}[2]
   {\left[{
       #1 \atop
       #2
-  }\right]}           %快速输入小型方括号组合数
+  }\right]}                              %快速输入小型方括号组合数
+
+\newcommand*{\bbar}[1]
+  {\overline{#1}}
 
 \newcommand*{\pp}[1]
   {\frac{\partial   }
@@ -190,19 +248,52 @@
 %matrix pmatrix bmatrix Bmatrix vmatrix Vmatrix%
 %分别为无括号，小括号，中括号，大括号，竖线，双竖线%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\ad}{ad}         %adjoint
+\DeclareMathOperator{\Aut}{Aut}       %automorphism
+\DeclareMathOperator{\id}{id}         %identity
+\DeclareMathOperator{\ev}{ev}         %evaluation
 \DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Crit}{Crit}     %Critical locus
+\DeclareMathOperator{\Coder}{Coder}   %Co-derivation  并不是“码农”的意思
+\DeclareMathOperator{\Conf}{Conf}     %Kontsevich公式当中用到了；configuration of points
+\DeclareMathOperator{\coker}{coker}   %co-kernel      余核
+\DeclareMathOperator{\Div}{div}       %divergence     散度
+\DeclareMathOperator{\HC}{HC}         %Hochschild Cyclic (co)homology
 \DeclareMathOperator{\HH}{HH}         %Hochschild (co)homology
-\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\DR}{DR}         %De-Rham
+\DeclareMathOperator{\Der}{Der}       %Derivation        导子
 \DeclareMathOperator{\End}{End}       %Endomorphism
-\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Inn}{Inn}       %Inner Derivation  内导子
 \DeclareMathOperator{\Inv}{Inv}
-\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\per}{per}       %periodic cyclic complex
+\DeclareMathOperator{\PV}{PV}         %Polyvector field
+\DeclareMathOperator{\Sh}{Sh}
+\DeclareMathOperator{\YM}{YM}         %Yang-Mills   杨振宁-米尔斯
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Free}{Free}
 \DeclareMathOperator{\Span}{span}
 \DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Tot}{Tot}       %Total complex of a double-complex
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Hom}{Hom}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Mor}{Mor}       %Morphism
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Sym}{Sym}       %Symmetry
+\DeclareMathOperator{\Ass}{Ass}       %Associated Prime
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%以下是范畴论记号%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\Commu}{\mathsf{Commu}}
+\DeclareMathOperator{\alg}{\mathsf{alg}}
+\DeclareMathOperator{\Mod}{\mathsf{Mod}}
+
+\newcommand*{\Modcat}[2]
+    {\Mod^{#1}_{#2}}
+\newcommand*{\Assalgcat}[2]
+    {\mathsf{Ass}\!\text{-}\!\alg^{#1}_{#2}}
+\newcommand*{\Commualgcat}[2]
+    {\Commu\!\text{-}\!\alg^{#1}_{#2}} 
