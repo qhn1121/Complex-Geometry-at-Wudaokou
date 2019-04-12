@@ -1,0 +1,476 @@
+\chapter{$L^2$ Hodge理论}
+
+\section{向量丛上的微分算子}
+Differential operators on vector bundles.
+
+Let $X$ is a (connected) smooth manifold of ($\bbR$-)dimension $n$.
+$E,F:\bbK$-vector bundle of rank $r,r'$ respectively.
+
+\begin{definition}
+a linear differential operator of degree $k$ from $E$ to $F$ is a $\bbK$-linear map
+$$P:C^\infty(M,E)\to C^\infty(M,F)$$
+$$u\mapsto Pu$$
+locally given by
+$$Pu(x)=\sum_{|\afa|\leq k}a_{\afa}(x)D^\afa u(x)$$
+where $a_\afa(x)=(a_{afa,\lmd\mu}(x))$ be a $r'\times r$ matrix.
+$$
+u(x)=(u_1(x),...,u_r(x))^T
+$$
+\end{definition}
+
+Let $t\in\bbK$, $f\in C^\infty(M,\bbK)$, $u\in C^\infty(M,E)$,
+then
+$$e^{-tf(x)}P(e^{tf(x)}u(x))=
+t^k\sgm_P(x,\td f(x))u(x)+\text{terms } c_j(x)^{t_j}\quad(j<k)$$
+\begin{definition}
+$$\sgm_P:T^*M\to\Hom(E,F)$$
+is called the principal symbol of $P$, which is a polynomial on $T^*M$.
+\end{definition}
+locally,
+$$\sgm_P(x,\xi)=\sum_{|\afa|=k}a_\afa(x)\xi^\afa$$
+$(\xi^\afa:=\xi_1^{\afa_1}...\xi_n^{\afa_n})$
+
+\begin{example}
+Consider $\td: C^\infty(M,\bbK)\to C^{\infty}(M,T^*M)$.
+then
+$$\td u=
+\sum_{j=1}^n
+\begin{pmatrix}
+0\\
+\vdots\\
+1(j^{th})\\
+\vdots\\
+0
+\end{pmatrix}
+\pfrac{u}{x^i}$$
+i.e.
+$$\sgm_d(x,\xi)
+=\sum_{j=1}^n
+\begin{pmatrix}
+0\\
+\vdots\\
+1(j^{th})\\
+\vdots\\
+0
+\end{pmatrix}\xi_j$$
+\end{example}
+\begin{definition}
+$P$ is called elliptic, if $\forall x\in M,\xi\in T^*_xM\setminus\{0\}$,
+$$\sgm_P(x,\xi)\in \Hom(E_x,E_x)$$
+is injective.
+\end{definition}
+For example, $\td$ is elliptic.
+
+\textbf{$L^2$-inner product}
+
+Let $M$ be an oriented $C^\infty$-manifold with a smooth volume form, locally
+$$\td V(x)=\gamma(x)\td x_1\wedge\cdots\wedge\td x_n$$
+$\gma(x)>0$. Assume $E$ has a Euclidean(or Hermitian) structure...
+
+Let $u,v\in C^{\infty}(M,E)$,define
+$$\langle\langle u,v \rangle\rangle:=
+\int_M\langle u , v \rangle\td V(x)$$
+
+define $L^2(M,E):=$ space of sections with measurable coefficients with are $L^2$ w.r.t
+$\langle\langle,\rangle\rangle$.
+
+\begin{definition}
+Let $P:C^\infty(M,E)\to C^\infty(M,F)$ be a differential operator,
+$E,F$ have Euclidean (or Hermitian) structure, then there exists unique
+differential operator
+$$P^*:C^{\infty}(M,F)\to C^\infty(M,E)$$
+s.t.
+$$\langle\langle Pu,v\rangle\rangle=\langle\langle u,P^*v\rangle\rangle$$
+for all $u,v$ s.t. $Supp u\cap Supp v\subset\subset M$(relative compact...)
+
+$P^*$ is called the formal adjoint of $P$.
+\end{definition}
+
+\begin{proof}
+Existence: Assume that $Supp U, Supp v\subset\subset$
+some coordinate chart $\Omg$ with coordinates $(x_1,...,x_n)$, then
+$$\ll Pv,u\gg=\int_\Omg
+\sum_{\afa,\lmd,\mu}a_{\afa,\lmd\mu}(x)
+D^\afa u_\mu(x)\overline{v_\lmd(x)}\gma(x)\td x_1\cdots\td x_n
+$$
+integration by parts, it
+$$
+=\int_\Omg
+   \sum_{\afa,\lmd,\mu}
+     (-1)^{|\afa|}
+     u_\mu(x)
+     \overline{
+       D^\afa(\gma(x)\overline{a_{\afa,\lmd\mu}}v_\lmd(x))
+     }
+     \td x_1\...\td x_n
+$$
+Locally,
+$$
+  P^*v=\sum_{|\afa|\leq k}
+         (-1)^{|\afa|}
+         \gma(x)^{-1}
+         D^\afa
+         (\gma(x)\overline{a_\afa(x)}^Tv(x))
+$$
+
+Uniqueness: use the density of $C^{\infty}$-section with compact support in $L^2(M,-)$.
+\end{proof}
+\begin{cor}
+If $\sgm_P(x,\xi)=\sum_{|\afa|=k}a_\afa(x)\xi^{\afa}$ ,then
+$$\sgm_{P^*}
+=(-1)^k\overline{\sgm_P(x,\xi)}^T
+$$
+\end{cor}
+\begin{cor}
+If rank $E=$ rank$F$, $P$ is differential operator, then
+$P^*$ is elliptic $\iff$ $P^*$ is elliptic.
+\end{cor}
+
+
+%%%%%%%%%%%%%%%%%%2019.4.11第七周周四%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{椭圆算子的基本性质}
+\textbf{Fundamental results of elliptic operators}
+
+$M$ is a compact (oriented) $C^\infty$-manifold, $\dim_{\bbR}M=n$,
+with a smooth volume form $\td V$.
+
+$E$ is an Hermite vector bundle, $rank_{\bbC}E=r$.
+
+Sobolev space:$W^k(M,E):=$ the space of section $s:M\to E$
+whose derivations up to order $=k$, $:=$ the completion of space
+of smooth sections w.r.t $W^k$-norm.
+
+$(\Omg_j)_{j\in I}$: a finite open covering of $M$, $E|_{\Omg_j}$ trivial,
+Let $(\rho_j)_{j\in I}$ be a partition of unity w.r.t. $(\Omg_j)_{j\in I}$,
+s.t. $\sum_{j}\rho^2_j=1$.
+locally, choose an orhtonormal frame $(e_{j,\lmd})_{1\leq\lmd\leq r}$ on $\Omg_j$,
+then $u=\sum_{\lmd=1}^ru_{j,\lmd}e_{j,\lmd}$ on $\Omg_j$. Define
+$$||u||^2_k:=
+  \sum_{j,\lmd}
+    ||e_ju_{j,\lmd}||_k^2
+$$
+where
+$$
+  ||e_ju_{j,\lmd}||_k^2
+:=
+  \int_{\Omg_j}
+    \sum_{|\afa|\leq k}
+      |D^\afa(e_ju_{j,\lmd})|^2\td V(x)
+$$
+
+\begin{rem}
+On a compact manifold,
+the equivalence of class of $||\cdot||_k$ is independent of
+the choice of : partition of unity,
+local trivialization, holomorphic covering...
+\end{rem}
+
+\begin{lemma}(Sobolev lemma)
+
+For $k>l+\frac{n}{2}$, then we have
+$$W^k(M,E)\subseteq C^l(M,E)$$
+\end{lemma}
+
+\begin{lemma}(Rellich lemma)
+
+For any $k\in\bbZ_{\geq 0}$, the inclusion
+$$W^{k+1}(M,E)\inj W^k(M,E)$$
+is a compact operator.
+\end{lemma}
+
+\begin{lemma}(Garding inequality)
+
+If
+$$P:C^\infty(M,E)\to C^\infty(M,F)$$
+is elliptic, and rank$E=$rank $F$,
+$\tilde{P}:$the extension of $P$ to sections with distribution coefficients, then :
+for all $u\in W^0(M,E)$, if $\tilde{P}u\in W^k(M,F)$, then
+$u\in W^{k+d}(M,E)$, where $d=\deg P$, and
+$$||u||_{k+d}\leq C_k
+\left(
+  ||\tilde{P}u||_k+||u||_0
+\right)
+$$
+where $C_k$ depending on $k,M$.
+\end{lemma}
+
+\begin{proof}
+Reference: \verb"Kodaira: deformation of complex structures (Appendix)"
+\end{proof}
+
+\begin{cor}
+If $u\in\ker\tilde{P}\cap W^0(M,E)$, then $u\in C^\infty(M,E)$.
+\end{cor}
+
+\begin{lemma}(Finiteness theorem)
+
+Setting $M$ be a compact manifold, rank$E=$rank$F$,
+$$P:C^\infty(M,E)\to C^\infty(M,F)$$
+elliptic,then:
+
+(1) $\ker P$ is of finite dimension
+
+(2) $P(C^\infty(M,E))$ is closed and of finite codimension in $C^\infty(M,F)$.
+If $P^*$ is the formal adjoint of $P$, then $\exists$ decomposition
+$$C^\infty(M,F)=P(C^\infty(M,E))\oplus\ker P^*$$
+which is orthogonal in $W^0(M,F)=L^2(M,F)$
+\end{lemma}
+\begin{proof}
+椭圆算子的一般结果，分析的东西233333333.
+可以参考小平邦彦复流形与复结构形变的附录。
+\end{proof}
+
+\textbf{Hodge theory in compact Riemannian manifold}
+
+Hodge star operator.
+
+$M$ compact Riemannian manifold, $\dim_{\bbR}=n$, $E$ is a Hermitian vector bundle.
+Assume $(\xi_1,...,\xi_n),(e_1,...,e_n)$ be orthonormal frame of $TM, E$
+on some local chart $\Omg$, denote
+$(\xi_1^*,...,\xi_n^*),(e_1^*,...,e_n^*)$ be the co-frame of
+$T^*M,T^*E$.
+
+$\wedge\updot T^*M$ is endowed with an inner product frame from $TM$.
+locally,
+$$\langle u_1\wedge\cdots\wedge u_p,
+          u_1\wedge\cdots\wedge u_p\rangle
+:=\det(\langle u_i,v_j\rangle)
+$$
+for $u_i,v_j\in T^*M$. Then , get an inner product on $\wedge^pT^*M$.
+
+Assume
+$$U=\sum_{|I|=p\atop i_1\leq...\leq i_p}
+  u_I\xi_I^*
+$$
+$$V=\sum_{|I|=p\atop i_1\leq...\leq i_p}
+  v_I\xi_I^*
+$$
+be $p$-forms, then
+$$\langle u,v\rangle=\sum_{|I|=p}u_Iv_I$$
+i.e. $\{\xi^*_T\}$ is an orthonormal basis of $\wedge^pT^*M$.
+
+$\wedge^*T^*M\ten E$ has an inner product induced from $\wedge^*T^*M,E$,
+
+\begin{definition}
+the Hodge star operator
+$$^*:\wedge^pT^*M\to\wedge^{n-p}T^*M$$
+is defined by
+$$u\wedge*v=\langle u,v\rangle\td V$$
+\end{definition}
+Locally, let
+$$U=\sum_{|I|=p}u_I\xi_I^*,\,V=\sum_{|I|=p}v_I\xi_I^*$$
+assume
+$$*V=\sum_{|J|=n-p}a_J\xi_J^*$$
+then
+$$U\wedge*\sum u_I a_{I^c}\xi_I^*\wedge\xi_{I^c}^*
+=\sum u_Ia_{I^c}\veps(I,I^c)\xi_1^*\wedge\cdots\wedge\xi_n^*
+$$
+$$
+  \langle u,v\rangle\td V=\sum_{|I|=p}u_Iv_I\xi_1^*\wedge\cdots\wedge\xi_n^*
+$$
+so, we have
+$$
+  *V=\sum_{|I|=p}\veps(I,I^c)V_I\xi_{I^c}^*
+\in \wedgeform{n-p}T^*M
+$$
+
+\begin{definition}
+$$*:\wedgeform{p}T^*M\ten E\to\wedgeform{n-p}T^*M\ten E$$
+is defined by
+$$\{s,*t\}:=\langle s,t\rangle\td V$$
+\end{definition}
+
+Locally, assume
+$$t=\sum_{|I|=p\atop1\leq\lmd\leq r}
+t_{I,\lmd}\xi_I^*\ten e_{\lmd}
+$$
+then
+$$
+  *t=
+  \sum_{|I|=p\atop 1\leq\lmd\leq r}
+  \veps(I,I^c)
+  t_{I,\lmd}\xi_{I^c}^*\ten e_{\lmd}
+$$
+
+\begin{definition}
+$$\#:\wedgeform{p}T^*M\ten E\to\wedgeform{n-p}T^*M\ten E^*$$
+is defined by: for any $s,t\in \wedgeform{p}T^*M\ten E$,such that
+$$s\wedge\# t:=\langle s,t\rangle\td V$$
+wedge product$+$ pairing of $E^*\times E\to\bbC$.
+\end{definition}
+Locally: assume
+$$t=\sum_{|I|=p\atop 1\leq\lmd r}
+t_{I,\lmd}\xi_T^*\ten e_{\lmd}
+$$
+then,
+$$\#t=\sum_{|I|=p,\lmd}
+\veps(I,I^c)t_{I,\lmd}\xi_c^*I\ten e_\lmd^*
+$$
+
+\begin{prop}
+$$*^2=(-1)^{p(n-1)}\quad\text{on } \wedgeform{p}T^*M\ten E$$
+$$\#^2=(-1)^{p(n-1)}\quad\text{on } \wedgeform{p}T^*M\ten E$$
+\end{prop}
+（正负号对吗？）
+
+Recall: For all $s,t\in C^\infty(M,\wedgeform{p}T^*M\ten E)$,
+we have an inner product
+$$\langle\langle s,t\rangle\rangle
+:=\int_M\langle s,t\rangle\td V
+$$
+
+\begin{thm}
+Let $D_E$ be an Hermite connection on $E$,
+acting on $\wedgeform{p}T^*M\ten E$, then
+$$D_E^*:=(-1)^{np+1}*D_E*$$
+where $D^*_E$ is the formal adjoint of $D_E$.
+\end{thm}
+
+\begin{proof}
+Let $s\in C^\infty(M,\wedgeform{p}T^*M\ten E)$ and
+$t\in C^\infty(M,\wedgeform{p+1}T^*M\ten E)$. then
+$$
+  \langle\langle D_Es,t\rangle\rangle
+ =\int_M
+    \langle
+      D_Es,t
+    \rangle
+    \td V
+ =
+  \int_M
+    \{D_Es,*t\}
+$$
+Since $D_E$ is Hermitian ,by definetion ,
+$$\td\{s,*t\}=\{D_Es,t\}+(-1)^p\{s,D_E(*t)\}$$
+so,
+$$
+  \langle\langle D_Es,t\rangle\rangle
+=
+  \int_M\td\{s,*t\}
+  +(-1)^{p+1}
+   \{s,D_E*t\}
+=
+  (-1)^{p+1}(-1)^{p(n_1)}
+  \int_M
+    \{s,*(*D_E*t)\}
+=
+  \langle\langle s,D_E^*t\rangle\rangle
+$$
+so,
+$$D_E^*t=(-1)^{np+1}*D_E*$$
+\end{proof}
+
+\begin{definition}
+$$\yc_E=D_ED_E^*+D_E^*D_E:
+C^\infty(M,\wedgeform{p}T^*M\ten E)
+\to
+C^\infty(M,\wedgeform{p}T^*M\ten E)
+$$
+\end{definition}
+
+\begin{example}
+Let $M=\bbR^n$, $g=\sum\limits_{i=1}^n\td x_i^2$,
+$E=M\times \bbC$ trivial line bundle with $D_E=\td$.
+then
+$$\yc_Eu=(\td\td^*+\td^*\td)u=
+-\sum_{i=1}^n
+  \left(
+    \sum_{|I|=p}
+    \ppfrac{u_I}{x_I^2}
+    \td x_I
+  \right)
+$$
+where
+$$u=\sum_{|I|=p}u_I\td x_I$$
+\end{example}
+
+\begin{prop}
+$\yc_E$ is a self-adjoint elliptic operator.
+(i.e. $\yc_E^*=\yc_E$)
+\end{prop}
+\begin{proof}
+$\yc_E^*=\yc_E$ be definition.
+
+note that
+$$e^{-tf}D_E(e^{tf}s)=t\td f\wedge s+D_Es$$
+so,
+$$\sgm_{D_E}(x,\xi)s=\xi\wedge s$$
+$$\sum_{D^*_E}=-\overline{\sgm_{D_E}}^T$$
+$$\sgm_{D^*_E}(x,\xi)s=-\tilde{\xi}\suobing s$$
+where $\tilde{\xi}$ be the vector field dual to $\xi$.
+\end{proof}
+
+\begin{definition}
+$$\yc_E=D_ED_E^*+D_ED_E^*:
+C^\infty(M,\wedgeform{p}T^*M\ten E)\to
+C^\infty(M,\wedgeform{p}T^*M\ten E)$$
+so,
+$$\sgm_{\yc_E}(x,\xi)s=
+ \left(
+   \sgm_{D_E}\sgm_{D_E^*}(x,\xi)
+   +\sgm_{D_E^*}\sgm_{D_E}(x,\xi)
+ \right)s
+$$
+so,
+$\sgm_{\yc_E}$ is injective if $\xi\neq 0$, so $\yc_E$ is elliptic.
+\end{definition}
+
+Harmonic forms and Hodge isomorphism.
+\begin{definition}
+$u$ is called harmonic if $\yc_{\td}u=0$.
+\end{definition}
+
+\begin{thm}
+$M$ is a compact Riemannian manifold,
+then de Rham cohomology
+$$H^p_{DR}(M,\bbR)\cong
+\ker(\yc_d:C^\infty(M,\wedgeform{p}T^*M))
+$$
+\end{thm}
+\begin{proof}
+$\yc_d$ self-adjoint elliptic, so by general result for elliptic operator,
+$$C^\infty(M,\wedgeform{p}T^*M)=\im\yc_d\oplus\ker\yc_d^*
+=\im\yc_d\oplus\ker\yc_d$$
+Claim:
+$$\im\yc_{\td}=\in \td\oplus\im\td^*$$
+Recall $\yc_{\td}=\td\td^*+\td^*\td$, so
+$$\im\yc_\td\subseteq\im\td\oplus\in\td^*$$
+on the other hand,
+$$\im\td\oplus\im\td^*\subseteq(\ker\yc_\td)^\bot=\im\yc_\td$$
+so,
+$$\im\yc_\td=\im\td\oplus\im\td^*$$
+so,
+$$C^\infty(M,\wedgeform{p}T^*M)=
+\im\td\oplus\im\td^*\oplus\ker\yc_\td
+$$
+so,
+$$
+  H^p_{DR}(M,\bbR)
+=\frac{\im\td\oplus\ker\yc_\td}{\im\td}=\ker\yc_\td
+$$
+\end{proof}
+
+\begin{cor}
+$$\dim H^{p}_{DR}(M,\bbR)=\dim\ker\yc_\td<+\infty$$
+\end{cor}
+
+\begin{rem}Consider
+$$u\mapsto \int_M(
+  \langle u,u \rangle+
+  \langle \td u,\td u \rangle+
+  \langle \td^*u,\td^*u \rangle
+)\td V$$
+这个泛函的变分是什么鬼？
+\end{rem}
+
+
+
+
+
+
+
+
+
+
+
