@@ -221,6 +221,7 @@ which is orthogonal in $W^0(M,F)=L^2(M,F)$
 可以参考小平邦彦复流形与复结构形变的附录。
 \end{proof}
 
+\section{紧黎曼流形的Hodge理论}
 \textbf{Hodge theory in compact Riemannian manifold}
 
 Hodge star operator.
@@ -464,6 +465,232 @@ $$u\mapsto \int_M(
 这个泛函的变分是什么鬼？
 \end{rem}
 
+%%%%%%%%%%%%%2019.4.16第八周周二%%%%%%%%%%%%%%%%%%%%%%%%%%
+Harmonic forms and Hodge isomorphism
+
+Recall: $M$ is a compact Riemann manifold, 
+$$\td:C^\infty(M,\wedgeform{*}T^*M)\to C^\infty(M,\wedgeform{*+1}T^*M)$$
+adjoint $\td^*$,
+$$\yc_d=dd^*+d^*d$$
+is a self-adjoint elliptic operator. 
+
+Hodge decomposition:
+$$C^\infty(M,\wedgeform{p}T^*M)=\ker\yc_d\oplus\im \td\oplus\im\td^*$$
+$$\mcalH^p(M,\bbR):=\ker\yc_d \quad\text{finite dimension}$$
+$$\mcalH^p(M,\bbR)\cong H^p_{DR}\cong H^p(M,\bbR)$$
+(Hodge isomorphism, and, de Rham-Weil)
+
+\textbf{Poincare duality}
+
+\begin{thm}
+The pairing 
+$$H^p_{DR}(M,\bbR)\times H^{n-p}_{DR}(M,\bbR)\to\bbR$$
+$$(s,t)\mapsto\int_M s\wedge t$$
+(is well defined) is non-degenerated. In particular,
+$H^p_{DR}(M,\bbR)^*\cong H^{n-p}_{DR}(M,\bbR)$
+\end{thm}
+
+\begin{proof}
+the pairing factors through the pairing on 
+$$\mcalH^p(M,\bbR)\times\mcalH^{n-p}(M,\bbR)\to\bbR$$
+$$(s,t)\mapsto\int_Ms\wedge t$$
+
+need to verify:(1) 
+it is independent of the choice of representations.(Easy, check)
+(2) Pairing $\mcalH...\times\mcalH...$ is non-degenerated..
+
+claim(Exercise): Hodge star $*$ s.t. $*\yc_\td=\yc_\td*$.
+
+so, $s$ is a harmonic $p$-form$\iff *s$ is a harmonic $(n-p)$-form. 
+
+note that 
+$$s\wedge *s=\langle s,s\rangle \td V
+=\int_Ms\wedge *s=\int_M\langle s,s\rangle\td V=||s||^2
+$$
+\end{proof}
+
+\begin{cor}
+$$\dim\mcalH^p(M,\bbR)=\dim\mcalH^{n-p}(M,\bbR)$$
+\end{cor}
+
+Generalization to flat bundle. $M$ is a compact Riemannian manifold,
+$\dim_{\bbR}M=n$, $E\to M$ is a complex Hermitian vector bundle.
+
+\begin{definition}
+$E\to X$ is called flat, if it admit a connection $D_E$ s.t.
+$$D^2_E=0$$
+\end{definition}
+\begin{rem}
+$E$ is flat $\iff E$ is given by a representation 
+$$\pi_1(M)\to GL(r,\bbC)$$
+\end{rem}
+(我们不证)
+
+Consider the complex :
+$$(C^\infty(M,\wedgeform*T^*M\ten E),D_E)$$
+$$\rightsquigarrow H^p_{DR}(M,E):=\frac{\ker D_E}{\im D_E}$$
+
+Exercise: we have decomposition
+$$C^\infty(M,\wedgeform{p}T^*M\ten E)=
+\ker\yc_{D_E}\oplus\im D_E\oplus \im D_E^*$$
+$$H^p_{DR}(M,E)\cong \ker\yc_{D_E}$$
+and the pairing 
+$$H^p_{DR}(M,E)\times H^{n-p}_{DR}(M,E^*)\to\bbC$$
+$$(s,t)\mapsto \int_M s\wedge t$$
+is non-degenerate..
+
+以上是实的Hodge理论。
+
+\section{K\"{a}hler流形}
+\begin{definition}
+Let $X$ be a complex manifold, $\dim_\bbC X=n$, 
+$X$ is called a Hermitian manifold, if $X$ has a Hermitian metric, 
+i.e. locally $h(z):=\sum_{1\leq j,k\leq n}h_{jk}(z)\td z_j\ten\td \zbar_k$,
+where $(h_{jk})$ is positive definition Hermitian matrix.
+\end{definition}
+
+Check:the positivity of $h$ is independent of the choice of holomorphic local coordinate
+
+Rmk: Any complex manifold has a Hermitian metric...(Exercise)
+
+Fundamental $(1,1)$-form associated to $h(z)$ is defined by 
+$$\omg:=-\im h=\frac{\sqrt{-1}}{2}\sum_{j,k}h_{jk}\td z_j\td \zbar_k$$
+we also call $\omg$ is the Hermitian metric on $X$
+
+Fact: $\omg$ is real (i.e. $\overline{\omg}=\omg$).
+
+\begin{rem}
+$h$ is a Hermite structure on $TX$(holomorphic tangent bundle of $X$).
+locally, 
+$$\langle \pp{z_i},\pp{z_j}\rangle(z)=h_{ij}(z)$$
+\end{rem}
+
+\begin{definition}
+$(X,\omg)$ is an Hermitian manifold, $X$ is K\"{a}hler if $\td\omg=0$.
+\end{definition}
+
+\begin{prop}
+Locally, $\omg=\frac{\sqrt{-1}}{2}\sum_{jk} h_{jk}\td z_j\wedge\td \zbar_k$
+is Kaehler, $\iff \p\omg=0$ and $\pbar\omg=0$, i.e. 
+$$\pfrac{h_{jk}}{z_l}=\pfrac{h_{lk}}{z_j}$$
+
+If $(X,\omg)$ is a compact Kaehler manifold, then 
+$$H^{2k}(X,\bbR)\neq 0$$
+\end{prop}
+
+\begin{proof}
+$\td\omg=0$, so $\omg\in H^2(M,\bbR)$. Claim: 
+$$0\neq \omg^k\in H^{2k}(M,\bbR)$$
+
+proof of the claim: 
+
+$$[\omg^k][\omg^{n-k}]=\int_X\omg^k\wedge\omg^{n-k}=\int_X\omg^n$$
+Since $\omg$ is positive,  locally 
+$$\omg^n=n!\det(h_{jk})
+\bigwedge_{l=1}^n\left(
+\frac{\sqrt{-1}}{2}\td zl\wedge\td\zbar_l
+\right)>0
+$$
+is a volume form. So, 
+$$[\omg^k][\omg^{n-k}]=\int_{X}\omg^n>0$$
+(Using Poincare dual)
+\end{proof}
+
+\begin{example}(Exists a complex manifold NOT Kaehler)
+(Hopf Surface)
+
+$$X=(\bbC^2\setminus\{0\})\big/\Gma$$
+where discrete group $\Gma:=\{\lmd^n|n\in \bbZ\}$, 
+$0<\lmd<1$ fixed.
+\end{example}
+
+Exercise: $X\cong S^1\times S^3$ $C^\infty$ homeomorphism..
+and $X$ is compact complex manifold.
+
+and $H^2(X,\bbR)=H^2(S^1\times S^3,\bbR)=0$
+by K\"{u}nneth Formula...
+
+So, $X$ is non-Kahler...
+
+\begin{example}Examples of Kaehler manifold)
+
+(1)Riemann surface must be Kaehler...(trivial)
+
+(2)(complex torus) $X=C^n\big/\Gma$, $\Gma$ is a lattice.
+(this manifold may not compact...)
+
+$$\omg=\sqrt{-1}\sum_{j,k}h_{jk}\td z_j\wedge\td\zbar_k$$
+is a Kahler metric on $X$ if $(H_{jk})>0$, $h_{jk}$ are constant.
+
+(3) Projective space $\bbC P^n$.
+$$\omg:=\sqrt{-1}\Theta_h(\mcalO(1))$$
+locally, 
+$$\omg=\sqrt{-1}\p\pbar\log(1+|z_1|^2+...+|z_n|^2)$$
+on $\Omg$. This $\omg$ is a Kahler metric,
+\end{example}
+
+\begin{example}
+Let $(X,\omg)$ is a Kahler manifold, 
+then  any complex submanifold $Y\subseteq X$ is also Kahler.
+$$i:Y\inj X$$
+with the Kahler metric $i^*\omg$.
+\end{example}
+Exercise: Let $f:Y\to X$ be a holomorphic immersion, and assume $X$ is Kahler, 
+then $Y$ is Kahler.
+\begin{cor}
+Any projective manifold (i.e. $X\inj \bbC P^N$) is K\"{a}hler.
+\end{cor}
+(Algebraic Geometry.....)
+
+\begin{prop}(Equivalent definition of Kaehler metrics)
+a Hermitian metric $\omg$ is Kahler, $iff$
+for all $x_0\in X$, there exists a holomorphic chart $(z_1,...,z_n)$ 
+centered at $x_0$, s.t. 
+$$\omg(z)=\sqrt{-1}\sgm_{jk}\delta_{jk}\td z_j\wedge\td\zbar_k
++O(|z|^2)
+$$
+\end{prop}
+
+($\Leftarrow$ is trivial...)
+(left to HW)
+
+\begin{thm}(Exercise)
+
+If $(X,\omg)$ is Kahler, then for all $x_0\in X$, 
+$\exists$ holomorphic chart $z_1,...,z_n$ centered at $x_0$, s.t.
+assume
+$$\omg=\sqrt{-1}h_{jk}\td z_j\wedge\td\zbar_k$$
+then
+
+$$h_{lm}(z)=\delta_{lm}-\sum_{j,k}c_{jk,lm}z_j\zbar_k+O(|z|^3)$$
+where $c_{jk,lm}$ is the coefficients of the Chern curvature tensor,
+$$\Theta(TX)_{x}:=\sum c_{jk,lm}\td z_j\wedge\td\zbar_k\ten(\pp{z_l})^*\ten
+\pp{z_m}$$
+\end{thm}
+（查书）
+
+\section{Hodge theory on compact compact manifold}
+
+$(X,\omg)$ is a compact Hermitian manifold, 
+$E\to X$ is a homomorphic Hermitian vector bundle.
+$$D_E:=D_E'+D_E''$$
+Chern connection, $D_E''=\pbar$.
+
+\begin{definition}
+$$\yc_E:=D_ED_E^*+D_E^*D_E$$
+\end{definition}
+$$(D_E')^*=-*D_E''*$$
+$$(D_E'')^*=-*D_E'*$$
+$$\yc_E'=D_E'(D_E')^*+...$$
+$$\yc_E''=...$$
+
+Note that $(D_E'')^2=0$, consider the complex 
+$$C^\infty(X,\wedgeform{p,q}\ten E)\xra{D_E''}C^\infty(X,\wedgeform{p,q+1}\ten E)$$
+$$\rightsquigarrow H^{p,q}_{D_E''}(X,E)$$
+Dolbeaut cohomology...
+it isom to $\ker\yc_E''$
+
+%下次课仔细再讲
 
 
 
