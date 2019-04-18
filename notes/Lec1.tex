@@ -179,7 +179,7 @@ $$z_k=x_k+iy_k$$
 从而引入
 \begin{eqnarray*}
 \td z_k&=&\td x_k+i\td y_k\qquad (1,0)\text{形式}\\
-\td \zbar_k&=&\td x_k-i\td y_k\qquad (1,0)\text{形式}
+\td \zbar_k&=&\td x_k-i\td y_k\qquad (0,1)\text{形式}
 \end{eqnarray*}
 
 \begin{definition}（$(p,q)$-形式）
@@ -438,8 +438,9 @@ $$F=f\quad(\forall z\in\Omg\setminus\supp\psi)$$
 \begin{lemma}（Hartogs figure）
 \index{Hartogs figure}
 
-对于$n>1$，正实数$0<r<R$，以及$\bbC^{n-1}$的开子集$\omg'\subseteq\omg$，
-记$\bbC^n$的开子集
+对于$n>1$，正实数$0\leq r<R$，
+以及$\bbC^{n-1}$的开子集$\omg'\subseteq\omg$，
+其中$\omg$是连通的。记$\bbC^n$的开子集
 $$
   \Omg:=
     \left(
@@ -485,8 +486,38 @@ $$
 则易知如此定义的$\ftil$为$f$在$\Omgtil$上的解析延拓。
 \end{proof}
 
+\begin{thm}（Riemann延拓定理）
 
+考虑$\bbC^n$中的多圆柱$\bbD(0,R)$，其中$n\geq 2$，$R\in\bbR_+^n$。
+对任意$2\leq p\leq n$，令$\bbC^n$的子集
+$$S:={(z_1,...,z_n)\in\bbC^n|z_1=\cdots=z_p=0}$$
+则对任意$f\in\mcalO(\bbD(0,R)\setminus S)$，
+$f$都可（唯一地）解析延拓至$\bbD(0,R)$.
+\end{thm}
 
+\begin{proof}
+这是Hartogs figure的显然推论。记$R=(R_1,R_2,...,R_n)$，
+以及$R':=(R_2,...,R_n)\in\bbR^{n-1}$.
+考虑$\bbC^{n-1}$的开子集
+\begin{eqnarray*}
+  \omg &:=&\bbD(0,R')\\
+  \omg'&:=&\omg\setminus\{z_2=\cdots=z_p=0\}
+\end{eqnarray*}
+则易知
+$$\bbD(0,R)\setminus S=
+\Big(
+  \bbD(0,R_1)\setminus\{0\}\times\omg
+\Big)
+\cup
+\Big(
+  \bbD(0,R_1)\times\omg'
+\Big)
+$$
+为Hartogs figure，从而完。
+\end{proof}
+
+\section{Weierstrass预备定理与除法定理}
+（待补）
 
 
 
