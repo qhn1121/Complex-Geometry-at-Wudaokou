@@ -1,4 +1,5 @@
 \chapter{多复变函数}
+%应该补充一些复线性空间的线性代数，单独构成一节。
 \section{多元全纯函数}
 首先快速回顾单复变函数的知识。
 我们通常用$\Omg$来表示$\bbC$的开子集，
@@ -171,6 +172,320 @@ $$|f(z)|\leq A(1+|z|)^B$$
 仍类似于单复变全纯函数的情形。使用柯西积分公式，再配合
 Arzela-Ascoli定理即可。从略。
 \end{proof}
+
+现在，简单介绍一些复的微分形式。对于$\bbC^n$，记其复坐标为
+$(z_1,z_2,...,z_n)$；视$\bbC^n$为$2n$维实线性空间，
+$$z_k=x_k+iy_k$$
+从而引入
+\begin{eqnarray*}
+\td z_k&=&\td x_k+i\td y_k\qquad (1,0)\text{形式}\\
+\td \zbar_k&=&\td x_k-i\td y_k\qquad (1,0)\text{形式}
+\end{eqnarray*}
+
+\begin{definition}（$(p,q)$-形式）
+
+设$\Omg$为$\bbC^n$的非空开集，则形如
+$$u(z)=\sum_{|I|=p\atop |J|=q}
+a_{IJ}(z)\td z_I\wedge\td\zbar_J$$
+的光滑张量场称为$(p,q)$-形式。
+记$\Omg$上的$(p,q)$-形式之全体为$C^\infty_{p,q}(\Omg)$.
+\end{definition}
+这里的$I,J$为多重指标。“光滑”指的是系数函数$a_{IJ}$为$\Omg$上的光滑复值函数。
+另外，显然$(0,0)$-形式即为光滑函数；
+$C^\infty_{p,q}(\Omg)$具有显然的复线性空间结构，
+事实上还是$C^\infty(\Omg)$-模。
+
+\begin{notation}（$\pbar$-算子）
+定义算子
+$$\pbar: C^\infty_{p,q}(\Omg)\to C^\infty_{p,q+1}(\Omg)$$
+如下:对于$(p,q)$-形式
+$$u:=\sum_{|I|=p\atop|J|=q}
+a_{IJ}\td z_I\wedge\td\zbar_J$$
+则
+$$
+  \pbar u=
+  \sum_{|I|=p\atop|J|=q}
+    \sum_{k=1}^n
+      \pfrac{a_{IJ}}{\zbar_k}
+      \td \zbar_k\wedge\td z_I\wedge\td\zbar_J
+$$
+\end{notation}
+类似地，也有
+$$\p:C_{p,q}^\infty(\Omg)\to C_{p+1,q}^\infty(\Omg)$$
+它们与外微分算子$\td$满足关系
+$$\td=\p+\pbar$$
+由$\td^2=0$，易知
+$$\p^2=0,\quad \pbar^2=0,\quad \p\pbar+\pbar\p=0$$
+
+以下事实显然成立：
+\begin{lemma}
+对于区域$\Omg$上的光滑函数$f\in C^\infty(\Omg)$，
+则$f$全纯当且仅当$\pbar f=0$.
+\end{lemma}
+
+\begin{rem}（Dolbeault上同调）
+对于$\Omg\subseteq\bbC^n$，注意$\pbar^2=0$，
+从而对任意$p\geq 0$，有上链复形$C^\infty_{p,\bullet}(\Omg)$：
+$$
+  \cdots\to
+  C^\infty_{p,q-1}(\Omg)
+  \xra{\pbar}C^\infty_{p,q}(\Omg)
+  \xra{\pbar}C^\infty_{p,q+1}(\Omg)
+  \to\cdots
+$$
+称上同调群
+$$H^{p,q}(\Omg):=H^q(C^\infty_{p,\bullet}(\Omg),\pbar)$$
+为区域$\Omg$的\textbf{Dolbeault上同调群}。
+\index{Dolbeault cohomology}
+\end{rem}
+类似于外微分$\td$的de-Rham上同调群，
+Dolbeault上同调群与$\Omg$的拓扑联系密切。
+例如，以下定理十分重要，我们先陈述，以后再证明：
+
+\begin{lemma}(Dolbeault-Grothendieck引理)
+
+设$\bbD\subseteq\bbC^n$为多圆柱，则对于任意$p,q\geq 0$，
+$$H^{p,q}(\Omg)=0$$
+\end{lemma}
+
+不难发现它与de Rham上同调的Poincare引理有些类似。
+
+\section{解析延拓与Hartogs现象}
+上一节介绍了多复变函数的一些“普通的”（与单变量类似）性质，
+本节开始介绍多复变函数的一些独特性质。
+
+\begin{lemma}设$f\in C^\infty_c(\bbC)$为复平面上的
+紧支光滑函数，则对任意$z\in\bbC$，成立
+$$
+  \frac{1}{2\pi i}
+  \iint_\bbC
+    \frac{\p f\big/\p\taubar}
+         {\tau-z}
+    \td\tau\wedge\td\taubar
+=f(z)$$
+\end{lemma}
+\begin{proof}
+基本的微积分练习。考虑换元$\tau=z+re^{i\theta}$，则易知
+\begin{eqnarray*}
+  \td\tau\wedge\td\taubar&=&-2ir\td r\wedge\td\theta\\
+  \pfrac{r}{\taubar}&=&\frac{1}{2}e^{i\theta}\\
+  \pfrac{\theta}{\taubar}&=&-\frac{1}{2ir}e^{i\theta}
+\end{eqnarray*}
+因此有
+\begin{eqnarray*}
+     \frac{1}{2\pi i}
+     \iint_\bbC
+       \frac{\p f\big/\p\taubar}
+            {\tau-z}
+       \td\tau\wedge\td\taubar
+&=&
+     \frac{-1}{2\pi}
+       \int_0^\infty\td r
+         \int_0^{2\pi}
+           \left(
+            -\frac{1}{ir}\pfrac{f}{\theta}(z+re^{i\theta})
+           \right)
+           \td\theta\\
+& &
+    +\frac{-1}{2\pi}
+     \int_0^{2\pi}\td\theta
+       \int_0^\infty
+       \left(
+         \pfrac{f}{r}(z+re^{i\theta})
+       \right)
+       \td r\\
+&=&
+     0+\frac{-1}{2\pi}
+     \int_0^{2\pi}
+       -f(z)
+       \td\theta\\
+&=&
+     f(z)
+\end{eqnarray*}
+证毕。
+\end{proof}
+
+\begin{lemma}（简单版本的$\pbar$-引理）
+
+设$n\geq 2$，$\fai\in C^\infty_{0,1}(\bbC^n)$
+为具有紧支集的光滑$(0,1)$-形式，
+且$\pbar\fai=0$，则存在$\bbC^n$上的紧支光滑函数$g$，使得
+$$\pbar g=\fai$$
+\label{partial-bar引理-简单版本-lemma}
+\end{lemma}
+
+\begin{proof}
+记光滑$(0,1)$-形式$\fai$为
+$$\fai=\sum_{k=1}^n\fai_k(z_1,...,z_n)\td\zbar_k$$
+则
+\begin{eqnarray*}
+     \pbar\fai
+&=&
+     \sum_{k,l}
+       \pfrac{\fai_k}{\zbar_l}
+       \td\zbar_l\wedge\td\zbar_k
+ =
+     \sum_{1\leq l<k\leq n}
+       \left(
+         \pfrac{\fai_k}{\zbar_l}
+        -\pfrac{\fai_l}{\zbar_k}
+       \right)
+       \td\zbar_l\wedge\td\zbar_k
+\end{eqnarray*}
+从而由$\pbar\fai=0$可得对任意$k\neq l$，
+$$\pfrac{\fai_k}{\zbar_l}=\pfrac{\fai_l}{\zbar_k}$$
+
+考虑如下的$\bbC^n$上的函数$\psi$：对于$z=(z_1,...,z_n)\in\bbC^n$，
+$$
+  \psi(z)
+:=
+  \frac{1}{2\pi i}
+  \iint_\bbC
+    \frac{\fai_1(\tau;z_2,...,z_n)}
+         {\tau-z_1}
+    \td\tau\wedge\td\taubar
+$$
+由$\fai_1$的紧支性易知$\psi$为$\bbC^n$上的光滑函数。
+对于$1<k\leq n$，有
+\begin{eqnarray*}
+     \pfrac{\psi(z)}{\zbar_k}
+&=&
+     \frac{1}{2\pi i}
+     \iint_\bbC
+       \frac{\pfrac{\fai_1}{\zbar_k}(\tau;z_2,...,z_n)}
+            {\tau-z_1}
+       \td\tau\wedge\td\taubar\\
+&=&
+     \frac{1}{2\pi i}
+     \iint_\bbC
+       \frac{\pfrac{\fai_k}{\taubar}(\tau;z_2,...,z_n)}
+            {\tau-z_1}
+       \td\tau\wedge\td\taubar\\
+&=&
+    \fai_k(z)
+\end{eqnarray*}
+上式对$k=1$显然也成立。因此$\pbar\psi=\fai$.
+
+最后还需要证明$\psi$是紧支的。
+由于$\fai$紧支，存在足够大的$R>0$，使得
+$$\supp\fai\subseteq \bbD(0,R)$$
+因此任意取定$z\in\bbC^n$，使得$z$的分量$z_2,z_3,...,z_n$之中
+至少有一个模长大于$R$，则由$\psi$的定义式直接得到$\psi(z)=0$.
+(注意：这一步严重依赖$n\geq 2$！)也就是说，存在$z\not\in\bbD(0,R)$
+使得$\psi=0$在$z$的某邻域内都成立。
+另一方面，由于$\pbar\psi=\fai$且$\supp\fai\subseteq\bbD(0,R)$，
+从而$\psi$在$\bbD(0,\bbR)$外部全纯，因此由解析延拓唯一性，
+$\psi$在$\bbD(0,R)$外部恒为零，因此$\psi$紧支。
+\end{proof}
+
+此引理在单复变$n=1$的情形\textbf{不成立}：
+\begin{example}
+设$\fai_1\in C_0^\infty(\bbC)$为复平面上的紧支光滑函数，并且
+$$\iint_\bbC\fai_1(z)\neq 0$$
+考虑$\bbC$上的$(0,1)$-形式$\fai=\fai_1(z)\td\zbar$，
+则$\pbar\fai=0$是平凡的，
+但\textbf{不存在}紧支光滑函数$\psi$使得$\pbar\psi=\fai$.
+\end{example}
+
+\begin{proof}
+若存在紧支光滑函数$\psi$使得$\pbar\psi=\fai$，
+则$\pfrac{\psi}{\zbar}=\fai_1$.于是
+$$
+  0\neq
+  \iint_\bbC
+    \fai_1(z)\td z\wedge\td\zbar
+=
+  \iint_\bbC
+    \pfrac{\psi}{\zbar}
+    \td z\wedge\td\zbar
+=0
+$$
+产生矛盾。
+\end{proof}
+
+以下是多复变函数解析延拓的令人惊讶的性质，
+它与单复变函数有本质不同：
+
+\begin{thm}（Hartogs现象）
+
+设$\Omg\subseteq\bbC^n$为开集$(n\geq 2)$，
+$K\ssubset\Omg$且为$\bbC^n$的紧子集，
+则对任意的$f\in\mcalO(\Omg\setminus K)$，
+都存在解析延拓$F\in\mcalO(\Omg)$，使得
+$$F|_{\Omg\setminus K}=f$$
+\end{thm}
+
+\begin{proof}
+取$K$与$\Omg$直接的截断函数$\psi\in C^\infty_0(\bbC^n)$，
+使得$0\leq \psi\leq 1$，
+$$K\ssubset\supp\psi\ssubset\Omg$$
+并且$\psi|_K\equiv 1$.
+考虑$$\ftil:=(1-\psi)f$$
+则$\ftil$在整个$\Omg$上都有定义。注意
+$$\pbar\ftil=-(\pbar\psi)f+(1-\psi)\pbar f$$
+易知$\supp\pbar\ftil\subseteq\supp\psi$.于是由
+引理\ref{partial-bar引理-简单版本-lemma}，存在光滑函数
+$v$，使得$\supp v\subseteq\psi$，并且$\pbar v=\pbar\ftil$，
+从而考虑函数
+$$F:=(1-\psi)f-v$$
+则$\pbar F=0$，从而$F\in\mcalO(\Omg)$.又因为易知
+$$F=f\quad(\forall z\in\Omg\setminus\supp\psi)$$
+从而由解析延拓唯一性，有$F_{\Omg\setminus K}=f$.
+\end{proof}
+
+关于解析延拓，再介绍如下结果：
+
+\begin{lemma}（Hartogs figure）
+\index{Hartogs figure}
+
+对于$n>1$，正实数$0<r<R$，以及$\bbC^{n-1}$的开子集$\omg'\subseteq\omg$，
+记$\bbC^n$的开子集
+$$
+  \Omg:=
+    \left(
+      (\bbD(0,R)\setminus\bbD(0,r))\times\omg
+    \right)
+    \cup
+    \left(
+      \bbD(0,R)\times\omg'
+    \right)
+$$
+其中$\bbD(0,r)$与$\bbD(0,R)$
+分别为$\bbC$上的以原点为中心，$r,R$为半径的开圆盘。
+则任意$f\in\mcalO(\Omg)$都可以（唯一地）解析延拓至
+$$\widetilde{\Omg}:=\bbD(0,R)\times\omg$$
+\end{lemma}
+如此的区域$\Omg$称之为“\textbf{Hartogs figure}”。
+$\Omg$的几何图像大致如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]
+  {figures/HartogsFigure.png}
+
+图：Hartogs figure示意
+\end{figure}
+
+\begin{proof}
+容易知道
+$$\Omg=\big\{(z_1,\ztil)\in\bbC\times\bbC^{n-1}\big|
+r<|z_1|<R,\ztil\in\omg\text{或者}
+|z_1|\leq r,\ztil\in\omg'
+\big\}$$
+对于$f\in\mcalO(\Omg)$，定义$\Omgtil$上的函数
+$$
+  \ftil(z_1,\ztil):=
+    \frac{1}{2\pi i}
+    \int_{|w|=\rho}
+      \frac{f(w,\ztil)}
+           {z_1-w}
+      \td w
+$$
+其中$\rho$为满足$\max\{r,|z_1|\}<\rho<R$的任意实数。
+则易知如此定义的$\ftil$为$f$在$\Omgtil$上的解析延拓。
+\end{proof}
+
+
 
 
 
