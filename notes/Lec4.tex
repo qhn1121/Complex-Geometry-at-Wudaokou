@@ -468,11 +468,11 @@ $$u\mapsto \int_M(
 %%%%%%%%%%%%%2019.4.16第八周周二%%%%%%%%%%%%%%%%%%%%%%%%%%
 Harmonic forms and Hodge isomorphism
 
-Recall: $M$ is a compact Riemann manifold, 
+Recall: $M$ is a compact Riemann manifold,
 $$\td:C^\infty(M,\wedgeform{*}T^*M)\to C^\infty(M,\wedgeform{*+1}T^*M)$$
 adjoint $\td^*$,
 $$\yc_d=dd^*+d^*d$$
-is a self-adjoint elliptic operator. 
+is a self-adjoint elliptic operator.
 
 Hodge decomposition:
 $$C^\infty(M,\wedgeform{p}T^*M)=\ker\yc_d\oplus\im \td\oplus\im\td^*$$
@@ -483,7 +483,7 @@ $$\mcalH^p(M,\bbR)\cong H^p_{DR}\cong H^p(M,\bbR)$$
 \textbf{Poincare duality}
 
 \begin{thm}
-The pairing 
+The pairing
 $$H^p_{DR}(M,\bbR)\times H^{n-p}_{DR}(M,\bbR)\to\bbR$$
 $$(s,t)\mapsto\int_M s\wedge t$$
 (is well defined) is non-degenerated. In particular,
@@ -491,19 +491,19 @@ $H^p_{DR}(M,\bbR)^*\cong H^{n-p}_{DR}(M,\bbR)$
 \end{thm}
 
 \begin{proof}
-the pairing factors through the pairing on 
+the pairing factors through the pairing on
 $$\mcalH^p(M,\bbR)\times\mcalH^{n-p}(M,\bbR)\to\bbR$$
 $$(s,t)\mapsto\int_Ms\wedge t$$
 
-need to verify:(1) 
+need to verify:(1)
 it is independent of the choice of representations.(Easy, check)
 (2) Pairing $\mcalH...\times\mcalH...$ is non-degenerated..
 
 claim(Exercise): Hodge star $*$ s.t. $*\yc_\td=\yc_\td*$.
 
-so, $s$ is a harmonic $p$-form$\iff *s$ is a harmonic $(n-p)$-form. 
+so, $s$ is a harmonic $p$-form$\iff *s$ is a harmonic $(n-p)$-form.
 
-note that 
+note that
 $$s\wedge *s=\langle s,s\rangle \td V
 =\int_Ms\wedge *s=\int_M\langle s,s\rangle\td V=||s||^2
 $$
@@ -521,7 +521,7 @@ $E\to X$ is called flat, if it admit a connection $D_E$ s.t.
 $$D^2_E=0$$
 \end{definition}
 \begin{rem}
-$E$ is flat $\iff E$ is given by a representation 
+$E$ is flat $\iff E$ is given by a representation
 $$\pi_1(M)\to GL(r,\bbC)$$
 \end{rem}
 (我们不证)
@@ -534,7 +534,7 @@ Exercise: we have decomposition
 $$C^\infty(M,\wedgeform{p}T^*M\ten E)=
 \ker\yc_{D_E}\oplus\im D_E\oplus \im D_E^*$$
 $$H^p_{DR}(M,E)\cong \ker\yc_{D_E}$$
-and the pairing 
+and the pairing
 $$H^p_{DR}(M,E)\times H^{n-p}_{DR}(M,E^*)\to\bbC$$
 $$(s,t)\mapsto \int_M s\wedge t$$
 is non-degenerate..
@@ -543,8 +543,8 @@ is non-degenerate..
 
 \section{K\"{a}hler流形}
 \begin{definition}
-Let $X$ be a complex manifold, $\dim_\bbC X=n$, 
-$X$ is called a Hermitian manifold, if $X$ has a Hermitian metric, 
+Let $X$ be a complex manifold, $\dim_\bbC X=n$,
+$X$ is called a Hermitian manifold, if $X$ has a Hermitian metric,
 i.e. locally $h(z):=\sum_{1\leq j,k\leq n}h_{jk}(z)\td z_j\ten\td \zbar_k$,
 where $(h_{jk})$ is positive definition Hermitian matrix.
 \end{definition}
@@ -553,7 +553,7 @@ Check:the positivity of $h$ is independent of the choice of holomorphic local co
 
 Rmk: Any complex manifold has a Hermitian metric...(Exercise)
 
-Fundamental $(1,1)$-form associated to $h(z)$ is defined by 
+Fundamental $(1,1)$-form associated to $h(z)$ is defined by
 $$\omg:=-\im h=\frac{\sqrt{-1}}{2}\sum_{j,k}h_{jk}\td z_j\td \zbar_k$$
 we also call $\omg$ is the Hermitian metric on $X$
 
@@ -561,7 +561,7 @@ Fact: $\omg$ is real (i.e. $\overline{\omg}=\omg$).
 
 \begin{rem}
 $h$ is a Hermite structure on $TX$(holomorphic tangent bundle of $X$).
-locally, 
+locally,
 $$\langle \pp{z_i},\pp{z_j}\rangle(z)=h_{ij}(z)$$
 \end{rem}
 
@@ -571,27 +571,27 @@ $(X,\omg)$ is an Hermitian manifold, $X$ is K\"{a}hler if $\td\omg=0$.
 
 \begin{prop}
 Locally, $\omg=\frac{\sqrt{-1}}{2}\sum_{jk} h_{jk}\td z_j\wedge\td \zbar_k$
-is Kaehler, $\iff \p\omg=0$ and $\pbar\omg=0$, i.e. 
+is Kaehler, $\iff \p\omg=0$ and $\pbar\omg=0$, i.e.
 $$\pfrac{h_{jk}}{z_l}=\pfrac{h_{lk}}{z_j}$$
 
-If $(X,\omg)$ is a compact Kaehler manifold, then 
+If $(X,\omg)$ is a compact Kaehler manifold, then
 $$H^{2k}(X,\bbR)\neq 0$$
 \end{prop}
 
 \begin{proof}
-$\td\omg=0$, so $\omg\in H^2(M,\bbR)$. Claim: 
+$\td\omg=0$, so $\omg\in H^2(M,\bbR)$. Claim:
 $$0\neq \omg^k\in H^{2k}(M,\bbR)$$
 
-proof of the claim: 
+proof of the claim:
 
 $$[\omg^k][\omg^{n-k}]=\int_X\omg^k\wedge\omg^{n-k}=\int_X\omg^n$$
-Since $\omg$ is positive,  locally 
+Since $\omg$ is positive,  locally
 $$\omg^n=n!\det(h_{jk})
 \bigwedge_{l=1}^n\left(
 \frac{\sqrt{-1}}{2}\td zl\wedge\td\zbar_l
 \right)>0
 $$
-is a volume form. So, 
+is a volume form. So,
 $$[\omg^k][\omg^{n-k}]=\int_{X}\omg^n>0$$
 (Using Poincare dual)
 \end{proof}
@@ -600,7 +600,7 @@ $$[\omg^k][\omg^{n-k}]=\int_{X}\omg^n>0$$
 (Hopf Surface)
 
 $$X=(\bbC^2\setminus\{0\})\big/\Gma$$
-where discrete group $\Gma:=\{\lmd^n|n\in \bbZ\}$, 
+where discrete group $\Gma:=\{\lmd^n|n\in \bbZ\}$,
 $0<\lmd<1$ fixed.
 \end{example}
 
@@ -624,18 +624,18 @@ is a Kahler metric on $X$ if $(H_{jk})>0$, $h_{jk}$ are constant.
 
 (3) Projective space $\bbC P^n$.
 $$\omg:=\sqrt{-1}\Theta_h(\mcalO(1))$$
-locally, 
+locally,
 $$\omg=\sqrt{-1}\p\pbar\log(1+|z_1|^2+...+|z_n|^2)$$
 on $\Omg$. This $\omg$ is a Kahler metric,
 \end{example}
 
 \begin{example}
-Let $(X,\omg)$ is a Kahler manifold, 
+Let $(X,\omg)$ is a Kahler manifold,
 then  any complex submanifold $Y\subseteq X$ is also Kahler.
 $$i:Y\inj X$$
 with the Kahler metric $i^*\omg$.
 \end{example}
-Exercise: Let $f:Y\to X$ be a holomorphic immersion, and assume $X$ is Kahler, 
+Exercise: Let $f:Y\to X$ be a holomorphic immersion, and assume $X$ is Kahler,
 then $Y$ is Kahler.
 \begin{cor}
 Any projective manifold (i.e. $X\inj \bbC P^N$) is K\"{a}hler.
@@ -644,8 +644,8 @@ Any projective manifold (i.e. $X\inj \bbC P^N$) is K\"{a}hler.
 
 \begin{prop}(Equivalent definition of Kaehler metrics)
 a Hermitian metric $\omg$ is Kahler, $iff$
-for all $x_0\in X$, there exists a holomorphic chart $(z_1,...,z_n)$ 
-centered at $x_0$, s.t. 
+for all $x_0\in X$, there exists a holomorphic chart $(z_1,...,z_n)$
+centered at $x_0$, s.t.
 $$\omg(z)=\sqrt{-1}\sgm_{jk}\delta_{jk}\td z_j\wedge\td\zbar_k
 +O(|z|^2)
 $$
@@ -656,7 +656,7 @@ $$
 
 \begin{thm}(Exercise)
 
-If $(X,\omg)$ is Kahler, then for all $x_0\in X$, 
+If $(X,\omg)$ is Kahler, then for all $x_0\in X$,
 $\exists$ holomorphic chart $z_1,...,z_n$ centered at $x_0$, s.t.
 assume
 $$\omg=\sqrt{-1}h_{jk}\td z_j\wedge\td\zbar_k$$
@@ -669,9 +669,9 @@ $$\Theta(TX)_{x}:=\sum c_{jk,lm}\td z_j\wedge\td\zbar_k\ten(\pp{z_l})^*\ten
 \end{thm}
 （查书）
 
-\section{Hodge theory on compact compact manifold}
+\section{紧复流形上的Hodge理论}
 
-$(X,\omg)$ is a compact Hermitian manifold, 
+$(X,\omg)$ is a compact Hermitian manifold,
 $E\to X$ is a homomorphic Hermitian vector bundle.
 $$D_E:=D_E'+D_E''$$
 Chern connection, $D_E''=\pbar$.
@@ -684,13 +684,354 @@ $$(D_E'')^*=-*D_E'*$$
 $$\yc_E'=D_E'(D_E')^*+...$$
 $$\yc_E''=...$$
 
-Note that $(D_E'')^2=0$, consider the complex 
+Note that $(D_E'')^2=0$, consider the complex
 $$C^\infty(X,\wedgeform{p,q}\ten E)\xra{D_E''}C^\infty(X,\wedgeform{p,q+1}\ten E)$$
 $$\rightsquigarrow H^{p,q}_{D_E''}(X,E)$$
 Dolbeaut cohomology...
 it isom to $\ker\yc_E''$
 
 %下次课仔细再讲
+%%%%%%%%%%%%2019.4.18第八周周四%%%%%%%%%%%%%%%%%%%%%%%
+
+Hodge theory in compact complex manifold.
+
+Let $(X,\omg)$ be a compact complex manifold of dimension $n$.
+$E\to X$ holomorphic Hermitian vector bundle, with Chern connection $D_E$,
+$D_E=D_E'+D_E''$ where $D_E''=\pbar$.
+
+Recall: $L^2$ inner product: $u\in C^\infty(X\wedgeform{p,q}\ten E)$,
+$$\langle\langle u,v\rangle\rangle:=
+\int_X\langle u,v\rangle
+\td\text{vol}
+$$
+
+Hodge star operator $*$:
+$u,v\in C^\infty(X,\wedgeform{p,q}\ten E)$,
+\begin{definition}
+$$*:\wedgeform{p,q}\ten E\to\wedgeform{n-q,n-p}\ten E$$
+s.t.
+$$u\wedge *v=\langle u,v\rangle\td\text{vol}$$
+(wedge product from $\wedgeform{p,q}$, with inner product from $E$)
+\end{definition}
+
+Exercise: Take a holomorphic chart $(z_1,...,z_n)$
+s.t.
+$$\omg=\sqrt{-1}\sum_j \td z_j\wedge\td\zbar_j$$
+at some point $p$. An orthonormal frame
+$\{e_1,...,e_r\}$, Let
+$$u=\sum_{|I|=p\atop |J|=q}
+\sum_{\lmd=1}^r
+u_{IJ}\td z_I\wedge\td\zbar_j\ten e_\lmd\in\wedgeform{p,q}\ten E$$
+WHAT IS $*u$?
+
+Formal adjoint of $D_E,D_E',D_E''$?
+\begin{prop}
+$$D_E^*=-*D_E*$$
+$$(D_E')^*=-*D_E''*$$
+$$(D_E'')^*=-*D_E'*$$
+\end{prop}
+
+\begin{definition}
+$$\yc_E:=D_ED_E^*+D_E^*D_E$$
+$$\yc_E':=D_E'D_E'^*+D_E'^*D_E'$$
+$$\yc_E'':=\cdots$$
+\end{definition}
+
+Check: $\yc_E,\yc_E',\yc_E''$ are self adjoint, elliptic operators.
+
+Hodge theory w.r.t. $\yc_E''$.
+
+\begin{thm}
+We have a decomposition
+$$C^\infty(X,\wedgeform{p,q}\ten E)=
+\ker\yc_E''\oplus\im D_E''\oplus \im D_E''^*$$
+
+As a consequence, Dolbeault cohomology
+$$H^{p,q}_{D_E''}(X,\bbC)\cong
+\ker\yc_E''$$
+\end{thm}
+
+\begin{cor}
+$$\dim_{\bbC}H^{p,q}_{D_E''}(X,\bbC)<+\infty$$
+\end{cor}
+
+Cohomology group
+$$H^{p,q}_{D_E''}(X,\bbC)$$
+$\Omg^p$:sheaf of holomorphic $p$-forms on $X$
+(i.e. a $(p,0)$-form $\fai$ is holomorphic if $\pbar\fai=0$).
+
+$\mcalE^{p,q}$:Sheaf of smooth $(p,q)$-forms on $X$.
+
+Similarly, we have $\Omg^p(E)$ the sheaf of holomorphic $p$-forms
+with values in $E$,and $\mcalE^{p,q}(E)$ the sheaf...smooth $(p,q)$-forms ...
+
+we have an acyclic resolutions
+$$0\to\Omg^p(E)\xra{D_E''}
+\mcalE^{p,1}(E)\xra{D_E''}
+\mcalE^{p,2}(E)\xra{D_E''}\cdots$$
+(check, it is a resolution)
+
+By de Rham-Weil theorem,
+$$H^q(X,\Omg^p(E))\cong D^{p,q}_{D_E''}(X,\bbC)
+\cong \mcalH^{p,q}_{D_E''}(X,\bbC):=\ker\yc_E''$$
+
+\begin{thm}(Serre duality)
+
+The pairing
+$$H^{p,q}_{D_E''}(X,E)
+\times H^{n-p,n-q}_{D_E''}(X,E^*)\to\bbC$$
+$$(s,t)\mapsto\int_X s\wedge t$$
+is non-degenerate
+\end{thm}
+
+\begin{proof}Define
+$$\#:\wedgeform{p,q}\ten E\to \wedgeform{n-p,n-q}\ten E^*$$
+by: for $u,v\in\wedgeform{p,q}\ten E$,
+$$u\wedge\# v:=\langle u,v \rangle\td\text{vol}$$
+
+Fact:
+$$\yc_{E^*}''\#=\#\yc_E''$$
+\end{proof}
+
+Remark: take $E=X\times \bbC,D_E=\td=\td'+\td''$,($\td'=\p,\td''=\pbar$)
+ then we have
+ $$\yc'=\td'\td'^*+\td'^*\td'$$
+ $$\yc''=\cdots$$
+then
+$$H^{p,q}_{\td''}(X,\bbC)\cong\ker\yc''\curvearrowright C^\infty(X,\wedgeform{p,q})$$
+the pairing
+$$H^{p,q}(X,\bbC)\times H^{n-p,n-q}(X,\bbC)\to\bbC$$
+is non-degenerate.
+
+\section{紧Kahler流形的上同调群}
+
+Three goals:
+
+\textbf{Kahler package}
+
+\textbf{Lefschetz decomposition}
+
+\textbf{Hodge-Riemann bilinear relations}
+
+Linear algebra(baby representation theory)(local case)
+
+$\bbC^n$,
+$$\omg=\sqrt{-1}\sum_{i,j}h_{ij}\td z_i\wedge\td\zbar_j$$
+Kahler metric with constant coefficients.(i.e.
+$h_{ij}$ is constant, $(h_{ij})$ is positive Hermite matrix)
+
+W.L.O.G, by taking a linear transformation, we can assume
+$$\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\zbar_j$$
+
+\begin{notation}
+An operator is of pure degree $r$ if it transform a form of $\deg=k$
+to as form of degree $k+r$.
+
+An operator ..of bi-degree $(p,q)$ if ...$(s,t)\to (s+p,t+q)$
+(in this case, degree $=p+q$)
+
+if $A,B$ with degree $\deg A,\deg B$,define
+$$[A,B]:=AB-(-1)^{\deg A\deg B}BA$$
+\end{notation}
+
+\begin{definition}
+$$L:\wedgeform{p,q}\to\wedgeform{p+1,q+1}$$
+$$u\mapsto \omg\wedge u$$
+is called Lefschetz operator.
+
+Denote $\Lmd$ to be the adjoint of $L$, adjointed by :
+Let $v\in\wedgeform{p-1,q-1}$ and $u\in\wedgeform{p,q}$
+$$\langle Lv,u\rangle:=\langle u,\Lmd u\rangle$$
+\end{definition}
+The operator $\Lmd$ is of bi-degree $(-1,-1)$.
+
+\begin{prop}
+If
+$$u=\sum_{|I|=p\atop |J|=q}u_{IJ}\td z_I\wedge\td\zbar_j$$
+then
+$$Lu=\sqrt{-1}\sum_{|I|=p\atop |J|=q}
+ \sum_{m=1}^n
+ u_{IJ}\td z_m\wedge\td\zbar_m\wedge\td z_I\wedge\td\zbar_J$$
+
+$$
+  \Lmd u
+= \sqrt{-1}(-1)^p
+  \sum_{|I|=p\atop|J|=q}
+    \sum_{m=1}^n
+      u_{IJ}
+      \left(
+        \pp{z_m}\suobing\td z_I
+      \right)\wedge
+      \left(
+        \pp{\zbar_m}\suobing\td\zbar_J
+      \right)
+$$
+where "$\suobing$" is contraction.
+\end{prop}
+
+\begin{cor}(Exercise)
+Let
+$$
+  \afa=\sqrt{-1}\sum_{j=1}^n
+       \afa_j\td z_j\wedge\zbar_j
+$$
+then,($\afa$ is a operator of bi-degree $(1,1)$)
+$$
+  [\afa,\Lmd]u
+=
+  \sum_{|I|=p\atop |J|=q}
+    \left(
+      \sum_{i\in I}
+        \afa_i
+     +\sum_{j\in J}
+        \afa_j
+     -\sum_{k=1}^n
+        \afa_k
+    \right)
+    u_{IJ}\td z_I\wedge\td\zbar_J
+$$
+where
+$$u=\sum_{|I|=p\atop |J|=q}
+u_{IJ}\td z_I\wedge\td\zbar_J$$
+\end{cor}
+
+\begin{cor}
+if $u\in\wedgeform{p,q}$,then
+$$[L,\Lmd]u=(p+q-n)u$$
+\end{cor}
+
+\begin{cor}
+Denote $B:=[L,\lmd]$, then
+$$[B,L]=2L$$
+$$[B,\Lmd]=-2\Lmd$$
+\end{cor}
+
+\begin{proof}
+Take $u\in\wedgeform{p,q}$, then
+$$[B,L]=BLu-LBu=(p+q-n+2)Lu-(p+q-n)Lu=2Lu$$
+the second is similar..
+\end{proof}
+
+
+\textbf{$\mfksl(2,\bbC)$-representation}
+$$\mfksl(2,\bbC)=\Span_\bbC{l,\lmd,b}$$
+where
+$$
+  l=\begin{pmatrix}
+      0 & 0\\
+      1 & 0
+    \end{pmatrix}
+,\qquad
+  \lmd=\begin{pmatrix}
+      0 & 1\\
+      0 & 0
+    \end{pmatrix}
+,\qquad
+  b=\begin{pmatrix}
+      1 & 0\\
+      0 & -1
+    \end{pmatrix}
+$$
+we have
+$$[l,\lmd]=b\quad
+  [b,l]=2l\quad
+  [b,\lmd]=-2\lmd
+$$
+
+\begin{prop}
+There exists a natural action
+$$\rho:\mfksl(2,\bbC)\to\End(\bigoplus_{p,q}\wedgeform{p,q})$$
+with
+$$\rho(l)=L$$
+$$\rho(\lmd)=\Lmd$$
+$$\rho(b)=B$$
+\end{prop}
+
+\begin{thm}(HL)
+$$L^{n-k}:\wedgeform{k}\to\wedgeform{2n-k}$$
+$$u\to\omg^{n-k}\wedge u$$
+is an isomorphism.
+
+$$L^{n-k}:\wedgeform{p,q}\to \wedgeform{n-k+p,n-k+q}$$
+is also an isomorphism.
+\end{thm}
+
+\begin{proof}
+
+Lemma:
+$$[L^r,\Lmd]u=r(k-n+r-1)L^{r-1}u$$
+(induction, omit)
+
+Assume $\afa\in\wedgeform{k}_\bbC$, $L^{n-k}\afa=0$,
+need to verify $\afa=0$.
+
+Claim:
+$$L^r:\wedgeform{k}\to\wedgeform{k+2r}$$
+is injective whenever $r\leq n-k$.
+
+proof of the claim:
+
+claim is true when $k=0$ or $k=1$.(check)
+
+Let $\afa\in \wedgeform{k}$ s.t. $L^r\afa=0(r\leq n-k)$.
+By the lemma,
+$$L^r\Lmd\afa-\lmd L^r\afa=r(k-n+r-1)L^{r-1}\afa$$
+so,
+$$L^{r-1}(L\Lmd\afa-r(k-n+r-1)\afa)=0$$
+by the induction on $r$,
+$$L\Lmd\afa=r(k-n+r-1)\afa$$
+since $r(k-n+r-1)\neq 0$, $\afa=L\beta$ for some $\beta\in\wedgeform{k-2}$.
+so,$L^r\afa=L^{r+1}\beta=0$, by induction on $k$, we have
+$\beta=0$,so $\afa=0$.
+
+The claim is proved.
+\end{proof}
+
+\begin{definition}(Primitive form)
+
+$\afa\in\wedgeform{k}(k\leq n)$ is called primitive form, if
+$$L^{n-k+1}\afa=0$$
+\end{definition}
+
+\begin{cor}(Lefischtz Decomposition)(LD)
+
+For any $\afa\in\wedgeform{k},(1\leq k\leq 2n)$,
+we have a unique decomposition:
+$$
+  \afa
+=
+  \sum_{\gma\geq(k-n)_+}
+    L^\gma\afa_r
+$$
+($(k-n)_+:=\max\{k-n,0\}$)
+with $\afa_r\in\wedgeform{k-2r}$ is primitive
+\end{cor}
+
+\begin{proof}
+Existence: assume $k\leq n$, consider
+$$L^{n-k+1}\afa\in\wedgeform{2n-k+2}$$
+by HL, $\exists !\,\beta\in\wedgeform{k-2}$ s.t.
+$L^{n-k+2}\beta=L^{n-k+1}\afa$, so
+$L^{n-k+1}(\afa-L\beta)=0$, i.e. $\afa_0=\afa-L\beta$
+is primitive. $\afa=\afa_0+L\beta$, then induction on degrees,
+we get the decomposition for $\afa$.
+
+If $k>n$, we apply HL to reduce it to case 1.
+
+Uniqueness: Next time..
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
