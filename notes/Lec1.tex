@@ -517,7 +517,108 @@ $$
 \end{proof}
 
 \section{Weierstrass预备定理与除法定理}
-（待补）
+回顾单复变函数，若$f$在$0\in\bbC$附近全纯，且$f(0)=0$，
+则在$0$附近$f$可以唯一地分解为$f=z^dg(z)$，其中$g$全纯且$g(0)\neq 0$，
+$d$为$f$在$0$处的\textbf{零点阶数}。
+
+现在，设$f=f(z,w)$在$0\in\bbC^n(n\geq 2)$附近全纯，
+其中$z\in\bbC$，$w\in\bbC^{n-1}$.固定$w$，记
+$$f_w(z):= f(z,w)$$
+为关于$z$的单复变函数。如果$f_0(0)=0$且$f_0(z)$不恒为零，
+则$f_0(z)=z^dg_0(z)$。我们的一个结果是，若“$f_0$”的下标“$0$”稍微“扰动”一下，
+则相应的多项式$z^k$也“随之扰动”。
+
+\begin{notation}（Weierstrass 多项式）
+
+对于$(z_0,w_0)\in\bbC\times\bbC^{n-1}$，
+则$(z_0,w_0)$处的\textbf{Weierstrass多项式}
+是指形如下述的定义于$(z_0,w_0)$附近的$n$元全纯函数：
+$$P(z,w)=z^k+a_1(w)z^{k-1}+\cdots+a_k(w)$$
+其中$a_i(1\leq i\leq k)$为定义在$w_0\in\bbC^{n-1}$附近的全纯函数，
+且$a_i(w_0)=0$.
+\index{Weierstrass 多项式}
+\end{notation}
+
+关于多元全纯函数在其零点附近的行为，首先有如下：
+
+\begin{thm}(Weierstrass预备定理)
+
+设$f(z,w)$为定义在$(0,0)\in\bbC\times\bbC^{n-1}$附近的全纯函数，
+$f(0,0)=0$，且$f_w(z)$在$z=0$附近不恒为零，
+则存在唯一的$(0,0)$处的Weierstrass多项式$P(z,w)$，使得
+$$f(z,w)=P(z,w)h(z,w)$$
+其中$h(z,w)$在$(0,0)$附近全纯，且$h(0,0)\neq 0$.
+\end{thm}
+
+\begin{proof}分若干步。
+
+\textbf{Step1}
+设$f_0(z)$在$z=0\in\bbC$处的零点阶数为$d\geq 1$,
+取足够小的$\veps>0$使得$f_0(z)$在$|z|\leq\veps$之中不再有$z=0$之外的零点。
+再由$f$的连续性以及$\{|z|=\veps\}\subseteq\bbC$的紧性，存在足够小的$\veps'>0$，
+使得对任意$|z|=\veps,|w|<\veps'$，$f_w(z)\neq 0$.
+
+对于$w\in\bbC^{n-1}$且$|w|<\veps'$，
+由辐角原理，$f_w(z)$在$|z|<\veps$内的零点个数（记重数）为
+$$
+  d(w)=
+       \frac{1}{2\pi i}
+       \int_{|z|=\veps}
+         \frac{f_w'(\xi)}{f_w(\xi)}
+         \td\xi
+$$
+这是关于$w$的连续函数，且$d(0)=d$.从而不妨缩小$\veps'$，使得任意$|w|<\veps'$，
+$f_w(z)$在$|z|<\veps$内的零点个数（计重数）均为$d$.
+
+\textbf{Step2}
+对于$w\in\bbC^{n-1}$且$|w|<\veps'$，记$f_w(z)$的$d$个零点为
+$s_1(w),s_2(w),...,s_d(w)$，它们允许相同，
+则$|s_j(w)|<\veps$（注意$s_j(w)$未必为关于$w$的全纯函数）。
+特别地$s_1(0)=s_2(0)=\cdots=s_d(0)=0$.
+考虑多项式
+\begin{eqnarray*}
+  P(z,w)&:=&\prod_{j=1}^d(z-s_j(w))\\
+         &=&z^d+\sum_{j=1}^da_j(w)z^{d-j}
+\end{eqnarray*}
+显然系数$a_j(w)$满足$a_j(0)=0$.断言$P(z,w)$为Weierstrass多项式。
+为此只需证明$z_j(w)$关于$w$全纯。由代数学可知，系数$a_j$可以写为形如
+$s_1^k(w)+s_2^k(w)+\cdots s_d^k(w)\,(k\geq 0)$的$\bbC$-线性组合；
+而由留数定理易知
+\begin{eqnarray*}
+     \sum_{j=1}^ds_j^k(w)
+&=&
+     \frac{1}{2\pi i}
+       \int_{|\xi|=\veps}
+         \xi^k
+         \frac{f_w'(\xi)}{f_w(\xi)}
+         \td\xi
+\end{eqnarray*}
+从而关于$w$全纯。这就说明了$P(z,w)$的系数函数$a_j(w)$关于$w$全纯。
+
+\textbf{Step3}
+令$h(z,w):=\frac{f(z,w)}{P(z,w)}$，断言$h$在$(0,0)$附近全纯，
+又因为显然$h(0,0)\neq 0$，从而Weierstrass预备定理的存在性得证。
+由单复变易知$h(z,w)$关于$z$全纯，于是只需证明$h$关于$w$全纯。
+
+任取$w\in\bbC^{n-1}$且$|w|<\veps'$，由于$h_w(z):=h(z,w)$关于$z$全纯，从而
+$$
+  h(z,w)
+=
+  \frac{1}{2\pi i}
+  \int_{|\xi|=\veps}
+    \frac{h_w(\xi)}{\xi-z}
+    \td\xi
+$$
+而被积函数$(\xi,w)\mapsto\frac{h_w(\xi)}{\xi-z}$在
+$\{(z,w)||z|=\veps,|w|<\veps'\}$的某个邻域全纯，
+从而$h(z,w)$关于$w$也全纯。存在性证毕。
+
+\textbf{Step4}
+唯一性几乎显然，因为$f$（在$(0,0)$附近）的零点完全由Weierstrass多项式贡献：
+对于$w$，以$s_1(w),...,s_d(w)$为零点的关于$z$的首一多项式只能是$P(z,w)$.
+\end{proof}
+
+
 
 
 
