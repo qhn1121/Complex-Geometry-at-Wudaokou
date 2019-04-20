@@ -618,7 +618,192 @@ $\{(z,w)||z|=\veps,|w|<\veps'\}$的某个邻域全纯，
 对于$w$，以$s_1(w),...,s_d(w)$为零点的关于$z$的首一多项式只能是$P(z,w)$.
 \end{proof}
 
+\begin{thm}（Weierstrass除法定理）
 
+设$f(z,w)$为定义在$(0,0)\in\bbC\times\bbC^{n-1}$附近的全纯函数，
+$g(z,w)=z^d+\sum\limits_{j=1}^da_j(w)z^{d-j}$为次数为$d$的Weierstrass多项式。
+那么存在唯一的$h(z,w)$与$r(z,w)$，
+其中$h$为定义在$(0,0)\in\bbC\times\bbC^{n-1}$附近的全纯函数，
+$r$为关于$z$的在$(0,0)$处的次数$<d$的多项式，使得
+$$f=gh+r$$
+在$(0,0)$附近成立。
+\end{thm}
+
+\begin{proof}先看唯一性。
+
+\textbf{Step1}
+唯一性是容易的。如果$f=gh_1+r_1=gh_2+r_2$，则
+$$r_1-r_2=g(h_2-h_1)$$
+注意$g,r_1,r_2$为Weierstrass多项式，从而由之前讨论，
+存在足够小的$\veps,\veps'>0$使得对任意$w\in\bbC^{n-1}$且$|w|<\veps'$，
+$g_w(z)$在$\{|z|<\veps\}$内的零点个数（计重数）恰为$g$的次数$d$，并且
+$(r_1-r_2)_w(z)$在此范围内的零点个数（计重数）恰为$(r_1-r_2)$的次数。
+注意$r_1,r_2$的次数均小于$d$，从而若$r_1\neq r_2$，
+则导致$(r_1-r_2)_w(z)$的零点个数小于$g_w(z)(h_2-h_1)_w(z)$，
+因此导致矛盾。这迫使$r_1=r_2$.
+
+\textbf{Step2}
+再看存在性。取$\veps,\veps'>0$使得对任意$|z|=\veps$，$|w|\leq\veps'$，
+$g_w(z)\neq 0$。对任意$|z|<\veps,|w|<\veps'$，定义
+\begin{eqnarray*}
+     h(z,w)
+ =
+     \frac{1}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)}
+            {g_w(\xi)(\xi-z)}
+       \td\xi
+\end{eqnarray*}
+则易知$h(z,w)$在$(0,0)$附近全纯。再令
+$r:=f-gh$，只需证明$r$为关于$z$的次数小于$d$的Weierstrass多项式即可。
+事实上，
+\begin{eqnarray*}
+     r(z,w)
+&=&
+     f(z,w)-g(z,w)h(z,w)\\
+&=&
+     \frac{1}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)}{\xi-z}
+       \td\xi
+    -\frac{g_w(z)}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)}
+            {g_w(\xi)(\xi-z)}
+       \td\xi\\
+&=&
+     \frac{1}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)(g_w(\xi)-g_w(z))}
+            {g_w(\xi)(\xi-z)}
+       \td\xi\\
+&=&
+     \frac{1}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)}{g_w(\xi)}
+       \frac{(\xi^d-z^d)+a_1(w)(\xi^{d-1}-z^{d-1})+\cdots}
+            {\xi-z}
+       \td\xi\\
+&=&
+     \frac{1}{2\pi i}
+     \int_{|\xi|=\veps}
+       \frac{f_w(\xi)}{g_w(\xi)}
+       \left(
+         z^{d-1}+\beta_1(\xi,w)z^{d-2}+\cdots
+       \right)
+       \td\xi
+\end{eqnarray*}
+其中函数$\beta_j(\xi,w)$由$g$的系数函数$a_k(w)$决定。
+容易看出$r(z,w)$的确为关于$z$的次数$\leq d-1$的多项式。
+存在性证毕。
+\end{proof}
+
+注意$r$未必是Weierstrass多项式，因为$r(z,w)$的$z^{d-1}$的系数
+$$\frac{1}{2\pi i}\int_{|\xi|=\veps}\frac{f_w(\xi)}{g_w(\xi)}\td\xi$$
+不见得是$1$（若此积分为$0$，则$r$的首项系数甚至可以是关于$w$的函数）。
+
+\begin{rem}
+事实上，Weierstrass除法定理对单复变$n=1$的情形也成立。
+设$f(z)=\sum\limits_{k=0}^{\infty}a_kz^k$在$0\in\bbC$附近全纯，
+$g(z)=z^d$为次数为$d$的Weierstrass多项式。则令
+\begin{eqnarray*}
+h(z)&=&\sum_{k=d}^\infty a_kz^{k-d}\\ 
+r(z)&=&\sum_{k=0}^{d-1} a_kz^k
+\end{eqnarray*}
+则$f=gh+r$满足要求。
+\end{rem}
+
+\section{解析函数芽环$\mcalO_{\bbC^n,z}$及其代数结构}
+
+本节继续研究多元解析函数的性质。
+首先回顾函数芽的概念。
+
+\begin{definition}（解析函数芽环）
+
+对于$z\in\bbC^n$，记
+$$\mcalO_{\bbC^n,z}:=
+\{(U,f)|\text{$U$是$z$在$\bbC^n$的一个开邻域，
+$f$为定义在$U$上的全纯函数}\}\big/\sim$$
+其中模掉的关系$\sim$为
+$$(U,f)\sim(V,g)\quad\iff\quad\text{存在$z$的开邻域$W$，
+使得$W\subseteq U\cap V$，且$f|_W=g|_W$}$$
+\end{definition}
+粗俗地说，$\mcalO_{\bbC^n,z}$就是“定义在$z\in\bbC^n$附近的全纯函数之全体”。
+之前介绍的Weierstrass预备定理、Weierstrass除法定理其实都是解析函数芽环的性质。
+容易验证，$\mcalO_{\bbC^n,z}$在通常的函数加法、乘法下构成\textbf{环}。
+
+我们记$\mcalO_n:=\mcalO_{\bbC^n,0}$.本节介绍环$\mcalO_n$的代数性质。
+假定读者熟悉基础的交换代数。本讲义中的“环”默认为含幺、交换的。
+
+\begin{thm}
+$\mcalO_n$是局部诺特环（$\forall n\geq 1$）。
+\end{thm}
+
+回顾：环$A$称为\textbf{局部环}（local ring），
+\index{local ring\kong 局部环}
+若它存在唯一极大理想$\mfkm$
+（等价定义：$A$的全体不可逆元构成$A$的理想）；
+环$A$称为\textbf{诺特环}（Noetherian ring），
+\index{Noetherian ring\kong 诺特环}若满足理想升链条件
+（等价定义：$A$的每个理想都是有限生成的）。
+
+\begin{proof}
+显然$\mcalO_n$为局部环，其极大理想$\mfkm$由定义在$0$附近、在$0$处取值为$0$的函数芽构成。
+我们对$n$归纳证明$\mcalO_n$为诺特环。
+
+$n=1$时，在单复变中我们早已熟知$\mcalO_1\cong\{\text{收敛半径$\geq 0$的幂级数}\}$
+为主理想整环（PID），其理想形如$J_k=(z^k)$。特别地，为诺特环。
+
+一般地，对于$n\geq 2$，若$\mcalO_{n-1}$为诺特环，
+则对$\mcalO_n$的任意非零理想$J$，断言$J$时有限生成的。
+任取$0\neq h\in J\subseteq\mfkm$，则$h(0)=0$，不妨$h(z,0)$不恒为零
+（其中$z\in\bbC,0\in\bbC^{n-1}$），则由Weierstrass预备定理，
+存在Weierstrass多项式$P(z,w)\in\mcalO_{n-1}[z]\subseteq\mcalO_n$
+以及函数芽$h'\in\mcalO_n\setminus\mfkm$，
+使得$h(z,w)=P(z,w)h'(z,w)$.注意$h'(0,0)$为$\mcalO_n$的可逆元，
+又$h\in J$且$J$为$\mcalO_n$的理想，从而$P(z,w)\in J$.
+
+这说明$J$当中必存在Weierstrass多项式。取定
+$$P(z,w)=z^d+\sum_{j=1}^{d}a_j(w)z^{d-j}\in J$$
+则对任意$f\in J$，对$f,P$使用Weierstrass除法定理，
+存在$g(z,w)\in\mcalO_n$，以及
+$$r(z,w)=\sum_{k=0}^{d-1}c_k(w)z^k\in\mcalO_{\bbC^{n-1}}[z]$$
+为次数至多为$(d-1)$的多项式，使得
+$$f=gP+r$$
+则$r(z,w)\in J$，并且
+容易验证，这诱导了$\mcalO_{n-1}$-模同态
+\begin{eqnarray*}
+\fai:J &\to    &   \mcalO_{n-1}^{\oplus d}
+                   \cong\{r\in\mcalO_{n-1}[z]|\deg_zr<d\}\\
+     f &\mapsto&   \sum_{k=0}^{d-1}c_k(w)z^k
+\end{eqnarray*}
+
+由归纳假设，$\mcalO_{n-1}$为诺特环，从而$\mcalO_{n-1}^{\oplus d}$
+作为有限生成$\mcalO_{n-1}$-模为诺特模，从而其子模$\im \fai$也为有限生成的。
+注意$\im\fai\subseteq J$，
+记$\{\beta_1,...,\beta_N\}\subseteq\im\fai$
+为$\im\fai$的一组$\mcalO_{n-1}$-生成元，其中
+$$\beta_j(w)=\sum_{l=0}^{d-1}\beta_{j,l}(w)z^l
+\in\mcalO_{n-1}^{\oplus d}$$
+则易知
+$$\{\beta_j\}_{1\leq j\leq N}\cup \{P(z,w)\}$$
+为理想$J$的一组生成元，因此$J$是有限生成的。从而$\mcalO_n$为诺特环。
+\end{proof}
+
+\begin{lemma}
+设$P,Q\in\mcalO_{n-1}[z]\subseteq\mcalO_n$，
+其中$P$为Weierstrass多项式，则$P$整除$Q$在$\mcalO_n$成立，
+当且仅当$P$整除$Q$在$\mcalO_{n-1}[z]$中成立。
+\end{lemma}
+
+\begin{proof}
+“当”是显然的，只证“仅当”。若$P|Q$在$\mcalO_n$中成立，则令
+$$Q(z,w)=f(z,w)P(z,w)$$
+其中$f\in\mcalO_n$.另一方面，考虑$\mcalO_{n-1}[z]$中标准的欧几里得带余除法，
+$$Q(z,w)=g(z,w)P(z,w)+r(z,w)$$
+其中$g,r\in\mcalO_{n-1}[z]$.则Weierstrass除法定理的唯一性迫使
+$f=g,r=0$，从而得证。
+\end{proof}
 
 
 
