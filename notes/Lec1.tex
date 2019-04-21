@@ -741,7 +741,7 @@ $\mcalO_n$是局部诺特环（$\forall n\geq 1$）。
 
 回顾：环$A$称为\textbf{局部环}（local ring），
 \index{local ring\kong 局部环}
-若它存在唯一极大理想$\mfkm$
+若$A$存在唯一极大理想$\mfkm$
 （等价定义：$A$的全体不可逆元构成$A$的理想）；
 环$A$称为\textbf{诺特环}（Noetherian ring），
 \index{Noetherian ring\kong 诺特环}若满足理想升链条件
@@ -794,6 +794,7 @@ $$\{\beta_j\}_{1\leq j\leq N}\cup \{P(z,w)\}$$
 设$P,Q\in\mcalO_{n-1}[z]\subseteq\mcalO_n$，
 其中$P$为Weierstrass多项式，则$P$整除$Q$在$\mcalO_n$成立，
 当且仅当$P$整除$Q$在$\mcalO_{n-1}[z]$中成立。
+\label{Weierstrass多项式整除引理-lemma}
 \end{lemma}
 
 \begin{proof}
@@ -805,6 +806,73 @@ $$Q(z,w)=g(z,w)P(z,w)+r(z,w)$$
 $f=g,r=0$，从而得证。
 \end{proof}
 
+\begin{lemma}设$P(z,w)\in\mcalO_{n-1}[z]$为Weierstrass多项式，则：
+
+（1）若在$\mcalO_{n-1}[z]$中有分解
+$$P=P_1P_2\cdots P_N$$
+则在相差$\mcalO_{n-1}$中的可逆元的意义下，每个$P_j$都为Weierstrass多项式；
+
+（2）$P$为$\mcalO_n$中的不可约元当且仅当$P$为$\mcalO_{n-1}[z]$中的不可约元。
+\label{解析函数芽UFD-引理}
+\end{lemma}
+
+\begin{proof}$\,$
+
+\textbf{（1）}记$\deg_z P=s$，以及$\deg_z P_j=s_j$，
+则$s=\sum\limits_{j=1}^Ns_j$.不妨每个$s_j>0$.考虑$P$的最高次项，有
+$$
+  z^s=z^s\prod_{j=1}^N\big(\text{$P_j$的$z^{s_j}$系数}\big)
+$$
+从而相差$\mcalO_{n-1}$中某个可逆元倍，不妨每个$P_j$的$z^{s_j}$系数都为$1$.
+再注意
+$$z^{s}=P(0,z)=\prod_{j=1}^NP_j(0,z)
+=\prod_{j=1}^N(z^{s_j}+\cdots)$$
+从而迫使$P_j(0,z)=z^{s_j}$，因此$P_j$为Weierstrass多项式。
+
+\textbf{（2）}“仅当”是显然的，只证“当”。仍记$P(z,w)$关于$z$的次数为$s$.
+如果$P$在$\mcalO_n$中可约，令$P=g_1g_2$，其中$g_1,g_2$为$\mcalO_{n}$中的不可逆元，
+从而关于$z$的函数$g_1(z,0),g_2(z,0)$在$z=0$处的零点阶数大于$0$，
+分别记为$s_1,s_2$.由Weierstrass预备定理，存在分解
+$$g_j(z,w)=P_j(z,w)u_j(z,w)\quad (j=1,2)$$
+使得$P_j\in\mcalO_{n-1}[z]$为次数为$s_j$的Weierstrass多项式，
+$u_j$为$\mcalO_n$中的可逆元。所以在$\mcalO_n$中成立
+$(P_1P_2)|P$；再根据引理\ref{Weierstrass多项式整除引理-lemma}，可知
+$(P_1P_2)|P$在$\mcalO_{n-1}[z]$中也成立。而$P,P_1,P_2$都为首一多项式，
+从而必有$P=P_1P_2$，因此$P$在$\mcalO_{n-1}$中可约。
+\end{proof}
+
+\begin{thm}
+$\mcalO_n$是唯一分解整环(UFD).
+\end{thm}
+
+\begin{proof}
+对$n$归纳。$n=1$时，$\mcalO_1$为主理想整环，从而为唯一分解整环。
+对于$n\geq 2$，如果$\mcalO_{n-1}$为唯一分解整环，则由代数学中的高斯引理，
+多项式环$\mcalO_{n-1}[z]$也是唯一分解整环。
+
+现在，对于$\mcalO_n$中的不可逆元$f$，
+不妨$z\mapsto f(z,w)|_{w=0}$不恒为零（$w\in\bbC^{n-1}$），
+从而由Weierstrass预备定理，存在分解$f(z,w)=u(z,w)P(z,w)$，
+其中$u$为$\mcalO_n$中的可逆元，$P\in\mcalO_{n-1}[z]$为Weierstrass多项式。
+由归纳假设，$\mcalO_{n-1}[z]$为唯一分解整环，从而存在$P$在$\mcalO_{n-1}[z]$
+中的分解$P=P_1P_2\cdots P_s$，使得每个$P_j$都为$\mcalO_{n-1}[z]$中的不可约元。
+从而由引理\ref{解析函数芽UFD-引理}的（1），不妨每个$P_j$都为Weierstrass多项式；
+再对每个$P_j$使用引理\ref{解析函数芽UFD-引理}的（2），知$P_j$为$\mcalO_n$中的不可约元。
+从而$f\in\mcalO_n$的不可约分解的存在性证毕。
+
+再看分解的唯一性。只需再证明$\mcalO_n$的不可约元都是素元。
+若$f$为$\mcalO_n$中的不可约元，以及$g,h\in\mcalO_n$使得$f|gh$，
+断言$f|g$或者$f|h$.由Weierstrass预备定理，
+不妨假设$f=f(z,w)$为关于第一个分量$z$的Weierstrass多项式，
+从而由$f|gh$知$g(z,0),h(z,0)$也不恒为零，
+于是由Weierstrass预备定理也不妨$g,h\in\mcalO_{n-1}[z]$为Weierstrass多项式。
+因此$f|gh$在$\mcalO_{n-1}[z]$中成立，而由归纳假设$\mcalO_{n-1}[z]$是唯一分解整环，
+且$f$在$\mcalO_{n-1}[z]$不可约，所以$f|g$或者$f|h$在$\mcalO_{n-1}[z]$中成立，
+从而在$\mcalO_n$中成立。证毕。
+\end{proof}
+
+\section{解析集}
+（待补）
 
 
 
