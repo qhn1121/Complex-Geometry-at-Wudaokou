@@ -1,0 +1,464 @@
+\chapter{Lefschitz分解}
+
+\section{线性代数版本的Lefschitz算子}
+
+Three goals:
+
+\textbf{Kahler package}
+
+\textbf{Lefschetz decomposition}
+
+\textbf{Hodge-Riemann bilinear relations}
+
+Linear algebra(baby representation theory)(local case)
+
+$\bbC^n$,
+$$\omg=\sqrt{-1}\sum_{i,j}h_{ij}\td z_i\wedge\td\zbar_j$$
+Kahler metric with constant coefficients.(i.e.
+$h_{ij}$ is constant, $(h_{ij})$ is positive Hermite matrix)
+
+W.L.O.G, by taking a linear transformation, we can assume
+$$\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\zbar_j$$
+
+\begin{notation}
+An operator is of pure degree $r$ if it transform a form of $\deg=k$
+to as form of degree $k+r$.
+
+An operator ..of bi-degree $(p,q)$ if ...$(s,t)\to (s+p,t+q)$
+(in this case, degree $=p+q$)
+
+if $A,B$ with degree $\deg A,\deg B$,define
+$$[A,B]:=AB-(-1)^{\deg A\deg B}BA$$
+\end{notation}
+
+\begin{definition}
+$$L:\wedgeform{p,q}\to\wedgeform{p+1,q+1}$$
+$$u\mapsto \omg\wedge u$$
+is called Lefschetz operator.
+
+Denote $\Lmd$ to be the adjoint of $L$, adjointed by :
+Let $v\in\wedgeform{p-1,q-1}$ and $u\in\wedgeform{p,q}$
+$$\langle Lv,u\rangle:=\langle u,\Lmd u\rangle$$
+\end{definition}
+The operator $\Lmd$ is of bi-degree $(-1,-1)$.
+
+\begin{prop}
+If
+$$u=\sum_{|I|=p\atop |J|=q}u_{IJ}\td z_I\wedge\td\zbar_j$$
+then
+$$Lu=\sqrt{-1}\sum_{|I|=p\atop |J|=q}
+ \sum_{m=1}^n
+ u_{IJ}\td z_m\wedge\td\zbar_m\wedge\td z_I\wedge\td\zbar_J$$
+
+$$
+  \Lmd u
+= \sqrt{-1}(-1)^p
+  \sum_{|I|=p\atop|J|=q}
+    \sum_{m=1}^n
+      u_{IJ}
+      \left(
+        \pp{z_m}\suobing\td z_I
+      \right)\wedge
+      \left(
+        \pp{\zbar_m}\suobing\td\zbar_J
+      \right)
+$$
+where "$\suobing$" is contraction.
+\end{prop}
+
+\begin{cor}(Exercise)
+Let
+$$
+  \afa=\sqrt{-1}\sum_{j=1}^n
+       \afa_j\td z_j\wedge\zbar_j
+$$
+then,($\afa$ is a operator of bi-degree $(1,1)$)
+$$
+  [\afa,\Lmd]u
+=
+  \sum_{|I|=p\atop |J|=q}
+    \left(
+      \sum_{i\in I}
+        \afa_i
+     +\sum_{j\in J}
+        \afa_j
+     -\sum_{k=1}^n
+        \afa_k
+    \right)
+    u_{IJ}\td z_I\wedge\td\zbar_J
+$$
+where
+$$u=\sum_{|I|=p\atop |J|=q}
+u_{IJ}\td z_I\wedge\td\zbar_J$$
+\end{cor}
+
+\begin{cor}
+if $u\in\wedgeform{p,q}$,then
+$$[L,\Lmd]u=(p+q-n)u$$
+\end{cor}
+
+\begin{cor}
+Denote $B:=[L,\lmd]$, then
+$$[B,L]=2L$$
+$$[B,\Lmd]=-2\Lmd$$
+\end{cor}
+
+\begin{proof}
+Take $u\in\wedgeform{p,q}$, then
+$$[B,L]=BLu-LBu=(p+q-n+2)Lu-(p+q-n)Lu=2Lu$$
+the second is similar..
+\end{proof}
+
+
+\textbf{$\mfksl(2,\bbC)$-representation}
+$$\mfksl(2,\bbC)=\Span_\bbC{l,\lmd,b}$$
+where
+$$
+  l=\begin{pmatrix}
+      0 & 0\\
+      1 & 0
+    \end{pmatrix}
+,\qquad
+  \lmd=\begin{pmatrix}
+      0 & 1\\
+      0 & 0
+    \end{pmatrix}
+,\qquad
+  b=\begin{pmatrix}
+      1 & 0\\
+      0 & -1
+    \end{pmatrix}
+$$
+we have
+$$[l,\lmd]=b\quad
+  [b,l]=2l\quad
+  [b,\lmd]=-2\lmd
+$$
+
+\begin{prop}
+There exists a natural action
+$$\rho:\mfksl(2,\bbC)\to\End(\bigoplus_{p,q}\wedgeform{p,q})$$
+with
+$$\rho(l)=L$$
+$$\rho(\lmd)=\Lmd$$
+$$\rho(b)=B$$
+\end{prop}
+
+\begin{thm}(HL)
+$$L^{n-k}:\wedgeform{k}\to\wedgeform{2n-k}$$
+$$u\to\omg^{n-k}\wedge u$$
+is an isomorphism.
+
+$$L^{n-k}:\wedgeform{p,q}\to \wedgeform{n-k+p,n-k+q}$$
+is also an isomorphism.
+\end{thm}
+
+\begin{proof}
+
+Lemma:
+$$[L^r,\Lmd]u=r(k-n+r-1)L^{r-1}u$$
+(induction, omit)
+
+Assume $\afa\in\wedgeform{k}_\bbC$, $L^{n-k}\afa=0$,
+need to verify $\afa=0$.
+
+Claim:
+$$L^r:\wedgeform{k}\to\wedgeform{k+2r}$$
+is injective whenever $r\leq n-k$.
+
+proof of the claim:
+
+claim is true when $k=0$ or $k=1$.(check)
+
+Let $\afa\in \wedgeform{k}$ s.t. $L^r\afa=0(r\leq n-k)$.
+By the lemma,
+$$L^r\Lmd\afa-\lmd L^r\afa=r(k-n+r-1)L^{r-1}\afa$$
+so,
+$$L^{r-1}(L\Lmd\afa-r(k-n+r-1)\afa)=0$$
+by the induction on $r$,
+$$L\Lmd\afa=r(k-n+r-1)\afa$$
+since $r(k-n+r-1)\neq 0$, $\afa=L\beta$ for some $\beta\in\wedgeform{k-2}$.
+so,$L^r\afa=L^{r+1}\beta=0$, by induction on $k$, we have
+$\beta=0$,so $\afa=0$.
+
+The claim is proved.
+\end{proof}
+
+\begin{definition}(Primitive form)
+
+$\afa\in\wedgeform{k}(k\leq n)$ is called primitive form, if
+$$L^{n-k+1}\afa=0$$
+\end{definition}
+
+\begin{cor}(Lefischtz Decomposition)(LD)
+
+For any $\afa\in\wedgeform{k},(1\leq k\leq 2n)$,
+we have a unique decomposition:
+$$
+  \afa
+=
+  \sum_{\gma\geq(k-n)_+}
+    L^\gma\afa_r
+$$
+($(k-n)_+:=\max\{k-n,0\}$)
+with $\afa_r\in\wedgeform{k-2r}$ is primitive
+\end{cor}
+
+\begin{proof}
+Existence: assume $k\leq n$, consider
+$$L^{n-k+1}\afa\in\wedgeform{2n-k+2}$$
+by HL, $\exists !\,\beta\in\wedgeform{k-2}$ s.t.
+$L^{n-k+2}\beta=L^{n-k+1}\afa$, so
+$L^{n-k+1}(\afa-L\beta)=0$, i.e. $\afa_0=\afa-L\beta$
+is primitive. $\afa=\afa_0+L\beta$, then induction on degrees,
+we get the decomposition for $\afa$.
+
+If $k>n$, we apply HL to reduce it to case 1.
+
+Uniqueness: Next time..
+\end{proof}
+
+%%%%%%%%%%%%%%%2019.4.23第九周周二%%%%%%%%%%%%%%%%%%%%%%
+
+Today: Continuous to Hard Lef decomposition, Hodge-Riemann bilinear relations.
+
+Hard-Lefschitz: HL
+
+Lefschitz decomposition :LD
+
+Hodge-Riemann bilinear relations :HRR
+
+Recall: $\bbC^n,\wedgeform{k}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}$,
+$\omg$: a Kahler metric on $\bbC^n$
+with constant coefficient $\in\wedgeform{1,1}_\bbR$.
+
+Lefschitz operator : $Lu=\omg\wedge u$.
+
+\begin{thm}(HL)
+
+Assume $k\leq n,p+q\leq n$, then
+$$L^{n-k}:\wedgeform{k}\to \wedgeform{2n-k}$$
+is a linear isomorphism.
+
+$$L^{n-k}:\wedgeform{p,q}\to\wedgeform{p+n-k,q+n-k}$$
+is also a linear isomorphism.
+\end{thm}
+
+Linear algebra..
+
+\begin{thm}(LD)
+for any $u\in\wedgeform{k}$,we have a unique decomposition
+$$u=\sum_{r\geq(k-n)_+}L^ru_r$$
+where $u_r\in\wedgeform{k-2r}_{prim}$ is a primitive form.
+\end{thm}
+Recall: a $k$-form $u\in\wedgeform{k}(k\leq n)$ is called primitive,
+if $L^{n-k+1}(u)=0$. When $k>n$, $u$ is called primitive,
+$\Lmd(u)=0$, where $\Lmd$ is the adjoint of $L$.
+
+\begin{proof}
+
+Existence: application of $HL$.
+
+Uniqueness: Omit.
+\end{proof}
+
+\begin{prop} Assume $\afa\in\wedgeform{p,q}_{prim}$, and $p+q\leq n$.
+(i.e. $L^{n-p-q+1}\afa=0$),then
+$$
+  *\afa
+=
+  (-1)^{\frac{(p+q)(p+q-1)}{2}}
+  (\sqrt{-1})^{p-q}
+  \frac{1}{(n-p-q)!}
+  L^{n-p-q}\afa
+$$
+\end{prop}
+
+\begin{proof}
+  See [Humphreys, Prop 1.2.31]
+\end{proof}
+
+\begin{thm}(HRR)
+Define the bilinear form $Q$ on $\wedgeform{k}\,\,(k\leq n)$ as follows:
+$$Q(\afa,\beta):=L^{n-k}\wedge\afa\wedge\overline{\beta}$$
+Then
+$$(\sqrt{-1})^{p-q}(-1)^{\frac{(p+q)(p+q-1)}{2}}Q(u,u)\geq 0$$
+for any $u\in \wedgeform{p,q}_{prim},p+q=k\leq n$,
+and equal holds $$\iff u=0$$
+
+(i.e. $Q|_{\wedgeform{p,q}_{prim}}$ is positive definite up to a factor)
+\end{thm}
+
+\begin{proof}
+Take $u\in\wedgeform{p,q}_{prim}$,
+$$Q(u,u)=L^{n-k}\wedge u\wedge\overline{u}
+=*u\wedge\overline{u}=\langle\overline{u},\overline{u}\rangle\td Vol
+=|u|^2\td Vol\geq 0$$
+(up to a factor!)
+
+(We apply the following result: $\overline{*\fai}=*\overline{\fai}$,
+i.e. $*$ is a real operator)
+\end{proof}
+
+Summary: $\wedgeform{\bullet}=\bigoplus\limits_{1\leq k\leq n}\wedgeform{k}_\bbC$,
+where$\wedgeform{k}_{\bbC}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}_\bbC$.
+
+Lefschitz operator $L\rightsquigarrow$ HL,LD,HRR.
+
+
+\section{紧Kahler流形的上同调群}
+
+The analogue of compact Kahler manifolds,
+
+$$H^k_{DR}(X,\bbC)\cong\bigoplus_{p+q=k}H^{p,q}_{Dol}(X,\bbC)$$
+
+$\omg$: A Kahler metric $\in H^{1,1}_{Dol}(X,\bbR)$.
+
+Denote $L\curvearrowright H^k_{DR}(X,\bbC)$,
+$$L(u)=[\omg,u]=[\omg]\wedge u$$
+
+\textbf{Commutative relations on Kahler manifolds}
+
+$$(\bbC^n,\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\overline{z}_j)$$
+$u\in C^\infty(\bbC^n,\wedgeform{p,q})$, locally
+$$u=\sum_{|I|=p,|J|=q}u_{I,J}\td z_I\wedge \td z_j,\quad
+v=\sum_{|I|=p,|J|=q}v_{I,J}\td z_I\wedge \td z_j
+$$
+
+$$\langle\langle u,v\rangle\rangle=
+\int_{\bbC^n}\sum_{|I|=p,|J|=q}
+u_{I,J}\overline{V_{I,J}}\td Vol$$
+
+$\td=\td'+\td''$, $\td'=\p,\td''=\pbar$.
+
+$$\td' u=\sum_{I,J}\sum_k\pfrac{u_{I,J}}{z_k}\td z_k\wedge\td z_I\wedge\td z_J$$
+$$\td''u=\cdots$$
+
+\begin{thm}
+$$
+  (\td'')^*u
+=
+  -\sum_{I,J}
+    \sum_k
+    \pfrac{u_{I,J}}{\zbar_k}
+    \pp{\zbar_k}
+    \suobing
+    (\td z_I\wedge\td\zbar_J)    
+$$
+
+$$
+  (\td')^*u
+=
+  -\sum_{I,J}
+    \sum_k
+      \pfrac{u_{I,J}}{\zbar_k}
+      \pp{z_k}
+      \suobing
+      (\td z_I\wedge\td\zbar_J)
+$$
+\end{thm}
+
+\begin{prop}
+$$[(\td'')^*,L]=\sqrt{-1}\td'$$
+\end{prop}
+\begin{proof}
+Exercise.
+\end{proof}
+
+\begin{thm}
+Let $X$ be a Kahler manifold (may not compact), with Kahler metric $\omg$, 
+then we have
+$$[(\td'')^*,L]=\sqrt{-1}\td'$$
+\end{thm}
+
+\begin{proof}
+Only need to verify $u\in  C^\infty_c(X,\wedgeform{p,q})$
+with compact support in a holomorphic chart at $x$.
+
+Assume the holomorphic chart near $x$ is choosen s.t. 
+$$\omg(z)=\sqrt{-1}\sum_{1\leq j\leq n}\td z_j\wedge\td\zbar_j+O(|z|^2)$$
+
+$$u\in\sum_{I,J}u_{I,J}\td z_I\wedge\zbar_J$$
+is a $(p,q)$-form, $v$ is also...
+
+$$\langle u,q\rangle= u_{I,J}\overline{v_{M,N}}
+\langle \td z_I,\td z_M\rangle\langle\td\zbar_J,\td\zbar_N\rangle
+=u_{IJ}\overline{V_{ij}}+a_{IJMN}(z)u_{IJ}\overline{V_{MN}}$$
+where $a_{IJMN}=O(|z|^2)$.
+
+So, 
+$$(\td'')^*u=-\sum_{IJk}\pfrac{u_{IJ}}{z_k}\pp{\zbar_k}
+\suobing(\td z_I\wedge\td\zbar_J)+
+\sum_{IJMN}b_{IJMN}u_{IJ}\td z_M\wedge\td\zbar_N
+$$
+where $b_{IJMN}(z)=O(|z|)$. So,
+
+$$[(\td'')^*,L]u(x)=
+\sqrt{-1}\td'u(x)$$
+
+$$\Longrightarrow [(\td'')^*,L]=\sqrt{-1}\td'$$
+\end{proof}
+
+\begin{prop}In Kahler manifold,
+$$[(\td')^*,L]=-\sqrt{-1}\td''$$
+$$[\Lmd,\td'']=-\sqrt{-1}(\td')^*$$
+$$[\Lmd,\td']=\sqrt{-1}(\td'')^*$$
+\end{prop}
+
+\begin{cor}$(X,\omg)$ is a Kahler manifold, then 
+$$\yc_{\td}=2\yc_{\td'}=2\yc_{\td''}$$
+\end{cor}
+\begin{proof}
+For example, $\yc_\td=2\yc_{\td''}$,
+$$\yc_\td=(\td'+\td'')(\td'+\td'')^*+(\td'+\td'')^*(\td'+\td'')
+=(\td'+\td'')(\td'^*-\sqrt{-1}[\Lmd,\td'])
++(\td'^*-\sqrt{-1}[\Lmd,\td'])(\td'+\td'')$$
+然后暴力展开， 12项？？？$\cdots$
+
+从略。
+\end{proof}
+
+\begin{cor}
+If $(X,\omg)$ is a Kahler manifold, then
+$$\yc_\td:C^\infty(C,\wedgeform{p,q})\to C^\infty(C,\wedgeform{p,q})$$
+\end{cor}
+\begin{proof}
+Since $\yc_\td=2\yc_{\td'}$, 
+$\yc_{td'}$ preserves the bi-degree.
+\end{proof}
+
+\begin{cor}
+If $(X,\omg)$ is a compact Kahler manifold,
+$u$ is a $\yc_\td$-harmonic $k$-form. Assume 
+$$u=\sum_{p+q=k}u^{p,q}$$
+$$u^{p,q}\in C^\infty(X,\wedgeform{p,q})$$
+then each $u^{p,q}$ is also harmonic. 
+\end{cor}
+
+\begin{thm}(Hodge decomposition)
+
+$X$ is a compact Kahler manifold, then we have a decomposition 
+$$H_{\td}^k(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
+
+Equivalently, (sheaf cohomology)
+$$H^k(X,\bbC)\cong\bigoplus_{p+q=k}H^q(X,\Omg^p)$$
+\end{thm}
+\begin{proof}
+take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'},\yc_{\td''}$, 
+then 
+$$\ker\yc_{\td}:=\mcalH^k(X,\bbC)
+\cong\bigoplus\limits_{p+q=k}\mcalH^{p,q}_{\td''}(X,\bbC)$$
+
+then $\Longrightarrow$ the decomposition for $H_\td^k(X,\bbC)$
+
+the decomposition for $H^k_\td(X,\bbC)$ is independent of the choice of $\omg$
+(Next time)
+\end{proof}
+
+
+
+
+
+
+
+
