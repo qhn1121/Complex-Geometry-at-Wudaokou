@@ -707,7 +707,7 @@ $$\frac{1}{2\pi i}\int_{|\xi|=\veps}\frac{f_w(\xi)}{g_w(\xi)}\td\xi$$
 设$f(z)=\sum\limits_{k=0}^{\infty}a_kz^k$在$0\in\bbC$附近全纯，
 $g(z)=z^d$为次数为$d$的Weierstrass多项式。则令
 \begin{eqnarray*}
-h(z)&=&\sum_{k=d}^\infty a_kz^{k-d}\\ 
+h(z)&=&\sum_{k=d}^\infty a_kz^{k-d}\\
 r(z)&=&\sum_{k=0}^{d-1} a_kz^k
 \end{eqnarray*}
 则$f=gh+r$满足要求。
@@ -872,8 +872,74 @@ $\mcalO_n$是唯一分解整环(UFD).
 \end{proof}
 
 \section{解析集}
-（待补）
+多复变函数与单复变的一个显著区别是解析延拓的难易程度，
+Hartogs现象表明多复变函数“更容易被解析延拓”；
+而单复变与多复变函数令一个区别是零点集的形态：
+在单复变中我们熟知全纯函数零点离散（除非函数恒为零），这在多复变中显然不对，
+例如$\bbC^2$上的全纯函数$f(z_1,z_2)=z_1$.
 
+事实上，多元全纯函数的零点集十分重要，
+而且是代数几何学中的某些概念（代数簇）的源头。
+
+\begin{definition}（解析集）
+
+设$n\geq 2$， $\bbC^n$的子集$A$称为\textbf{解析集}（analytic set），
+\index{analytic set\kong 解析集}
+若对任意$z\in A$，存在$z$在$\bbC^n$中的开邻域$\Omg$，
+以及$f_1,f_2,...,f_N\in\mcalO(\Omg)$，使得
+$$A\cap\Omg=\{w\in\Omg|f_1(w)=f_2(w)=\cdots=f_N(w)\}$$
+\end{definition}
+
+也就是说，“局部上看是若干全纯函数的公共零点集”。
+对于一个解析集，我们首先局部地研究之——类似于解析函数芽环，我们引入如下概念：
+
+\begin{definition}（解析集芽）对于$x\in\bbC^n$，定义
+$$\mcalA_x:=\{(A,x)|x\in A,\,\text{$A$是$\bbC^n$中的解析集}\}/\sim$$
+其中关系$\sim$为：$(A_1,x)\sim(A_2,x)\iff$存在$x$在$\bbC^n$中的开邻域
+$\Omg$，使得$A_1\cap\Omg=A_2\cap\Omg$.称$\mcalA_x$中的元素为
+$x$处的\textbf{解析集芽}。
+\end{definition}
+
+$\mcalA_x$中的元素可以认为是包含$x$的“无穷小解析集”。
+容易知道它与解析函数芽的关系：任意$(A,x)\in\mcalA_x$，
+$(A,x)$为$\mcalO_{\bbC^n,x}$中某些函数的公共零点集。
+
+\begin{definition}对于$x\in\bbC^n$，
+
+（1）对与$x$处的解析集芽$(A,x)\in\mcalA_x$，定义$\mcalO_{\bbC^n,x}$的理想
+$$J_{(A,x)}:=\{f\in\mcalO_{\bbC^n,x}|f(z)=0\,\forall z\in A\}$$
+
+（2）对于$\mcalO_{\bbC^n,x}$中的理想$J$，定义$x$处的解析集芽
+$$(V(J),x):=\{z\in\bbC^n|g(z)\equiv 0,\,\forall g\in J\}\text{的等价类}$$
+\end{definition}
+这里并未仔细写清楚，需要验证良定性：注意解析集芽、函数芽实际上都为等价类，
+我们需要验证与代表元选取无关，留给读者。
+
+注意$\mcalO_{\bbC^n,x}$为诺特环，从而任何理想$J$都是有限生成的，
+记$\{g_1,g_2,...,g_N\}$为其一组生成元，则易知
+$$V(J)=\{g_1(x)=g_2(x)=\cdots=g_N(x)=0\}$$
+在$x$附近为有限个解析函数的公共零点集，从而的确为解析集（芽）。
+
+\begin{lemma}设$x\in\bbC^n$，$(A,x)\in\mcalA_x$为$x$处的解析集芽，
+$J\subseteq\mcalO_{\bbC^n,x}$为理想，则
+\begin{eqnarray*}
+  J                &\subseteq& J_{(V(J),x)} \\
+  (V(J_{(A,x)}),x) &=        & (A,x)
+\end{eqnarray*}
+\end{lemma}
+
+\begin{proof}
+直接按定义验证即可。第一式是容易的；至于第二式，由解析集的定义，$(A,x)$必形如
+$$\{g_1(x)=g_2(x)=\cdots=g_N(x)=0\}$$
+其中$g_j\in\mcalO_{\bbC^n,x}$，从而$J_{(A,x)}=(g_1,...,g_N)$，
+之后容易。
+\end{proof}
+
+\begin{rem}不过要注意，第一式的等号未必成立，例如对于$0\in\bbC^2$，
+$f(z_1,z_2)=z_1^2$，令$J:=(f)\subseteq\mcalO_{\bbC^2,0}$为由$f$生成的理想，
+则$V(J)=\{z_1^2=0\}=\{z_1=0\}$，于是$J_{(V(J),0)}=(z_1)$，
+即为由$\ftil(z_1,z_2)=z_1$生成的理想。很明显，$J\varsubsetneqq J_{(V(J),0)}$.
+\end{rem}
 
 
 
