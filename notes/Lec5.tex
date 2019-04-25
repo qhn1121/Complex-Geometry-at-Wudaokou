@@ -343,7 +343,7 @@ $$
     \pfrac{u_{I,J}}{\zbar_k}
     \pp{\zbar_k}
     \suobing
-    (\td z_I\wedge\td\zbar_J)    
+    (\td z_I\wedge\td\zbar_J)
 $$
 
 $$
@@ -366,7 +366,7 @@ Exercise.
 \end{proof}
 
 \begin{thm}
-Let $X$ be a Kahler manifold (may not compact), with Kahler metric $\omg$, 
+Let $X$ be a Kahler manifold (may not compact), with Kahler metric $\omg$,
 then we have
 $$[(\td'')^*,L]=\sqrt{-1}\td'$$
 \end{thm}
@@ -375,7 +375,7 @@ $$[(\td'')^*,L]=\sqrt{-1}\td'$$
 Only need to verify $u\in  C^\infty_c(X,\wedgeform{p,q})$
 with compact support in a holomorphic chart at $x$.
 
-Assume the holomorphic chart near $x$ is choosen s.t. 
+Assume the holomorphic chart near $x$ is choosen s.t.
 $$\omg(z)=\sqrt{-1}\sum_{1\leq j\leq n}\td z_j\wedge\td\zbar_j+O(|z|^2)$$
 
 $$u\in\sum_{I,J}u_{I,J}\td z_I\wedge\zbar_J$$
@@ -386,7 +386,7 @@ $$\langle u,q\rangle= u_{I,J}\overline{v_{M,N}}
 =u_{IJ}\overline{V_{ij}}+a_{IJMN}(z)u_{IJ}\overline{V_{MN}}$$
 where $a_{IJMN}=O(|z|^2)$.
 
-So, 
+So,
 $$(\td'')^*u=-\sum_{IJk}\pfrac{u_{IJ}}{z_k}\pp{\zbar_k}
 \suobing(\td z_I\wedge\td\zbar_J)+
 \sum_{IJMN}b_{IJMN}u_{IJ}\td z_M\wedge\td\zbar_N
@@ -405,7 +405,7 @@ $$[\Lmd,\td'']=-\sqrt{-1}(\td')^*$$
 $$[\Lmd,\td']=\sqrt{-1}(\td'')^*$$
 \end{prop}
 
-\begin{cor}$(X,\omg)$ is a Kahler manifold, then 
+\begin{cor}$(X,\omg)$ is a Kahler manifold, then
 $$\yc_{\td}=2\yc_{\td'}=2\yc_{\td''}$$
 \end{cor}
 \begin{proof}
@@ -423,29 +423,29 @@ If $(X,\omg)$ is a Kahler manifold, then
 $$\yc_\td:C^\infty(C,\wedgeform{p,q})\to C^\infty(C,\wedgeform{p,q})$$
 \end{cor}
 \begin{proof}
-Since $\yc_\td=2\yc_{\td'}$, 
+Since $\yc_\td=2\yc_{\td'}$,
 $\yc_{td'}$ preserves the bi-degree.
 \end{proof}
 
 \begin{cor}
 If $(X,\omg)$ is a compact Kahler manifold,
-$u$ is a $\yc_\td$-harmonic $k$-form. Assume 
+$u$ is a $\yc_\td$-harmonic $k$-form. Assume
 $$u=\sum_{p+q=k}u^{p,q}$$
 $$u^{p,q}\in C^\infty(X,\wedgeform{p,q})$$
-then each $u^{p,q}$ is also harmonic. 
+then each $u^{p,q}$ is also harmonic.
 \end{cor}
 
 \begin{thm}(Hodge decomposition)
 
-$X$ is a compact Kahler manifold, then we have a decomposition 
+$X$ is a compact Kahler manifold, then we have a decomposition
 $$H_{\td}^k(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
 
 Equivalently, (sheaf cohomology)
 $$H^k(X,\bbC)\cong\bigoplus_{p+q=k}H^q(X,\Omg^p)$$
 \end{thm}
 \begin{proof}
-take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'},\yc_{\td''}$, 
-then 
+take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'},\yc_{\td''}$,
+then
 $$\ker\yc_{\td}:=\mcalH^k(X,\bbC)
 \cong\bigoplus\limits_{p+q=k}\mcalH^{p,q}_{\td''}(X,\bbC)$$
 
@@ -454,6 +454,263 @@ then $\Longrightarrow$ the decomposition for $H_\td^k(X,\bbC)$
 the decomposition for $H^k_\td(X,\bbC)$ is independent of the choice of $\omg$
 (Next time)
 \end{proof}
+
+%%%%%%%%%%%%%%%2019.4.25第九周周四%%%%%%%%%%%%%%%%%%%%%
+
+Recall: Hodge decomposition, 
+
+$X$ compact Kahler manifold, $\dim_\bbC X=n$, 
+
+Thm:(Hodge decomposition)
+$$H^k_{DR}(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}(X,\bbC)
+\cong\bigoplus_{p+q=n}H^{p,q}_{\td''}(X,\bbC)$$
+where
+
+$$H^{p,q}(X,\bbC)=\{[\afa]\in H_{DR}^k(X,\bbC)|\afa\text{is a $\td$-closed s.m. $(p,q)$-form}\}$$
+
+Proof: take a Kahler metric $\omg$, 
+$$
+H^k_{DR}(X,\bbC)
+\cong
+\mcalH_{\td}^k(X,\bbC)=\bigoplus\mcalH_\td^{p,q}(X,\bbC)
+=\bigoplus\mcalH_{\td''}^{p,q}(X,\bbC)$$
+
+\begin{prop}There is a canonical isomorphism
+$$H^{p,q}_{\td}(X,\bbC)\xra{\sim}H^{p,q}_{\td''}(X,\bbC)$$
+$$[\afa]_{\td}\mapsto[\afa]_{\td''}$$
+where $\td\afa=0$,$\afa$ is a $(p,q)$-form.
+$\Rightarrow \td''\afa=0$
+\end{prop}
+\begin{proof}
+  Check: this map is well defined. Need to verify:
+if $\afa=\td\beta$ is a $(p,q)$-form, then $[\afa]_{\td''}=0$,
+i.e. $\afa$ is also $\td''$-exact.
+
+$\afa$ is a $(p,q)$-form, 
+$$\Rightarrow\afa=\td'\beta^{p-1,q}+\td''\beta^{p,q-1}$$
+we have $\td''\td'\beta^{p-1,q}=0$, $\td'\td''\beta^{p,q-1}=0$
+
+We need a very important lemma:
+\end{proof}
+
+\begin{lemma}($\p\pbar$-lemma)
+
+Let $X$ is a Kahler manifold, $\afa$ is a smooth form which is 
+$\td'$ and $\td''$ closed. Then, if $\afa$ is 
+$\td$ or $\td'$ or $\td''$-exact, then $\afa=\td'\td''\gma$
+for some $\gma$.
+\end{lemma}
+
+Using $\p\pbar$-lemma, this map is well-defined.
+
+Now, notice that the two space has the same dimension. So, 
+we need to show the map is injective(or, surjective).
+Claim : this map is injective. If $\afa$ is a $\td$-closed 
+with $[\afa]_{\td''}=0$, i.e. $\afa=\td''\beta^{p,q-1}$.
+$\afa$ is $\td$-closed$\Rightarrow\td'\td''\beta^{p,q-1}=0$,
+$\p\pbar$-lemma applying to $\td''\beta^{p,q-1}$, we have
+$$\td''\beta^{p,q-1}=\td'\td''\gma=\td(\td''\gma)$$
+for some $\gma$.
+
+\vs
+
+Proof of $\p\pbar$-lemma:
+
+\begin{proof}
+Assume $\afa$ is $\td''$ exact, 1.e. $\afa=\td''\beta$,
+write 
+$$\beta=H(\beta)+\yc_\td\gma$$
+where $H(\beta)$ is $\yc_\td$-harmonic, so 
+$$\afa=\td'' H(\beta)+\td''\yc_\td\gma-2\td''\yc_{\td'}\gma$$
+(Since $\yc_\td=2\yc_{\td''}$)
+$$\Rightarrow\afa=2\td''(\td'\td'^*+\td'^*\td')
+=2\td''\td;\td'^*\gma-2\td'^*\td''\td'\gma$$
+
+By the assumption, $\td'\afa=0$, so
+$\td'^*\td''\td'\gma=0$
+$$\afa=-2\td'\td''\td'^*\gma$$
+\end{proof}
+
+\begin{rem}(Deligne-Griffiths-Morrora)
+
+If $\widehat{X}$ is bimeromapic to $X$, where $X$ is 
+acompact Kahler, then$\hat{X}$ is also satisfys the $\p\pbar$-lemma.
+
+$X$ is a kahler manifold, then 
+$$H^{p,q}_\td(X,\bbC)\cong H^{p,q}_{\td''}(C,\bbC)\cong
+H^{p,q}——{X,\bbC}$$
+\end{rem}
+
+$X$ us a compact complex manifold,define 
+$$H_{BC}^{p,q}:=
+\frac{\td\text{-closed $(p,q)$)}}{\td'\td;;\text{exact}}$$
+Bott-Chern cohomology
+
+Exercise" If $X$ is Kahler , then $H^{p,q}_{BC}=H^{p,q}_\td$
+
+$$H^{p,q}_A(X,\bbC):=
+\frac{\td'\td''\text{closed}}{(\td')\text{-exact}+\{\td''\text{exact}\}}$$
+(Appeli cohomology)
+
+denote 
+$$h_{BC}^k:=\sum_{p+q=k}\dim_{\bbC}H_{BC}^{p,q}$$
+$$h_{A}^k:=\sum_{p+q=k}\dim_{\bbC}H_{A}^{p,q}$$
+
+\begin{thm}
+$X$ satisfies $\p\pbar$-lemma $\iff$
+$$h_B^k+h_A^k=2b_k$$
+where 
+$$b_k=\dim_\bbC H_{DR}^k(X,\bbC)$$
+\end{thm}
+%这是比较新的结果，仅供了解
+
+\begin{thm}(Hard Lef)
+
+$X$ is a compact Kahler, $\dim_\bbC X=n$, denote 
+$L=\{\omg\}\curvearrowright H_{DR}^k(X,\bbC)$, $\omg$ is a Kahler metric, 
+Then we have:
+$$L^{n-k}: H_{DR}^k(X,\bbC)\cong H_{DR}^{2n-k}(X,\bbC)$$
+$$H^{p,q}(X,\bbC)\cong H^{p+n-k,q+n-k}(X,\bbC)$$
+where $k\leq n$, $p+q\leq n$. 
+\end{thm}
+
+\begin{proof}Fox a Kahler metric $\omg$,
+$$L^{n-k}:H_{DR}^k\to H_{DR}^{2n-k}$$
+($\cong \mcalH_\td^k$, $\cong\mcalH_{\td}^{2n-k}$ respectively)
+(there is a commutative diagram...)
+
+need to proof: For any $\fai\in\mcalH_\td^k$, then
+$$L^{n-k}(\fai)=\omg^{n-k}\wedge\fai$$
+is also harmonic.
+\end{proof}
+
+\begin{lemma}
+$$[\yc_{\td},L]=0$$
+\end{lemma}
+
+\begin{proof}
+$$[\yc_\td,L]=2[\yc_{\td'},L]
+=2\left([\td'\td'^*,L]+[\td'^*\td',L]\right)
+=2\left(\td'[\td'*,L]+[\td'^*,L]\td'\right)$$
+(check: $[L,\td']=0$)
+So, 
+$$=-2\sqrt{-1}(\td'\td''+\td''\td')=0$$
+\end{proof}
+
+\textbf{Exercise}: Complex tori 
+$$\bbT^n:=\bbC^n/\Gma$$
+where $\Gma=\bbZ^n$. $\bbT^n$ is a compact Kahler manifold.
+Then
+$$H^{1,1}(\bbT^n,\bbC)\cong\wedgeform{1,1}_{\bbC}$$
+the space of $(1,1)$-forms on $\bbC^n$ with constant coefficient, 
+in particular, 
+$$\dim_\bbC H^{1,1}(\bbT^n,\bbC)=n^2$$
+
+\textbf{Exercise}: the set of all the Kahler class on $\bbT^n
+\subseteq H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$ is equal to 
+the set of $n\times n$ positive definite Hermitian metrics.
+
+(Hint: using Hodge theory)
+
+\begin{thm}(Lefschitz decomposition)
+
+Define a class $\afa\in H^{k}_{DR}(X,\bbC)$
+to be positive if
+$$L^{n-k+1}(\afa)=0$$
+if $k\leq n$.
+
+(When $\afa\in H^k_{DR}(X,\bbC)$, $k>n$, we call $\afa$ positive)
+
+Then $\forall\fai\in H^k_{DR}(X,\bbC)$, exist unique decomposition 
+$$\fai=\sum_{\gma\geq(k-n)_+}
+L^\gma\fai_\gma$$
+where $\fai_\gma\in H_{prim}^{k-2\gma}(X,\bbC)$.
+
+Similarly, 
+$$H^{p,q}(X,\bbC)=\bigoplus_{r\geq(p+q-n)_+} H_{prim}^{p-r,q-r}(X,\bbC)$$
+\end{thm}  
+
+\begin{proof}
+Exercise.
+\end{proof}
+
+\begin{thm}(HRR)
+
+$X$ compact Kahler, $\dim_\bbC X=n$, $\omg$ is Kahler metric, define 
+$$Q(\afa,\beta)=L^{n-k}\afa\wedge\overline{\beta}$$
+where $\afa,\beta\in H^{p,q}(X,\bbC)$, and $p+q=k$.
+
+Then $Q|_{H_{prim}^{p,q}}$ is positive defined (up to a factor).
+\end{thm}
+
+\begin{proof}
+Exercise.
+\end{proof}
+%要求：对这三个定理非常熟悉！！！
+
+\textbf{Exercise}:Consider $X$-compact Kahler,$\dim_\bbC X=n$, $\omg$-Kahler metric, 
+Then $\forall\afa,\beta\in H^{1,1}(X,\bbR)=H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$,
+Then
+$$
+  \left(
+    \{\omg^{n-2}\}\cdot\afa\cdot\beta
+  \right)^2
+\geq
+  \left(
+    \{\omg^{n-2}\}\cdot\afa^2
+  \right)
+  \left(
+    \{\omg^{n-2}\}\cdot\beta^2
+  \right)
+$$ 
+with equality if and only if $\afa=\lmd\beta$ for some $\lmd\in \bbR$
+
+Eg: $\bbC^2$, $\afa,\beta$ real $(1,1)$-forms,
+$$(\afa,\beta)^2\geq \afa^2\beta^2$$
+
+Hint: Using HRR, and Lefschitz decomposition... 
+"Alg-Geom-inequality over Kahler manifold".
+
+\begin{prop}
+$X$ is a compact Kahler, then 
+$$\overline{H^{p,q}(X,\bbC)}=H^{q,p}(X,\bbC)$$
+\end{prop}
+\begin{proof}
+Use harmonic form.. and $\yc_\td$ is a real operator...
+\end{proof}
+
+\textbf{Summary} $X$-compact Kahler with a Kahler metric $\omg$, then 
+define Lefschitz operator $L=[\omg]\wedge$, then:
+
+Hodge decomposition:
+$$H^k=\bigoplus_{p+q=k}H^{p,q}$$
+$$\overline{H^{p,q}}=H^{q,p}$$
+
+Hard Lefschitz: 
+$$L^{n-k}:H^{p,q}\cong H^{p+n-k,q+n-k}$$
+where $p+q=k$
+
+Lefschitz decomposition:
+$$H^{p,q}=\bigoplus_{r\geq(p+q-1)_+} L^r H^{p-r,q-r}_{prim}$$
+
+HRR:...
+
+\textbf{References}
+Kahler pairing in other settings..
+
+\verb"Adiprusito-Huh-Katz: Hodge theory in combinatorial geometries"
+
+\verb"McMullen: On simple polytopes"
+
+\verb"Deligne: Weil II"
+
+\verb"Beillinson-Bernstein-Deligne-Gabber: Faisceaux Pervers"
+
+\verb"Adiprasito: Combinatorial Lefschetz theorem beyond positivity, 2018"
+
+
+
+
 
 
 
