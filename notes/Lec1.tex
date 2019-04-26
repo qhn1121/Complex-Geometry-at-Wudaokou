@@ -871,7 +871,7 @@ $\mcalO_n$是唯一分解整环(UFD).
 从而在$\mcalO_n$中成立。证毕。
 \end{proof}
 
-\section{解析集}
+\section{解析集与Hilbert零点定理}
 多复变函数与单复变的一个显著区别是解析延拓的难易程度，
 Hartogs现象表明多复变函数“更容易被解析延拓”；
 而单复变与多复变函数令一个区别是零点集的形态：
@@ -920,7 +920,9 @@ $$(V(J),x):=\{z\in\bbC^n|g(z)\equiv 0,\,\forall g\in J\}\text{的等价类}$$
 $$V(J)=\{g_1(x)=g_2(x)=\cdots=g_N(x)=0\}$$
 在$x$附近为有限个解析函数的公共零点集，从而的确为解析集（芽）。
 
-\begin{lemma}设$x\in\bbC^n$，$(A,x)\in\mcalA_x$为$x$处的解析集芽，
+\begin{lemma}
+\label{解析集芽：V于J的基本关系-lemma}
+设$x\in\bbC^n$，$(A,x)\in\mcalA_x$为$x$处的解析集芽，
 $J\subseteq\mcalO_{\bbC^n,x}$为理想，则
 \begin{eqnarray*}
   J                &\subseteq& J_{(V(J),x)} \\
@@ -940,6 +942,133 @@ $f(z_1,z_2)=z_1^2$，令$J:=(f)\subseteq\mcalO_{\bbC^2,0}$为由$f$生成的理�
 则$V(J)=\{z_1^2=0\}=\{z_1=0\}$，于是$J_{(V(J),0)}=(z_1)$，
 即为由$\ftil(z_1,z_2)=z_1$生成的理想。很明显，$J\varsubsetneqq J_{(V(J),0)}$.
 \end{rem}
+
+对于$x\in\bbC^n$，则$\mcalA_x$中的解析集芽可以进行交、并运算：
+
+\begin{lemma}对于$x\in\bbC^n$，
+$\{J_\afa|\afa\in\mcalI\}$为$\mcalO_{\bbC^n,x}$的一族理想，
+则对任意$\afa,\beta\in\mcalI$，
+$$(V(J_\afa)\cup V(J_\beta),x)=(V(J_\afa J_\beta),x)$$
+$$(\bigcap_{\afa\in\mcalI}V(J_\afa),x)
+=(V(\sum_{\gma\in\mcalI}J_\gma),x)$$
+\label{解析集芽的交、并-lemma}
+\end{lemma}
+自行补全解析集芽交、并的定义（无非是取代表元作交、并）
+\begin{proof}
+直接定义验证。
+\end{proof}
+此引理表明，一点处的解析集芽可以“有限并，任意交”，与拓扑学中的“闭集”类似。
+
+接下来研究解析集芽的局部结构。
+
+\begin{definition}（不可约解析集芽）
+
+对于$x\in\bbC^n$，以及$(A,x)\in\mcalA_x$，
+称解析集芽$(A,x)$是\textbf{不可约}(irreducible)的，
+若不存在$(A_1,x),(A_2,x)\in\mcalA_x$，使得$(A,x)=(A_1\cup A_2,x)$，且
+$(A_i,x)\subsetneqq (A,x)$,$i=1,2$.
+\end{definition}
+
+由引理\ref{解析集芽的交、并-lemma}，以及基本的交换代数，容易知道：
+解析集芽$(A,x)$不可约，当且仅当$J_{(A,x)}$为$\mcalO_{\bbC^n,x}$的\textbf{素理想}。
+此外，解析函数芽环的诺特性等价于如下：
+
+\begin{lemma}对于$x\in\bbC^n$，以及
+$(A_k,x)\in\mcalA_x,k\geq 1$，若$(A_k,x)\supseteq(A_{k+1},x)$
+对任意$k\geq 1$都成立（即$\{A_k\}_{k=1}^\infty$为解析集芽降链），
+则存在$k_0\geq 1$，使得对任意$l\geq k_0$，都有$(A_k,x)=(A_l,x)$.
+\label{解析集芽-降链性质-lemma}
+\end{lemma}
+
+\begin{proof}
+考察理想$J_{(A_k,x)}\subseteq\mcalO_{\bbC^n,x}$，则
+$(A_k,x)\supseteq(A_{k+1},x)$表明
+$$J_{(A_k,x)}\subseteq J_{(A_{k+1},x)}$$
+即$\{J_{(A_k,x)}\}_{k=1}^\infty$为理想升链，
+从而由$\mcalO_{\bbC^n,x}$的诺特性，
+以及引理\ref{解析集芽：V于J的基本关系-lemma}，得证。
+\end{proof}
+
+\begin{thm}（解析集芽的不可约分解）
+
+给定$x\in\bbC^n$，则对任意$(A,x)\in\mcalA_x$，
+存在$N\geq 1$，以及对任意$1\leq k\leq N$
+存在$(A_k,x)\in\mcalA_x$为不可约解析集芽，使得
+这些解析集芽\textbf{互不包含}，并满足
+$$(A,x)=\bigcup_{k=1}^N(A_k,x)$$
+并且上述分解是唯一的（不计次序）。
+\end{thm}
+
+\begin{proof}
+\textbf{存在性}：先断言，若$(A,x)$可约，则存在分解
+$(A,x)=(A^{(1)},x)\cup(A^{(2)},x)$，其中$(A^{(1)},x)$与$(A^{(2)},x)$
+都为$(A,x)$的真子芽，并且$(A^{(1)},x)$不可约。
+
+这是因为，由$(A,x)$可约，取真子芽$(A_1,x),(A_1',x)$使得
+$(A,x)=(A_1,x)\cup (A_1',x)$（但至此无法保证$A_1,A_2$至少有一个不可约）。
+如果$(A_1,x)$不可约，则继续对其分解：$(A_1,x)=(A_2,x)\cup(A_2',x)$，
+然后再考察$(A_2,x)$的可约性，不断做下去，
+总会得到不可约的$(A_k,x)$；若不然就有解析集芽降链
+$$(A_1,x)\supsetneqq (A_2,x)\supsetneqq (A_3,x)\supsetneqq\cdots$$
+与引理\ref{解析集芽-降链性质-lemma}矛盾。
+因此必存在$k>0$，使得$(A_k,x)$不可约，此时
+$$(A,x)=(A_k,x)\cup
+\left(
+  \bigcup_{j=1}^k
+    (A_j',x)
+\right)
+$$
+为所希望的分解，断言证毕。
+
+再之后反复使用此断言，令$(A,x)=(A^{(1)},x)\cup (B_1,x)$，
+其中$(A^{(1)},x)$不可约，若$(B_1,x)$可约，则再对$(B_1,x)$使用此断言：
+$(B_1,x)=(A^{(2)},x)\cup(B_2,x)$，其中$(A^{(2)},x)$不可约；
+若$(B_2,x)$可约，则再继续对$(B_2,x)$使用断言……
+该操作必在有限步停止，停止于某个$(B_{N'},x)$不可约，否则就有解析集芽降链
+$$(B_1,x)\supsetneqq(B_2,x)\supsetneqq(B_3,x)\cdots$$
+与引理\ref{解析集芽-降链性质-lemma}矛盾。
+从而得到不可约分解
+$$(A,x)=(B_{N'},x)\cup
+\left(
+  \bigcup_{k=1}^{N'}(A_k,x)
+\right)
+$$
+之后适当取$\{A_1,A_2,...,A_{N'};B_{N'}\}$的子集
+使得其中元素之并仍是$(A,x)$并且其中元素互不包含。因此存在性证毕。
+
+\textbf{唯一性}：假设
+$$(A,x)=\bigcup_{k=1}^N(A_k,x)=\bigcup_{k=1}^{N'}(A_k',x)$$
+都为$(A,x)$的满足题设的不可约分解，则需要证明$N=N'$，并且有集合相等
+$$\{A_1,A_2,...,A_N\}=\{A_1',A_2',...,A_{N'}'\}$$
+对任意$A_i$，因为
+$$(A_i,x)=\bigcup_{k=1}^{N'}(A_i\cap A_k',x)$$
+从而$(A_i,x)$的不可约性迫使存在某个$(A_j',x)$使得
+$(A_i,x)=(A_i\cap A_j',x)$，即$(A_i,x)\subseteq (A_j',x)$.
+同理，对于此$(A_j',x)$，存在某个$(A_{i'},x)$，使得
+$(A_j',x)\subseteq(A_{i'},x)$，因此
+$$(A_i,x)\subseteq(A_j',x)\subseteq(A_{i'},x)$$
+但由于$\{(A_k,x)\}_{k=1}^N$中任何两元素互不包含，因此上式等号成立。
+也就是说对任意$1\leq j\leq N$，存在（唯一）$1\leq j'\leq N'$，使得
+$(A_j,x)=(A_{j'}',x)$；同理对任意$1\leq j'\leq N'$也有类似结果。
+这就给出了集合一一对应
+$$\{A_1,A_2,...,A_N\}\cong\{A_1',A_2',...,A_{N'}'\}$$
+从而证毕。
+\end{proof}
+
+\begin{rem}
+此定理表明，欲研究解析集芽的局部性态，只需要研究不可约解析集芽；
+一般的解析集芽无非是不可约解析集芽的有限并。
+\end{rem}
+
+
+
+
+
+
+
+
+
+
 
 
 
