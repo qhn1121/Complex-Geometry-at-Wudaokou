@@ -1295,16 +1295,16 @@ $\Rightarrow H^{p,q}(X,E)=0$ when $p+q\geq n+1$.
 Today:
 \begin{thm}(Girbau vanishing theorem, 1976)
 
-$E$ is a holomorphic line bundle over compact Kahler manifold, 
+$E$ is a holomorphic line bundle over compact Kahler manifold,
 with smooth metric $h$ s.t. $\sqrt{-1}\Theta_{(E,h)}\geq 0$,
 and has at least $n-s+1$ positive eigenvalues at every points of $X$, then
 $$H^{p,q}(X,E)=0$$
 if $p+q\geq n+s$.
 \end{thm}
 
-$\afa$: a \textbf{real} $(1,1)$-form on $X$, 
+$\afa$: a \textbf{real} $(1,1)$-form on $X$,
 locally $\afa=\sqrt{-1}\sum\afa_{ij}\td z_i\wedge\td\zbar_j$.
-then we have a matrix $M(\afa)=(\afa_{ij})_{n\times n}$, 
+then we have a matrix $M(\afa)=(\afa_{ij})_{n\times n}$,
 ($\afa$ is real $\Rightarrow$)a hermite matrix.
 
 we call $\afa$ has at least $k$ positive eigenvalues at $x$,
@@ -1312,17 +1312,17 @@ if $M(\afa)(x)$ has $k$ positive eigenvalues.
 (Remark: It is well defined)
 
 \begin{proof}
-Claim: there exists some Kahler metric $\omg$ 
+Claim: there exists some Kahler metric $\omg$
 s.t. $[\sqrt{-1}\Theta,\Lmd]$ is positive.
 
 Fix a Kahler metric $\omg$,
 for $p\in X$, choose a holomorphic chart $(z_1,...,z_n)$,
-s.t. $\omg(p)=\sqrt{-1}\sum\td z_j\wedge\td\zbar_j$ and 
+s.t. $\omg(p)=\sqrt{-1}\sum\td z_j\wedge\td\zbar_j$ and
 $\sqrt{-1}\Theta_E(p)=\sqrt{-1}\sum\limits_{j=1}^{n}\gma_j\td z_j\wedge\td\zbar_j$.
 WLOG, $0\leq\gma_1\leq\gma_2\leq\cdots\leq\gma_n$,
 and for any $j\geq s$, $\gma_j>0$.
 
-Consider 
+Consider
 $$\omg_\veps:=\veps\omg+\sqrt{-1}\Theta_E$$
 for $\veps>0$, then $\omg_\veps$ is a Kahler metric.
 $\omg_\veps(p)=\sqrt{-1}\sum\limits_{j}(\veps+\gma_j)\td z_j\wedge\td\zbar_j$.
@@ -1332,7 +1332,7 @@ $\omg_\veps(p)$ is given by
 $$\gma_{j,\veps}=\frac{\gma_j}{\veps+\gma_j}=
 \frac{1}{1+\frac{\veps}{\gma_j}}$$
 
-Claim: $[\sqrt{-1}\Theta,\Lmd_{\omg_\veps}]$ is positive on 
+Claim: $[\sqrt{-1}\Theta,\Lmd_{\omg_\veps}]$ is positive on
 $\wedgeform{p,q}\ten E$ when $p+q\geq n+s$, $0<\veps<<1$.
 
 Take $u=\sum\limits u_{IJ}\td w_T\wedge\td\wbar_J\ten e$,then
@@ -1354,7 +1354,7 @@ $$
   |u|^2
 $$
 note that $\gma_{j,\veps}\geq 1-\frac{\veps}{\gma_s}$
-if $j\geq s$, $\gma_{j,\veps}\in[0,1)$ for all $j$. it 
+if $j\geq s$, $\gma_{j,\veps}\in[0,1)$ for all $j$. it
 $$
 \geq
   \left(
@@ -1375,7 +1375,7 @@ Definition: $E$ is called positive, ...(positive="ample" in AG).
 numerically effective(nef) if for any $\veps>0$, there is a smooth metric $h_\veps$
 s.t. $\sqrt{-1}\Theta_{h_\veps}\geq -\veps\omg$.
 
-Theorem: If $E$ is nef, and $\int_X c_1(E)^n>0$, then 
+Theorem: If $E$ is nef, and $\int_X c_1(E)^n>0$, then
 $H^{q}(X,K_X\ten E)=0$ for $q\geq 1$.
 \end{rem}
 
@@ -1389,9 +1389,9 @@ $(z_1,...,z_n)$ local holomorphic chart,
 Chern curvature of $(E,h)$:
 $$
   \Theta_{(E,h)}
-= \sum_{1\leq j,k\leq n\atop 1\lmd,\mu\leq r} 
+= \sum_{1\leq j,k\leq n\atop 1\lmd,\mu\leq r}
     c_{ik\lmd\mu}\td z_j\wedge\td\zbar_k\ten e_\lmd^*\ten e_\mu
-$$ 
+$$
 
 Fact: $\sqrt{-1}\Theta_E$ induces a Hermitian operator $\theta_E$
 on $TX\ten E$.
@@ -1399,7 +1399,7 @@ on $TX\ten E$.
 Let $u,v$ be local sections of $TX\ten E$,
 $$u=\sum_{1\leq j\leq n\atop1\leq\lmd\leq r}
 u_{k\mu}\pp{z_k}\ten e_\mu
-$$ 
+$$
 $$
   \theta_{E}(u,v)
 :=
@@ -1411,7 +1411,7 @@ $$
 We call $E$ Nakano positive, if $\theta_E$ is positive.
 (i.e for any non-zero local section $u\in TX\ten E$, $\theta_E(u,u)>0$)
 
-We call $E$ Griffith positive, if for any 
+We call $E$ Griffith positive, if for any
 $0\neq \xi\in T_xX$, $s\in E_x,s\neq 0$,
 $$\theta_E(\xi\ten s,\xi\ten s)>0$$
 \end{definition}
@@ -1419,7 +1419,7 @@ $$\theta_E(\xi\ten s,\xi\ten s)>0$$
 \begin{rem}
 By definition, Nakano positivity $\Rightarrow$ Griffith positivity.
 
-If $E$ is line bundle, 
+If $E$ is line bundle,
 Nakano positivity $\iff$ Griffith positivity.
 (and $\iff$ positivity of lines bundles)
 \end{rem}
@@ -1468,24 +1468,24 @@ is positive on $\wedgeform{n,q}\ten E$ for $(q\geq 1)$
 
 \textbf{Ampleness}
 
-$E\to X$, $E$: holomorphic line bundle of rank $r$, 
+$E\to X$, $E$: holomorphic line bundle of rank $r$,
 $X$:complex manifold.
 
 \begin{definition}(Jet vector bundle)
 $$J^kE=\bigcup_{x\in X}(J^kE)_x$$
-where 
+where
 $$(J^kE)_x=\mcalO_x(E)\Big/\mfkm_x^{k+1}\mcalO_x(E)$$
 $\mfkm_x\subseteq\mcalO_x$ be the maximal ideal of $\mcalO_x$.
 \end{definition}
 
-In local coordinate, 
+In local coordinate,
 $$
   (J^kE)_x
 =
   \Big\{
     \sum_{1\leq\lmd\leq r \atop |\afa|\leq k}
       C_{\lmd\afa}(z-x)^{\afa} e_{\lmd}(z)
-  \Big\}         
+  \Big\}
 $$
 
 \begin{prop}
@@ -1500,7 +1500,7 @@ $J^kE$ is a holomorphic vector bundle of rank $=r{n+k\choose n}$.
 $E$ is called very ample, if the following maps:
 $$H^0(X,E)\to (J^1E)_x$$
 $$H^0(X,E)\to E_x\oplus E_y$$
-are surjective, for all $x,y\in X$, $x\neq y$. 
+are surjective, for all $x,y\in X$, $x\neq y$.
 
 $E$ is called ample, if $S^mE:=\Sym^m E$ is very ample for some $m\in\bbN$.
 \end{definition}
@@ -1513,9 +1513,251 @@ $L$-holomorphic line bundle, $X$ is a compact complex manifold.
 Then $L$ is positive if and only if $L$ is ample.
 \end{thm}
 
-$\mcalF_x\ten_{\mcalA_x}\mfkg^\vee$
+%%%%%%%%%%%%%%%%%2019.5.16%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%第12周了吗？%%%%%%%%%%%%%%%%%%%%%%%
+
+We will prove:
+
+\begin{thm}
+$L\to X$ holomorphic line bundle over a compact complex manifold,
+then $L$ is positive $\iff L$ is ample. 
+\end{thm}
+
+\textbf{We need:}
+
+(1)Kodiara vanishing theorem.
+
+(2)Blow-up of complex manifold
+
+(3)Relation between divisor and line bundles.
+
+\textbf{analytic cycles, divisors and meromorphic functions}
+
+\begin{definition}
+$X$ be a analytic set in some complex manifold, then the set 
+$X_{reg}$ is a dense subset of $X$.
+Denote the connected component of $X_{reg}$ by $X_\afa$,
+$\overline{X_\afa}$ is the closure of $X_\afa$ in $X$, 
+then $\overline{X_\afa}$ is called a global irreducible component of $X$.
+
+In particular, $X$ is the union of global irreducible components.
+\end{definition}
+
+\begin{example}(Global irreducibility is different from local irreducibility)
+
+$V=\Bigset{(x,y)\in\bbC^2}{y^2=x^2(1+x)}$ is an analytic set in $\bbC^2$，
+$V_{reg}=V\setminus\{0\}$ is connected. So, 
+$V=\overline{V_{reg}}$ is globally irreducible.
+
+On the other hand, $(V,0)$ is a reducible as an analytic germ.
+\end{example}
+
+\begin{definition}(analytic cycles)
+
+$X$ is a complex manifold,  a $q$-cycle (with integer coefficient)
+is a formal linear combination $\sum\limits\lmd_j V_j$, $\lmd_j\in\bbZ$,
+and $V_j$ is a global analytic sets of $X$ of dimension $q$.
+\end{definition}
+
+So, we get a group $C_{cyl}^q(X)$.
+
+an element of $Cycl^{n-1}(X)$ is called a divisor.
+(Weil divisor)
+($Div(X)$)
+
+If $D$ is an irreducible analytic set of dimension $n-1$
+then the divisor given by $D$ is called a prime divisor.
+
+\begin{rem}
+For any open set $U\subseteq X$, $U\to Cycl^q(U)$ induces a sheaf
+$Cycl^q$ of $X$ with the germ $Cycl_x^q$ given by $q$-dimension analytic germs at $X$.
+\end{rem}
+
+\begin{thm}
+$X$ is a connected complex manifold, $f\in\mcalO(X)$,
+then we have $f^{-1}(0)$ is emply of $\dim_{\bbC}$ isempty of $n-1$.
+\end{thm}
 
 
+\begin{definition}（Cartier-dividiot）
+
+A divisor $D=\sum\lmd_j D_j$ locally giveb by a $\bbX$ linear combination of $div(f)$.
+$f$ is locally holomorphic functions.
+\end{definition}
+
+\begin{definition}
+$X$ is a compact , $\beta\in\mcalO(X)$,
+$D_j$ is a global irreponent of $f^{(-1)0}$,
+$$m_j:=Ord_z(f)$$
+for all $z\in D_j{\text{reg}}\setminus \bigcup_{k\neq j} D_k $
+$m_j$ be the vanishing order along $D_j$.
+\end{definition}
+
+\begin{thm}
+$(A,x)$ an analytic germ of $\dim_{\bbC}$=n-1.
+$(A,x)=(g)$for sone $g\in \mcalO X$,and $g$ is a product of 
+$(J_{A_j,x})=(g_j)$.
+
+(2) Let $f\in\theta_x$ with $(f^{-1}(0),x)\subseteq(A,x)$,then
+$f=u\coprod_j g_jm^{m_j}$, where $m_j=ord_z (f)$
+\end{thm}
+
+\begin{prop}If $X$ is a complex manifold, then any Weil divisor is
+also a Cantier divisor. 
+\end{prop}
+
+Remark: NOT true for singular points.
+
+Meromorphic function: $X$ complex manifold, $\mcalO_X$
+sheaf of functions on $X$.
+$$\mfkm_x:=\Bigset{\frac{g_x}{h_x}}
+{g_x,h_x\in\mcalO_x\text{and $h_x$ is not zeor in $\mcalO_x$}}$$
+$$
+  \mcalM:=\bigcup_{x\in X}\mfkm_x
+$$
+  with the topology given by the basis
+$$
+  \Bigset{\frac{G_x}{H_x}}
+  {x\in V, G,H\in\mcalO(V)}
+$$
+
+\begin{example}
+$f(z_1,z_2)=\frac{z_1}{z_2}$
+\end{example}
+
+\begin{definition}
+Let $F\in\mfkm(X)$,denote 
+$P(X):=\not\in \Bigset{x\in X}{f_x\not\in\mcalO_x}$.
+Pole set pf $f$, and 
+$Z(f):=P(\frac{1}{z})$ zero set of $f$.
+\end{definition}
+
+\begin{thm}
+$f\in\mfkm(X)$, if $P(d)$ (or$Z(f)$) is not empty,
+then $P(f)$ is analytic set of $\dim=\bbH$.
+\end{thm}
+
+\begin{definition}
+$P(f)\cup Z(f)$ is called the indeterminiary of set of $f$,
+(in particular, codimension $P(M)\cap Z(f)\geq 2$) 
+\end{definition}
+
+\begin{prop}
+Given $f\in\mcalM(X)$, we get a divisor:
+$$div(f)=\sum a_jA_j-\sum b_jB_j$$
+where $a_j=$ the vanishing order of $f$ along $A_j$,
+$A_j$ a globally irreducible component of $Z(f)$,
+$b_j=$...along of $\frac{1}{f}$ along $B_j$,
+$B_j$:...component of $P(f)$. 
+\end{prop}
+
+\begin{example}
+$f=\frac{z_1}{z_2}\in\mcalM(\bbC^2)$, then
+$P(f)=\{z_2=0\}$ and $Z(f)=\{z_1=0\}$, and 
+$$div(f)=[z_1=0]-[z_2=0]$$
+\end{example}
+
+Consider: $X$ - complex manifold, $\mcalO^*$:
+sheaf of invertible holomorphic functions,
+
+$\mcalM^*$: Sheaf of non-zero meromorphic functions
+
+$\mcalD iv$: Sheaf of $(n-1)$-cycles.
+
+\begin{prop}
+We have an exact sequences:
+$$0\to\mcalO^*\to\mcalM^*\to\mcalD iv\to 0$$
+
+In particular, $\mcalD iv=\mcalM^*/\mcalO^*$.
+
+long exact sequence:
+
+$$0\to H^0(X,\mcalO^*)\to H^0(X,\mcalM^*)\to H^0(X,\mcalD iv)
+\to H^1(X,\mcalO^*)\to H^1(X,\mcalM^*)\to\cdots$$
+\end{prop}
+where, note that :
+$$H^0(X,\mcalD iv)=Div(X)\qquad H^1(X,\mcalO^*)=Pic(X)$$
+
+
+Consider $Div(X)=H^0(X,\mcalM^*/\mcalO^*)\to Pic(X)$,
+$f\in H^0(X,\mcalM^*/\mcalO^*)\iff$ we have an open covering
+$X=\bigcup_i U_i$ and $f_i\in\mcalM^*(U_i)$ with
+$\frac{f_i}{f_j}\in\mcalO^*(U_i\cap U_j)$.
+
+$f\in H^0(X,\mcalM^*/\mcalO^*)\xra{\fai}
+(U_i\cap U_j,g_{ij}\in\mcalO^*(U_i\cap U_j))
+\in \check{H}^1(\mcalU,\mcalO^*)\inj H^1(X,\mcalO^*)$.
+
+\begin{definition}
+A divisor $D$ is called principal divisor, if $D= div(h)$ for some 
+$h\in\mcalM^*(X)$. 
+\end{definition}
+
+\begin{prop}
+$\ker\fai=\{\text{principal divisors}\}$,
+i.e. $\mcalO(D)$ is trivial $\iff$ $D= div(f)$ for some global meromorphic functions.
+\end{prop}
+
+\begin{prop}
+$$\mcalO(D_1+D_2)=\mcalO(D_1)\ten\mcalO(D_2)$$
+$$\mcalO(-D)=\mcalO(D)^*$$
+\end{prop}
+
+\begin{definition}
+$D_1,D_2\in Div(X)$ is called linear equivalent, if $D_1-D_2$ is principal,
+denoted by $D_1\sim D_2$. We have an injection:
+$$Div(X)/\sim\inj Pic(X)$$
+\end{definition}
+
+Remark: in general, $D\to\mcalO(D)$ is not surjective.
+
+If $X\inj\bbP^n$, then $Div(X)/\sim\cong Pic(X)$.
+
+\begin{prop}
+$L\to X$ holomorphic line bundle over a complex manifold,
+we have a canonical map:
+$$H^0(X,L)\setminus\{0\}\to Div(X)$$
+$$s\to Z(s)$$
+\end{prop}
+
+\begin{proof}
+$s\in H^0(X,L)\iff$ the data $(U_i,f_i\in\mcalO(U_i))$,
+$L$ is determined by $g_{ij}\in\mcalO^*(\mcalU_i\cap\mcalU_j)$.
+
+$Z(s)$ locally given by $div(f_i)$.
+($div(f_i)=div(f_j)$ on $U_i\cap U_j$)
+\end{proof}
+
+\begin{prop}
+$s_i\in H^0(X,L_i)\setminus\{0\}, i=1,2$ ,we have
+$Z(s_1\ten s_2)=Z(s_1)+Z(s_2)$.
+\end{prop}
+
+\begin{prop}
+Let $s\in H^0(X,L)\setminus\{0\}$, then $\mcalO(Z(s))\cong L$. 
+\end{prop}
+\begin{proof}
+Assume $X=\bigcup U_i$ with $L$ determined by $g_{ij}\in\mcalO^*(U_i\cap U_j)$,
+$s\in H^0(X,L)$ determined by $(U_i,f_i\in\mcalO(U_i))$.
+
+so,$\mcalO(Z(s))$ is the line bundle given by $\frac{f_i}{f_j}\in\mcalO^*(U_i\cap U_j)$.
+
+note that $f_i=g_{ij}f_j$.
+\end{proof}
+
+\begin{cor}
+Let $s_i\in H^0(X,L_i)\setminus\{0\},i=1,2$, then
+$$Z(s_1)\sim Z(s_2)\iff L_1\cong L_2$$
+\end{cor}
+use the fact: $\mcalO(Z(s_i))=L_i$ and $\mcalO(\text{principal divisor})\cong\mcalO_X$
+trivial line bundle.
+
+\begin{prop}
+Consider the map 
+$$Div(X)\to Pic(X)$$
+$$D\to\mcalO(D)$$
+then the image is generated by line bundles with non-zero holomorphic sections.
+\end{prop}
 
 
 
