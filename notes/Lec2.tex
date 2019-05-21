@@ -3,7 +3,378 @@
 %       2019.3.21启用电子稿                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \chapter{层与层上同调}
+
+本章介绍层论、层上同调的语言。这套理论是J-Leray 于1945-1946年
+在监狱中创立的。在正式介绍这套抽象的理论之前，先通过一个例子来大致了解
+引入此理论的动机。
+
+\textbf{问题：}设$S$为一个黎曼曲面，$\{p_n\}\subseteq S$为$S$的一个离散点集，
+我们希望找一个$S$上的亚纯函数$f$，使得$f$在$S\setminus\{p_n\}$全纯，
+并且在每个$p_i$处具有事先给定的主部。\vs
+
+这样的函数$f$在局部上的存在性是显然的；而在$S$上的整体存在性并不平凡。
+
+\begin{proof}[思路(\Cech)]
+
+取$S$的一族开覆盖$\mcalU:=\Bigset{U_\afa}{\afa\in\mcalI}$，使得
+每个$U_{\afa}$均为局部坐标卡，并且至多包含$\{p_n\}$中的一个点，
+则局部地，可在每个$U_\afa$上找到满足要求的亚纯函数$f_\afa$.
+
+之后我们希望找到$g_\afa\in\mcalO(U_\afa)$，使得对任意$\afa,\beta\in\mcalI$，
+在$U_\afa\cap U_\beta$上成立$f_\afa-g_\afa=f_\beta-g_\beta$.于是我们可定义$S$
+上的亚纯函数$f=f_\afa-g_\afa$.易知$f$良定，且满足要求。
+
+令$f_{\afa\beta}\in\mcalO(U_\afa\cap U_\beta)$为
+$$f_{\afa\beta}:=f_\afa-f_\beta$$
+则显然对于任意指标$\afa,\beta,\gma$，在公共部分$U_\afa\cap U_\beta\cap U_\gma$上成立
+$$f_{\afa\beta}+f_{\beta\gma}+f_{\gma\afa}=0\eqno{(*)}$$
+而如果存在上述$g_\afa\in U_\afa$，则有$f_{\afa}=g_\afa-g_\beta$.现在，令
+\begin{eqnarray*}
+  Z^1(\mcalU,\mcalO)&:=&\Span
+  \Bigset{f_{\afa\beta}\in\mcalO(U_{\afa}\cap U_\beta)}
+  {f_{\afa\beta}\text{满足$(*)$}}
+\\
+  B^1(\mcalU,\mcalO)&:=&\Span
+  \Bigset{f_{\afa\beta}\in\mcalO(U_{\afa}\cap U_\beta)}
+  {\exists g_\afa\in\mcalO(U_\afa)\,,\,f_{\afa\beta}=g_\afa-g_\beta}
+\end{eqnarray*}
+显然$B^1(\mcalU,\mcalO)$为$Z^1(\mcalU,\mcalO)$的子空间。如果这两者相等，
+则满足题设的解存在。
+\end{proof}
+
+我们记$H^1(\mcalU,\mcalO):=\frac{Z^1(\mcalU,\mcalO)}{B^1(\mcalU,\mcalO)}$
+为$X$上的全纯函数“层”（sheaf）关于开覆盖$\mcalU$的第$1$个\textbf{\Cech 上同调}.
+我们将了解到，\Cech 上同调与$S$的拓扑有密切关系。
+
+\section{预层与层的概念}
+
+\begin{definition}（集值预层）
+\index{presheaf\kong 预层}
+\index{section\kong 截面}
+
+设$X$为拓扑空间，$X$上的\textbf{预层}（presheaf）$\mcalF$是指以下资料：
+
+（1）对任意$X$中的开集$U$，给定集合$\mcalF(U)$，
+称$\mcalF(U)$为$\mcalF$在$U$上的\textbf{截面空间}，其中的元素称为
+$\mcalF$在$\mcalU$上的一个\textbf{截面}(section).
+
+（2）对于$X$的任意开子集$U,V$，若$U\subseteq V$，则配以\textbf{限制映射}
+\begin{eqnarray*}
+\rho_{UV}:\mcalF(V)&\to&\mcalF(U)\\
+s&\mapsto&s|_U
+\end{eqnarray*}
+并且对$X$的任意开子集$W\subseteq U\subseteq V$成立：
+\begin{eqnarray*}
+\rho_{UU}&=&\id_{\mcalF(U)} \\
+\rho_{WV}&=&\rho_{WU}\circ\rho_{UV}
+\end{eqnarray*}
+\end{definition}
+
+最典型的例子是，拓扑空间$X$上的函数之全体函数构成预层$\mcalC$.
+具体地，对$X$的开子集$U$，$\mcalC(U):=C(U)$为定义在$U$上的连续函数之全体；
+对于$V\subseteq U$，则限制映射$\rho_{UV}$为通常的函数定义域的限制。
+
+\begin{rem}通常来说，预层$\mcalF$被假定具有代数结构。
+具体地，对于$X$的开集$U$，$\mcalF(U)$被假定具有Abel群结构、交换环结构或者
+$A$-模结构等等，此时分别称作取值于Abel群范畴、交换环范畴、$A$-模范畴的预层。
+\end{rem}
+当然，若$\mcalF(U)$具有上述代数结构，则我们也要求限制映射$\rho_{VU}$
+为相应范畴中的态射，并且规定$\mcalF(\vkong)=\{0\}$为相应范畴中的零对象。
+
+\begin{example}（常值预层）
+\label{常值预层-def}
+
+对于拓扑空间$X$，定义$X$上的集值预层$\bbC_X$如下：对于任意开子集$U$，
+$\bbC_X(U):=\bbC$；对于$U\subseteq V$，限制映射
+$
+  \rho_{UV}:=
+  \left\{
+    \begin{array}{ll}
+      \id_\bbC & U\neq\vkong\\
+      0        & U=\vkong
+    \end{array}
+  \right.
+$，则容易验证这是$X$上的预层，称为\textbf{常值预层}.
+\end{example}
+
+\begin{example}（全纯函数预层）
+
+设$X$为复流形，则$\mcalO_X:U\mapsto\mcalO(U)$，配以通常的函数限制，
+构成$X$上的预层，称为\textbf{全纯函数预层}。
+\end{example}
+
+\begin{example}（微分形式预层）
+
+设$X$为光滑流形，对$X$的任意开子集$U$，考虑$U$上的光滑$k$形式之全体$\wedgeform{k}(U)$，
+配以通常的限制映射，则$\wedgeform{k}$构成预层，称为
+\textbf{光滑$k$-形式预层}。
+\end{example}
+
+\begin{definition}（层）
+\index{sheaf\kong 层}
+
+设$\mcalF$为拓扑空间$X$上的预层，称$\mcalF$为层（sheaf），若以下成立：
+
+（1）（粘合公理）若$U$与$U_\afa(\afa\in\mcalI)$均为$X$的开子集，并且
+$U=\bigcup\limits_{\afa\in\mcalI}U_\afa$，
+则对于任何$s_\afa\in\mcalF(U_\afa)$，如果
+$s_\afa|_{U_\afa\cap U_\beta}
+=s_\beta|_{U_\afa\cap U_\beta}$
+对任意$\afa,\beta\in\mcalI$成立，则存在$s\in\mcalF(U)$，使得
+$s|_{U_\afa}=s_\afa$对任意$\afa\in\mcalI$成立。\vs
+
+（2）（唯一性公理）条件同上，则对于任意$s,t\in\mcalF(U)$，
+若对任意$\afa\in\mcalI$，$s|_{U_\afa}=t|_{U_\afa}$，则$s=t$.
+\end{definition}
+
+类似地也可以定义取值于Abel范畴上的层。此时，容易验证唯一性公理等价于：
+（$U=\bigcup\limits_{\afa\in\mcalI}U_\afa$）
+对于$s\in\mcalF(U)$，若$s|_{U_\afa}=0$对任意$\afa\in\mcalI$成立，则$s=0$.
+
+\begin{example}若拓扑空间$X$包含至少两个不交的开集，
+则常值预层（例子\ref{常值预层-def}）$\bbC_X$\textbf{不是}层，因为不满足粘合公理。
+\end{example}
+具体地，若$U,V$为$X$的两个不交的开子集，考虑$1\in\bbC_X(U)$以及$2\in\bbC_{X}(V)$，
+则显然不存在$z\in\bbC_X(U\cup V)$使得$1=z|_{U}$以及$2=z|_{V}$.
+
+\begin{example}（向量丛是层）设$E\to X$为光滑流形$X$上的向量丛，
+则$E$自然视为$X$上的层$\Gma(-,E)$：对任意$U\subseteq X$， 考虑丛$E$在$U$
+上的截面之全体$\Gma(U,E)$。易验证其满足层的公理。
+\end{example}
+类似地，复流形上的全纯函数预层是层，光滑$k$-形式预层也是层。
+
+\begin{definition}（预层的同态）
+
+设$\mcalF$与$\mcalG$为拓扑空间$X$上的（取值于同一个Abel范畴的）预层，
+预层同态$\fai:\mcalF\to\mcalG$是指以下资料：对任意开集$U\subseteq X$，
+配以（相应Abel范畴中的）态射$\fai_U:\mcalF(U)\to\mcalG(U)$，并且
+对于$X$的任意开子集$U\subseteq V$，以下图表交换：
+$$
+  \xymatrix{
+     \mcalF(U)  \ar[d]_{\fai_U}
+    &\mcalF(V)  \ar[d]_{\fai_V} \ar[l]_{\rho_{UV}}
+  \\
+     \mcalG(U)
+    &\mcalG(V)  \ar[l]_{\rho_{UV}}
+  }
+$$
+\end{definition}
+
+设$\fai:\mcalF\to\mcalG$为$X$上的预层同态，则我们可以定义
+$\ker^p\fai$,$\im^p\fai$,$\coker^p\fai$为：对任意开集$U\subseteq X$，
+$$(\ker^p\fai)(U):=\ker(\fai_U)$$
+$\im^p\fai$与$\coker^p\fai$也完全类似。容易验证它们都是预层，
+分别称为预层同态$\fai$的\textbf{核预层}、\textbf{像预层}、\textbf{余核预层}。
+这里的上标“$p$”是指“预层”（presheaf）。
+
+\begin{prop}设$\mcalF,\mcalG$为$X$上的层，
+$\fai:\mcalF\to\mcalG$为预层同态，则预层$\ker^p\fai$是层。
+\end{prop}
+
+\begin{proof}直接验证$\ker^p\fai$满足层的粘合公理和唯一性公理。
+设$\Bigset{U_\afa}{\afa\in\mcalI}$为$X$的开子集$U$的一族开覆盖，
+注意到$(\ker^p\fai)(U_\afa)\subseteq\mcalF(U_\afa)$，以及$\mcalF$为层（满足粘合公理），
+因此易知$\ker^p\fai$也满足粘合公理。$\ker^p\fai$的唯一性公理也是由$\mcalF$的层性质直接得到的。
+\end{proof}
+
+从此以后，若$\mcalF$与$\mcalG$都为层，则我们将核预层$\ker^p\fai$简记为$\ker\fai$.
+
+\begin{rem}好吧，刚才的命题几乎显然。但是要注意，即使
+$\mcalF$与$\mcalG$都是层，$\im^p\fai$与$\coker^p\fai$未必是层。
+它们并没有$\ker^p\fai$的良好性质。
+\end{rem}
+
+\begin{example}考虑拓扑空间$X=\bbC\setminus\{0\}$，
+令$\mcalF:=\mcalO_X$为$X$上的全纯函数层，$\mcalG:=\mcalO^*_X$定义为：
+对于$X$的开集$U$，
+$$\mcalO^*_X(U):=\Bigset{f\in\mcalO_X(U)}{f(z)\neq 0\,,\forall z\in U}$$
+容易验证$\mcalO^*_X$为（取值于集合的）层。考虑层同态
+\begin{eqnarray*}
+\exp:\mcalF&\to&\mcalG\\
+f\in\mcalF(U)&\mapsto&e^f
+\end{eqnarray*}
+则$\im^p\exp$\textbf{不是}层。
+\label{指数预层同态}
+\end{example}
+
+\begin{proof}
+只需要考虑函数$z\in\mcalO_X^*(X)$.对任意单连通的开子集$U\subseteq X$，
+易知$z\in\mcalO^*_X(U)$满足$z\in(\im^p\exp)(U)$，
+但是$z\in\mcalO_X^*(X)$并不位于$(\im^p\exp)(X)$当中，从而
+$\im^p\exp$不满足粘合公理。
+\end{proof}
+
+\section{预层的层化}
+
+\begin{definition}(预层的芽)
+\index{germ\kong 芽}
+\index{stalk\kong 茎条}
+
+设$\mcalF$为$X$上的预层，$x\in X$，则称
+$$\mcalF_x:=\rlim_{x\in U}\mcalF(U)$$
+为$\mcalF$在$x$处的\textbf{茎条}（stalk），其中$U$取遍$x$的开邻域。
+$\mcalF_X$中的元素称为$x$处的\textbf{芽}（germ）。
+\end{definition}
+
+我们不再回顾范畴论中的余极限（or 归纳极限、正向极限）的概念。
+典型的例子是，若$\mcalO_X$为复流形$X$上的解析函数环层，则对于$x\in X$，
+$\mcalO_{X,x}$即为通常的在$x$处的解析函数芽环。
+
+回顾层的粘合公理、唯一性公理，用茎条、芽的语言可以给出上述公理的等价表述：
+\begin{prop}设$\mcalF$是拓扑空间$X$上的预层，则
+
+（1）$\mcalF$满足粘合公理$\iff$对任意开集$U$，以及对任意
+$s(x)\in\mcalF_x(\forall x\in U)$，如果对任意$x\in U$，存在$x$的开邻域$V\subseteq U$，
+以及$s(x)$的代表元$t\in\mcalF(V)$，使得对任意$y\in V$，成立$s(y)=t_y$，那么
+存在$S\in\mcalF(U)$，使得对任意$x\in U$成立$S_x=s(x)$。
+
+（2）$\mcalF$满足唯一性公理$\iff$对任意开集$U$，以及对任意
+$s\in\mcalF(U)$，如果对任意$x\in U$，$s_x=0$，那么$s=0$.
+\end{prop}
+\begin{proof}
+  由有关定义出发，几乎显然。
+\end{proof}
+
+\begin{prop}设$\mcalF$与$\mcalG$为$X$上的预层，$\fai:\mcalF\to\mcalG$
+为预层同态，则对任意$x\in X$，$\fai$自然诱导茎条同态
+$$\fai_x:\mcalF_x\to\mcalG_x$$
+\end{prop}
+\begin{proof}
+  由余极限$\rlim$的函子性直接得到。
+\end{proof}
+具体构造是，对任意$F_x\in\mcalF_x$，取$F_x$的代表元$F\in\mcalF(U)$，
+其中$U$为$x$的某个开邻域。之后，$\fai_x(F_x)=(\fai_U(F))_x$.
+
+\begin{definition}（预层的层空间）
+\index{sheaf space\kong 层空间}
+
+设$\mcalF$为拓扑空间$X$上的预层，则定义拓扑空间
+$$\mcalFtil:=\coprod_{x\in X}\mcalF_X$$
+其拓扑由拓扑基$\Bigset{\Omg_{F,U}}{U\subseteq X\text{为开子集},F\in\mcalF(U)}$
+生成，其中$\Omg_{F,U}=\Bigset{F_x\in\mcalF_x}{x\in U}$.
+称拓扑空间$\mcalFtil$为预层$\mcalF$的\textbf{层空间}（sheaf space）。
+\end{definition}
+
+具体地，若芽$F_x\in\mcalFtil$，取$F_x$的代表元$F\in\mcalF(U)$，
+其中$U$为$x$的一个（充分小的）开邻域，则$\Bigset{F_y}{y\in U}$
+为$F_X$在$\mcalFtil$中的一个开邻域。我们由自然的映射
+\begin{eqnarray*}
+\Pi:\mcalFtil&\to&X\\
+s\in\mcalF_x&\mapsto&x
+\end{eqnarray*}
+则容易验证$\Pi:\mcalFtil\to X$为连续映射，且对于任意$F\in\mcalF(U)$，
+$\Pi:\Omg_{F,U}\to U$为拓扑同胚。
+
+\begin{definition}（预层的层化）
+\index{sheafification\kong 层化}
+
+设$\mcalF$是$X$上的预层，对$X$的开子集$U$，定义
+$$
+  \mcalF^+(U)
+:=\Bigset{s:U\to\mcalFtil}{s\text{为连续映射，并且}\Pi\circ s=\id_U}
+$$
+称$\mcalF^+$为预层$\mcalF$的\textbf{层化}（sheafification）.
+\end{definition}
+具体地，对于$s:U\to\mcalFtil$，$s\in\mcalF^+(U)$当且仅当
+对任意的$x\in U$，$s(x)\in\mcalF_x$，并且存在$x$的开邻域$V\subseteq U$，
+以及存在$F\in\mcalF(V)$，使得$s(y)=F_y$对任意$y\in V$成立。
+
+\begin{prop}设$\mcalF$为$X$上的预层，则$\mcalF^+$为$X$上的层，
+并且有典范的预层同态$\theta:\mcalF\to\mcalF^+$如下：对任意开集$U$，
+\begin{eqnarray*}
+\theta_U:\mcalF(U)&\to&\mcalF^+(U)\\
+s&\mapsto&\stil:U\to\mcalFtil\quad(x\mapsto s_x)
+\end{eqnarray*}
+\end{prop}
+\begin{proof}
+$\mcalF^+$的粘合公理与唯一性公理几乎显然成立。
+\end{proof}
+
+我们更习惯于把有预层同态$\theta:\mcalF\to\mcalF^+$称为$\mcalF$的层化。
+容易验证，对任意$x\in X$，由茎条同构$\mcalF_X\cong\mcalF^+_x$；此外也
+容易验证，如果$\mcalF$本身是层，那么$\theta$为层同构，即“层的层化同构于其本身”。
+
+\begin{prop}（层化的泛性质）
+
+设$\mcalF$为拓扑空间$X$上的预层，则对于$X$上的任何层$\mcalG$，
+以及预层同态$\fai:\mcalF\to\mcalG$，存在唯一的层同态$\psi:\mcalF^+\to\mcalG$，
+使得以下图表交换：
+$$
+  \xymatrix{
+     \mcalF \ar[r]^{\forall\fai} \ar[d]_\theta
+    &\mcalG
+  \\
+     \mcalF^+ \ar@{-->}[ur]_{\exists!\,\psi}
+    &
+  }
+$$
+\end{prop}
+
+\begin{proof}
+对任意$x\in X$，$\fai:\mcalF\to\mcalG$诱导了$\fai_x:\mcalF_x\to\mcalG_x$，
+再注意$\mcalF_X\cong\mcalF^+_x$，从而自然给出$\psi_x:\mcalF^+_x\to\mcalG_x$.
+易验证$\Bigset{\psi_x}{x\in X}$确定了层同态$\psi:\mcalF^+\to\mcalG$，且$\psi\circ\theta=\fai$.
+
+$\psi$的唯一性是显然的。
+\end{proof}
+
+\begin{example}回顾常值预层$\bbC_X$（见例子\ref{常值预层-def}），则其层化
+$\bbC_X^+$为，对任意开集$U$，
+$$\bbC_X^+(U)=\Bigset{f:U\to\bbC}{f\text{为局部常值函数}}$$
+称之为$X$上的\textbf{局部常值层}。
+\end{example}
+
+\begin{example}回顾例子\ref{指数预层同态}中的预层同态
+$$\exp:\mcalO_X\to\mcalO_X^*$$
+则像预层$\im^p(\exp)$的层化$(\im^p\exp)^+\cong\mcalO_X^*$.
+\end{example}
+
+\begin{definition}（像层、余核层与商层）
+
+设$\mcalF$与$\mcalG$为拓扑空间$X$上的层，$\fai:\mcalF\to\mcalG$为层同态。
+
+（1）定义$\im\fai:=(\im^p\fai)^+$，称之为$\fai$的\textbf{像层}；
+
+（2）定义$\coker\fai:=(\coker^p\fai)^+$，称之为$\fai$的\textbf{余核层}；
+
+（3）若对于任意开集$U$，$\fai_U:\mcalF(U)\to\mcalG(U)$为单同态，则称
+$\fai$为\textbf{层单同态}，此时也称$\mcalF$为$\mcalG$的\textbf{子层}，
+并且定义\textbf{商层}$\mcalF/\mcalG:=\coker\fai$.
+\end{definition}
+
+无非是将相应的预层加以层化。此外容易验证，层同态$\fai:\mcalF\to\mcalG$为单同态，
+当且仅当对任意$x\in X$，$\fai_x:\mcalF_x\to\mcalG_x$为单同态。
+
+\begin{rem}设$\fai:\mcalF\to\mcalG$为层同态，
+则像层$\im\fai$自然地视为$\mcalG$的子层：
+$$
+  \xymatrix{
+     \mcalF  \ar[r]^\fai  \ar[d]_{\faitil}
+    &\mcalG
+  \\
+     \im^p\fai  \ar[ur]^{i'}  \ar[r]^\theta
+    &\im\fai    \ar@{-->}[u]_i
+  }
+$$
+层同态$i:\im\phi\to\mcalG$由层化的泛性质给出，并且逐茎条看，显然$i$为层单同态。
+\end{rem}
+
+\begin{definition}（层满同态）
+
+设$\fai:\mcalF\to\mcalG$为层同态，称$\fai$为\textbf{层满同态}，若
+$\im\fai:=(\im^p\fai)^+\cong\mcalG$.
+\end{definition}
+
+由有关定义可以验证，层同态$\fai:\mcalF\to\mcalG$为层满同态，
+当且仅当对任意$x\in X$，$\fai_x:\mcalF_x\to\mcalG_x$为满同态。
+由此可推出，$\fai$为层同构，当且仅当对任意$x\in X$，$\fai_x$为茎条同构。
+
+\section{层的顺像与逆像}
+
+（待补）
+
 \section{层的上同调}
 Today:
 
