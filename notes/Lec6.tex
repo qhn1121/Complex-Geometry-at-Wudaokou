@@ -1,0 +1,1191 @@
+\chapter{正性与消灭定理}
+positivity and vanishing theorem
+
+$X$-Kahler manifold, i.e. $\exists$ Hermitian metric $\omg$ s.t. $\td\omg=0$,
+$\td=\td'+\td''$, $\td'=\p,\td''=\pbar$.
+$$\yc_\td=[\td,\td^*]=\td\td^*+\td^*\td$$
+$$\yc_{\td'}=[\td',\td'^*]$$
+$$\yc_{\td''}=[\td'',\td''^*]$$
+$\td\curvearrowright C^{\infty}(X,\wedgeform{p,q})$.
+
+Fact: $\omg$ is Kahler $\iff\yc_{\td'}=\yc_{\td''}=\frac{1}{2}\yc_\td$.
+
+Let $\underline{\bbC}:=X\times\bbC$ be the trivial line bundle,
+$\td$ can be regraded as the Chern connection on $\underline{\bbC}$.
+
+$(E,h)$-Hermitian holomorphic vector bundle over $(X,\omg)$,
+with Chern connection $D_E=D_E'+D_E''$. $(D_E''=\pbar)$.
+
+$$C^\infty(X,\wedgeform{p,q}\ten E)$$
+has an inner product induced by $\omg,h$.
+$\rightsquigarrow$ adjoint operators $D_E^*=D_E'^*+D_E''^*$.
+
+$\rightsquigarrow\yc_E=[D_E,D_E^*]=D_ED_E^*+D_E^*D_E$, and
+$\yc_E'\,,\,\yc_E''$. (self adjoint, elliptic operators)
+
+Question: relation between $\yc_E'$ and $\yc_E''$?
+
+\begin{thm}(Bochner-Kodaira-Nakaino identity)
+$$
+  \yc_E''-\yc_E'
+=
+  \left[
+    \sqrt{-1}
+    \Theta_E
+  ,
+    \Lmd
+  \right]
+$$
+where $\Theta_E$ is the Chern curvature of $D_E$.
+\end{thm}
+
+Recall: $\Theta_E=D_E^2$, when $D_E$ is Chern connectoin, we have
+$$D_E'^2=0\qquad D_E''^2=0$$
+i.e. $\Theta_E=[D_E',D_E'']$.
+
+Remark: $E$ is flat(i.e. $D_E^2=0$)$\iff \yc_E'=\yc_E''$.
+
+\begin{proof}
+based on following identities:
+$$[D_E''^*,L]=\sqrt{-1}D_E'$$
+$$[D_E'^*,L]=-\sqrt{-1}D_E''$$
+$$[\Lmd,D_E']=-\sqrt{-1}D_E'^*$$
+$$[\Lmd,D_E'']=\sqrt{-1}D_E''^*$$
+
+then (by super Jacobi identity):
+\begin{eqnarray*}
+  \yc_E''=[D_E'',D_E''^*]
+&=&
+  -\sqrt{-1}
+  \left[
+    D_E''
+  ,
+    [\Lmd,D_E']
+  \right]
+=
+  -\sqrt{-1}
+  \left(
+    [\Lmd,[D_E',D_E'']]
+   +[D_E',[D_E'',\Lmd]]
+  \right)\\
+&=&
+  -\sqrt{-1}
+  \left(
+    [\Lmd,\Theta_E]
+   +[D_E',\sqrt{-1}D_E'^*]
+  \right)
+\end{eqnarray*}
+so,
+$$\yc_E''-\yc_E'=[\sqrt{-1}\Theta_E,\Lmd]$$
+\end{proof}
+
+\begin{lemma}(normal frame)
+
+Let $X$ be a complex manifold, then for any $x_0\in X$,
+and any holomorphic chart $(z_1,...,z_n)$ centered at $x_0$,
+there exists a holomorphic frame $\{e_\lmd\}_{\lmd=1}^{r:=rank E}$
+of $E$ near $x_0$ such that
+$$
+  \left\langle
+    e_{\lmd}(z),e_{\mu}(z)
+  \right\rangle
+=
+  \delta_{\lmd,\mu}-
+  \sum_{1\leq j,k \leq n}
+  C_{jk\lmd\mu}
+  z_j\zbar_k
++
+ O(|z|^3)
+$$
+where $(C_{jk\lmd\mu})$ are the coefficients of the Chern curvature
+$$\Theta_E(x_0)=
+  \sum_{1\leq j,k\leq n\atop 1\leq\lmd,\mu\leq r}
+    C_{jk\lmd\mu}
+    \td z_j\wedge\td \zbar_{k}\ten e_\lmd^*\ten e_\mu
+$$
+\end{lemma}
+
+
+need to verify: $\forall s\in C^\infty(X,\wedgeform{p,q}\ten E),x_0\in X$,
+$$[D_E''^*,L]s(x_0)=\sqrt{-1}D_E's(x_0)$$
+w.r.t the normal frame $(e_\lmd)_{\lmd=1}^r$ near $x_0$, assume
+$$s=\sum_{\lmd=1}^{n}\sgm_\lmd\ten e_\lmd$$
+then
+$$
+  D_Es(z)=\sum_{\lmd=1}^{n}
+    \td\sgm_\lmd\ten e_\lmd +O(|z|)
+$$
+$$
+  D_E^*s(z)=\sum_{\lmd=1}^{n}
+    \td^*\sgm_\lmd\ten e_\lmd +O(|z|)
+$$
+
+$$D_E''^*=\sum_{\lmd=1}^{r} \td''^*\sgm_\lmd\ten e_\lmd+O(|z|)$$
+$$
+  \Rightarrow
+  [D_E''^*,L]s=
+  D_E''^*(\sum\omg\wedge\sgm_\lmd\ten e_\lmd)
+ -\omg\wedge
+ \left(
+   \sum_{\lmd=1}^{r}
+   \td''^*\sgm_\lmd\ten e_\lmd+O(|z|)
+ \right)
+=
+  \sum_{\lmd=1}^{r}
+    [\td''^*,L]\sgm_\lmd\ten e_\lmd+O(|z|)
+$$
+Similarly,
+$$
+  D_E's
+=
+  \sum_{\lmd=1}^{r}
+    \td'\sgm_\lmd\ten e_\lmd+O(|z|)
+$$
+we have:
+$$
+  [d''^*,L]=\sqrt{-1}\td'
+$$
+(because $\omg$ is Kahler)
+
+...
+
+$(E,h)$ hermitian holomorphic vector bundle over Kahler manifold $(X,\omg)$.
+we have BKN identity
+$$
+  \yc_E''-\yc_E'=[\sqrt{-1}\Theta_E,\Lmd]
+$$
+
+Recall: $L^2$-Hodge theory. $X$ compact manifold,then
+$$
+  H^{p,q}(X,E):=
+  \frac{\ker D_E''}{\im D_E''}
+\cong
+  \ker\yc_E''
+$$
+(harmonic form)
+
+Take $u\in C^\infty(X,\wedgeform(p,q)\ten E)$,applying BKN identity to $u$,
+$$\yc_E''u-\yc_E'u=[\sqrt{-1}\Theta_E,\Lmd]u$$
+
+note that
+$$\ppair{\yc_E'u}{u}=\norm{D_E'u}^2+\norm{D_E'^*u}^2\geq 0$$
+$$
+  \Rightarrow
+  \norm{D_E''u}^2+\norm{D_E''^*u}^2
+\geq
+  \ppair{[\sqrt{-1}\Theta_E,\Lmd]}{u}
+$$
+i.e.
+$$
+  \norm{D_E''u}^2+\norm{D_E''^*u}^2
+\geq
+  \int_X\pair{[\sqrt{-1}\Theta_E,\Lmd]}{u}
+  \td Vol
+$$
+
+Observation: if $u\in\ker\yc_E''$, and $[\sqrt{-1}\Theta_E,\Lmd]$
+has "positivity",
+then $LHS=0$. So, $H^{p,q}(X,E)=0$.
+
+\begin{definition}(Positivity)
+
+We call $[\sqrt{-1}\Theta_E,\Lmd]$ is positive at $x_0\in X$, if
+for any $0\neq v\in\left(\wedgeform{p,q}\ten E\right)_{x_0}$, we have
+$$\pair{[\sqrt{-1}\Theta_E,\Lmd]v}{v}>0$$
+
+....positive on $X$, if ... at each point
+\end{definition}
+
+\begin{thm}
+If $[\sqrt{-1}\Theta_E,\Lmd]$ is positive on $X$, then
+$$H^{p,q}(X,E)=0$$
+\end{thm}
+
+Special case: $E$ is a holomorphic line bundle, with Hermitian metric $h$,
+$$\Theta_E=-\td'\td''\log h$$
+$\Rightarrow\sqrt{-1}\Theta_E$ is a real $\td$-closed $(1,1)$-form on $X$.
+
+locally,
+$$
+     \afa=
+\sqrt{-1}\sum_{1\leq i,j\leq n}
+  a_{ij}\td z_i\wedge\td\zbar_j
+$$
+
+$\afa$ is real $\iff$ $\afa=\overline{\afa}$,
+(i.e. locally $(a_{ij})$ is an hermitian matrix)
+
+\begin{definition}
+a real $(1,1)$-form $\afa$ is called positive, if
+$(a_{ij})_{ij}$ is positive definite.
+\end{definition}
+
+\begin{lemma}
+If $\sqrt{-1}\Theta_E$ is positive, then $\omg:=\sqrt{-1}\Theta_E$ gives a
+Kahler metric on $X$.
+\end{lemma}
+
+\begin{lemma}
+If $\omg=\sqrt{-1}\Theta_E>0$, and $\Lmd$ is the adjoint of $L=\omg\wedge$,
+then
+$$[\sqrt{-1}\Theta_E,\Lmd]$$
+is positive on $\wedgeform{p,q}\ten E$
+whenever $p+q\geq n+1$.
+\end{lemma}
+
+\begin{lemma}
+Let $\afa$ be a real $(1,1)$-form, $\omg$ a Kahler metric, assume
+the eigenvalue of $\afa$ at $x_0$ is $\afa_1\leq\afa_2\leq\cdots\leq\afa_n$,
+then (in the coordinate chart $(z_1,z_2,...,z_n)$, and
+$u=\sum\limits_{|I|=p\atop|J|=q}u_{IJ}\td z_I\wedge\td\zbar_J$)
+$$
+  [\afa,L]
+=
+  \sum_{I,J}
+    \left(
+      \sum_{i\in I}\afa_i
+    + \sum_{j\in J}\afa_j
+    - \sum_{k=1}^n\afa_k
+    \right)
+    u_{IJ}\td z_I\wedge\td\zbar_J
+$$
+\end{lemma}
+
+\begin{cor}
+$
+  \afa=\omg
+$, then
+$$[\omg,\Lmd]u=(p+q-n)u$$
+\end{cor}
+
+\begin{cor}
+Take an orthonormal frame $e$ of $E$, then
+for any $u=\sum \limits_{|I|=p\atop|J|=q}u_{IJ}\td z_I\wedge\td\zbar_J\ten e$, we have
+$$
+  \pair{
+  [\sqrt{-1}\Theta_E,\Lmd
+  ]u
+  }{u}
+=(p+q-n)|u|^2
+$$
+\end{cor}
+
+\begin{thm}
+If $[\sqrt{-1}\Theta_E,\Lmd]$ is positive on $X$,
+then
+$$H^{p,q}(X,E)=0$$
+\end{thm}
+
+\begin{thm}If $E$ is a holomorphic line bundle
+with a smooth hermitian metric $h$ s.t. $\sqrt{-1}\Theta_{(E,h)}\geq 0$,
+then$H^{p,q}(X,E)=0$ whenever $p+q\geq n+1$.
+\end{thm}
+de Rham-Weil...$\cong H^q(X,\Omg^p\ten E)$.
+
+\begin{definition}(canonical bundle)
+$$K_X=\det T^*X$$
+determinate bundle of cotangent bundle,
+is called canonical bundle.
+($\mcalO(K_X)=\Omg_X^n$)
+\end{definition}
+
+
+\begin{definition}
+$X$ is called Fano, if $K_X^*=\det(TX)$ has a matric with positive curvature.
+
+$X$ is called Calabi-Yau,if $K_X$ has a metric with vanishing curvature.
+
+$X$ is of general type, if $K_X$ has a metric with positive curvature.
+\end{definition}
+
+
+\begin{cor}(Kodaira vanishing theorem)
+$E$ is a positive line bundle, then
+$$H^q(X,K_X\ten E)=0$$
+for any $q\geq 1$.
+\end{cor}
+
+So, if $X$ is Fano, $(\iff K_X^*)$ positive,
+$K_X\ten K_X^*=\underline{\bbC}$,
+$\Rightarrow H^1(X,\mcalO)=0,\Rightarrow H^1(X,\bbR)=0$,
+
+%%%%%%%%%%%%%%%%2019.5.14%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+Recall: BKN-inequality.
+
+holomorphic Hermitian vector bundle $(E,h)\to (X,\omg)$, $\omg$ is Kahler.
+For any $u\in C^\infty(X,\wedgeform{p,q}\ten E)$, we have
+$$
+  \norm{D''u}^2+\norm{D''^*u}^2
+\geq
+  \int_X
+    \pair{[\sqrt{-1}\Theta_E,\Lmd_\omg]u}{u}
+    \td Vol
+$$
+
+Recall: If $[\sqrt{-1}\Theta_E,\Lmd_\omg]$ is positive on
+$C^\infty(X,\wedgeform{p,q}\ten E)$, then
+$H^{p,q}(X,E)=0$.
+
+\begin{thm}(Kodaira-Nakano vanishing theorem)
+
+If $E$ is a holomorphic line bundle with a smooth metric $h$ s.t.
+$\sqrt{-1}\Theta_{(E,h)}>0$,then
+$[\sqrt{-1}\Theta_E,\Lmd_\omg]$ is positive on
+$C^\infty(X,\wedgeform{p,q}\ten E)$ whenever $p+q\geq n+1$.
+
+$\Rightarrow H^{p,q}(X,E)=0$ when $p+q\geq n+1$.
+\end{thm}
+(Last time)
+
+Today:
+\begin{thm}(Girbau vanishing theorem, 1976)
+
+$E$ is a holomorphic line bundle over compact Kahler manifold,
+with smooth metric $h$ s.t. $\sqrt{-1}\Theta_{(E,h)}\geq 0$,
+and has at least $n-s+1$ positive eigenvalues at every points of $X$, then
+$$H^{p,q}(X,E)=0$$
+if $p+q\geq n+s$.
+\end{thm}
+
+$\afa$: a \textbf{real} $(1,1)$-form on $X$,
+locally $\afa=\sqrt{-1}\sum\afa_{ij}\td z_i\wedge\td\zbar_j$.
+then we have a matrix $M(\afa)=(\afa_{ij})_{n\times n}$,
+($\afa$ is real $\Rightarrow$)a hermite matrix.
+
+we call $\afa$ has at least $k$ positive eigenvalues at $x$,
+if $M(\afa)(x)$ has $k$ positive eigenvalues.
+(Remark: It is well defined)
+
+\begin{proof}
+Claim: there exists some Kahler metric $\omg$
+s.t. $[\sqrt{-1}\Theta,\Lmd]$ is positive.
+
+Fix a Kahler metric $\omg$,
+for $p\in X$, choose a holomorphic chart $(z_1,...,z_n)$,
+s.t. $\omg(p)=\sqrt{-1}\sum\td z_j\wedge\td\zbar_j$ and
+$\sqrt{-1}\Theta_E(p)=\sqrt{-1}\sum\limits_{j=1}^{n}\gma_j\td z_j\wedge\td\zbar_j$.
+WLOG, $0\leq\gma_1\leq\gma_2\leq\cdots\leq\gma_n$,
+and for any $j\geq s$, $\gma_j>0$.
+
+Consider
+$$\omg_\veps:=\veps\omg+\sqrt{-1}\Theta_E$$
+for $\veps>0$, then $\omg_\veps$ is a Kahler metric.
+$\omg_\veps(p)=\sqrt{-1}\sum\limits_{j}(\veps+\gma_j)\td z_j\wedge\td\zbar_j$.
+
+$\Rightarrow$ the eigenvalue of $\sqrt{-1}\Theta$ with respective to
+$\omg_\veps(p)$ is given by
+$$\gma_{j,\veps}=\frac{\gma_j}{\veps+\gma_j}=
+\frac{1}{1+\frac{\veps}{\gma_j}}$$
+
+Claim: $[\sqrt{-1}\Theta,\Lmd_{\omg_\veps}]$ is positive on
+$\wedgeform{p,q}\ten E$ when $p+q\geq n+s$, $0<\veps<<1$.
+
+Take $u=\sum\limits u_{IJ}\td w_T\wedge\td\wbar_J\ten e$,then
+$$
+  \pair{[\sqrt{-1}\Theta_E,\Lmd_{\omg_\veps}]}{u}
+=
+  \sum_{|I|=p\atop|J|=q}
+    \left(
+      \sum_{i\in I}
+        \gma_{i,\veps}
+     +\sum_{j\in J}
+       \gma_{j,\veps}
+     +\sum_{k=1}^{n}
+       \gma_{k,\veps}
+    \right)
+    |u_{IJ}|^2
+\geq
+  (\gma_{1,\veps}+...+\gma_{p,\veps}-\gma_{q+1,\veps}-...-\gma_{n,\veps})
+  |u|^2
+$$
+note that $\gma_{j,\veps}\geq 1-\frac{\veps}{\gma_s}$
+if $j\geq s$, $\gma_{j,\veps}\in[0,1)$ for all $j$. it
+$$
+\geq
+  \left(
+    (q+s-1)(1-\frac{\veps}{\gma_s})
+   -(n-p)
+  \right)
+  |u|^2
+>0
+$$
+if $p+q\geq n+s$ and $0<\veps<<1$.
+\end{proof}
+
+\begin{rem}(Kawamata-Viewheg vanishing theorem)
+
+$E\to (X,\omg)$ is a holomorphic line bundle over a compact Kahler manifold.
+
+Definition: $E$ is called positive, ...(positive="ample" in AG).
+numerically effective(nef) if for any $\veps>0$, there is a smooth metric $h_\veps$
+s.t. $\sqrt{-1}\Theta_{h_\veps}\geq -\veps\omg$.
+
+Theorem: If $E$ is nef, and $\int_X c_1(E)^n>0$, then
+$H^{q}(X,K_X\ten E)=0$ for $q\geq 1$.
+\end{rem}
+
+\textbf{Positivity concept of vector bundles(rank $>1$)}
+
+$(E,h)\to (X,\omg)$ Hermitian vector bundle of rank $r$,
+over a complex manifold(may not Kahler).
+
+Denote $(e_1,...,e_r)$ a local orthonormal frame of $E$,
+$(z_1,...,z_n)$ local holomorphic chart,
+Chern curvature of $(E,h)$:
+$$
+  \Theta_{(E,h)}
+= \sum_{1\leq j,k\leq n\atop 1\lmd,\mu\leq r}
+    c_{ik\lmd\mu}\td z_j\wedge\td\zbar_k\ten e_\lmd^*\ten e_\mu
+$$
+
+Fact: $\sqrt{-1}\Theta_E$ induces a Hermitian operator $\theta_E$
+on $TX\ten E$.
+
+Let $u,v$ be local sections of $TX\ten E$,
+$$u=\sum_{1\leq j\leq n\atop1\leq\lmd\leq r}
+u_{k\mu}\pp{z_k}\ten e_\mu
+$$
+$$
+  \theta_{E}(u,v)
+:=
+  \sum_{1\leq j,k\leq n\atop 1\leq\lmd,\mu\leq r}
+    c_{jk\lmd\mu} u_{j\lmd}\overline{v_{k\mu}}
+$$
+
+\begin{definition}
+We call $E$ Nakano positive, if $\theta_E$ is positive.
+(i.e for any non-zero local section $u\in TX\ten E$, $\theta_E(u,u)>0$)
+
+We call $E$ Griffith positive, if for any
+$0\neq \xi\in T_xX$, $s\in E_x,s\neq 0$,
+$$\theta_E(\xi\ten s,\xi\ten s)>0$$
+\end{definition}
+
+\begin{rem}
+By definition, Nakano positivity $\Rightarrow$ Griffith positivity.
+
+If $E$ is line bundle,
+Nakano positivity $\iff$ Griffith positivity.
+(and $\iff$ positivity of lines bundles)
+\end{rem}
+
+\begin{thm}(Demailly-Skota, 1979)
+
+$E$ is Griffith positive $\Rightarrow$ $E\ten \det E$ is Nakano positive.
+\end{thm}
+\begin{proof}
+  Omit. Non-trivial.
+\end{proof}
+
+Notation: $E>_{Nak}0$ ($E$ is Nakano positive).
+Similarly, $E>_{Giff}0$...
+
+\begin{prop}
+
+(1)$E$ is Griffith positive if and only if $E^*$ is Griffith negative.
+
+(2) Consider an exact sequence of holomorphic vector bundles:
+$$0\to S\to E\to Q\to 0$$
+then if $E$ is Griffith positive, then $Q$ is Griffith positive.
+If $E$ is Griffith negative, then $S$ is Griffith negative.
+If $E$ is Nakano negative, then $S$ is Nakano negative.
+\end{prop}
+
+\begin{proof}
+Omit. Compute curvature...
+\end{proof}
+
+Remark: In general, $E$ is Nakano positive, $\not\Rightarrow$
+$Q$ is Nakano positive.
+
+\begin{thm}(Nakano vanishing theorem)
+
+$(X,\omg)$ is compact Kahler of dimension $n$,
+$(E,h)$ is a Nakano positive holomorphic Hermitian vector bundle, then
+$$H^{n,q}(X,E)=0\qquad \forall q\geq 1$$
+\end{thm}
+
+\begin{proof}
+$E$ is Nakano positive, check:
+$$[\sqrt{-1}\Theta_E,\Lmd_\omg]$$
+is positive on $\wedgeform{n,q}\ten E$ for $(q\geq 1)$
+\end{proof}
+
+\textbf{Ampleness}
+
+$E\to X$, $E$: holomorphic line bundle of rank $r$,
+$X$:complex manifold.
+
+\begin{definition}(Jet vector bundle)
+$$J^kE=\bigcup_{x\in X}(J^kE)_x$$
+where
+$$(J^kE)_x=\mcalO_x(E)\Big/\mfkm_x^{k+1}\mcalO_x(E)$$
+$\mfkm_x\subseteq\mcalO_x$ be the maximal ideal of $\mcalO_x$.
+\end{definition}
+
+In local coordinate,
+$$
+  (J^kE)_x
+=
+  \Big\{
+    \sum_{1\leq\lmd\leq r \atop |\afa|\leq k}
+      C_{\lmd\afa}(z-x)^{\afa} e_{\lmd}(z)
+  \Big\}
+$$
+
+\begin{prop}
+$J^kE$ is a holomorphic vector bundle of rank $=r{n+k\choose n}$.
+\end{prop}
+
+\begin{proof}
+  Exercise.
+\end{proof}
+
+\begin{definition}
+$E$ is called very ample, if the following maps:
+$$H^0(X,E)\to (J^1E)_x$$
+$$H^0(X,E)\to E_x\oplus E_y$$
+are surjective, for all $x,y\in X$, $x\neq y$.
+
+$E$ is called ample, if $S^mE:=\Sym^m E$ is very ample for some $m\in\bbN$.
+\end{definition}
+
+(ample: "足够多的全纯截面")
+
+\begin{thm}(Kodaira)
+
+$L$-holomorphic line bundle, $X$ is a compact complex manifold.
+Then $L$ is positive if and only if $L$ is ample.
+\end{thm}
+
+%%%%%%%%%%%%%%%%%2019.5.16%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%第12周了吗？%%%%%%%%%%%%%%%%%%%%%%%
+
+We will prove:
+
+\begin{thm}
+$L\to X$ holomorphic line bundle over a compact complex manifold,
+then $L$ is positive $\iff L$ is ample.
+\end{thm}
+
+\textbf{We need:}
+
+(1)Kodiara vanishing theorem.
+
+(2)Blow-up of complex manifold
+
+(3)Relation between divisor and line bundles.
+
+\textbf{analytic cycles, divisors and meromorphic functions}
+
+\begin{definition}
+$X$ be a analytic set in some complex manifold, then the set
+$X_{reg}$ is a dense subset of $X$.
+Denote the connected component of $X_{reg}$ by $X_\afa$,
+$\overline{X_\afa}$ is the closure of $X_\afa$ in $X$,
+then $\overline{X_\afa}$ is called a global irreducible component of $X$.
+
+In particular, $X$ is the union of global irreducible components.
+\end{definition}
+
+\begin{example}(Global irreducibility is different from local irreducibility)
+
+$V=\Bigset{(x,y)\in\bbC^2}{y^2=x^2(1+x)}$ is an analytic set in $\bbC^2$，
+$V_{reg}=V\setminus\{0\}$ is connected. So,
+$V=\overline{V_{reg}}$ is globally irreducible.
+
+On the other hand, $(V,0)$ is a reducible as an analytic germ.
+\end{example}
+
+\begin{definition}(analytic cycles)
+
+$X$ is a complex manifold,  a $q$-cycle (with integer coefficient)
+is a formal linear combination $\sum\limits\lmd_j V_j$, $\lmd_j\in\bbZ$,
+and $V_j$ is a global analytic sets of $X$ of dimension $q$.
+\end{definition}
+
+So, we get a group $C_{cyl}^q(X)$.
+
+an element of $Cycl^{n-1}(X)$ is called a divisor.
+(Weil divisor)
+($Div(X)$)
+
+If $D$ is an irreducible analytic set of dimension $n-1$
+then the divisor given by $D$ is called a prime divisor.
+
+\begin{rem}
+For any open set $U\subseteq X$, $U\to Cycl^q(U)$ induces a sheaf
+$Cycl^q$ of $X$ with the germ $Cycl_x^q$ given by $q$-dimension analytic germs at $X$.
+\end{rem}
+
+\begin{thm}
+$X$ is a connected complex manifold, $f\in\mcalO(X)$,
+then we have $f^{-1}(0)$ is emply of $\dim_{\bbC}$ isempty of $n-1$.
+\end{thm}
+
+
+\begin{definition}（Cartier-dividiot）
+
+A divisor $D=\sum\lmd_j D_j$ locally giveb by a $\bbX$ linear combination of $div(f)$.
+$f$ is locally holomorphic functions.
+\end{definition}
+
+\begin{definition}
+$X$ is a compact , $\beta\in\mcalO(X)$,
+$D_j$ is a global irreponent of $f^{(-1)0}$,
+$$m_j:=Ord_z(f)$$
+for all $z\in D_j{\text{reg}}\setminus \bigcup_{k\neq j} D_k $
+$m_j$ be the vanishing order along $D_j$.
+\end{definition}
+
+\begin{thm}
+$(A,x)$ an analytic germ of $\dim_{\bbC}$=n-1.
+$(A,x)=(g)$for sone $g\in \mcalO X$,and $g$ is a product of
+$(J_{A_j,x})=(g_j)$.
+
+(2) Let $f\in\theta_x$ with $(f^{-1}(0),x)\subseteq(A,x)$,then
+$f=u\coprod_j g_jm^{m_j}$, where $m_j=ord_z (f)$
+\end{thm}
+
+\begin{prop}If $X$ is a complex manifold, then any Weil divisor is
+also a Cantier divisor.
+\end{prop}
+
+Remark: NOT true for singular points.
+
+Meromorphic function: $X$ complex manifold, $\mcalO_X$
+sheaf of functions on $X$.
+$$\mfkm_x:=\Bigset{\frac{g_x}{h_x}}
+{g_x,h_x\in\mcalO_x\text{and $h_x$ is not zeor in $\mcalO_x$}}$$
+$$
+  \mcalM:=\bigcup_{x\in X}\mfkm_x
+$$
+  with the topology given by the basis
+$$
+  \Bigset{\frac{G_x}{H_x}}
+  {x\in V, G,H\in\mcalO(V)}
+$$
+
+\begin{example}
+$f(z_1,z_2)=\frac{z_1}{z_2}$
+\end{example}
+
+\begin{definition}
+Let $F\in\mfkm(X)$,denote
+$P(X):=\not\in \Bigset{x\in X}{f_x\not\in\mcalO_x}$.
+Pole set pf $f$, and
+$Z(f):=P(\frac{1}{z})$ zero set of $f$.
+\end{definition}
+
+\begin{thm}
+$f\in\mfkm(X)$, if $P(d)$ (or$Z(f)$) is not empty,
+then $P(f)$ is analytic set of $\dim=\bbH$.
+\end{thm}
+
+\begin{definition}
+$P(f)\cup Z(f)$ is called the indeterminiary of set of $f$,
+(in particular, codimension $P(M)\cap Z(f)\geq 2$)
+\end{definition}
+
+\begin{prop}
+Given $f\in\mcalM(X)$, we get a divisor:
+$$div(f)=\sum a_jA_j-\sum b_jB_j$$
+where $a_j=$ the vanishing order of $f$ along $A_j$,
+$A_j$ a globally irreducible component of $Z(f)$,
+$b_j=$...along of $\frac{1}{f}$ along $B_j$,
+$B_j$:...component of $P(f)$.
+\end{prop}
+
+\begin{example}
+$f=\frac{z_1}{z_2}\in\mcalM(\bbC^2)$, then
+$P(f)=\{z_2=0\}$ and $Z(f)=\{z_1=0\}$, and
+$$div(f)=[z_1=0]-[z_2=0]$$
+\end{example}
+
+Consider: $X$ - complex manifold, $\mcalO^*$:
+sheaf of invertible holomorphic functions,
+
+$\mcalM^*$: Sheaf of non-zero meromorphic functions
+
+$\mcalD iv$: Sheaf of $(n-1)$-cycles.
+
+\begin{prop}
+We have an exact sequences:
+$$0\to\mcalO^*\to\mcalM^*\to\mcalD iv\to 0$$
+
+In particular, $\mcalD iv=\mcalM^*/\mcalO^*$.
+
+long exact sequence:
+
+$$0\to H^0(X,\mcalO^*)\to H^0(X,\mcalM^*)\to H^0(X,\mcalD iv)
+\to H^1(X,\mcalO^*)\to H^1(X,\mcalM^*)\to\cdots$$
+\end{prop}
+where, note that :
+$$H^0(X,\mcalD iv)=Div(X)\qquad H^1(X,\mcalO^*)=Pic(X)$$
+
+
+Consider $Div(X)=H^0(X,\mcalM^*/\mcalO^*)\to Pic(X)$,
+$f\in H^0(X,\mcalM^*/\mcalO^*)\iff$ we have an open covering
+$X=\bigcup_i U_i$ and $f_i\in\mcalM^*(U_i)$ with
+$\frac{f_i}{f_j}\in\mcalO^*(U_i\cap U_j)$.
+
+$f\in H^0(X,\mcalM^*/\mcalO^*)\xra{\fai}
+(U_i\cap U_j,g_{ij}\in\mcalO^*(U_i\cap U_j))
+\in \check{H}^1(\mcalU,\mcalO^*)\inj H^1(X,\mcalO^*)$.
+
+\begin{definition}
+A divisor $D$ is called principal divisor, if $D= div(h)$ for some
+$h\in\mcalM^*(X)$.
+\end{definition}
+
+\begin{prop}
+$\ker\fai=\{\text{principal divisors}\}$,
+i.e. $\mcalO(D)$ is trivial $\iff$ $D= div(f)$ for some global meromorphic functions.
+\end{prop}
+
+\begin{prop}
+$$\mcalO(D_1+D_2)=\mcalO(D_1)\ten\mcalO(D_2)$$
+$$\mcalO(-D)=\mcalO(D)^*$$
+\end{prop}
+
+\begin{definition}
+$D_1,D_2\in Div(X)$ is called linear equivalent, if $D_1-D_2$ is principal,
+denoted by $D_1\sim D_2$. We have an injection:
+$$Div(X)/\sim\inj Pic(X)$$
+\end{definition}
+
+Remark: in general, $D\to\mcalO(D)$ is not surjective.
+
+If $X\inj\bbP^n$, then $Div(X)/\sim\cong Pic(X)$.
+
+\begin{prop}
+$L\to X$ holomorphic line bundle over a complex manifold,
+we have a canonical map:
+$$H^0(X,L)\setminus\{0\}\to Div(X)$$
+$$s\to Z(s)$$
+\end{prop}
+
+\begin{proof}
+$s\in H^0(X,L)\iff$ the data $(U_i,f_i\in\mcalO(U_i))$,
+$L$ is determined by $g_{ij}\in\mcalO^*(\mcalU_i\cap\mcalU_j)$.
+
+$Z(s)$ locally given by $div(f_i)$.
+($div(f_i)=div(f_j)$ on $U_i\cap U_j$)
+\end{proof}
+
+\begin{prop}
+$s_i\in H^0(X,L_i)\setminus\{0\}, i=1,2$ ,we have
+$Z(s_1\ten s_2)=Z(s_1)+Z(s_2)$.
+\end{prop}
+
+\begin{prop}
+Let $s\in H^0(X,L)\setminus\{0\}$, then $\mcalO(Z(s))\cong L$.
+\end{prop}
+\begin{proof}
+Assume $X=\bigcup U_i$ with $L$ determined by $g_{ij}\in\mcalO^*(U_i\cap U_j)$,
+$s\in H^0(X,L)$ determined by $(U_i,f_i\in\mcalO(U_i))$.
+
+so,$\mcalO(Z(s))$ is the line bundle given by $\frac{f_i}{f_j}\in\mcalO^*(U_i\cap U_j)$.
+
+note that $f_i=g_{ij}f_j$.
+\end{proof}
+
+\begin{cor}
+Let $s_i\in H^0(X,L_i)\setminus\{0\},i=1,2$, then
+$$Z(s_1)\sim Z(s_2)\iff L_1\cong L_2$$
+\end{cor}
+use the fact: $\mcalO(Z(s_i))=L_i$ and $\mcalO(\text{principal divisor})\cong\mcalO_X$
+trivial line bundle.
+
+\begin{prop}
+Consider the map
+$$Div(X)\to Pic(X)$$
+$$D\to\mcalO(D)$$
+then the image is generated by line bundles with non-zero holomorphic sections.
+\end{prop}
+
+%%%%%%%%%%%%2019.5.21%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%快期末了，抓紧复习%%%%%%%%%%%%%%
+
+\section{Blow-up}
+
+Local picture: $U\subseteq\bbC^n$ open subset, $Y\subseteq U$
+linear subspace, $codim_UY=k$, e.g. assume $Y=\Bigset{z\in U}{z_1=...=z_k=0}$.
+
+Consider the space
+$$U_Y:=\Bigset{([w],z)\in\bbP^{k-1}\times U}{w_iz_j=w_jz_i,\,1\leq i,j\leq k}
+\subseteq\bbP^{k-1}\times U\xra{\pi_2}U$$
+
+\begin{definition}
+$U_Y$ is called the blow-up of $U$ along $Y$.
+\end{definition}
+
+\begin{prop}
+$U_Y$ is a smooth complex submanifold of $\bbP^{k-1}\times U$, and
+$\dim_{\bbC}U_Y=\dim_{\bbC}U=n$. And
+$\tau:U_Y\to U$ is a holomorphic map with
+$$
+  \tau|_{U_Y\setminus\tau^{-1}(Y)}:
+  U_Y\setminus\tau^{-1}(Y)\cong U\setminus Y
+$$
+
+And for any $y\in Y$, $\tau^{-1}(y)=\bbP^{k-1}\times\{y\}$
+is complex projective space.
+
+\end{prop}
+
+Locally, on then chart $w_1\neq 0$, denote $\hat{w}_i=\frac{w_i}{w_1}$
+for all $2\leq i\leq k$. Then $z_i=\what_iz_1$.Then
+$(z_1,\what_2,...,\what_k,z_{k+1},...,z_n)$ gives a holomorphic chart
+of $U_Y$.
+
+Denote $(z_1,...,z_n)=(z_1,\what_2,...,\what_k,z_{k+1},...,z_n)$,
+then $z_1=\xi_1$, $z_2=\xi_1\xi_2$,...,$z_k=\xi_1\xi_k$, and
+$z_{k+l}=\xi_{k+l}$for $k\geq l$.
+
+In this coordinate system, $\tau^{-1}(Y)=
+\Bigset{\xi\in U_Y}{\xi_1=0}$.
+
+$\Rightarrow\tau^{-1}(Y)$ is a (smooth) hypersurface in $U_Y$.And,
+$\tau^{-1}(Y)\cong \bbP(N_{Y/U})$,
+where $N_{Y/U}$ is the normal bundle of $Y$ in $U$.
+$$(0\to T_Y\to T_U|_Y\to N_{Y/U}\to 0)$$
+
+If $codim_UY=1$ hypersurface, then $U_Y\cong U$.
+
+\textbf{Global construction}
+
+$Y$ is a complex submanifold of $X$, $\dim_{\bbC}=n$,$\dim_{\bbC}Y=k\leq n$.
+
+\begin{lemma}
+  If $f_1,...,f_k$ and $g_1,...,g_k$ are two (local) definition of $Y$,
+defining equations of $Y$, $Y=\Bigset{f_z(z)=...=f_k(z)=0}{,}$,
+then $\td f_1,...,\td f_k$ are linely independent along $Y$.
+And $\exists$ a matrix $(m_{ij})$ of holomorphic functions,
+s.t. $g_i=\sum_{j=1}^{k}M_{n,j}f_j$ for any $1\leq i\leq k$.
+
+The matrix $(M_i^j)$ is invertible along $Y$,and determined uniquely
+by $(f_1,...,f_k)$ and $g_1,...,g_k$.
+\end{lemma}
+
+\begin{proof}
+Assume $f_i=z_i$ for $1\leq i\leq k$ is a local coordinate system
+$\equiv 0$.For ever $g_i$, $g_i|_{z_1,...,z_k=0}$
+
+Consider the Taylor expansion of $\\g_i$, we set
+$$g_i=\sum_{j=1}^kM_i^j(z)z_j$$
+
+$\td g_i=\sum_{j=1}^{k}\td M_{i}^jz_j+
+\sum_{j=1}^{k} M_i^j\td z_j$.
+
+$(\td g_1,...,\td g_k)|_{Y}$
+and $(\td z_1,...,\td z_k)|_Y$ are $L.I$,
+so $M_i^j|_{Y}$ is invertible.
+
+Assume $Y\cap U=\{f_1^U=...=f_k^{U}=0\}$,
+$Y\cap V=\{f_1^V=f_2^V=...=f_k^V=0\}$ and
+$(M_{i,UV}^j)_{1\leq i,j\leq k}$ is the
+\end{proof}
+
+$0\to T_Y\to T_X|_Y\to N_{Y/D}$, the dual
+$$N^*_{Y/ X}\to T_X^*|_Y\to T^*_Y$$
+
+$(M_i^j,UV)$ gives the translation matrix middle of $N_{Y/X}^*$
+
+\begin{lemma} $\exists$ isomorphism $\phi_{UV}:
+\tau_U^{-1}(U\cap V)\cong \tau_V^{-1}(U\cap V)$.
+\end{lemma}
+
+\begin{proof}
+  Assume $f_i^U=\sum_{j=1}^{k}=\sum_{j=1}^{k}M_{i,UV}^jf_j^V$.
+Define $\phi_{UV}([w],z)=([M^{-t}w],z)$, then
+$\phi_{UV}$ satisfies the two properties.
+\end{proof}
+
+\begin{definition}(The blow-up of $X$ along $Y$)(Global blow up)
+
+$\Bl_YX$:the blow-up of $X$ along $Y$
+is defined as the complex manifold by gluing the $U_Y$
+and $\Omg:=X\setminus S_Y$,
+where $S_Y$ is some neighborhood of $Y$.
+\end{definition}
+
+we have a holomorphic map: $\tau:\Bl_YX\to X$.
+
+\begin{prop}
+$\tau:\Bl_YX\to X$ satisfies :
+
+(1)$\tau^{-1}(Y)$ is a smooth complex submanifold of $\Bl_YX$,
+with $\dim_{\bbC}=n-1$,(It is called the excepted divisor of $\tau$)
+
+(2)$\tau:\Bl_YX\setminus \tau^{-1}(Y)\to X\setminus Y$ is an isomorphism.
+
+(2)$\tau$ is a proper map(any pre-image of compact set is compact).
+\end{prop}
+
+\begin{proof}
+Check.
+\end{proof}
+
+\textbf{projective bundle} $E\to X$ is a holomorphic vector bundle(of rank $r$)
+over a complex manifold(of complex dimension $n$),
+then we can define projective bundle $\bbP(E)$,
+$$\bbP(E):=\Bigset{(x,[\xi])}{x\in X,\,\xi\in E_x\setminus\{0\}}$$
+
+$\bbP(E)$ is a complex manifold of dimension $n+r-1$
+(if $X=\{pt\}$, then $\bbP(E)$ is just the projective space)
+
+We have a tautological line bundle on $\bbP(E)$:
+$$\mcalO_E(-1)_{(x,[\xi])}=\bbC\xi$$
+$\mcalO_E(-1)$ is a holomorphic line bundle on $\bbP(E)$.
+
+\textbf{Exercise:}Assume $(E,h)$ is an hermitian vector bundle with
+metric $h$,then $h$ induces a metric on $\htil$ on $\mcalO_E(-1)$,
+then the Chern curvature $\Theta$ of $\htil$ satisfies:
+for any $x\in X$, $\sqrt{-1}\Theta|_{\bbP(E_x)}<0$.
+
+\begin{thm}
+  $\tau:\Bl_YX\to X$ blow-up along $Y$, $E:=\tau^{-1}(Y)$
+exceptional divisor, $\mcalO(E)$:
+the holomorphic line bundle associated to $E$, then
+
+(1) $\tau: E\to Y$ is just the map $\bbP(N_{Y/X})\to Y$
+
+(2) $\mcalO(E)|_E\cong \mcalO_{P(N_{Y/X})}(-1)
+\cong N_{E/\Bl_YX}$ the normal bundle of $E$ in $\Bl_YX$.
+\end{thm}
+
+\begin{proof}
+  Exercise.
+\end{proof}
+
+\begin{cor}
+If $X$ is a (compact) Kahler manifold, $Y$ is a compact submnifold
+of $X$, then the blow-up $\Bl_YX$ is also a (compact) Kahler manifold.
+\end{cor}
+
+\begin{proof}
+$\tau:\Bl_YX\to X$, let $\omg$ be a Kahler matric on $X$,
+then $\tau^*\omg$ is a semi-positive $(1,1)$-form on $\Bl_YX$,
+positive on $\Bl_YX\setminus E$, and the kernel of $\tau^{-1}\omg$
+along $E$ is given by the tangent space of the fiber $E\to Y$.
+
+Define the metric $h$ on $\mcalO(E)$ as follows:
+on $E$,$h$ is induced by the metric on $N_{Y/X}$ induced by the metric on $N_{Y/X}$,
+and we extend $h$ to a neighborhood of $E$;
+outside a neighborhood of $E$,($\mcalO(E)|_{\Bl_YX\setminus E}$ is trivial),
+$h$ is given by the trivial metric.
+
+Then ,we glue these two metrics to get a matric on $\mcalO(E)$.
+Denote the curvature $\theta:=\sqrt{-1}\Theta(\mcalO(-E),h)$/
+
+Claim: $C\tau^*\omg+\theta>0$ for $C\gg 1$
+\end{proof}
+
+%%%%%%%%%%%2019.5.23  第13周%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Kodaira Embedding Theorem}
+
+Recall: $L\to X$ holomorphic line bundle with a smooth metric $h$
+over compact complex manifold.
+
+$L$ is called positive if the curvature $\sqrt{-1}\Theta_{(L,h)}$
+is a positive $(1,1)$-form.
+
+$L$ is called ample, if $L^{\ten m}:= mL$ is very ample for $m\gg 1$.
+
+Recall: a holomorphic vector bundle $E$ is called very ample,
+if the following maps
+$$H^0(X,E)\to E_x\oplus E_y\qquad \forall x\neq y\in X$$
+$$H^0(X,E)\to (J^1E)_x\qquad \forall x\in X$$
+are surjective.
+
+\begin{prop}
+$X$ is a complex manifold of dimension $n$, $Y\subseteq X$
+is a complex submanifold of codimension $k$. $\tau:\Xhat\to X$
+blow-up along $Y$. $E:=\tau^{-1}(Y)$ exceptional divisor. Then
+$$K_{\Xhat}=\tau^{*}K_X\ten\mcalO((k-1)E)$$
+\end{prop}
+
+(Recall: $K_X=\det T^*X=\wedgeform{n}T^*X$, 
+locally free sheaf of holomorphic $n$-terms $\Omg_X^n$).
+
+\begin{proof}
+locally, $\tau$ can be written as
+$$\tau:(w_1,...,w_n)\to (z_1,...,z_n)$$
+$$z_1=w_1,\,z_2=w_2,...,z_k=w_kw_1,...,z_{k+l}=w_{k+l}$$
+
+$$
+  \Rightarrow
+  \tau^*(\td z_1\wedge\td z_2\wedge\cdots\wedge\td z_n)
+= w_1^{k-1}\td w_1\wedge\td w_2\wedge\cdots\wedge\td w_n
+$$
+(local holomorphic frame of $K_X$ and $K_{\Xhat}$...
+$w_1^{k-1}$-local section of $\mcalO(E)$)
+
+
+Recall: $L$-line bundle, $\{g_{ij}\}$ transition function,
+a local section is the following data
+$f_i=g_{ij}f_j$. If $e_i$ the local frame on $U_i$, then
+$f_ie_i=f_je_j$ on $U_i\cap U_j$.
+
+之后check两个线丛的转移函数相同.
+\end{proof}
+
+
+
+\begin{lemma}Let $\Xhat$ be the blow up of $X$ along
+$\{x_1,...,x_N\}\subseteq X$, ($N$ distinct points),
+denote $E$ the exceptional divisor, then
+$$
+  H^1(\Xhat,\mcalO(-mE)\ten\tau^*(kL))=0
+$$
+for $m\geq 1$, $k\geq Cm$ for $C\gg 1$
+\end{lemma}
+
+\begin{proof}
+$$
+  H^1(\Xhat,\mcalO(-mE)\ten\tau^*(kL))
+=
+  H^1(\Xhat,K_{\Xhat}\ten K^{-1}_{\Xhat}\ten\mcalO(-mE)\ten\tau^*(kL))
+=
+  H^{n,1}(\Xhat,F)
+$$
+where $F:= K^{-1}_{\Xhat}\ten\mcalO(-mE)\ten\tau^*(kL)$.
+
+By Kodaira-Nakano vanishing, if $F$ is positive,
+then $H^{n,1}(\Xhat,F)=0$.
+
+Note that 
+$$F=\mcalO(-mE)\ten\tau^*K_X^{-1}\ten\mcalO((1-n)E)\ten\tau^*(kL)$$
+$$=\tau^*K_X^{-1}\ten\mcalO(-(m+n-1)E)\ten\tau^*(kL)$$
+
+We know, $\exists C_0\gg 1$ s.t. $C_0L\ten K_X^{-1}$ is positive,
+and $\exists C\gg 1$,s.t. $C\tau^*L\ten\mcalO(-E)$ is positive.
+
+So, For $k\geq Cm\,\,(C\gg 1)$, $F$ is positive.
+
+Let $v_j\in H^0(\Omg_j,kL)$ be a local section of $kL$,
+s.t. $v_j$ generates the $m$-jet at $x_j$. Let
+$\psi_j\in C^\infty(X,\bbR)$ s.t. $supp\psi_j\subset\subset\Omg_j$,
+$0\leq\psi_j\leq 1$, $\psi_j\equiv 1$ around $x_j$. Denote
+$$
+  v:=\sum_{j=1}^{n}
+    \psi_jv_j
+$$
+a smooth section of $kL$.
+$$
+  \td''v=\sum_{j}\td''\psi_jv_j\in C_{(0,1)}^{\infty}(X,kL)
+$$
+satisfies $\td''v=0$ near $x_j$ for $1\leq j\leq N$.
+
+Lemma:(Exercise)
+$$H^0(X,M)\to H^0(\Xhat,\tau^*M)$$
+$$s\mapsto\tau^*s$$
+is an isomorphism for any line bundle $M$.
+
+Lemma:(Exercise)
+a section of $\tau^*M$ with vanishing order$=k$ along $E$ is the
+pull-back of a section of $M$ with vanishing order $=k$ at $x_j$.
+\vs 
+
+Denote $S_E\in H^0(\Xhat,\mcalO(E))$ the canonical section of $E$,
+$$
+  w=S_E^{-(m+1)}\ten\tau^*(\td''v)\in
+  C_{(0,1)}^{\infty}
+  (\Xhat,\mcalO(-(m+1)E)\ten\tau^*(kL))
+$$
+and $\td''w=0$. Vanishing of $H^0(\Xhat,\mcalO(-(m+1))\ten\tau^*(kL))$
+implies $w=\td'' u$ for some $u\in C^\infty(\Xhat,\mcalO(-(m+1)E)\ten\tau^{-1}kL)$.
+$$S_E^{-(m+1)}\tau^*(\td''v)=\td''u$$
+$$\Rightarrow\td''(\tau^*v-S_E^{(m+1)}u)=0$$
+so, $\tau^*v-s_E^{(m+1)}u$ is a holomorphic section of $\tau^*(kL)$.
+Using $s_E^{(m+1)}u=\tau^*f$ for some $f\in H^0(X,kL)$ with vanishing order
+$= m+1$ along $x_j$.
+
+Claim: denote $g:= v-f$ is the holomorphic sections generating 
+the $m$-jets at $x_j$. $\td''(\tau^*g)=0\Rightarrow\tau^*g$ is holomorphic,
+$\Ord_{x_j}(f)=m+1$. So, $J^m(g)_{x_j}=J^m(v)_{x_j}$. 
+
+\end{proof}
+
+\begin{thm} $L\to X$ positive line bundle, $x_1,...,x_N\in X$
+are $N$ distinct points on $X$, then there exists $C>0$, s.t.
+$$
+  H^0(X,kL)\surj\bigoplus_{j=1}^N
+  \left(
+    J^m(kL)
+  \right)_{x_j}
+$$ 
+is surjective for all $m\geq 0$ and $k\geq Cm$
+\end{thm}
+
+\begin{proof}
+\end{proof}
+
+
+\begin{thm}(Kodaira)
+
+Line bundle $L$ is positive $\iff$ it is ample.
+\end{thm}
+
+（微分几何的正性与代数几何的正性是等价的）
+
+\begin{proof}(有一边是显然的，留作习题)
+
+proof of "$L$ ample $\Rightarrow$ $L$ positive".
+
+Exercise: If $A$ is a very ample line bundle on $X$,
+$H^0(X,A)$ has a basis $\{s_0,...,s_N\}$, then the map
+$$\Phi:X\to\bbP(H^0(X,A))$$
+$$s\mapsto[s_0(x);s_1(x);...;s_N()]$$
+(Kodaira map) is a holomorphic embedding.
+
+(Hint: $H^0(X,A)\surj A_x\oplus A_y$ means that $\Phi$ is injective;
+$H^0(X,A)\surj(J^1(A))_x$ means that $\Phi_*$ is injective.)
+
+Exercise: denote the tautological line bundle on $\bbP(H^0(X,A))$
+by $\mcalO(1)$, then $A=\Phi^*\mcalO(1)$.
+
+Cor: $A$ is very ample $\Rightarrow A$ is positive.
+
+Given any inner product on $H^0(X,A)$, we get a metric $h$ on $\mcalO(1)$,
+the curvature $\Theta(\mcalO(n))$ of $h$ is positive.
+$$\Rightarrow\Theta(A)=\Phi^*\Theta(\mcalO(1))$$
+$\Phi$ is embedding $\Rightarrow$ $\Theta(A)$ is positive.
+\end{proof}
+
+$L$ positive $\Rightarrow L$ ample, i.e. $mL$ is very ample,
+$$\Rightarrow\Phi_{H^0(X,mL)}:X\inj\bbP(H^0(X,mL))$$
+holomorphic embedding($\Rightarrow X$ is an analytic submanifold of $\bbP(H^0(X,mL))$)
+
+$\xra{\text{Chow theorem}}X$ is an algebraic set of $\bbP(H^0(X,mL))$
+(i.e. $X=\bigcup\limits_{j=1}^t\{P_j=0\}$, $P_j$-homogenous polynomial)
+
+a compact complex manifold $X$ admitting a positive line bundle $L$
+if and only if $X$ is an algebraic manifold.
+
+$$
+  0\to\bbZ\to\mcalO\xra{e^{2\pi\sqrt{-1}}}\mcalO^*\to 0
+$$
+$$\rightsquigarrow
+H^1(X,\mcalO^*)\xra{C_1}H^2(X,\bbZ)\to H^2(X,\mcalO)\to...
+$$
+and $H^2(X,\bbZ)\to H^2(X,\bbC)\cong H^{2,0}\oplus H^{1,1}\oplus H^{0,2}$,
+and $H^2(X,\mcalO)\cong H^{0,2}(X,\bbC)$.
+
+$\Rightarrow\forall\afa\in H^2(X,\bbZ)\cup H^{1,1}(X,\bbC)$,
+we have a holomorphic line bundle $L$ s.t. $\afa=c_1(L)$.
+
+$L$ admitting a positive line bundle $\iff$ $X$ admitting a class
+$\afa\in H^{2}(X,\bbZ)\cup H^{1,1}$ with a positive representative.
+
+
+
+
+
+ 
+
+
