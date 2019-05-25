@@ -46,7 +46,12 @@ $$f_{\afa\beta}+f_{\beta\gma}+f_{\gma\afa}=0\eqno{(*)}$$
 
 我们记$H^1(\mcalU,\mcalO):=\frac{Z^1(\mcalU,\mcalO)}{B^1(\mcalU,\mcalO)}$
 为$X$上的全纯函数“层”（sheaf）关于开覆盖$\mcalU$的第$1$个\textbf{\Cech 上同调}.
-我们将了解到，\Cech 上同调与$S$的拓扑有密切关系。
+我们将了解到，\Cech 上同调与$S$的拓扑有密切关系。\vs
+
+{\color{blue}
+本章需要一定的范畴论准备。由于这不是专门介绍层论的讲义，
+我们会省略很多论证细节，只介绍主要结果。
+}
 
 \section{预层与层的概念}
 
@@ -206,6 +211,30 @@ f\in\mcalF(U)&\mapsto&e^f
 $\im^p\exp$不满足粘合公理。
 \end{proof}
 
+\begin{notation}（层的限制）
+设$\mcalF$是拓扑空间$X$上的层，$U$为$X$的开子集，
+则自然有拓扑空间$U$上的层$\mcalF|_U$如下：对$U$中的开集$V$
+（注意$V$也是$X$中的开集），定义
+$$\mcalF|_U(V):=\mcalF(V)$$
+相应的限制映射也自然给出。容易验证$\mcalF|_U$是拓扑空间$U$上的层，
+称为$\mcalF$在$U$上的\textbf{限制}。
+\end{notation}
+
+关于层的构造，我们再介绍层的直和：
+
+\begin{example}（层的直和）
+
+设$\mcalF$与$\mcalG$为拓扑空间$X$上的取值于（同一个）Abel范畴的层，
+则定义$\mcalF$与$\mcalG$的\textbf{直和层}$\mcalF\oplus\mcalG$如下：
+对$X$中的开集$U$,
+$(\mcalF\oplus\mcalG)(U):=\mcalF(U)\oplus\mcalG{U}$.
+\end{example}
+容易验证$\mcalF\oplus\mcalG$也为$X$上的层。类似也可以定义多个层的直和。
+特别地，对于层$\mcalF$以及正整数$n$，记
+$\mcalF^{\oplus n}:=
+\underbrace{\mcalF\oplus\mcalF\oplus\cdots\oplus\mcalF}_{n\text{个}}$
+
+
 \section{预层的层化}
 
 \begin{definition}(预层的芽)
@@ -251,7 +280,7 @@ $$\fai_x:\mcalF_x\to\mcalG_x$$
 \index{sheaf space\kong 层空间}
 
 设$\mcalF$为拓扑空间$X$上的预层，则定义拓扑空间
-$$\mcalFtil:=\coprod_{x\in X}\mcalF_X$$
+$$\mcalFtil:=\coprod_{x\in X}\mcalF_x$$
 其拓扑由拓扑基$\Bigset{\Omg_{F,U}}{U\subseteq X\text{为开子集},F\in\mcalF(U)}$
 生成，其中$\Omg_{F,U}=\Bigset{F_x\in\mcalF_x}{x\in U}$.
 称拓扑空间$\mcalFtil$为预层$\mcalF$的\textbf{层空间}（sheaf space）。
@@ -373,6 +402,336 @@ $\im\fai:=(\im^p\fai)^+\cong\mcalG$.
 
 \section{层的顺像与逆像}
 
+\begin{notation}对于拓扑空间$X$，定义$X$上的Abel群层范畴$\Abcat_X$为：
+
+（1）$\Abcat(X)$中的对象为$X$上的取值于Abel群的层；
+
+（2）对象之间的态射为相应的层同态。
+\end{notation}
+显然这是一个范畴。类似可定义“$X$上的集值层范畴”$\Setcat_X$，
+“$X$上的交换环层范畴”$\Ringcat_X$，
+以及对于交换环$A$，我们可定义$X$上的$A$-模层范畴$A\modcat_X$等等。
+
+一般地，将$X$上（所有种类的）层之全体记作$\Shcat_X$，
+这自然也给出一个范畴，称为$X$上的\textbf{层范畴}。
+类似地，$X$上的所有预层也构成范畴，记为$\pShcat_X$.
+
+\begin{definition}（层的顺像）
+
+设$f:X\to Y$为拓扑空间的连续映射，$\mcalF$是$X$上的层，则定义
+$\mcalF$的\textbf{推出}(push-forward)，也称为\textbf{顺像}（direct image）
+$f_*\mcalF$为：
+对$Y$的开子集$U$，$(f_*\mcalF)(U):=\mcalF(f^{-1}(U))$.
+\end{definition}
+
+显然$f_*\mcalF$为$Y$上的预层。
+容易验证，若$\mcalF$是层，则预层$f_*\mcalF$也是层。
+事实上，顺像$f_*$具有函子性，具体地说，若$\fai:\mcalF\to\mcalG$为
+$X$上的层同态，则$f$诱导了$Y$上的层同态$f_*\fai:f_*\mcalF\to f_*\mcalG$，
+并且使得有关图表交换。换句话说，我们有函子$f_*:\Shcat_X\to\Shcat_Y$.
+
+容易验证，$f_*\mcalF$在$y\in Y$处的茎条为
+$$
+  (f_*\mcalF)_y\cong
+\rlim_{y\in V}\mcalF(f^{-1}(V))
+$$
+
+\begin{definition}（层的逆像）
+\index{inverse image\kong 逆像}
+\label{层的逆像-def}
+
+设$f:X\to Y$为拓扑空间之间的连续映射，$\mcalG$为$Y$上的层，
+则定义$X$上的层$f^{-1}\mcalG$为：对$X$的任意开集$U$，
+$$
+  (f^{-1}\mcalG)(U)
+:=\rlim_{V\in f(U)}\mcalG(V)
+$$
+其中$V$取遍$Y$中的包含$f(U)$的开子集。称$f^{-1}\mcalG$为$\mcalG$关于$f$
+的\textbf{逆像}（inverse image）
+\end{definition}
+
+显然如此定义的$f^{-1}\mcalG$为$X$上的预层。利用余极限的泛性质，
+也能验证当$\mcalG$为层时，$f^{-1}\mcalG$也为层。
+容易验证对$Y$中的开集$V$，成立
+$$(f^{-1}\mcalG)(f^{-1}(V))\cong\mcalG(V)$$
+此外对任意$x\in X$，成立
+$$(f^{-1}\mcalG)_x\cong\mcalG_{f(x)}\eqno{(*)}$$
+
+容易验证$f^{-1}:\Shcat_Y\to\Shcat_X$为层范畴之间的函子。
+
+\begin{rem}（逆像的层空间）
+
+设$f:X\to Y$为拓扑空间之间的连续映射，$\mcalG$为$Y$上的层，
+则有层空间的拓扑同胚
+$$\widetilde{f^{-1}\mcalG}\cong X\times_Y\mcalGtil$$
+也就是说，存在下述纤维积图表：
+$$
+  \xymatrix{
+     \widetilde{f^{-1}\mcalG}  \ar[r]^\afa  \ar[d]
+    &\mcalGtil                              \ar[d]
+  \\
+     X                         \ar[r]^f
+    &Y
+  }
+$$
+\end{rem}
+其中映射$\afa$由$(*)$式诱导。由拓扑空间纤维积的具体构造，容易验证以上。
+
+\begin{prop}（伴随对）
+
+设$f:X\to Y$为拓扑空间之间的连续映射，
+则$f^{-1}$为$f_*$的左伴随函子。也就是说对于任意$\mcalF\in\Shcat_X$
+以及$\mcalG\in\Shcat_Y$，存在（关于$X,Y$）自然的一一对应
+$$
+  \Hom_{\Shcat_X}
+    (f^{-1}\mcalG,\mcalF)
+\xle{1\text{-}1}
+  \Hom_{\Shcat_Y}
+    (\mcalG,f_*\mcalF)
+$$
+\end{prop}
+
+\begin{proof}[证明大意]
+我们只给出此一一对应的构造，其余细节从略（反复使用各种泛性质）。
+对于任意的
+\begin{eqnarray*}
+\psi:&\mcalG\to f_*\mcalF\\
+\fai:&f^{-1}\mcalG\to\mcalF
+\end{eqnarray*}
+
+首先我们定义$\afa:
+  \Hom_{\Shcat_Y}
+    (\mcalG,f_*\mcalF)
+\to
+  \Hom_{\Shcat_X}
+    (f^{-1}\mcalG,\mcalF)$如下：对$X$中开集$U$，
+$[\afa(\psi)]_U$由以下交换图表给出：
+$$
+  \xybigcol
+  \xymatrix{
+     \mcalG(W)
+       \ar[r]^-{\psi_W}
+       \ar[d]^\rho
+    &(f_*\mcalF)(W)=\mcalF(f^{-1}(W))
+       \ar[d]^\rho
+  \\
+     \mcalG(V)
+       \ar[r]^-{\psi_V}
+       \ar[d]
+    &(f_*\mcalF)(V)=\mcalF(f^{-1}(V))
+       \ar[d]^{\rho}
+  \\
+     \rlim\limits_{V\supseteq f(U)}\mcalG(V)=(f^{-1}\mcalG)(U)
+       \ar@{-->}[r]^-{[\afa(\psi)]_U}
+    &\mcalF(U)
+  }
+$$
+其中$W\supseteq V$为$Y$中的包含$f(U)$的开集。
+
+再定义$\beta:  \Hom_{\Shcat_X}
+    (f^{-1}\mcalG,\mcalF)
+\to
+  \Hom_{\Shcat_Y}
+    (\mcalG,f_*\mcalF)$如下:对$Y$中的开集$V$，
+$[\beta(\fai)]_V$由以下交换图表给出：
+$$
+  \xybigcol
+  \xymatrix{
+     (f^{-1}\mcalG)(f^{-1}(V))
+       \ar@{=}[d]
+       \ar[r]^-{\fai_{f^{-1}(V)}}
+    &\mcalF(f^{-1}(V))
+       \ar@{=}[d]
+  \\
+     \mcalG(V)
+       \ar@{-->}[r]^-{[\beta(\fai)]_V}
+    &(f_*\mcalF)(V)
+  }
+$$
+其余细节从略。
+\end{proof}
+
+\section{局部自由模层与向量丛}
+
+\begin{definition}（$\mcalA$-模层）
+
+设$\mcalA$为拓扑空间$X$上的（含幺交换）环层，$\mcalM$为$X$上的Abel群层，
+称$\mcalM$为$\mcalA$-模层，如果对$X$的任何开集$V\supseteq U$，
+$\mcalM(U)$具有$\mcalA(U)$-模结构$\mcalA(U)\times\mcalM(U)\to\mcalM(U)$，
+并且下述图表交换：
+$$
+  \xymatrix{
+     \mcalA(V)\times\mcalM(V)
+       \ar[r]
+       \ar[d]
+    &\mcalM(V)
+       \ar[d]
+  \\
+     \mcalA(U)\times\mcalM(U)
+       \ar[r]
+    &\mcalM(U)
+  }
+$$
+\end{definition}
+
+例如，考虑复流形$X$上的解析函数环层$\mcalO_X$，则全纯切向量场、全纯微分形式等等，
+都可视为$\mcalO_X$-模层。再比如，环层$\mcalA$也有自然的$\mcalA$-模层结构。
+一般地，对于拓扑空间$X$上的环层$\mcalA$，我们有
+$X$上的$\mcalA$-模层范畴$\mcalA\modcat_X$，
+自行定义此范畴中的态射“$\mcalA$-模层同态”。
+能够验证，$\mcalA\modcat_X$为Abel范畴。
+
+\begin{definition}（局部自由层）
+\index{locally free sheaf\kong 局部自由层}
+
+设$\mcalS$为拓扑空间$X$上的$\mcalA$-模层，
+称$\mcalS$为\textbf{局部自由$\mcalA$-模层}，
+简称\textbf{局部自由层}（locally free sheaf），如果对任意$x\in X$，
+存在$x$的开邻域$U$，使得有层同构
+$$\mcalS|_U\cong(\mcalA|_U)^{\oplus r}$$
+其中$r$为正整数，称为局部自由层$\mcalS$的秩。
+\end{definition}
+
+特别地，对任意$x\in X$，存在$x$的开邻域$U$，使得
+$\mcalS(U)\cong(\mcalA(U))^{\oplus r}$
+（但是定义中的“层限制”的语言更强）。
+事实上$\mcalS$为局部自由层当且仅当对任意$x\in X$，
+存在$x$的开邻域$U$，以及截面$F_{1,x},F_{2,x},...,F_{r,x}\in\mcalS(U)$，
+使得对任意$y\in U$，环同态
+\begin{eqnarray*}
+     \mcalA_y^{\oplus r}&\to&\mcalS_y\\
+     (w_1,w_2,...,w_r)
+&\mapsto&\sum_{i=1}^{r}w_iF_{i,x}
+\end{eqnarray*}
+为同构。如此选取的$\Bigset{F_{i,x}\in\mcalA(U)}{1\leq i\leq r}$称为$\mcalS$
+的一个\textbf{局部标架}。
+
+\begin{notation}（局部自由层局部标架的转移函数）
+
+设$\mcalS$为拓扑空间$X$上的秩为$r$的局部自由$\mcalA$-模层。
+取$X$的一族开覆盖$X=\bigcup\limits_{\afa\in\mcalI}U_\afa$，
+以及对于任意$\afa\in\mcalI$，取$\mcalS$在$U_\afa$上的局部标架
+$$F_\afa:=\Bigset{F_\afa^i\in\mcalS(U_\afa)}{1\leq i\leq r}$$
+则$F_\afa$自然诱导了层同构（仍记作$F_\afa$）
+$$F_\afa:\mcalA|_{U_\afa}^{\oplus r}\xra{\sim}\mcalS|_{U_\afa}$$
+
+对于$\afa,\beta\in\mcalI$，若$U_\afa\cap\mcalU_\beta\neq\vkong$，
+则考虑如下图表：
+$$
+  \xymatrix{
+     \mcalA|_{U_\afa\cap U_\beta}^{\oplus r}
+       \ar[r]^{F_\afa}
+    &\mcalS|_{U_\afa\cap U_\beta}
+       \ar@{=}[d]
+  \\
+     \mcalA|_{U_\afa\cap U_\beta}^{\oplus r}
+       \ar[r]^{F_\beta}
+       \ar@{-->}[u]^{G_{\afa\beta}}
+    &\mcalS|_{U_\afa\cap U_\beta}
+  }
+$$
+称层自同构$G_{\afa\beta}:=F_\afa^{-1}\circ F_\beta$为
+局部标架$F_\afa$与$F_\beta$之间的转移函数。
+\end{notation}
+
+对于$x\in U_\afa\cap U_\beta$，
+$$(G_{\afa\beta})_x:\mcalA_x^{\oplus r}\to\mcalA_x^{\oplus r}$$
+可以表达为在基$\Bigset{(F_\beta^i)_x}{1\leq i\leq r}$与
+$\Bigset{(F_\afa^i)_x}{1\leq i\leq r}$下的矩阵，称此矩阵为\textbf{转移矩阵}。
+
+对于$\afa,\beta,\gma\in\mcalI$，
+如果$U_\afa\cap U_\beta\cap U_\gma\neq\vkong$，
+则显然有
+$
+  \left\{
+    \begin{array}{l}
+      G_{\afa\afa}=\id_{\mcalA|_{U_\afa}^{\oplus r}}
+    \\
+      G_{\afa\beta}=G_{\beta\afa}^{-1}
+    \\
+      G_{\afa\beta}\circ G_{\beta\gma}\circ G_{\gma\afa}
+      =\id_{\mcalA|_{U_{\afa\beta\gma}}^{\oplus r}}\\
+    \end{array}
+  \right.
+$，其中$U_{\afa\beta\gma}:=U_\afa\cap U_\beta\cap U_{\gma}$.\vs
+
+上述的语言与\textbf{向量丛}十分相似，事实上局部自由层是向量丛概念的推广。
+
+\begin{Example}（拓扑向量丛）
+
+设$X$为拓扑空间，$\mcalC_X$为$X$上的连续函数环层，则有自然的一一对应
+$$
+  \Big\{
+    \text{$X$上的局部自由$\mcalC_X$-模层}
+  \Big\}
+\xle{\text{$1$-$1$}}
+  \Big\{
+    \text{$X$上的（拓扑）向量丛}
+  \Big\}
+$$
+\end{Example}
+
+\begin{proof}
+若$\mcalE$为$X$上的局部自由$\mcalC_X$-模层，取$X$的一组局部标架覆盖
+$X=\bigcup\limits_{\afa\in\mcalI}U_\afa$，以及$U_\afa$上的局部标架
+$F_\afa=\Bigset{F_\afa^i}{1\leq i\leq r}$，
+则对于任意的$\afa,\beta\in\mcalI$，若$U_\afa\cap U_\beta\neq\vkong$，
+则对任意$x\in U_\afa\cap U_\beta$，转移函数$(G_{\afa\beta})_x$
+在相应标架上的矩阵（仍记为$(G_{\afa\beta})_x$）给出了映射
+\begin{eqnarray*}
+     U_\afa\cap U_\beta &\to& \GL(r,\bbC)\\
+     x&\mapsto& (G_{\afa\beta})_x
+\end{eqnarray*}
+易验证该映射连续，并且满足向量丛转移函数的相容条件，
+从而这些转移函数可以粘合成一个向量丛。
+反之，对于拓扑向量丛$E\to X$，
+该向量丛的截面层显然为局部自由$\mcalC_X$-模层。
+容易验证上述给出的对应是互逆的，从而得到一一对应。
+\end{proof}
+
+\begin{example}（全纯向量丛）
+
+设$X$为复流形，$\mcalO_X$为$X$上的全纯函数环层，
+则类似地有一一对应
+$$
+  \Big\{
+    \text{$X$上的局部自由$\mcalO_X$-模层}
+  \Big\}
+\xle{\text{$1$-$1$}}
+  \Big\{
+    \text{$X$上的全纯向量丛}
+  \Big\}
+$$
+\end{example}
+光滑流形上的光滑向量丛也完全类似。\vs
+
+最后，需要注意局部自由层范畴不是Abel范畴：
+
+\begin{Example}（摩天大厦层）
+
+考虑拓扑空间（复流形）$X=\bbC$，$X$上的局部自由$\mcalO_X$-模层
+$\mcalS_1=\mcalS_2:=\mcalO_X$.考虑$\mcalO_X$-模层同态
+$\fai:\mcalS_1\to\mcalS_2$为：对任意开集$U\subseteq X$，
+\begin{eqnarray*}
+\fai_U:\mcalS_1(U)&\to&\mcalS_2(U)\\
+f(z)&\mapsto&zf(z)
+\end{eqnarray*}
+则其余核层$\coker\fai$\textbf{不是}局部自由$\mcalO_X$-模层。
+\end{Example}
+容易验证，对$X$中的开集$U$，成立
+$
+  \coker\fai(U)
+\cong 
+  \left\{
+    \begin{array}{ll}
+      \bbC  &  (0\in U)\\
+      0     &  (0\not\in U)
+    \end{array}
+  \right.
+\index{skyscrapter sheaf\kong 摩天大厦层}
+$，明显不是局部自由层。此层称为\textbf{摩天大厦层}（skyscraper sheaf）。
+
+\section{凝聚层与Oka凝聚定理}
 （待补）
 
 \section{层的上同调}
