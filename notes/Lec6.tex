@@ -1009,7 +1009,7 @@ blow-up along $Y$. $E:=\tau^{-1}(Y)$ exceptional divisor. Then
 $$K_{\Xhat}=\tau^{*}K_X\ten\mcalO((k-1)E)$$
 \end{prop}
 
-(Recall: $K_X=\det T^*X=\wedgeform{n}T^*X$, 
+(Recall: $K_X=\det T^*X=\wedgeform{n}T^*X$,
 locally free sheaf of holomorphic $n$-terms $\Omg_X^n$).
 
 \begin{proof}
@@ -1058,7 +1058,7 @@ where $F:= K^{-1}_{\Xhat}\ten\mcalO(-mE)\ten\tau^*(kL)$.
 By Kodaira-Nakano vanishing, if $F$ is positive,
 then $H^{n,1}(\Xhat,F)=0$.
 
-Note that 
+Note that
 $$F=\mcalO(-mE)\ten\tau^*K_X^{-1}\ten\mcalO((1-n)E)\ten\tau^*(kL)$$
 $$=\tau^*K_X^{-1}\ten\mcalO(-(m+n-1)E)\ten\tau^*(kL)$$
 
@@ -1089,7 +1089,7 @@ is an isomorphism for any line bundle $M$.
 Lemma:(Exercise)
 a section of $\tau^*M$ with vanishing order$=k$ along $E$ is the
 pull-back of a section of $M$ with vanishing order $=k$ at $x_j$.
-\vs 
+\vs
 
 Denote $S_E\in H^0(\Xhat,\mcalO(E))$ the canonical section of $E$,
 $$
@@ -1105,9 +1105,9 @@ so, $\tau^*v-s_E^{(m+1)}u$ is a holomorphic section of $\tau^*(kL)$.
 Using $s_E^{(m+1)}u=\tau^*f$ for some $f\in H^0(X,kL)$ with vanishing order
 $= m+1$ along $x_j$.
 
-Claim: denote $g:= v-f$ is the holomorphic sections generating 
+Claim: denote $g:= v-f$ is the holomorphic sections generating
 the $m$-jets at $x_j$. $\td''(\tau^*g)=0\Rightarrow\tau^*g$ is holomorphic,
-$\Ord_{x_j}(f)=m+1$. So, $J^m(g)_{x_j}=J^m(v)_{x_j}$. 
+$\Ord_{x_j}(f)=m+1$. So, $J^m(g)_{x_j}=J^m(v)_{x_j}$.
 
 \end{proof}
 
@@ -1118,7 +1118,7 @@ $$
   \left(
     J^m(kL)
   \right)_{x_j}
-$$ 
+$$
 is surjective for all $m\geq 0$ and $k\geq Cm$
 \end{thm}
 
@@ -1182,10 +1182,266 @@ we have a holomorphic line bundle $L$ s.t. $\afa=c_1(L)$.
 $L$ admitting a positive line bundle $\iff$ $X$ admitting a class
 $\afa\in H^{2}(X,\bbZ)\cup H^{1,1}$ with a positive representative.
 
+%%%%%%%%%%%%%20190528%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%第十四周%%%%%%%%%%%%%%%%%%%%%%%%%
+Recall:
+\begin{thm}
+$L\to X$ positive line bundle over compact complex manifold, then
+$\forall x_1,...,x_N\in X$,$\exists C>0$(depends on $X$), s.t.
+$$
+  H^0(X,L^k)
+\surj
+  \bigoplus_{i=1}^N
+  (J^mL^k)_{x_i}
+\eqno{(*)}
+$$
+whenever $m\geq 0$ and $k\geq C(m+1)$
+\end{thm}
 
 
+For fixed $(x_1,...,x_N)$, we proved $\exists C(x_1,...,x_N)>0$,
+s.t. $(*)$ holds.
 
+Observation:$(*)$ is an open condition with respect to $(x_1,...,x_N)$.
 
- 
+$\Rightarrow\exists$ open set $U(x_i)$ 
+s.t. $\forall(y_1,...,y_N)\in\prod_{i=1}^{N}U(x_i)$,
+$(*)$ holds for $C=C(x_1,...,x_N)$.
+
+$m=0,N=1$,$H^0(X,L^k)\surj (L^k)_x\iff\exists$ section $s$
+s.t. $s(x)\neq 0$ (for $y$ near $x$, $s(y)\neq 0$)
+
+$\pi:Y\to X$ blow-up along $x_1,...,x_N$, with exception divisor $E$,
+
+\textbf{FACT:}$\exists C\gg 1$, s.t. $C\pi^*L+\mcalO(-E)$ is positive.
+
+（这些已证明）
+
+(more generally, if $\omg$ is a Kahler metric on $X$,denote 
+$\{\omg\}\in H^{1,1}(X,\bbR)$
+the Kahler associated to $\omg$,
+then $\exists C\gg 1$ s.t. $C\pi^*\omg+c_1(-E)$
+is a Kahler class)
+
+\begin{prop}
+Define the Seshadri constant
+$$
+    \mcalE(x_1,...,x_N;\omg)
+:=  \sup\Bigset{t\geq 0}
+               {\pi^*\omg+t\cdot c_1(-E)\text{is a Kahler class}}
+$$
+Then $\mcalE(x_1,...,x_N;\omg)$ is a lower-semi-continuous 
+function w.r.t $x_1,...,x_N$ .
+
+So,
+$$
+  \inf\Bigset
+  {\mcalE(x_1,...,x_N;\omg)}
+  {(x_1,...,x_N)\in \underbrace{X\times\cdots\times X}_{N}}>0
+$$
+\end{prop}
+\begin{proof}
+  Too difficult. omit.
+\end{proof}
+
+\begin{rem}（如果感兴趣）
+
+Nagata conjecture
+
+Biran-Nagata conjecture
+
+Symplectic packing/embedding of bundles
+\end{rem}
+
+\begin{thm} $L$ is a positive line bundle, for $k\gg 1$,
+$$
+  \Phi_{H^0(X,L^k)}:
+  X\inj\bbP(H^0(X,L^k))
+$$
+$$
+  x\mapsto[s_0(x):...:s_N(x)]
+$$
+is a holomorphic embedding.(Where $\{s_j\}_{j=0}^N$
+is a basis of $H^0(X,L^k)$)
+
+So, (Chow theorem), $X$ is an algebraic manifold.
+\end{thm}
+
+Chow theorem 1949:
+
+\begin{thm}（Chow theorem ,1949）
+
+Let $A$ be an analytic set of $\bbP^n$，
+then $A$ is an algebraic set, i.e. 
+$$
+  A=\bigcap_{j=1}^N
+  \{P_j(z_0,...,z_n)=0\}
+$$
+where $P_j$ is a homogeneous polynomial.
+\end{thm}
+
+Using the Remmert-Stein theorem:
+
+$X$- a complex manifold, $A\subseteq X$ an analytic set,
+$Z\subseteq X\setminus A$ is an analytic subset (of $X\setminus A$).
+If $\dim(Z,x)>\dim A$ for all $x\in Z$,
+then the closure $\overline{Z}$ in $X$ is also an analytic set of $X$.
+
+Consider the natural map $\pi:\bbC^{n+1}\setminus\{0\}\to\bbP^n$,
+then $Z:=\pi^{-1}(A)$ is an analytic set of $\bbC^{n+1}\setminus\{0\}$.
+we have $\dim Z\geq 1>\dim\{0\}$,
+Using Remmart-Stein, $\overline{Z}$ is an analytic set of $\bbC^{n+1}$.
+So, for a small disk $\yc$ around $0\in\bbC^{n+1}$,
+$$\overline{Z}\cap\yc
+=\bigcap_{j=1}^N
+\{f_j(z_1,...,z_n)=0\}
+$$
+where $f_j\in\mcalO(\yc)$.
+
+Let $f_j=\sum\limits_{k=0}^\infty P_{j,k}$ be the Taylor expansion
+of $f_j$, where $P_{j,k}$ is a homogenous polynomials of degree $k$.
+
+Claim: $\overline{Z}\cap\yc=
+\left(
+  \bigcap_{j,k}\{P_{j,k}=0\}
+\right)\cap\yc$.
+Denote $W:=\bigcap_{j,k}\{P_{j,k}=0\}$,
+
+$W\cap\yc\subseteq\overline{Z}\cap$ is obvious.
+
+By the definition of $\pi$, $Z$ is invariant by homotheties,
+so, for any $z\in\overline{Z}\cap\yc$, $|t|\ll 1$,
+we have $f_j(t,z)=0$.Write 
+$$
+  f_j(tz)
+=
+  \sum_{k=0}^{\infty}
+    P_{j,k}(z)t^k
+=0\quad
+\Rightarrow
+\quad
+P_{j,k}(z)=0
+$$
+so, $\overline{Z}\cap\yc\subseteq W\cap\yc$.
+
+$\Rightarrow\overline{Z}=W$ by the $\bbC^*$-invariance of $\overline{Z}$ and $W$.
+By the noetherian property of $\bbC[z_0,...,z_n]$, $\exists$
+finite polynomials $P_j,\quad 1\leq j\leq k$, s.t.
+$$
+  W=\bigcap_{j=1}^k
+  \{P_j=0\}
+$$
+
+\begin{cor}
+Any analytic subset of an algebraic variety is also algebraic.
+\end{cor}
+
+\textbf{Lefschetz's $(1-1)$-theorem}
+
+Exercise: $X$ is a compact complex manifold,
+$L,A$ be two holomorphic line bundles over $X$, $A$ is positive($\iff$ ample).
+Then for $k\gg 1$, $H^0(X,L\ten A^k)\neq\{0\}$.
+（与之前证明几乎完全一样）
+
+Recall:$0\to\mcalO\to\mcalM^*\to Div\to 0$ induces
+$$
+  Div(X):=H^0(X,Div)\to H^1(X,\mcalO^*)=:Pic(X)
+$$
+
+\begin{thm}
+If $X$ is an algebraic manifold, then for all $L\in Pic(X)$,
+$\exists$ divisor $D$ s.t. $L=\mcalO(D)$.
+\end{thm} 
+
+\begin{proof}
+Take non-zero sections $S\in H^0(X,L\ten A^{k})$, $t\in H^0(X,A^k)$,
+then $\frac{s}{t}$ is a meromorphic section of $L$.
+Let $D$ be the divisor associated to $\frac{s}{t}$, then
+$$L\cong\mcalO(D)$$
+\end{proof}
+
+\begin{thm}(Lelong-Poincare equation)
+
+Let $s\in H^0(X,L)\setminus\{0\}$, then
+$$
+  \frac{\sqrt{-1}}{\pi}
+  \p\pbar\log|s|_{h}
+=
+  [s^{-1}(0)]-\frac{\sqrt{-1}}{2\pi}
+  \Theta_{(L,h)}
+\eqno{(*)}
+$$
+where $[s^{-1}(0)]$ is defined as follows:
+$$
+  \pair{[s^{-1}(0)]}{\psi}
+=
+  \int_{s^{-1}(0)}
+    \psi
+$$
+where $\psi$ is an $(n-1,n-1)$-form on $X$.
+（假设..有度量；在分布意义下求导）
+\end{thm}
+
+(Current of integration)
+
+\begin{proof}
+  （以后再证）
+\end{proof}
+
+$(*)\Rightarrow$
+$$
+  c_1(L)
+=
+  \{\frac{\sqrt{-1}}{2\pi}\Theta_{(L,h)}\}
+=
+  \{[s^{-1}(0)]\}
+$$
+
+\begin{rem}
+$(*)$ also holds for moromorphic sections.
+\end{rem}
+
+\begin{cor}
+$X$ be an algebraic manifold, then $\forall \afa\in H^{1,1}(X,\bbQ)$,
+we have a divisor $D$ with $\bbQ$-coefficients s.t.
+$$
+  [\afa]=\{[D]\}
+$$
+\end{cor}
+(Hodge conjecture for $(1,1)$-classes)
+
+\textbf{Fact:}$X$ is a compact complex manifold,
+$V\subseteq X$ is an analytic set of pure 
+$\dim_{\bbC}V=p$. Then the current $[V]$ associated
+to $V_{\text{reg}}$:
+$$
+  \pair{[V]}{\psi}
+:=
+  \int_{V_{\text{reg}}}
+    \psi|_{V_{\text{reg}}}
+$$  
+where $\psi\in C^\infty(X,\wedgeform{p,p})$,
+defines a class 
+$\{[V]\}\in H^{n-p,n-p}(X,\bbZ)$.
+
+\textbf{Hodge conjecture:} $X$ is a complex algebraic manifold,
+then for all $\afa\in H^{n-p,n-p}(X,\bbQ)$,
+$\exists$ analytic sets $V_k$ of pure dimension $p$ and
+rational numbers $r_k$, s.t.
+$$
+  \afa\in
+  \{\sum_{k=1}^Nr_k[V_k]\}
+$$
+（这个猜想作为练习，说不定就做出来了………………）
+
+Known case: $p=n-1$, it is Lef. $(1,1)$-theorem.
+
+Exercise: also true for $p=1$ (Using Hard Lef)
+And, $p=0,p=n$...\vspp 
+
+下学期课程：《Analytic methods in algebraic geometry》
+敬请期待233333333333
+
+Pluripotential theroy/Positive currents
 
 
