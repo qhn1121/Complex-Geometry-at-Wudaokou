@@ -342,14 +342,18 @@ $$
 \end{prop}
 
 \begin{proof}
-对任意$x\in X$，$\fai:\mcalF\to\mcalG$诱导了$\fai_x:\mcalF_x\to\mcalG_x$，
-再注意$\mcalF_X\cong\mcalF^+_x$，从而自然给出$\psi_x:\mcalF^+_x\to\mcalG_x$.
-易验证$\Bigset{\psi_x}{x\in X}$确定了层同态$\psi:\mcalF^+\to\mcalG$，且$\psi\circ\theta=\fai$.
+对任意$x\in X$，$\fai:\mcalF\to\mcalG$诱导了
+$\fai_x:\mcalF_x\to\mcalG_x$，
+再注意$\mcalF_X\cong\mcalF^+_x$，
+从而自然给出$\psi_x:\mcalF^+_x\to\mcalG_x$.
+易验证$\Bigset{\psi_x}{x\in X}$确定了层同态
+$\psi:\mcalF^+\to\mcalG$，且$\psi\circ\theta=\fai$.
 
 $\psi$的唯一性是显然的。
 \end{proof}
 
-\begin{example}回顾常值预层$\bbC_X$（见例子\ref{常值预层-def}），则其层化
+\begin{example}回顾常值预层$\bbC_X$
+（见例子\ref{常值预层-def}），则其层化
 $\bbC_X^+$为，对任意开集$U$，
 $$\bbC_X^+(U)=\Bigset{f:U\to\bbC}{f\text{为局部常值函数}}$$
 称之为$X$上的\textbf{局部常值层}。
@@ -581,6 +585,9 @@ $X$上的$\mcalA$-模层范畴$\mcalA\modcat_X$，
 自行定义此范畴中的态射“$\mcalA$-模层同态”。
 能够验证，$\mcalA\modcat_X$为Abel范畴。
 
+容易验证，对于$\mcalA$-模层$\mcalM$，则对任意$x\in X$，
+茎条$\mcalM_x$有自然的$\mcalA_x$-模结构。
+
 \begin{definition}（局部自由层）
 \index{locally free sheaf\kong 局部自由层}
 
@@ -721,7 +728,7 @@ f(z)&\mapsto&zf(z)
 容易验证，对$X$中的开集$U$，成立
 $
   \coker\fai(U)
-\cong 
+\cong
   \left\{
     \begin{array}{ll}
       \bbC  &  (0\in U)\\
@@ -731,8 +738,537 @@ $
 \index{skyscrapter sheaf\kong 摩天大厦层}
 $，明显不是局部自由层。此层称为\textbf{摩天大厦层}（skyscraper sheaf）。
 
-\section{凝聚层与Oka凝聚定理}
-（待补）
+\section{凝聚层及其基本性质}
+
+\begin{definition}（局部有限生成$\mcalA$-模层）
+
+设$\mcalM$为拓扑空间$X$上的$\mcalA$-模层，称$\mcalA$是
+\textbf{局部有限生成}的，若对任意$x\in X$，存在$x$的邻域$U$，
+以及正整数$r$，使得有层同态短正合列
+$$\mcalA|_U^{\oplus r}\surj\mcalM|_U\to 0$$
+\end{definition}
+
+或者等价地，存在$x$的开邻域$U$，以及截面$F_1,F_2,...,F_r\in\mcalM(U)$，
+使得对任意$y\in U$，$\Bigset{(F_i)_y\in\mcalM_y}{1\leq i\leq r}$
+是$\mcalM_y$的一组$\mcalA_x$-模生成元。
+
+显然，局部自由层一定是局部有限生成的。
+
+\begin{definition}（关系层）
+
+设$\mcalM$是拓扑空间$X$上的$\mcalA$-模层，
+对于$X$的开集$U$，以及$F_1,F_2,...,F_r\in\mcalM(U)$，
+称层同态
+\begin{eqnarray*}
+     \fai:\mcalA|_U^{\oplus r} &\to&  \mcalM|_{U}\\
+     (g_1,g_2,...,g_{r})&\mapsto&\sum_{i=1}^{r}g_iF_i
+\end{eqnarray*}
+的核层$\mcalR(F_1,F_2,...,F_r):=\ker\fai$为截面
+$F_1,F_2,...,F_r$的\textbf{关系层}。
+\end{definition}
+这个定义当中并不要求$\fai$为层满同态，
+也就是说$\mcalM$未必为局部有限生成的。
+只要给定若干局部截面，就可以定义它们的关系层。
+
+\begin{definition}（凝聚层）
+\index{coherent sheaf\kong 凝聚层}
+
+对于拓扑空间$X$上的$\mcalA$-模层$\mcalM$，称$\mcalA$为
+\textbf{凝聚层}（coherent sheaf），如果：
+
+（1）$\mcalA$为局部有限生成的；
+
+（2）对$X$的任意开集$U$，以及
+任意截面$F_1,F_2,...,F_r\in\mcalM(U)$，
+关系层$\mcalR(F_1,F_2,...,F_r)$也是局部有限生成的。
+\end{definition}
+
+通过适当缩小$x\in X$的邻域$U$，容易验证$\mcalM$是凝聚层
+一定是\textbf{局部有限呈示}的，即
+对任意$x\in X$，存在$x$的开邻域$U$，以及正整数$p,q$，
+使得存在$U$上的$\mcalA|_U$-模层正合列
+$$
+  \mcalA|_U^{\oplus p}\to
+  \mcalA|_U^{\oplus q}\surj
+  \mcalM|_U\to 0
+$$
+由定义容易知道，\textbf{凝聚层的局部有限生成子层也是凝聚的}。
+
+此外，对于$X$上的交换环层$\mcalA$，
+称$\mcalA$为局部有限生成的（切转：凝聚的），如果$\mcalA$作为$\mcalA$-模层
+是局部有限生成的（切转：凝聚的）。
+
+凝聚层的下列基本性质是纯线性代数的：
+
+\begin{prop}（凝聚层的基本性质）
+
+设$\mcalA$为拓扑空间$X$上的交换环层，$\mcalF,\mcalG$为
+凝聚$\mcalA$-模层，$\fai:\mcalF\to\mcalG$为$\mcalA$-模层同态，则
+$\ker\fai,\im\fai,\coker\fai$均为凝聚$\mcalA$-模层。
+\end{prop}
+
+\begin{proof}
+显然$\im\fai$是局部有限生成的，
+从而为凝聚层$\mcalG$的局部有限生成子层，故也为凝聚层。
+再看$\ker\fai$作为凝聚层$\mcalF$的子层，
+只需要说明$\ker\fai$是局部有限生成的。
+对任意$x\in X$，由于$\mcalF$局部有限生成，取$x$的开邻域
+$U$，以及截面$F_1,F_2,...,F_q\in\mcalF(U)$为$\mcalF|_U$的生成元，
+于是有$\fai(F_1),\fai(F_2),...,\fai(F_q)\in\mcalG(U)$.
+由$\mcalG$的凝聚性，取关系层$\mcalR(\fai(F_1),\fai(F_2),...,\fai(F_q))$
+的一组生成元$G_1,G_2,...,G_r\in\mcalA(U)^{\oplus q}$，
+其中$G_i=(G_i^1,G_i^2,...,G_i^q)$，即有以$\mcalA(U)$为系数的
+矩阵$(G_i^j)$，其中$1\leq i\leq r,1\leq j\leq q$.
+则容易验证$\Bigset{\sum\limits_{j=1}^qG_i^jF_j}{1\leq i\leq r}$
+是$\ker\fai|_U$的一组生成元，因此$\ker\fai$是局部有限生成的，
+进而由$\mcalF$的凝聚性知$\ker\fai$也是凝聚的。
+
+再看$\coker\fai$的凝聚性。$\coker\fai$作为局部有限生成层$\mcalG$的商层，
+显然也是局部有限生成的。然后对$X$的任意开集$U$，以及任意截面
+$G_1,G_2,...,G_q\in\coker\fai(U)$，断言关系层
+$\mcalR(G_1,G_2,...,G_q)\subseteq\mcalA|_U^{\oplus q}$是局部有限生成的。
+对于任意$x\in U$，取$x$在$U$中的（足够小）邻域$U'$，
+$G_i(1\leq i\leq q)$在$U'$上的限制仍记为$G_i$.
+取截面$G_i\in\coker\fai(U')$在$\mcalG$中的代表元$\Gtil_i\in\mcalG(U')$，
+再取$F_1,F_2,...,F_p\in\mcalF(U')$为$\mcalF|_{U'}$的生成元，
+考虑关系层
+$$
+  \mcalR(F_1,...,F_p;\Gtil_1,...,\Gtil_q)
+\subseteq\mcalA|_{U'}^{\oplus(p+q)}
+$$
+由$\mcalG$的凝聚性（不断缩小$U'$），取其一组生成元
+$$
+  \Bigset{H_i=(H_i^1,H_i^2,...,H_i^{p+q})\in\mcalA(U')^{\oplus(p+q)}}
+  {1\leq i\leq r}
+$$
+则容易验证（纯线性代数，细节略）
+$$
+  \Bigset{\Htil_i=(\pi(H_i^{p+1}),...,\pi(H_i^{p+q}))\in\mcalA(U')^{\oplus q}}
+  {1\leq i\leq r}
+$$
+是关系层$\mcalR(G_1,G_2,...,G_q)|_{U'}$的生成元
+（其中$\pi:\mcalG\to\coker\fai$为典范投影），从而
+关系层$\mcalR(G_1,G_2,...,G_q)$是局部有限生成的，因此$\coker\fai$凝聚。
+\end{proof}
+
+\begin{rem}对于拓扑空间$X$，$\mcalA$为$X$上的交换环层，
+记$\mcalA\Cohcat_X$为$X$上的凝聚$\mcalA$-模层范畴，
+这是$\mcalA\modcat_X$的子范畴。
+上述性质表明$\mcalA\Cohcat_X$是Abel范畴。
+\end{rem}
+
+
+\begin{prop}设$\mcalA$为拓扑空间$X$上的交换环层，则
+对于$\mcalA$-模层同态短正合列
+$$
+  0\to\mcalF_1\to\mcalF_2\to\mcalF_3\to 0
+$$
+此正合列中任何两个为凝聚层均可推出第三个也为凝聚层。
+\label{凝聚短正合列-prop}
+\end{prop}
+
+\begin{proof}
+  只需再证明$\mcalF_1,\mcalF_3$凝聚能推出$\mcalF_2$凝聚。
+先断言$\mcalF_2$是局部有限生成的。对任意$x\in X$，
+取$x$的（足够小的）开邻域$U$，并且取
+$F_1,F_2,...,F_p\in\mcalF_1(U)$为$\mcalF_1|_U$的生成元，
+再取$G_1,G_2,...,G_q\in\mcalF_3(U)$为$\mcalF_3|_U$的生成元。
+将$G_j$在$F_2(U)$中的代表元记为$\Gtil_j\,(1\leq j\leq q)$，
+则容易验证$\{F_1,F_2,...,F_p;\Gtil_1,\Gtil_2,...,\Gtil_q\}$为
+$\mcalF_2|_U$的一组生成元。从而$\mcalF_2$是局部有限生成的。
+
+对$X$的任意开集$U$，以及$S_1,S_2,...,S_r\in\mcalF_2(U)$，
+断言关系层$\mcalR(S_1,S_2,...,S_r)$是局部有限生成的。
+任取$x\in U$，记截面$S_1,...,S_r$在$\mcalF_3(U)$上的投影分别为
+$\Sbar_1,...,\Sbar_r$.由$\mcalF_3$的凝聚性，
+$\mcalR(\Sbar_1,...,\Sbar_r)$是局部有限生成的，从而取$x$在$U$中的
+（足够小且不妨不断缩小的）开邻域$U'$，以及
+$\mcalR(\Sbar_1,...,\Sbar_r)|_{U'}$的生成元矩阵
+$$
+   H
+:=
+  \begin{pmatrix}
+    H_1^1  & \cdots & H_t^1 \\
+    \vdots &        & \vdots\\
+    H_1^r  & \cdots & H_t^r
+  \end{pmatrix}
+\in
+  \mcalA(U')^{r\times t}
+$$
+即每个$H_j^i\in\mcalA(U')$，$H$中的列向量$\in\mcalR(\Sbar_1,...,\Sbar_r)(U')$，
+矩阵$H$的$r$个列向量构成$\mcalR(\Sbar_1,...,\Sbar_r)|_{U'}$的生成元。再令
+$$
+  (F_1,F_2,...,F_t)
+:=(S_1,S_2,...,S_r)H
+$$
+则易验证$(F_1,F_2,...,F_t)\in\mcalF_1(U')^{\oplus t}$.
+由$\mcalF_1$的凝聚性，取$\mcalR(F_1,...,F_t)|_{U'}$的生成元矩阵
+$$
+   K
+:=
+  \begin{pmatrix}
+    K_1^1  & \cdots & K_s^1 \\
+    \vdots &        & \vdots\\
+    K_1^t  & \cdots & K_s^t
+  \end{pmatrix}
+\in
+  \mcalA(U')^{t\times s}
+$$
+则容易验证$HK$为$\mcalR(S_1,...,S_r)|_{U'}$的生成元矩阵，从而
+$\mcalR(S_1,...,S_r)$是局部有限生成的。
+
+综上所述，若$\mcalF_1$与$\mcalF_3$凝聚，则$\mcalF_2$也凝聚。
+\end{proof}
+
+\begin{cor}设$\mcalF$是拓扑空间$X$上的凝聚$\mcalA$-模层，则
+
+（1）任意$n\geq 1$，$\mcalF^{\oplus n}$也是凝聚$\mcalA$-模层；
+
+（2）对$X$的任意开集$U$，以及任意$F_1,F_2,...,F_p\in\mcalF(U)$，
+则关系层$\mcalR(F_1,F_2,...,F_p)$也是凝聚的（$\mcalA|_U$-模层）。
+\end{cor}
+
+\begin{proof}
+\textbf{(1)}注意短正合列
+$0\to\mcalF\to\mcalF\oplus\mcalF^{\oplus(n-1)}\to\mcalF^{\oplus(n-1)}\to 0$，
+反复利用性质\ref{凝聚短正合列-prop}作归纳即可。
+
+\textbf{(2)}由（1）知$(\mcalF|_U)^{\oplus p}$是凝聚的，
+因此$\mcalR(F_1,F_2,...,F_p)$作为$(\mcalF|_U)^{\oplus p}$
+的局部有限生成子层，也是凝聚的。
+\end{proof}
+
+\begin{cor}若拓扑空间$X$上的$\mcalA$-模层$\mcalM$是凝聚的，
+并且$\mcalM$的子层$\mcalF,\mcalG$也是凝聚的，那么
+$\mcalF\cap\mcalG$也为凝聚$\mcalA$-模层。
+\end{cor}
+
+\begin{proof}
+考虑层同态$\fai:\mcalF\to\mcalM/\mcalG$为如下复合：
+$$\mcalF\inj\mcalM\surj\mcalG$$
+注意$\mcalF$与$\mcalM/\mcalG$都是凝聚的，再注意
+$
+  \mcalF\cap\mcalG\cong\ker\fai
+$，因此$\mcalF\cap\mcalG$也凝聚。
+\end{proof}
+
+\section{Oka凝聚定理}
+本节介绍多复变函数论、复几何中的重要结果：
+\textbf{对于复流形$X$，解析函数环层$\mcalO_X$是凝聚层}。
+这也是凝聚层的重要例子。注意凝聚性是局部性质，于是我们不妨$X=\bbC^n$.
+我们只需要证明，对$\bbC^n$的任意开子集$U$，以及任意
+$F_1,F_2,...,F_q\in\mcalO_X(U)$，
+关系层$\mcalR(F_1,F_2,...,F_q)$是局部有限生成的。
+
+现在，对任意$x\in X$，由于$\mcalO_{X,x}$为诺特环，从而
+$\mcalR(F_1,...,F_q)_x\subseteq\mcalO_{X,x}^{\oplus q}$
+为有限生成$\mcalO_{X,x}$-模。但这与希望要证的“$\mcalR(F_1,...,F_q)$局部有限生成”
+还差些东西。我们暂时只能说明存在$x$的邻域$U'\subseteq U$，
+以及有限多个$\mcalO_X^{\oplus q}$在$U'$的截面，使得它们在$x$的芽
+生成$\mcalR(F_1,...,F_q)_x$；但我们希望\textbf{对$x$附近的任何点$y$}，
+这些截面在$y$处的芽也生成$\mcalR(F_1,...,F_q)_y$——这是不显然的。
+
+\begin{lemma}（重要引理）
+\label{Oka凝聚-重要引理-lem}
+
+对于$n\geq 2$，记$\bbC^n=\Bigset{(z',z_n)}
+{z'=(z_1,...,z_{n-1})\in\bbC^{n-1},z_n\in\bbC}$，
+设$F_1,F_2,...,F_q$为定义在$(0,0)\in\bbC^n$附近的解析函数，
+则存在$(0,0)$的邻域$\yc:=\yc'\times\yc_n$，
+其中$\yc'$与$\yc_n$分别为$\bbC^{n-1}$与$\bbC$中的以原点为中心的多圆柱，
+使得对任意$w=(w',w_n)\in\yc$，
+$
+  \Bigset{
+           (K^1,K^2,...,K^q)
+           \in\mcalO_{\yc,w}^{\oplus q}
+         }
+         {K^j\in\mcalK,\,\forall\,1\leq j\leq q}
+$是
+$\mcalO_{\yc,w}$-模$\mcalR(F_1,F_2,...,F_q)_w$
+的一组生成元，其中
+$$\mcalK:=\Bigset{f(z',z)\in\mcalO_{\yc',w'}[z_n]}{\deg_{z_n}f\leq\mu}$$
+$$
+  \mu:=
+  \max\Bigset{\Ord_{z_n}(F_{k})_0}{1\leq k\leq q}
+$$
+\end{lemma}
+
+\begin{proof}
+对$F_1,F_2,...,F_q$在原点处使用Weierstrass预备定理，
+适当乘以原点附近的可逆解析函数
+（不会改变$\mcalR(F_1,...,F_q)$在原点的足够小邻域的限制），
+不妨设$F_1,...,F_q\in\mcalO_{\yc',0}[z_n]$为定义在原点附近的
+关于$z_n$的Weieretrass多项式。此外，不妨
+$$
+  \deg_{z_n}F_q=\mu
+$$
+
+\textbf{Step 1}
+对于$w=(w',w_n)\in\yc$，关于$z_n$的Weierstrass多项式$F_q$
+（通过平移）自然也视为关于$(z_n-w_n)$的Weierstrass多项式（次数仍为$\mu$）。
+对$F_q$在$w$处使用Weierstrass预备定理，
+令$F_q=f'f''$，其中$f'\in\mcalO_{\yc',w'}[z_n]$
+为关于$(z_n-w_n)$的Weierstrass多项式，
+$f''\in\mcalO_{\yc,w}$在$w$附近可逆。
+注意$F_q$与$f'$都为Weierstrass多项式，
+从而由引理\ref{Weierstrass多项式整除引理-lemma}可知
+$f''\in\mcalO_{\yc',w'}[z_n]$为关于$(z_n-w_n)$的多项式。
+分别记$\mu',\mu''$为多项式$f',f''$关于$z_n$的次数，则$\mu=\mu'+\mu''$.\vs
+
+\textbf{Step 2}
+我们习惯将$\mcalR(F_1,F_2,...,F_q)_w$中的元素记成列向量。
+对于任意的
+$
+  \begin{pmatrix}
+    g^1 \\
+    g^2 \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+\in
+  \mcalR(F_1,F_2,...,F_q)_w
+$，对于$1\leq j\leq q-1$，将$g^j$除以Weierstrass多项式$F_{q,w}$，
+由Weierstrass除法定理，得
+$$
+  g^j=F_{q,w}T^j+R^j
+\qquad
+  (1\leq j\leq q-1)
+$$
+其中$T^j\in\mcalO_{\yc ,w}$以及$R^j\in\mcalO_{\yc',w'}[z_n]$，
+且$\deg_{z_n}R^j<\mu'$.
+而对于$j=q$，令
+$$
+  R^q
+:=
+  g^q+\sum_{j=1}^{q-1}F_{j,w}T^j
+$$
+则容易验证
+$$
+  \begin{pmatrix}
+    g^1 \\
+    g^2 \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    F_{q,w} &   &   &   \\
+      & F_{q,w} &   &   \\
+      &   & \ddots  &   \\
+      &   &   & F_{q,w} \\
+    -F_{1,w} & -F_{2,w} & \cdots & -F_{q-1,w}
+  \end{pmatrix}
+  \begin{pmatrix}
+    T^1 \\
+    T^2 \\
+    \vdots \\
+    T^{q-1}
+  \end{pmatrix}
++
+  \begin{pmatrix}
+    R^1 \\
+    R^2 \\
+    \cdots \\
+    R^q
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    F_{q,w} &  &  & R^1 \\
+      & \ddots &   & \vdots \\
+      &   & F_{q,w} & R^{q-1} \\
+    -F_{1,w} & \cdots & -F_{q-1,w} & R^q
+  \end{pmatrix}
+  \begin{pmatrix}
+    T^1 \\
+    \vdots \\
+    T^{q-1} \\
+    1
+  \end{pmatrix}
+$$
+
+\textbf{Step 3}
+我们得到了$q$阶方阵
+$
+  G:=
+    \begin{pmatrix}
+    F_{q,w} &  &  & R^1 \\
+      & \ddots &   & \vdots \\
+      &   & F_{q,w} & R^{q-1} \\
+    -F_{1,w} & \cdots & -F_{q-1,w} & R^q
+  \end{pmatrix}
+$.容易验证$G$的每一列都位于$\mcalR(F_1,F_2,...,F_q)_w$之中；
+并且除了第$(q,q)$-分量$G^q_q=R_q$，$G$的其余矩阵元都位于$\mcalK$中，
+即为次数不超过$\mu$的关于$z_n$的$\mcalO_{\yc',w'}$-系数的多项式。
+最后，我们适当调整矩阵$G$的最后一列。
+
+注意到$G$的第$q$列位于$\mcalR(F_1,F_2,...,F_q)_w$之中，以及$F_q=f'f''$，从而
+$$
+  \sum_{j=1}^{q-1}
+    F_{j,w}R^j
+  + f'f''R^q
+=0
+$$
+注意$\deg_{z_n}\left(
+  \sum\limits_{j=1}^{q-1}
+    F_{j,w}R^j
+\right)<\mu+\mu'$，因此
+$f'f''R^q\in\mcalO_{\yc',w'}[z_n]$并且
+$\deg_{z,n}(f'f''R^q)<\mu+\mu'$.
+又因为$f'$是关于$z_n$的次数为$\mu'$的Weierstrass多项式，
+从而由引理\ref{Weierstrass多项式整除引理-lemma}可知，
+$f''R^q\in\mcalO_{\yc',w'}[z_n]$，并且$\deg_{z_n}(f''R^q)<\mu$.
+从而考虑
+$$
+  \begin{pmatrix}
+    g^1 \\
+    g^2 \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    F_{q,w} &  &  & f''R^1 \\
+      & \ddots &   & \vdots \\
+      &   & F_{q,w} & f''R^{q-1} \\
+    -F_{1,w} & \cdots & -F_{q-1,w} & f''R^q
+  \end{pmatrix}
+  \begin{pmatrix}
+    T^1 \\
+    \vdots \\
+    T^{q-1} \\
+    1/f''
+  \end{pmatrix}
+$$
+易知上式中的矩阵的每个矩阵元都位于$\mcalK$，
+并且每一列都位于$\mcalR(F_1,F_2,...,F_q)_w$，
+因此
+$
+  \begin{pmatrix}
+    g^1 \\
+    \vdots \\
+    g^n
+  \end{pmatrix}
+$由上述矩阵（$q$个列向量）$\mcalO_{\yc,w}$-生成。从而证毕。
+\end{proof}
+
+\begin{thm}（Oka凝聚定理）
+
+对于复流形$X$，$X$上的解析函数环层$\mcalO_X$是凝聚的。
+\end{thm}
+
+\begin{proof}
+如之前所述，不妨$X=\bbC^n$，以及对于任意开集$U\subseteq\bbC^n$以及
+任意$F_1,...,F_q\in\mcalO_{\bbC^n}(U)$，我们不妨$U$是
+以原点为中心的多圆柱区域，不妨$F_1,...,F_q$为关于$z_n$的Weierstrass多项式。
+
+对$X=\bbC^n$的维数$n$归纳。$n=0$时平凡。对于$n\geq 1$，
+如果$\mcalO_{\bbC^{n-1}}$是凝聚的，则对于$(0,0)\in\bbC^{n-1}\times\bbC$
+的多圆柱邻域$\yc=\yc'\times\yc_n$，以及
+$F_1,F_2,...,F_q\in\mcalO_{\yc'}[z_n]$为Weierstrass多项式，
+它们关于$z_n$的最高次数记为$\mu$.只需证$\mcalF(F_1,F_2,...,F_q)$局部有限生成。
+对于任意的$w\in\yc$，以及
+$
+  \begin{pmatrix}
+    g^1 \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+\in\mcalR(F_1,F_2,...,F_q)_w
+$，由重要引理\ref{Oka凝聚-重要引理-lem}
+可知，存在$q\times(\mu+1)$矩阵
+$U=(U^j_\afa)_{1\leq j\leq q\atop 0\leq\afa\leq\mu}$，使得
+$$
+  \begin{pmatrix}
+    g^1 \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    U^1_0   & \cdots & U^1_\mu \\
+    \vdots  &        & \vdots  \\
+    U^q_0   & \cdots & U^q_\mu
+  \end{pmatrix}
+  \begin{pmatrix}
+    z_n^0   \\
+    \vdots  \\
+    z_n^\mu
+  \end{pmatrix}
+$$
+其中$U^j_\afa\in\mcalO_{\yc',w'}$，
+视为定义在$w'\in\yc'$附近的解析函数，自然也视为定义在$w\in\yc$附近的
+（不显含$z_n$的）解析函数。注意$F_k\in\mcalO_{\yc'}[z_n]$也为关于$z_n$的
+（次数不超过$\mu$的）（Weierstrass）多项式，从而
+$$
+  (F_1,\cdots F_q)
+=
+  (z_n^0,\cdots z_n^\mu)
+  \begin{pmatrix}
+    H^0_1   & \cdots & H^0_q  \\
+    \vdots  &        & \vdots \\
+    H^\mu_1 & \cdots & H^\mu_q
+  \end{pmatrix}
+$$
+即得$(\mu+1)\times q$的矩阵$H$，$H$的每个矩阵元都位于$\mcalO_{\yc'}$之中，
+当然也是定义在$w\in\yc$附近的（不显含$z_n$的）解析函数。
+注意到
+$$
+  0
+=
+  (F_1,\cdots,F_q)
+  \begin{pmatrix}
+    g^1   \\
+    \vdots \\
+    g^q
+  \end{pmatrix}
+=
+  (z_n^0,\cdots z_n^\mu)
+  HU
+  \begin{pmatrix}
+    z_n^0   \\
+    \vdots  \\
+    z_n^\mu
+  \end{pmatrix}
+=:
+  \sum_{k=0}^{2\mu}L_k(U)z_n^k
+$$
+因此比较$z_n$各次幂的系数，知$L_k(U)=0,\,\forall0\leq k\leq 2\mu$.\vs 
+
+我们将矩阵$U$视为层$\mcalO_{\yc'}^{\oplus q(\mu+1)}$
+在$w'$附近的截面，对于$0\leq k\leq2\mu$，$L_k$为层同态
+$$
+  L_k:\mcalO_{\yc'}^{\oplus q(\mu+1)}|_{\Omg'}
+\to
+  \mcalO_{\yc'}|_{\Omg'}
+$$
+并且$L_k$只与$F_1,F_2,...,F_q$有关。其中$\Omg'$为$w'$
+在$\yc'$中的（足够小、不断缩小的）邻域。\vs
+
+由归纳假设，$\mcalO_{\yc'}$是凝聚的，因此
+$\mcalO_{\yc'}^{\oplus q(\mu+1)}$也凝聚，因此对任意$0\leq k\leq 2\mu$，
+核层$\ker L_k$也凝聚，从而$\bigcap\limits_{k=0}^{2\mu}\ker L_k$凝聚，
+故局部有限生成。因此存在截面
+$U_1,U_2,...,U_N\in\mcalO_{\yc'}^{\oplus q(\mu+1)}(\Omg')$，使得
+$\{U_1,U_2,...,U_N\}$为$\mcalO_{\yc'}^{\oplus q(\mu+1)}|_{\Omg'}$的
+子层$\bigcap\limits_{k=0}^{2\mu}\ker L_k$的生成元。
+其中对于$1\leq l\leq N$，$U_l$为$q\times(\mu+1)$矩阵，
+其矩阵元取值于$\mcalO_{\yc'}(\Omg')$.
+
+容易验证，以下$N$个$q$维列向量
+$$
+  \Bigset{U_l
+           \begin{pmatrix}
+             z_n^0  \\
+             \vdots \\
+             z_n^\mu
+           \end{pmatrix}
+         }
+         {1\leq l\leq N}
+$$
+构成关系层$\mcalR(F_1,...,F_q)|_{\Omg'}$的一组生成元。
+这就证明了$\mcalO_{\yc}$的凝聚性，证毕。
+\end{proof}
+
 
 \section{层的上同调}
 Today:
