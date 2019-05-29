@@ -420,6 +420,20 @@ $\im\fai:=(\im^p\fai)^+\cong\mcalG$.
 这自然也给出一个范畴，称为$X$上的\textbf{层范畴}。
 类似地，$X$上的所有预层也构成范畴，记为$\pShcat_X$.
 
+\begin{rem}对于拓扑空间$X$，以及$X$的开集$U$，则有“取截面”函子
+\begin{eqnarray*}
+  \Gma(U,-):\Abcat_X&\to&\Abcat\\
+            \mcalF&\mapsto&\mcalF(U)
+\end{eqnarray*}
+其中$\Abcat$为Abel群范畴。容易验证函子$\Gma(U,-)$是\textbf{左正合函子}，
+即对于$\Abcat_X$中任意的左短正合列$0\to\mcalF\to\mcalG\to\mcalH$，
+该函子诱导的Abel群同态序列
+$0\to\mcalF(U)\to\mcalG(U)\to\mcalH(U)$
+也是正合的。\label{取截面函子左正合-rem}
+\end{rem}
+
+函子$\Gma(U,-)$的左正合性是后文将要介绍的层上同调理论的基础。
+
 \begin{definition}（层的顺像）
 
 设$f:X\to Y$为拓扑空间的连续映射，$\mcalF$是$X$上的层，则定义
@@ -1232,7 +1246,7 @@ $$
 =:
   \sum_{k=0}^{2\mu}L_k(U)z_n^k
 $$
-因此比较$z_n$各次幂的系数，知$L_k(U)=0,\,\forall0\leq k\leq 2\mu$.\vs 
+因此比较$z_n$各次幂的系数，知$L_k(U)=0,\,\forall0\leq k\leq 2\mu$.\vs
 
 我们将矩阵$U$视为层$\mcalO_{\yc'}^{\oplus q(\mu+1)}$
 在$w'$附近的截面，对于$0\leq k\leq2\mu$，$L_k$为层同态
@@ -1271,176 +1285,389 @@ $$
 
 
 \section{层的上同调}
-Today:
+%$X$ a topological space, $\mcalF$- sheaf (of abelian groups).
 
-Sheaf cohomology
+本节开始，我们讨论拓扑空间$X$上的$\mcalA$-模层，即考虑范畴$\mcalA\modcat_X$.
+先简单回顾一些同调代数的记号、结论。对于$X$上的$\mcalA$-模层$\mcalF$，
+$\mcalF$的\textbf{消解}(resolution)\index{resolution\kong 消解}
+是指形如下述的$\mcalA\modcat_X$中的正合序列：
+$$
+0\to \mcalF\xra{j}\mcalG_0\xra{d^0}\mcalG_1\xra{d^1}\cdots
+$$
+%\begin{definition}  (resolution)
+%(1)a resolution of $\mcalF$ is an exact sequence
+%$$0\to \mcalF\xra{j}\mcalF\xra{d^0}\mcalF\xra{d^1}\to\cdots$$
+%\end{definition}
 
-$X$ a topological space, $\mcalF$- sheaf (of abelian groups).
+注意范畴$\Abcat$是Abel范畴，
+因此我们可以考虑该范畴中的\textbf{内射对象}（injective object），
+即“\textbf{内射层}”（injective sheaf）。
+\index{injective sheaf\kong 内射层}
+具体地，Abel群层$\mcalF$是内射的，若
+对任意的层单同态$i:\mcalF\inj\mcalG$，
+以及任意的层同态$\fai:\mcalF\to\mcalH$，都存在
+层同态$\psi:\mcalG\to\mcalH$，使得$\fai=\psi\circ i$，
+如下图：
+$$
+  \xymatrix{
+     \mcalF
+       \ar@{^(->}[r]^i
+       \ar[rd]_{\fai}
+    &\mcalG
+       \ar@{-->}[d]^{\exists\,\psi}
+  \\
+    &\mcalH
+  }
+$$
+我们承认以下事实：
 
-\begin{definition}  (resolution)
-
-(1)a resolution of $\mcalF$ is an exact sequence
-
-$$0\to \mcalF\xra{j}\mcalF\xra{d^0}\mcalF\xra{d^1}\to\cdots$$
-
-\end{definition}
-
-\begin{definition}
-A sheaf $\mcalA$ is called injective, if
-if for any injective morphism $j:\mcalA\to \mcalB$
-and for any morphism $\fai:\mcalA\to\mcalS$，
-there exists an extension $\psi :\mcalB\to \mcalS$,such that
-%%%%%diagram%%%
-\end{definition}
-\begin{thm}
-the category of sheaves of abelian sheaves have enough
-injective objects, i.e.  any $\mcalF$ can be
-embedded in some injective sheaf.
+\begin{thm}对于拓扑空间$X$，以及$X$上的交换环层$\mcalA$，
+范畴$\mcalA\modcat_X$是\textbf{足够内射}的，
+即对于$X$上任意的$\mcalA$-模层$\mcalF$，都存在内射层$\mcalI$，
+以及层单同态$\mcalF\inj\mcalI$.
 \end{thm}
+由同调代数，容易知道$\mcalA\modcat_X$足够内射，
+当且仅当对任何$\mcalA$-模层$\mcalF$，
+都存在$\mcalF$的\textbf{内射消解}（injective resolution）
+\index{injective resolution\kong 内射消解}
+$$
+  0\to\mcalF\inj\mcalI^0
+  \to\mcalI^1\to\mcalI^2\to\cdots
+$$
+即上述序列正合，并且$\mcalI_k$为内射层（$\forall k\geq 0$）。
 
-\begin{definition}
-Consider an injective resolution of $\mcalF$, i.e. an exact sequence
+%\begin{thm}
+%the category of sheaves of abelian sheaves have enough
+%injective objects, i.e.  any $\mcalF$ can be
+%embedded in some injective sheaf.
+%\end{thm}
+
+\begin{definition}（层的上同调）
+
+对于拓扑空间$X$上的$\mcalA$-模层$\mcalF$，
+任取$\mcalF$的一个内射消解$0\to\mcalF\inj\mcalI\updot$：
 $$0\to\mcalF\to\mcalI^0\xra{\td}\mcalI^1\xra{\td}\mcalI^2\to\cdots$$
-where every $\mcalI^k(k\geq 0)$ is injective.
-
-
-$\rightsquigarrow $induces a sequence
+将函子$\Gma(X,-)$（见注记\ref{取截面函子左正合-rem}）作用于其上，
+诱导了如下的$\mcalA(X)$-模上链复形
 $$0\to\Gamma(X,\mcalF)
-\to\Gamma(X,\mcalI^0)\xra{\td}
+\inj\Gamma(X,\mcalI^0)\xra{\td}
 \Gamma(X,\mcalI^1)\xra{\td}
 \Gamma(X,\mcalI^2)\to\cdots$$
-
-Then
+定义$\mcalF$的第$q$阶上同调群
 $$H^q(X,\mcalF):=H^q(\Gamma(X,\mcalI\updot))$$
+\end{definition}
+由函子$\Gma(X,-)$的左正合性可知，
+$$
+  H^0(X,\mcalF)
+=
+  \frac{\ker(\td:\Gma(X,\mcalI^0)\to\Gma(X,\mcalI^1))}
+       {\im(0\to\Gma(X,\mcalI^0))}
+\cong
+  \im(\Gma(X,\mcalF)\inj\Gma(X,\mcalI^0))
+\cong \Gma(X,\mcalF)=\mcalF(X)
+$$
+即为$\mcalF$的整体截面。
 
+\begin{rem}
+由同调代数的有关知识，上述$H^q(X,\mcalF)$是良定的，
+与$\mcalF$的内射消解无关。
+\end{rem}
+
+\begin{definition}（松弛层）
+\index{flabby\kong 松弛（层）}
+
+称拓扑空间$X$上的$\mcalA$-模层$\mcalS$是\textbf{松弛的}
+（flabby 或 flasque），如果对$X$的任意开集$U$，限制同态
+$\mcalS(X)\to\mcalS(U)$是满射。
 \end{definition}
 
-then, $H^0(X,\mcalF)=\Gamma(X,\mcalF)$.
+对于$\mcalA$-模层$\mcalF$，望文生义，
+$\mcalF$的\textbf{松弛消解}（flabby resolution）
+是指层正合列
+$$
+  0\to\mcalF\inj\mcalS^0
+  \to\mcalS^1\to\mcalS^2\to\cdots
+$$
+其中每个$\mcalS^k(k\geq 0)$都是松弛层。
 
-\begin{definition}
-A sheaf $\mcalS$ is called a flabby (flasque ,in France) ,if
-for any open set $\Omg\subseteq X$, the morphism
-$$\mcalS(X)\to\mcalS(\Omg)$$
-is surjective.
-\end{definition}
+我们承认如下事实：
 
-\begin{definition}
-$$0\to\mcalF\xra{j}\mcalF^0\xra{d^0}\to\mcalF^1$$
-is an exact sequence is called a flabby resolution, if
-any $\mcalF^k$ is flabby.
-\end{definition}
+\begin{thm}对于$X$上的$\mcalA$-模层$\mcalF$，
+若$0\to\mcalF\inj\mcalS\updot$为$\mcalF$的一个松弛消解，
+则成立
+$$
+  H\updot(X,\mcalF)\cong H^q(\Gma(X,\mcalS\updot))
+$$
+特别地，若$\mcalF$为松弛层，则$H^q(X,\mcalF)=0$对任意$q\geq 1$成立。
+\end{thm}
 
-\begin{definition}
-$$H^q(X,\mcalF):=...\text{by flabby resolution...}$$
-\end{definition}
+也就是说，我们可以利用松弛消解来计算层上同调。
+然而，松弛消解一定存在吗？答案是肯定的。
+
+\begin{notation}（典范松弛层）
+
+设$\mcalF$为$X$上的$\mcalA$-模层，对于$X$的开集$U$，记
+$$
+  \God(\mcalF)(U)
+:=
+  \Bigset
+  {f:U\to\coprod_{x\in U}\mcalF_x}
+  {f(x)\in\mcalF_x,\,\forall x\in U}
+$$
+则$\God(\mcalF)$为$X$上的松弛层，并且有典范的层单同态
+$$j:\mcalF\inj\God(\mcalF)$$
+称$\God(\mcalF)$为关于$\mcalF$的\textbf{典范松弛层}，
+也称为\textbf{Godement构造}。
+\end{notation}
 
 \begin{proof}
-Homological Algebra...omit.
+$\God(\mcalF)$的松弛性几乎显然。
+典范同态$j:\mcalF\inj\God(\mcalF)$如下给出：
+对$X$的任意开子集$U$，
+\begin{eqnarray*}
+  j(U):\mcalF(U)&\to&\God(\mcalF)(U)\\
+  s&\mapsto&(x\mapsto s_x)
+\end{eqnarray*}
+易知如此定义的$j$是层单同态。
 \end{proof}
 
-the two definitions of Sheaf Cohomology are isomorphic.
+也就是说$\mcalA\modcat_X$中的任何对象都是某个松弛层的子层，即
+“足够松弛”。从而由同调代数的标准技术
+（与“足够内射$\iff$存在内射消解”完全一样）可知，
+$X$上的任何$\mcalA$-模层都存在松弛消解。
 
+%the two definitions of Sheaf Cohomology are isomorphic.
+%Godement's construction
+%$$God(\mcalF)(U):=
+%\{f:U\to\bigcup_{x\in U}\mcalF_x|
+%f(y)\in\mcalF_y,\forall y\in U\}
+%:=\prod_{x\in U}\mcalF_x$$
+%$God(\mcalF)$ is a sheaf, and it is flabby. and there is a canonical
+%morphism $\mcalF(U)\to God(F)(U)$ by $x\mapsto(x\mapsto s_x)$ is injective.
+%$$\mcalF^0:=God(\mcalF)$$
+%$$0\to\mcalF\xra{j}\mcalF^0\surj\coker(j)=\mcalF^0\big/\mcalF$$
+%and consider
+%$$\mcalF^1:=God(\coker(j))$$
+%......then construct by induction... this is a flabby resolution of $\mcalF$.
 
-Godement's construction
+在一些更特殊的情形下，我们可以去计算某些层的上同调。
+回顾：拓扑空间$X$称为\textbf{仿紧}（paracompact）的
+\index{paracompact\kong 仿紧}，
+如果$X$是Hausdorff的，并且$X$的任何开覆盖都存在局部有限开加细。
+众所周知，度量空间都是仿紧的，紧空间都是仿紧的，仿紧空间都是正规的。
 
-$$God(\mcalF)(U):=
-\{f:U\to\bigcup_{x\in U}\mcalF_x|
-f(y)\in\mcalF_y,\forall y\in U\}
-:=\prod_{x\in U}\mcalF_x$$
+\begin{definition}（单位分解环层）%(resolution by fine sheaves)
+\index{fine sheaf}
 
-$God(\mcalF)$ is a sheaf, and it is flabby. and there is a canonical
-morphism $\mcalF(U)\to God(F)(U)$ by $x\mapsto(x\mapsto s_x)$ is injective.
-
-$$\mcalF^0:=God(\mcalF)$$
-$$0\to\mcalF\xra{j}\mcalF^0\surj\coker(j)=\mcalF^0\big/\mcalF$$
-and consider
-$$\mcalF^1:=God(\coker(j))$$
-......then construct by induction... this is a flabby resolution of $\mcalF$.
-
-\begin{definition}(resolution by fine sheaves)
-
-$\mcalA$ is a sheaf of ring,
-$X$ is a paracompact topological space, $\mcalA$
-is called a fine sheaf, if for any open covering
-$$X=\bigcup_{\alpha}V_{\alpha}\quad,\mcalV:=\{V_{\alpha}\}$$
-there exists a partition of unit subordinate to $\mcalV$,
-(i.e. $\exists f_{\alpha}\in\mcalA(V_{\alpha}),supp(\alpha)
-:=\overline{\{x\in V_{\alpha}|f_{\alpha,x}\neq 0\}}\subseteq V_{\alpha}$, and
-$\sum_{\alpha}f_{\alpha}=1$(the sum is locally finite)
- )
+设$X$为仿紧空间，$\mcalA$为$X$上的交换环层，
+称$\mcalA$为\textbf{fine sheaf}，
+若对$X$的任何开覆盖$\mcalU=\Bigset{\U_\afa}{\afa\in\mcalI}$，
+存在一族截面$f_\afa\in\mcalA(X)$，使得
+$$
+  \supp(f_\afa)
+:=
+  \overline{\Bigset{x\in X}{(f_\afa)_x\neq 0}}
+\subseteq U_\afa
+$$
+$$
+  \sum_{\afa\in\mcalI}
+    f_\afa
+\equiv 1\in\mcalA(X)
+$$
+其中上述求和是局部有限的。
 \end{definition}
 
-\begin{example}
-$X$ is a differential manifold,
-$\mcalC^{\infty}$ is the sheaf of smooth functions,
-then $\mcalC^{\infty}$ is a fine sheaf.
+%$\mcalA$ is a sheaf of ring,
+%$X$ is a paracompact topological space, $\mcalA$
+%is called a fine sheaf, if for any open covering
+%$$X=\bigcup_{\alpha}V_{\alpha}\quad,\mcalV:=\{V_{\alpha}\}$$
+%there exists a partition of unit subordinate to $\mcalV$,
+%(i.e. $\exists f_{\alpha}\in\mcalA(V_{\alpha}),supp(\alpha)
+%:=\overline{\{x\in V_{\alpha}|f_{\alpha,x}\neq 0\}}\subseteq V_{\alpha}$, and
+%$\sum_{\alpha}f_{\alpha}=1$(the sum is locally finite) )
+
+Fine sheaf的典型例子是光滑流形上众所周知的单位分解定理：
+ 
+\begin{example}（单位分解定理）
+
+设$X$为光滑流形，$\mcalC^\infty$为$X$上的光滑函数环层，
+则$\mcalC^\infty$是fine sheaf。
 \end{example}
 
+%$X$ is a differential manifold,
+%$\mcalC^{\infty}$ is the sheaf of smooth functions,
+%then $\mcalC^{\infty}$ is a fine sheaf.
+
+事实上，若仿紧空间$X$上的环层$\mcalA$是fine sheaf，
+则任何$\mcalA$-模层都是上同调平凡的：
+
 \begin{thm}
-$\mcalS$ is a sheaf of $\mcalA$-modules,
-$\mcalA$ is a fine sheaf. then for any $q\geq 1$,
-$$H^q(X,\mcalS)=0$$
+设仿紧空间$X$上的环层$\mcalA$为fine sheaf，
+则对于任意$\mcalA$-模层$\mcalF$，
+$$H^q(X,\mcalF)=0\qquad (\forall q\geq 1)$$
 \end{thm}
+%$\mcalS$ is a sheaf of $\mcalA$-modules,
+%$\mcalA$ is a fine sheaf. then for any $q\geq 1$,
+%$$H^q(X,\mcalS)=0$$
+
 \begin{proof}
-Consider a flabby(or injective) resolution
-$$0\to\mcalS\xra{j}\mcalI^0\xra{\td}\mcalI^1\xra{\td}\mcalI^2\cdots$$
-where any $\mcalI^k(k\geq 0)$ is a sheaf of $\mcalA$-modules.
+任取$\mcalF$的内射消解$0\to\mcalF\inj\mcalI\updot$，
+其中$\td^k:\mcalI^k\to\mcalI^{k+1}\,(\forall k\geq 0)$，
+则对任意$q\geq 1$，有
+$$
+  H^q(X,\mcalF)
+\cong
+  \frac{\ker(\td^{q}_X:\mcalI^{q}(X)\to\mcalI^{q+1}(X))}
+       {\im(\td^{q-1}_X:\mcalI^{q-1}(X)\to\mcalI^q(X))}
+$$
+而对于任意截面$s\in\ker\td^q_X\subseteq\mcalI^q(X)$，
+由$\cdots\to\mcalI^{q-1}\to\mcalI^q\to\mcalI^{q+1}\to\cdots$在$\mcalI^q$
+处的正合性可知，存在$X$的开覆盖$\mcalU=\Bigset{U_\afa}{\afa\in\mcalJ}$，
+以及$s'_\afa\in\mcalI^{q-1}(U_\afa)$，使得
+$\td^{q-1}_{U_\afa}(s'_\afa)=s|_{U_\afa}$.
 
-by definition,
-$$H^q(X,m\mcalS):=\frac{\ker\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})}
-                       {\Im\td:\Gamma(\mcalI^{q-1})\to\Gamma(\mcalI^{q})}$$
-
-Let $\alpha\in\ker\{\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})\}$
-by the exactness of resolution, $\exists$ an open covering $\mcalU=(U_{i})_{i}$,
-s.t. $\alpha|_{U_{i}}=\td\beta_{i}$
-where $\beta_{i}\in\mcalT^{q-1}(U_{i})$.
-Let $(\beta_{i})_{i}$ be the partition of unit w.r.t. $\mcalU$.
-consider
-$$\beta:=\sum_{i}f_i\beta_i$$
-(well defined). Then $\td\beta=\alpha$....
+由于$\mcalA$为fine sheaf，从而取
+$f_\afa\in\mcalA(X)$，使得$\supp(f_\afa)\subseteq U_\afa$，
+并且$\sum\limits_{\afa\in\mcalJ}f_\afa=1$
+为局部有限和。从而有
+$$
+  s':=
+  \sum_{\afa\in\mcalJ}
+    f_\afa s_\afa'
+\in\mcalI^{q-1}(X)
+$$
+并且$\td^{q-1}_Xs'=s$.这表明$H^q(X,\mcalF)=0$.
 \end{proof}
 
-\section{\u{C}ech上同调}
-\textbf{\u{C}ech cohomology}
+\begin{cor}设$X$为光滑流形，$E\to X$为$X$上的光滑向量丛，
+自然也视为$X$上的$\mcalC^\infty$-模层。则对任意$q\geq 1$，
+$$H^q(X,E)=0$$
+\end{cor}
+看来光滑流形上“常见的”层的上同调都是平凡的。
 
-$X$- a topological space, $\mcalF$- a sheaf of abelian group.
-$$\mcalU=(U_{\alpha})_{\alpha\in I}$$
-is an open covering.
+%Consider a flabby(or injective) resolution
+%$$0\to\mcalS\xra{j}\mcalI^0\xra{\td}\mcalI^1\xra{\td}\mcalI^2\cdots$$
+%where any $\mcalI^k(k\geq 0)$ is a sheaf of $\mcalA$-modules.by definition,
+%$$H^q(X,m\mcalS):=\frac{\ker\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})}
+%                       {\Im\td:\Gamma(\mcalI^{q-1})\to\Gamma(\mcalI^{q})}$$
+%Let $\alpha\in\ker\{\td:\Gamma(\mcalI^q)\to\Gamma(\mcalI^{q+1})\}$
+%by the exactness of resolution, $\exists$ an open covering $\mcalU=(U_{i})_{i}$,
+%s.t. $\alpha|_{U_{i}}=\td\beta_{i}$where $\beta_{i}\in\mcalT^{q-1}(U_{i})$.
+%Let $(\beta_{i})_{i}$ be the partition of unit w.r.t. $\mcalU$.consider
+%$$\beta:=\sum_{i}f_i\beta_i$$(well defined). Then $\td\beta=\alpha$....
 
-notation:$U_{\alpha_1,...,\alpha_q}:=\bigcap_{i=1}^qU_{\alpha_i}$.
+%\begin{rem}
+%we call $\mcalA$ is a \textbf{soft sheaf},
+%if for any closed set $K\subseteq X$,
+%the morphism
+%$$\mcalA(X)\to \mcalA(K)$$
+%is surjective.
+%where $\mcalA(K):=\Gamma(K,\mcalA|_K)$
+%\end{rem}
+%fact: $\mcalA$ is fine if and only if
+%$\mcalH om(\mcalA,\mcalA)$ is soft.
+%(omit)
 
-\u{C}ech $q$-chain w.r.t $\mcalU$:
+\section{\Cech 上同调}
 
-$$C^q(\mcalU,\mcalF):=\prod_{(\alpha_1,...,\alpha_q)
-\in\mcalI^{q+1}}\mcalF(U_{\alpha_1,...,\alpha_q})$$
+设$X$为拓扑空间，$\mcalA$为$X$上的交换环层，
+$\mcalF$为$\mcalA$-模层。对于$X$的开覆盖
+$\mcalU=\Bigset{U_\afa}{\afa\in\mcalI}$，我们记
+$$
+  U_{\afa_0\afa_1\cdots\afa_k}
+:=
+  \bigcap_{j=0}^k
+    U_{\afa_j}
+\qquad
+(\forall \afa_0,...,\afa_k\in\mcalI)
+$$
 
-$$c\in C^q(\mcalU,\mcalF)$$
-means that we have a family of sections
-$C_{\alpha_1,...,\alpha_q}\in\mcalF(U_{\alpha_1,...,\alpha_q})$
-with the relation
-$$C_{\alpha_0,...,\alpha_j,...,\alpha_i,...}=-C_{...}$$
+%$X$- a topological space, $\mcalF$- a sheaf of abelian group.
+%$$\mcalU=(U_{\alpha})_{\alpha\in I}$$
+%is an open covering.
+%notation:$U_{\alpha_1,...,\alpha_q}:=\bigcap_{i=1}^qU_{\alpha_i}$.
 
-\u(C)ech differential:
-$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
-$$\delta^q(c)_{\alpha_0,...,\alpha_{q+1}}
-:=\sum_{0\leq k\leq q+1}(-1)^k
-c_{...\hat{\alpha_k}...}|_{U_{\alpha_0,...,\alpha_{q+1}}}$$
+\begin{definition}（\Cech 上同调）
 
-\begin{prop}
-$$\delta^q\circ\delta^q=0$$
-\end{prop}
+记号同上，并且给定开覆盖$\mcalU$的指标集$\mcalI$
+上的一个良序$\preceq$，则对任意$q\geq 0$，记
+$$
+  C^q(\mcalU,\mcalF)
+:=
+  \prod_{(\afa_0,...,\afa_q)\in\mcalI^{q+1}
+         \atop \afa_0\prec\afa_1\prec\cdots\prec\afa_q
+        }
+    \mcalF(U_{\afa_0\cdots\afa_q})
+$$
+对于$c\in C^q(\mcalU,\mcalF)$，记$c$
+的$\mcalF(U_{\afa_0\cdots\afa_q})$-分量为$c_{\afa_0\cdots\afa_q}$.
+再定义$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$为：
+对任意$c\in C^q(\mcalU,\mcalF)$，
+$$
+  (\delta^q(c))_{\afa_0\afa_1\cdots\afa_{q+1}}
+:=
+  \sum_{k=0}^{q+1}
+    (-1)^k
+    c_{\afa_0\cdots\widehat{\afa_k}\cdots\afa_{q+1}}
+    |_{U_{\afa_0\cdots\afa_{q+1}}}
+$$
+则容易验证$\Bigset{\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)}
+{q\geq 0}$为上链复形，称之为\textbf{\Cech 上链复形}，
+相应的上同调
+$$
+  \check{H}\updot(\mcalU,\mcalF)
+:=H\updot(C\updot(\mcalU,\mcalF))
+$$
+称为$\mcalF$关于开覆盖$\mcalU$的\textbf{\Cech 上同调}.
+\index{\Cech 上同调}
+\end{definition}
 
-so, we have \u{C}ech cohomology
-$$H^q(\mcalU,\mcalF):=\ker\delta^q\big/\im\delta^{q-1}$$
+容易验证上述定义的$\delta\updot$满足$\delta^2=0$，
+从而$(C\updot(\mcalU,\mcalF),\delta\updot)$的确为上链复形。
 
-example:
-$$C^0(\mcalU,\mcalF):=\prod_{\alpha\in I}\mcalF(U_{\alpha})$$
-$$c=(c_{\alpha})_{\alpha\in I}\in C^0(\mcalU,\mcalF)$$
-$$\delta^0c=0\iff(\delta^0c)_{\alpha_0\alpha_1}
-:=(c_{\alpha_1}-c_{\alpha_0})|_{U_{\alpha_0\alpha_1}}=0$$
-so, $c_{\alpha_0}=c_{\alpha_1}$ on $U_{\alpha_0\alpha_1}$.
+此外由定义容易看出，若$\mcalU$为有限覆盖，$|\mcalI|=n<+\infty$，
+那么$C^n(\mcalU,\mcalF)=0$，并且对任意$q\geq n$有
+$\check{H}^q(\mcalU,\mcalF)=0$.
 
-$\rightsquigarrow$ $H^0(\mcalU,\mcalF)=\mcalF(X)$.
+%\u{C}ech $q$-chain w.r.t $\mcalU$:
+%$$C^q(\mcalU,\mcalF):=\prod_{(\alpha_1,...,\alpha_q)
+%\in\mcalI^{q+1}}\mcalF(U_{\alpha_1,...,\alpha_q})$$
+%$$c\in C^q(\mcalU,\mcalF)$$means that we have a family of sections
+%$C_{\alpha_1,...,\alpha_q}\in\mcalF(U_{\alpha_1,...,\alpha_q})$
+%with the relation$$C_{\alpha_0,...,\alpha_j,...,\alpha_i,...}=-C_{...}$$
+%\u(C)ech differential:
+%$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
+%$$\delta^q(c)_{\alpha_0,...,\alpha_{q+1}}:=\sum_{0\leq k\leq q+1}(-1)^k
+%c_{...\hat{\alpha_k}...}|_{U_{\alpha_0,...,\alpha_{q+1}}}$$
+%\begin{prop}$$\delta^q\circ\delta^q=0$$\end{prop}
+%so, we have \u{C}ech cohomology
+%$$H^q(\mcalU,\mcalF):=\ker\delta^q\big/\im\delta^{q-1}$$
+
+\begin{example}（第零阶\Cech 上同调）
+
+记号同之前，则有$\check{H}^0(\mcalU,\mcalF)=\ker\delta^0$.
+而对于$c\in C^0(\mcalU,\mcalF)=\prod\limits_{\afa\in\mcalI}\mcalF(U_\afa)$，
+有$(\delta^0 c)_{\afa\beta}=(c_\beta-c_\afa)|_{U_{\afa\beta}}$，
+因此有
+$$
+  \ker\delta^0
+=
+  \Bigset{c=(c_\afa)_{\afa\in\mcalI}\in\prod_{\afa\in\mcalI}\mcalF(U_\afa)}
+         {c_\afa|_{U_{\afa\beta}}=c_\beta|_{U_{\afa\beta}},
+         \,\forall\afa,\beta\in\mcalI}
+\xle{\text{层的粘合公理}}
+  \mcalF(X)
+$$
+即$\check{H}^0(\mcalU,\mcalF)\cong\mcalF(X)$为$\mcalF$的整体截面之全体。
+\end{example}
+
+%example:
+%$$C^0(\mcalU,\mcalF):=\prod_{\alpha\in I}\mcalF(U_{\alpha})$$
+%$$c=(c_{\alpha})_{\alpha\in I}\in C^0(\mcalU,\mcalF)$$
+%$$\delta^0c=0\iff(\delta^0c)_{\alpha_0\alpha_1}
+%:=(c_{\alpha_1}-c_{\alpha_0})|_{U_{\alpha_0\alpha_1}}=0$$
+%so, $c_{\alpha_0}=c_{\alpha_1}$ on $U_{\alpha_0\alpha_1}$.
+%$\rightsquigarrow$ $H^0(\mcalU,\mcalF)=\mcalF(X)$.
 
 \begin{example}
 (1) consider $X=\triangle\setminus\{0\}$, where $\triangle=
@@ -1497,33 +1724,16 @@ $$H^0\cong\bbC,H^1\cong 0$$
 
 %%%%%%%%%%%%%%%%2019.3.26 第五周 周二%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Correction}:
-
-$\mcalA$: Sheaf of rings (with unit)
-
-$X$: paracompact topological space,
-
-\begin{definition}
-$\mcalA$ is called fine, if for any open covering
-$\mcalU=(V_{\alpha})_{\alpha\in\mcalI}$,there exist
-$s_{\alpha}\in\mcalA(X)$
-such that such that $supp(s_{\alpha})\subseteq V_{\alpha}$,
-$$\sum_{\alpha}s_{\alpha}=1$$
-(this is a locally finite sum)
-\end{definition}
-
-\begin{rem}
-we call $\mcalA$ is a \textbf{soft sheaf},
-if for any closed set $K\subseteq X$,
-the morphism
-$$\mcalA(X)\to \mcalA(K)$$
-is surjective.
-where $\mcalA(K):=\Gamma(K,\mcalA|_K)$
-\end{rem}
-
-fact: $\mcalA$ is fine if and only if
-$\mcalH om(\mcalA,\mcalA)$ is soft.
-(omit)
+%\textbf{Correction}:
+%$\mcalA$: Sheaf of rings (with unit)
+%$X$: paracompact topological space,
+%\begin{definition}
+%$\mcalA$ is called fine, if for any open covering
+%$\mcalU=(V_{\alpha})_{\alpha\in\mcalI}$,there exist
+%$s_{\alpha}\in\mcalA(X)$
+%such that such that $supp(s_{\alpha})\subseteq V_{\alpha}$,
+%$$\sum_{\alpha}s_{\alpha}=1$$(this is a locally finite sum)
+%\end{definition}
 
 Recall：
 
@@ -1695,7 +1905,7 @@ $$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)\cong H^q(X,\mcalF)$$
 \end{thm}
 (this $\mcalU$ is called acyclic covering)
 
-\textbf{de Rham- Weil theorem}
+\section{de Rham- Weil 定理}
 \begin{definition}
 $\mcalF$ is a sheaf on $X$, $\Omg$ is an open set of $X$,
 then $\mcalF$ is called \textbf{acyclic sheaf} if
