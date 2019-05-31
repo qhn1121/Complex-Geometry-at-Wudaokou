@@ -1204,7 +1204,7 @@ s.t. $(*)$ holds.
 
 Observation:$(*)$ is an open condition with respect to $(x_1,...,x_N)$.
 
-$\Rightarrow\exists$ open set $U(x_i)$ 
+$\Rightarrow\exists$ open set $U(x_i)$
 s.t. $\forall(y_1,...,y_N)\in\prod_{i=1}^{N}U(x_i)$,
 $(*)$ holds for $C=C(x_1,...,x_N)$.
 
@@ -1217,7 +1217,7 @@ $\pi:Y\to X$ blow-up along $x_1,...,x_N$, with exception divisor $E$,
 
 （这些已证明）
 
-(more generally, if $\omg$ is a Kahler metric on $X$,denote 
+(more generally, if $\omg$ is a Kahler metric on $X$,denote
 $\{\omg\}\in H^{1,1}(X,\bbR)$
 the Kahler associated to $\omg$,
 then $\exists C\gg 1$ s.t. $C\pi^*\omg+c_1(-E)$
@@ -1230,7 +1230,7 @@ $$
 :=  \sup\Bigset{t\geq 0}
                {\pi^*\omg+t\cdot c_1(-E)\text{is a Kahler class}}
 $$
-Then $\mcalE(x_1,...,x_N;\omg)$ is a lower-semi-continuous 
+Then $\mcalE(x_1,...,x_N;\omg)$ is a lower-semi-continuous
 function w.r.t $x_1,...,x_N$ .
 
 So,
@@ -1272,7 +1272,7 @@ Chow theorem 1949:
 \begin{thm}（Chow theorem ,1949）
 
 Let $A$ be an analytic set of $\bbP^n$，
-then $A$ is an algebraic set, i.e. 
+then $A$ is an algebraic set, i.e.
 $$
   A=\bigcap_{j=1}^N
   \{P_j(z_0,...,z_n)=0\}
@@ -1311,7 +1311,7 @@ $W\cap\yc\subseteq\overline{Z}\cap$ is obvious.
 
 By the definition of $\pi$, $Z$ is invariant by homotheties,
 so, for any $z\in\overline{Z}\cap\yc$, $|t|\ll 1$,
-we have $f_j(t,z)=0$.Write 
+we have $f_j(t,z)=0$.Write
 $$
   f_j(tz)
 =
@@ -1351,7 +1351,7 @@ $$
 \begin{thm}
 If $X$ is an algebraic manifold, then for all $L\in Pic(X)$,
 $\exists$ divisor $D$ s.t. $L=\mcalO(D)$.
-\end{thm} 
+\end{thm}
 
 \begin{proof}
 Take non-zero sections $S\in H^0(X,L\ten A^{k})$, $t\in H^0(X,A^k)$,
@@ -1411,7 +1411,7 @@ $$
 (Hodge conjecture for $(1,1)$-classes)
 
 \textbf{Fact:}$X$ is a compact complex manifold,
-$V\subseteq X$ is an analytic set of pure 
+$V\subseteq X$ is an analytic set of pure
 $\dim_{\bbC}V=p$. Then the current $[V]$ associated
 to $V_{\text{reg}}$:
 $$
@@ -1419,9 +1419,9 @@ $$
 :=
   \int_{V_{\text{reg}}}
     \psi|_{V_{\text{reg}}}
-$$  
+$$
 where $\psi\in C^\infty(X,\wedgeform{p,p})$,
-defines a class 
+defines a class
 $\{[V]\}\in H^{n-p,n-p}(X,\bbZ)$.
 
 \textbf{Hodge conjecture:} $X$ is a complex algebraic manifold,
@@ -1437,11 +1437,299 @@ $$
 Known case: $p=n-1$, it is Lef. $(1,1)$-theorem.
 
 Exercise: also true for $p=1$ (Using Hard Lef)
-And, $p=0,p=n$...\vspp 
+And, $p=0,p=n$...\vspp
 
 下学期课程：《Analytic methods in algebraic geometry》
 敬请期待233333333333
 
 Pluripotential theroy/Positive currents
+
+
+%%%%%%%%%%%%%%20190530第十四周%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Positive currents and Lelong numbers}
+
+Currents on $C^\infty$ manifolds. Let $X$ is a $C^\infty$,
+oriented manifold, with $\dim_{\bbR}X=n$.
+Denote $C^s(X,\wedgeform{p}T^*X)$ the space
+of $s$-differentiable $p$-forms on $X$.
+
+Let $\Omg\subseteq X$ be a coordinate open set,
+$u\in C^s(X,\wedgeform{p}T^*X)$,write 
+$$u=\sum_{|I|=p} u_I\td x_I$$
+where $u_I$ are $s$-differentiable functions.
+
+Assume $K\subset\!\subset\Omg$, define
+$$
+  P^s_K(u)
+:=
+  \sup_{x\in K}
+    \max_{|I|=p\atop|\afa|\leq s}
+      |D^\afa u_I(x)|
+$$  
+,where $D^\afa=\frac{\p^\afa}{\p x_1^{\afa_1}\cdots\p x_n^{\afa_n}}$.
+
+$\mcalE^p(X)$- the space $C^\infty(X,\wedgeform{p}T^*X)$
+equipped with the topology defined by all the
+$P^s_k(\cdot)$, when $s,K\subset\!\subset\Omg$ vary/
+
+$\,^s\mcalE^p(X)$- the space $C^s(X,\wedgeform{p}T^*X)$
+equipped with the topology defined by all the
+$P^s_K(\cdot)$, when $K\subset\!\subset\Omg$ vary.
+
+Let $K\subseteq X$ be a compact subset,
+$\mcalD^p(K)$- the space of $u\in\mcalE^p(X)$with induced topology
+and $\supp(u)\subseteq K$.
+$$\mcalD^p(X):=\bigcup_{K\text{ is compact subset of $X$}}
+\mcalD^p(K)$$
+similarly we can define $\,^s\mcalD^p(K)$ and $\,^s\mcalD^p(K)$.
+
+\begin{rem}
+(1) $\mcalE^p(X)$(resp. $\,^s\mcalE^p(X)$)
+can be defined by countably many $P^s_k$.
+In particular, $\mcalE^p$, $\,^s\mcalE^p$ are 
+Fr\'{e}chet spaces.
+
+(2)$\mcalD^p(X)$ is dense in $\mcalE^p(X)$.
+\end{rem}
+
+\begin{definition}(Current,流,[de Rham 1955])
+
+The spaces of currents of $\dim=p$ (or $\deg=n-p$)
+denoted by $\mcalD'_p(X):=$the topological dual of $\mcalD^p(X)$.
+i.e. $\mcalD'_p(X)$ is the set of linear forms $T$ on $\mcalD^p(X)$
+s.t. $T|_{\mcalD^p(K)}$ is continuous.
+\end{definition}
+
+\begin{rem}
+A current can be considered as a form with 
+distribution coefficients.
+More precisely,
+$$
+  T=\sum_{|I|=n-p}
+    T_I\td x_I
+$$
+is a current on $\Omg$, if and only if $T_I$
+is a distribution on $\Omg$.
+\end{rem}
+
+Let $u=f\td x_{I^c}
+\in\mcalD^p(\Omg)$, we have
+$$
+  \pair{T}{f\td x_I}
+:=T_I(f)
+$$
+On the other hand, if $T$ is a current of dimension $p$,
+then we define 
+$$
+  T_I(f):=\pair{T}{f\td x_{I^c}}
+$$
+we can verify $T=\sum\limits_{|I|=p}T_I\td x_I$.
+
+\begin{notation}
+$$
+  \pair{T}{U}
+:=
+  \int_XT\wedge U
+$$
+\end{notation}
+
+\begin{example}(Current of integration)
+
+$Z\subseteq X$ is an oriented closed submanifold with
+dimension $p$, with boundary $\p Z$. We can define the current
+$[Z]$ as followes:
+$$\pair{[Z]}{u}:=\int_Zu$$
+for all $u\in\mcalD^p(X)$.
+\end{example}
+
+\begin{example}
+Let $f$ be a form of degree $n-p$, with 
+coefficients in $L^1_{loc}(X)$. We define the following current $T_f$:
+$$
+  \pair{T_f}{u}
+:=
+  \int_Xf\wedge u
+$$
+\end{example}
+
+（一般地，current 与current 无法作外积，
+好比测度与测度无法相乘）
+
+Exterior derivative on Currents:
+
+\begin{definition}
+Let $T$ be a current of dimension $p$(or degree $n-p$),
+$u\in\mcalD^{p-1}(X)$. We define $\td T$ is the 
+current is defined as followes:
+$$
+  \pair{\td T}{u}
+:=
+  (-1)^{n-p+1}
+  \pair{T}{\td U}
+$$
+\end{definition}
+
+(why $(-1)^{n-p+1}$?)
+
+\begin{rem}
+if $X$ has no boundary,
+$T\in T_f$, $f\in\mcalE^{n-p}(X)\cap L^1_{loc}(X)$,then
+$$
+  0=\int_X\td(f\wedge u)
+=\int_X\td f\wedge u+(-1)^{n-p}f\wedge\td u
+$$
+$$
+  \pair{T_{\td f}}{u}
+=(-1)^{n-p+1}\pair{T_f}{\td u}
+$$
+\end{rem}
+
+\begin{example}
+$Z\subseteq X$ is a $p$-dimensional submanifold with 
+boundary $\p Z$, then by the stokes formula:
+for $u\in\mcalD^{p-1}(X)$,
+$$
+  \pair{\td[Z]}{u}
+=
+  (-1)^{n-p+1}
+  \pair{[Z]}{\td u}
+=
+  (-1)^{n-p+1}\int_Z\td u
+= (-1)^{n-p+1}\int_{\p Z}u
+= (-1)^{n-p+1}\pair{[\p Z]}{u}
+$$ 
+so we have 
+$$\td[Z]=(-1)^{n-p+1}[\p Z]$$
+\end{example}
+
+\begin{definition}
+A current $T\in\mcalD'_p(X)$ is called closed
+if $\td T=0$. 
+\end{definition}
+
+Example: if $T=T_f$ for some $f\in\mcalE^p(X)\cap L^1_{loc}(X)$,
+then $T_f$ is closed if and only if $f$ is closed(differential form).
+
+Example: $Z\subseteq X$ a submanifold of $X$, then 
+$\td[Z]=0\iff Z$ has no boundary.
+
+\textbf{Now, Let $X$ be a complex manifold...}
+of $\dim_{\bbC}=n$, similar to the smooth case,
+we can define: 
+$$
+  \mcalE^{p,q}(X)\quad
+  \,^s\mcalE^{p,q}(X)\quad
+  \mcalD^{p,q}(X)\quad
+  \,^s\mcalD^{p,q}(X)
+$$
+
+\begin{definition}
+the space of currents of bidimenison $(p,q)$
+(or bidegree $(n-p,n-q)$) denoted by
+$$
+  \mcalD'_{p,q}(X)
+$$
+is the topological dual of $\mcalD^{p,q}(X)$
+\end{definition}
+
+Sinilar to the operator $\td$, we can define
+$\td'=\p$ and $\td''=\pbar$ on $\mcalD'_{p,q}(X)$
+by duality.
+
+\begin{example}
+$V\subseteq X$ complex submanifold of $\dim_{\bbC}=p$,
+then the current of integration $[V]$ defined by
+$$
+  \pair{[V]}{u}
+=
+  \int_V u|_V
+$$
+we have $[v]\in\mcalD'_{p,p}(X)$.(Why?!)
+\end{example}
+
+\begin{example}(Non-trivial example)
+
+Let $V\subset X$ is an irreducible analytic set of
+pure dimension $\dim_\bbC=p$. define the current
+$[V]$ as follows:
+$$
+  \pair{[V]}{u}
+:=
+  \int_{V_{\reg}}u
+$$  
+(in general, $V_{\reg}$ is an open submanifold of $\dim_{\bbC}=p$.)
+\end{example}
+
+FACT: $[V]$ also defines a closed currents.
+
+\begin{example}(trivial example)
+$$
+  \mcalE^{p,q}(X)\cap L^1_{\loc}(X)
+  \subseteq(\mcalD')^{p,q}(X)
+$$
+\end{example}
+
+\textbf{positivity of forms}
+
+\begin{definition}
+A $(p,p)$-form $\fai\in\wedgeform{p,p}(\bbC^n)$ 
+is called strongly positive if $\fai$
+is a convex combination as follows:
+$$
+  \fai
+=
+  \sum_{s=1}^k
+    c_s\sqrt{-1}
+    \afa_{s,1}\wedge\overline{\afa_{s,1}}
+    \wedge\cdots\wedge
+    \sqrt{-1}\afa_{s,p}\wedge\overline{\afa_{s,p}}
+$$
+where $c_s\geq 0$, $\afa_{s,j}\in\wedgeform{1,0}(\bbC^n)$
+\end{definition}
+(in particular, $\fai\equiv0$ is strongly positive)
+
+\begin{definition}
+A $(p,p)$-form $\psi\in\wedgeform{p,p}(\bbC^n)$ is called positive,
+if $\forall\fai\in\wedgeform{n-p,n-p}(\bbC^n)$ strongly positive,
+we have $\psi\wedge\fai\geq 0$.
+\end{definition}
+
+\begin{rem}(1)
+Let $\fai=\sqrt{-1}\sum\limits_{i,j}\fai_{ij}\td z_i\wedge\td\zbar_j$
+be a real $(1,1)$-form, then $\fai$ is positive /strongly positive
+$\iff[\fai_{ij}]_{i,j}\geq 0$.
+
+(2) denote $\mcalC_{sp}^k:=$ the strongly positive $(k,k)$-forms,
+($\mcalC_{sp}^k$ is a convex cone in $\wedgeform{k,k}$)
+$\mcalC_p^k:=$ the set of positive $(k,k)$-forms.
+(also a convex cone)
+\end{rem}
+
+Check: $\mcalC_{sp}^k\subseteq\mcalC_p^k$.
+
+Consider a $(p,p)$-form as a linear function on $\wedgeform{n-p,n-p}$,
+then $C_p^k=(C_{sp}^{n-k})^*$
+
+(General setting: $\mcalC\subseteq V$, $V$ 
+is a real vector space of finite dimension,
+$\mcalC$ is a convex cone, $V^*$ is the dual of $V$, then we can define 
+$\mcalC^*:=\Bigset{l\in V^*}{l|_{\mcalC}\geq 0}$)
+
+Take double dual:
+$$\overline{\mcalC_{sp}^{n-k}}=(\mcalC_p^k)^*$$
+(general fact: $(\mcalC^*)^*=\overline{\mcalC}$)
+
+\begin{cor}
+A $(p,p)$-form $\fai$ is strongly positive if and only if 
+for all $\psi\in\wedgeform{n-p,n-p}$ positive,
+$\fai\wedge\psi\geq 0$. In particular,
+"strongly positivity" is dual to "positivity". 
+\end{cor}
+
+
+
+
+
 
 
