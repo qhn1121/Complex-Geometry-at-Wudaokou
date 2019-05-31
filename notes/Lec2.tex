@@ -1373,6 +1373,40 @@ $$
 与$\mcalF$的内射消解无关。
 \end{rem}
 
+此外，若$X$上有$\mcalA$-模层短正合列
+$0\to\mcalF\to\mcalG\to\mcalH\to 0$，
+则由同调代数的有关结果，可分别取$\mcalF,\mcalG,\mcalH$
+的适当的内射消解$0\to\mcalX\inj\mcalI_\mcalX\updot\,
+(\mcalX=\mcalF,\mcalG,\mcalH)$，使得存在链复形正合列
+$$
+ 0\to\mcalI_\mcalF\updot(X)
+  \to\mcalI_\mcalG\updot(X)
+  \to\mcalI_\mcalH\updot(X)\to 0
+$$
+该链复形短正合列诱导相应同调的长正合列，即有：
+
+\begin{thm}\label{层短正合列诱导上同调长正合列-thm}
+设$X$为拓扑空间，则$X$上的$\mcalA$-模层短正合列
+$0\to\mcalF\to\mcalG\to\mcalH\to 0$诱导了层上同调的长正合列：
+$$
+  0\to H^0(X,\mcalF)
+   \to H^0(X,\mcalG)
+   \to H^0(X,\mcalH)
+   \to H^1(X,\mcalF)\to\cdots
+$$
+\end{thm}
+
+%if$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$exact,
+%recall:(cohomology by resolutions)$$0\to\mcalA\to\mcalF^0\to\mcalF^1\to\cdots$$
+%flabby resolution. then it induces$$0\to\Gamma(X,\mcalA)
+%\to\Gamma(X,\mcalF^0)\to\Gamma(X,\mcalF^1)\to\cdots$$
+%then define the sheaf cohomology...we have a long exact sequence
+%$$\cdots\to H^q(X,\mcalA)\to H^q(X,\mcalB)\to H^q(X,\mcalC)
+%\to H^{q+1}(X,\mcalA)\to\cdots$$it is homological algebra...
+
+层上同调的定义简单，但是难以具体计算。
+我们希望有更加方便的计算层上同调的方法。
+
 \begin{definition}（松弛层）
 \index{flabby\kong 松弛（层）}
 
@@ -1451,7 +1485,17 @@ $X$上的任何$\mcalA$-模层都存在松弛消解。
 %......then construct by induction... this is a flabby resolution of $\mcalF$.
 
 在一些更特殊的情形下，我们可以去计算某些层的上同调。
-回顾：拓扑空间$X$称为\textbf{仿紧}（paracompact）的
+回顾：设$\mcalU=\Bigset{U_\afa}{\afa\in\mcalI}$为拓扑空间$X$的
+一族开覆盖，称$X$的另一族开覆盖$\mcalV=\Bigset{V_\beta}{\beta\in\mcalJ}$
+为$\mcalU$的\textbf{开加细}（refinement），
+\index{refinement\kong （开）加细}
+若存在指标集之间的映射$\rho:\mcalJ\to\mcalI$，使得对任意$\beta\in\mcalJ$，
+都有$V_\beta\subseteq U_{\rho(\beta)}$；
+称$\mcalU$是\textbf{局部有限}的，若任意$x\in X$，
+存在$x$的开邻域$U$，使得$\Bigset{\afa\in\mcalI}{U_\afa\cap U\neq\vkong}$
+为有限集。
+
+拓扑空间$X$称为\textbf{仿紧}（paracompact）的
 \index{paracompact\kong 仿紧}，
 如果$X$是Hausdorff的，并且$X$的任何开覆盖都存在局部有限开加细。
 众所周知，度量空间都是仿紧的，紧空间都是仿紧的，仿紧空间都是正规的。
@@ -1487,7 +1531,7 @@ $$
 %$\sum_{\alpha}f_{\alpha}=1$(the sum is locally finite) )
 
 Fine sheaf的典型例子是光滑流形上众所周知的单位分解定理：
- 
+
 \begin{example}（单位分解定理）
 
 设$X$为光滑流形，$\mcalC^\infty$为$X$上的光滑函数环层，
@@ -1502,6 +1546,7 @@ Fine sheaf的典型例子是光滑流形上众所周知的单位分解定理：
 则任何$\mcalA$-模层都是上同调平凡的：
 
 \begin{thm}
+\label{fine sheaf 的上同调}
 设仿紧空间$X$上的环层$\mcalA$为fine sheaf，
 则对于任意$\mcalA$-模层$\mcalF$，
 $$H^q(X,\mcalF)=0\qquad (\forall q\geq 1)$$
@@ -1555,18 +1600,142 @@ $$H^q(X,E)=0$$
 %s.t. $\alpha|_{U_{i}}=\td\beta_{i}$where $\beta_{i}\in\mcalT^{q-1}(U_{i})$.
 %Let $(\beta_{i})_{i}$ be the partition of unit w.r.t. $\mcalU$.consider
 %$$\beta:=\sum_{i}f_i\beta_i$$(well defined). Then $\td\beta=\alpha$....
-
-%\begin{rem}
-%we call $\mcalA$ is a \textbf{soft sheaf},
+%\begin{rem}we call $\mcalA$ is a \textbf{soft sheaf},
 %if for any closed set $K\subseteq X$,
-%the morphism
-%$$\mcalA(X)\to \mcalA(K)$$
-%is surjective.
-%where $\mcalA(K):=\Gamma(K,\mcalA|_K)$
-%\end{rem}
-%fact: $\mcalA$ is fine if and only if
-%$\mcalH om(\mcalA,\mcalA)$ is soft.
-%(omit)
+%the morphism$$\mcalA(X)\to \mcalA(K)$$
+%is surjective.where $\mcalA(K):=\Gamma(K,\mcalA|_K)$
+%\end{rem}fact: $\mcalA$ is fine if and only if
+%$\mcalH om(\mcalA,\mcalA)$ is soft.(omit)
+
+关于层上同调，以下是同调代数的基本结果：
+
+\begin{thm}（de Rham-Weil定理）
+
+设$\mcalF$为拓扑空间$X$上的$\mcalA$-模层，
+若有$\mcalA$-模层正合列
+$$
+  0\to\mcalF\inj\mcalL^0
+  \to\mcalL^1\to\mcalL^2\to\mcalL^3\to\cdots
+$$
+其中对任意$n\geq 0$以及任意$q\geq 1$，都成立
+$H^q(X,\mcalL^n)=0$，那么有同构
+$$
+  H\updot(X,\mcalF)
+\cong H\updot(\mcalL\updot(X))
+$$
+\end{thm}
+
+\begin{proof}
+注意利用定理\ref{层短正合列诱导上同调长正合列-thm}，
+之后是同调代数的标准技术。从略。
+\end{proof}
+
+此定理中的$\mcalL^n(n\geq 0)$的任何$\geq 1$阶上同调都平凡，
+这样的层称为\textbf{零调的}(acyclic).\index{acyclic\kong 零调的}
+类似地，$\mcalF$的消解$0\to\mcalF\inj\mcalL\updot$
+称为\textbf{零调消解}。此定理表明，
+我们可以用零调消解来计算层上同调。
+
+\begin{Example}(de Rham上同调)
+
+设$X$为光滑流形，$\bbR_X$为$X$上的局部常值层，$\mcalE^p_X$为$X$上的
+微分$p$-形式层（视为$\bbR_X$-模层），则外微分$\td:\mcalE_X^p\to\mcalE_X^{p+1}$
+为$\mcalR$-模层同态。注意到对任意$q\geq 0$，$\mcalE^q_X$是零调的，
+并且有层正合列
+$$
+  0\to\bbR_X\inj\mcalE^0_X
+  \xra{\td}\mcalE^1_X\xra{\td}\mcalE^2_X\to\cdots
+  \eqno{(*)}
+$$
+因此由de Rham-Weil定理可知，$H\updot(X,\bbR_X)\cong H\updot_{\DR}(X;\bbR)$.
+即$X$的de Rham上同调同构于局部常值层$\bbR_X$的上同调。
+\end{Example}
+
+\begin{proof}
+注意到$\mcalE^q_X$有自然的$\mcalE^0_X=\mcalC^\infty$-模层结构，
+从而由定理\ref{fine sheaf 的上同调}可知其零调。
+上链复形$(*)$的正合性是因为微分几何中的局部\phjwll 引理。
+\end{proof}
+
+\begin{Example}(Dolbeault 上同调)
+
+设$X$为复流形，$\Omg^p_X$为$X$上的全纯$p$-形式层（即$\pbar$-闭的$(p,0)$-形式），
+$\mcalE^{p,q}_X$为$X$上的光滑$(p,q)$形式层，
+则$\mcalE_X^{p,q}$是零调的。再注意对任意$p\geq 0$，有层正合列
+$$
+  0\to\Omg_X^p
+  \inj\mcalE_X^{p,0}
+  \xra{\pbar}\mcalE_X^{p,1}
+  \xra{\pbar}\mcalE_X^{p,2}
+  \xra{\pbar}\mcalE_X^{p,3}
+  \to\cdots
+  \eqno{(**)}
+$$
+从而由de Rham-Weil定理可知，对任意$p,q\geq 0$，有同构
+$$
+  H^q(X,\Omg^p_X)
+\cong
+  H^{p,q}_{\pbar}(X,\bbC)
+$$
+即第$(p,q)$阶Dolbeaut上同调同构于全纯$p$-形式层的第$q$阶上同调。
+\end{Example}
+
+\begin{proof}
+注意到上链复形$(**)$的正合性是由Dolbeault引理保证的。
+\end{proof}
+
+\begin{rem}（奇异上同调）
+
+回顾代数拓扑当中“奇异上同调”的概念。对于光滑流形$X$
+的任意开集$U$，考虑$U$上的奇异$q$-上链之全体$C^q_{\sing}(U)$，
+这给出了$X$上的\textbf{奇异$q$-上链层}$\mcalC^q_{\sing}$.
+显然$\mcalC^q_{\sing}$是松弛层。事实上我们有松弛消解
+$$
+  0\to\bbZ_X\inj
+  \mcalC^0_{\sing}\xra{\td}
+  \mcalC^1_{\sing}\xra{\td}
+  \mcalC^2_{\sing}\to\cdots
+$$
+从而得$H^q_{\sing}(X,\bbZ)\cong H^q(X,\bbZ_X)$，
+即整系数奇异上同调同构于局部常值层$\bbZ_X$的上同调。
+\end{rem}
+
+类似地，$\bbR$-系数奇异上同调同构于局部常值层$\bbR_X$的上同调。
+特别地，我们有de Rham定理：对于光滑流形$X$，则对任意$q\geq 0$，有
+$$
+  H^q_{\DR}(X,\bbR)
+\cong
+  H^q(X,\bbR_X)
+\cong
+  H^q_{\sing}(X,\bbR)
+$$
+奇异上同调、de Rham上同调都同构于局部常值层$\bbR_X$的上同调。
+
+%$X$ be a smooth manifold, we define
+%$$C_q(X,\bbZ):=\text{the free abelian group generated by continuous map}$$
+%$$\phi:\triangle_q:=\{(t_1,...,t_{q+1})\in[0,1]^{q+1}|\sum_{i=1}^nt_i=1\}$$
+%and we define (for $\phi\in C_q(X,\bbZ)$)
+%$$\p\phi:=\sum_{i=1}^{q+1}(-1)^q\phi|_{\triangle_{q,i}}$$
+%$$\triangle_{q,i}:=\{t\in\triangle_q|t_i=0\}$$
+%we define$$(C_{sing}\updot,\p)$$be the dual complex of $(C^{sing}\downdot),\p$.
+%(These are all Basic Algebraic Topology)For any open $U\subseteq X$, we have
+%$$U\to C_{sing}^q(U,\bbZ)$$we get a sheaf$$\mcalC_{sing}^q$$
+%FACT: $(\mcalC_{sing}\updot,\p)$ is a flabby resolution of $\bbZ$. (check!)So,
+%$$H^q_{sing}(X,\bbZ)= H^q(\Gamma(\mcalC_{sing}\updot),\p)\cong H^q(X,\bbZ)$$
+
+%%%%%%%%%%%%%%%以后还要讲谱序列，so scared...好怕怕……%%%%%%%%%%%%%%%%%%%5
+%推荐读一读，现在学的东西应该能读懂了。。。
+%Tate : rigid analytic spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{example}Let $X$ be a complex manifold,
+%$\mcalE^{p,q}$ sheaf of smooth $(p,q)$ forms,
+%$\Omg^p$ is the sheaf of holomorphic $p$-forms
+%(i.e. $(p,0)$-form $\fai$ with $\pbar\fai=0$).
+%Then we have resolution$$0\to \Omg^p\xra{j}\mcalE^{p,0}
+%\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
+%(Why it is a resolution?  because of the Dolbeault lemma),remain to Exercise...
+%$$H^q(X,\Omg^p)\cong H^{p,q}_{\pbar}(X,\bbC)$$\end{example}
 
 \section{\Cech 上同调}
 
@@ -1669,58 +1838,139 @@ $$
 %so, $c_{\alpha_0}=c_{\alpha_1}$ on $U_{\alpha_0\alpha_1}$.
 %$\rightsquigarrow$ $H^0(\mcalU,\mcalF)=\mcalF(X)$.
 
-\begin{example}
-(1) consider $X=\triangle\setminus\{0\}$, where $\triangle=
-\{(z_1,z_2)||z_1|<1,|z_2|<1\}$. Consider the covering
-$$\mcalU=U_1\cup U_2$$
-where
-$$U_1:=\{(z_1,z_2)\in\triangle|z_1\neq 0\}=\bbD^*\times\bbD$$
-$$U_2:=\{(z_1,z_2)\in\triangle|z_2\neq 0\}=\bbD\times\bbD^*$$
+\begin{example}（去心多圆柱）
 
-then
-$$U_1\cap U_2=\bbD^*\times\bbD^*$$
-
-consider $H^0(X,\mcalO)=\mcalO(X)\cong\mcalO(\triangle)
-=\{f:\triangle\to\bbC\text{holomorphic}\}$.
-
-$$H^1(\mcalU,\mcalO)=\ker\delta^1\big/\im\delta^0$$
-$$\delta^1:C^1(\mcalU,\mcalO)\to C^2(\mcalU,\mcalO)\subseteq
-\prod_{\alpha_0,\alpha_1,\alpha_2}\mcalO(U_{\alpha_0,\alpha_1,\alpha_2})=0$$
-$$\ker\delta^1=
-C^1(\mcalU,\mcalO)=\{c=c(\alpha_0,\alpha_1)|c_{\alpha_0,\alpha_1}\in\mcalO(U_{\alpha_0\alpha_1})\}
-=\{c\in\mcalO(U_1\cap U_2)\}=\{c=\sum_{m,n\in\bbZ}a_{mn}z_1^mz_2^n\text{convergent}\}$$
-
-$$\delta^0:C^0(\mcalU,\mcalO)\to\mcalC^1(\mcalU,\mcalO)$$
-$$(\delta^0c)_{12}=(c_2-c_1)|_{U_{12}}$$
-where $c_2\in\mcalO(U_2)$ and $c_1\in\mcalO(U_1)$.
-note that
-$$\mcalO(U_1)=\{c(z_1,z_2)=\sum_{m\in\bbZ,n\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
-$$\mcalO(U_2)=\{c(z_1,z_2)=\sum_{n\in\bbZ,m\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
-
-So, $H^1(\mcalU,\mcalO)=
-\{c(z_1,z_2)=\sum_{m,n<0}a_{mn}z_1^mz_2^n\}$
+考虑$\bbC^2$的开子集$X:=\triangle\setminus\{0\}$，
+其中$\yc$为多圆柱$\Bigset{(z_1,z_2)}{|z_1|<1,\,z_2<1}$.
+设$\mcalU=\{U_1,U_2\}$为$X$的开覆盖，其中
+%(1) consider $X=\triangle\setminus\{0\}$, where $\triangle=
+%\{(z_1,z_2)||z_1|<1,|z_2|<1\}$. Consider the covering
+%$$\mcalU=U_1\cup U_2$$ where
+$
+  \left\{
+    \begin{array}{l}
+      U_1:=\{z_1\neq 0\}\cap\yc=\bbD^*\times\bbD\\
+      U_2:=\{z_2\neq 0\}\cap\yc=\bbD\times\bbD^*
+    \end{array}
+  \right.
+$，试计算$\check{H}\updot(\mcalU,\mcalO)$.
+其中$\mcalO$为$X$上的解析函数层。
 \end{example}
 
-\begin{example}(complex projective space)
+\begin{proof}[解]
+  首先能够直接写出，$\check{H}^0(\mcalU,\mcalO)\cong\mcalO(X)$，
+以及对任意$q\geq 2$，$\check{H}^q(\mcalU,\mcalO)=0$（因为只有两片覆盖）。
+只需计算$\check{H}^1(\mcalU,\mcalO)$.注意到
+\begin{eqnarray*}
+  \mcalO(U_1)
+&=&
+  \Bigset{c(z_1,z_2)=\sum_{m\in\bbZ\atop n\geq 0}a_{mn}z_1^mz_2^n}
+         {\text{该级数在$U_1$收敛}}\\
+  \mcalO(U_2)
+&=&
+  \Bigset{c(z_1,z_2)=\sum_{m\geq 0\atop n\in\bbZ}a_{mn}z_1^mz_2^n}
+         {\text{该级数在$U_2$收敛}}\\
+  \mcalO(U_{12})
+&=&
+  \Bigset{c(z_1,z_2)=\sum_{m,n\in\bbZ}a_{mn}z_1^mz_2^n}
+         {\text{该级数在$U_{12}$收敛}}\\
+\end{eqnarray*}
+其中$U_{12}:=U_1\cap U_2=\bbD^*\times\bbD^*$.注意
+$
+  \left\{
+    \begin{array}{l}
+      C^0(\mcalU,\mcalO)=\mcalO(U_1)\oplus\mcalO(U_2)\\
+      C^1(\mcalU,\mcalO)=\mcalO(U_{12})
+    \end{array}
+  \right.
+$，以及
+$$
+  \check{H}^1(\mcalU,\mcalO)
+=
+  \frac{C^1(\mcalU,\mcalO)}
+       {\im(\delta^0:C^0(\mcalU,\mcalO)\to C^1(\mcalU,\mcalO))}
+$$
+直接用$\delta^0$的定义容易验证
+$$
+  \im\delta^0
+=
+  \Bigset{c_2-c_1}
+         {c_2\in\mcalO(U_{2}),\,c_1\in\mcalO(U_1)}
+=
+  \Bigset{c(z_1,z_2)=\sum_{m,n\in\bbZ\atop\text{$m\geq 0$或$ n\geq 0$}}
+                       a_{mn}z_1^mz_2^n}
+         {\text{该级数在$U_{12}$收敛}}\\
+$$
+因此立刻得到
+$$
+  \check{H}^1(\mcalU,\mcalO)
+=
+  \Bigset{c(z_1,z_2)=\sum_{m,n\in\bbZ\atop\text{$m<0$且$n<0$}}
+                       a_{mn}z_1^mz_2^n}
+         {\text{该级数在$U_{12}$收敛}}\\
+$$
+\end{proof}
 
-$$\bbC P^n:=(\bbC^{n+1}\setminus\{0\})\big/\sim$$
-$$(z_0,...,z_n)\sim\lmd(z_0,...,z_n)$$
-for some $\lmd\in\bbC^*$.
+%then$$U_1\cap U_2=\bbD^*\times\bbD^*$$
+%consider $H^0(X,\mcalO)=\mcalO(X)\cong\mcalO(\triangle)
+%=\{f:\triangle\to\bbC\text{holomorphic}\}$.
+%$$H^1(\mcalU,\mcalO)=\ker\delta^1\big/\im\delta^0$$
+%$$\delta^1:C^1(\mcalU,\mcalO)\to C^2(\mcalU,\mcalO)\subseteq
+%\prod_{\alpha_0,\alpha_1,\alpha_2}\mcalO(U_{\alpha_0,\alpha_1,\alpha_2})=0$$
+%$$\ker\delta^1=C^1(\mcalU,\mcalO)=\{c=c(\alpha_0,\alpha_1)
+%|c_{\alpha_0,\alpha_1}\in\mcalO(U_{\alpha_0\alpha_1})\}
+%=\{c\in\mcalO(U_1\cap U_2)\}=\{c=\sum_{m,n\in\bbZ}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+%$$\delta^0:C^0(\mcalU,\mcalO)\to\mcalC^1(\mcalU,\mcalO)$$
+%$$(\delta^0c)_{12}=(c_2-c_1)|_{U_{12}}$$
+%where $c_2\in\mcalO(U_2)$ and $c_1\in\mcalO(U_1)$.note that
+%$$\mcalO(U_1)=\{c(z_1,z_2)=\sum_{m\in\bbZ,n\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+%$$\mcalO(U_2)=\{c(z_1,z_2)=\sum_{n\in\bbZ,m\geq 0}a_{mn}z_1^mz_2^n\text{convergent}\}$$
+%So, $H^1(\mcalU,\mcalO)=\{c(z_1,z_2)=\sum_{m,n<0}a_{mn}z_1^mz_2^n\}$
 
-$$\bbC P^n=\{[z_0,...,z_n]|\text{not all $z_k=0$},z_i\in\bbC\}
-=\bigcup_{0\leq p\leq n}V_k$$
-where
-$$V_k=\{[z_0,...,z_n]|z_k\neq 0\}
-\cong \{(\frac{z_0}{z_k},...,1,...,\frac{z_n}{z_k})|
-z_i\in\bbC,i\neq k, z_k\neq 0\}\cong \bbC^n$$
-this is a holo chart.
+\begin{example}（复射影空间）%(complex projective space)
+%$$\bbC P^n:=(\bbC^{n+1}\setminus\{0\})\big/\sim$$
+%$$(z_0,...,z_n)\sim\lmd(z_0,...,z_n)$$for some $\lmd\in\bbC^*$.
+%$$\bbC P^n=\{[z_0,...,z_n]|\text{not all $z_k=0$},z_i\in\bbC\}
+%=\bigcup_{0\leq p\leq n}V_k$$where
+%$$V_k=\{[z_0,...,z_n]|z_k\neq 0\}
+%\cong \{(\frac{z_0}{z_k},...,1,...,\frac{z_n}{z_k})|
+%z_i\in\bbC,i\neq k, z_k\neq 0\}\cong \bbC^n$$this is a holo chart.
+%$$\bbC P^1=V_0\cup V_1,\mcalV=\{V_0,\mcalV_1\}$$
+%HW: compute $H^q(\mcalV,\mcalO)$.
 
-$$\bbC P^1=V_0\cup V_1,\mcalV=\{V_0,\mcalV_1\}$$
-HW: compute $H^q(\mcalV,\mcalO)$.
-
-Answer:
-$$H^0\cong\bbC,H^1\cong 0$$
+考虑复射影空间$\bbC\bbP^1$的坐标覆盖$\mcalU=\{U_0,U_1\}$，
+其中$U_i=\Bigset{[z_0,z_1]}{z_i\neq 0},\,i=0,1$.
+记$\mcalO$为$\bbC\bbP^1$上的全纯函数层，则有
+$
+  \check{H}^q(\mcalU,\mcalO)
+\cong
+  \left\{
+    \begin{array}{ll}
+      \bbC & q=0\\
+      0    & q>0
+    \end{array}
+  \right.
+$.
 \end{example}
+
+\begin{proof}[解]
+只需注意到$U_1\cong(\bbC\setminus\{0\})\cup\{\infty\}$，
+于是有
+\begin{eqnarray*}
+   \mcalO(U_0)
+&=&
+   \Bigset{\sum_{n\geq 0}a_n z^n}{\text{该级数在$U_0$收敛}}\\
+   \mcalO(U_1)
+&=&
+   \Bigset{\sum_{n\leq 0}a_n z^n}{\text{该级数在$U_1$收敛}}\\
+   \mcalO(U_{01})
+&=&
+   \Bigset{\sum_{n\in\bbZ}a_n z^n}{\text{该级数在$U_{01}$收敛}}\\
+\end{eqnarray*}
+仿照上例的做法，容易计算出来（而且比上例容易）。
+\end{proof}
+
+%Answer:$$H^0\cong\bbC,H^1\cong 0$$
 
 %%%%%%%%%%%%%%%%2019.3.26 第五周 周二%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1735,313 +1985,359 @@ $$H^0\cong\bbC,H^1\cong 0$$
 %$$\sum_{\alpha}s_{\alpha}=1$$(this is a locally finite sum)
 %\end{definition}
 
-Recall：
+%Recall：Cech cohomology: $X$ topological space,
+%$\mcalU=(U_{\alpha})_{\alpha\in\mcalI}$,
+%$$C^q(\mcalU,\mcalF)=
+%\prod_{\alpha_0<...<\alpha_q}\mcalF(\U_{\alpha_1,...,\alpha_q})$$
+%$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
+%fact: $H^0(\mcalU,\mcalF)=\Gamma(X,\mcalF)$.Today:
+%\begin{definition}
+%Let $\mcalV=(V_{\beta})_{\beta\in J}$ be another open covering,
+%then $\mcalV$ is called a refinement of $\mcalU$, if there exists a map
+%$$\rho:\mcalJ\to\mcalI$$
+%such that$$V_{\beta}\subseteq U_{\rho(\beta)}$$
+%\end{definition}
 
-Cech cohomology: $X$ topological space,
-$\mcalU=(U_{\alpha})_{\alpha\in\mcalI}$,
-$$C^q(\mcalU,\mcalF)=
-\prod_{\alpha_0<...<\alpha_q}\mcalF(\U_{\alpha_1,...,\alpha_q})$$
-$$\delta^q:C^q(\mcalU,\mcalF)\to C^{q+1}(\mcalU,\mcalF)$$
+\begin{prop}（\Cech 上链复形的加细）
 
-fact: $H^0(\mcalU,\mcalF)=\Gamma(X,\mcalF)$.
-
-Today:
-
-\begin{definition}
-Let $\mcalV=(V_{\beta})_{\beta\in J}$ be another open covering,
-then $\mcalV$ is called a refinement of $\mcalU$, if there exists a map
-$$\rho:\mcalJ\to\mcalI$$
-such that
-$$V_{\beta}\subseteq U_{\rho(\beta)}$$
-\end{definition}
-
-\begin{prop}
-Let $\mcalV$ be a refinement of $\mcalU$, then $\rho$ induces a map
-$$\rho^q:C^q(\mcalU,\mcalF)\to C^q(\mcalV,\mcalF)$$
-$$(\rho^qC)_{\beta_0,...,\beta_q}\mapsto
-C_{\rho(\beta_0),...,\rho(\beta_q)}|_{V_{\beta_0,...,\beta_q}}$$
-$\rho$ is a morphism of complexes.
+设$\mcalF$为拓扑空间$X$上的$\mcalA$-模层，
+$\mcalU:=\Bigset{U_\afa}{\afa\in\mcalI}$为$X$的一族开覆盖，
+$\mcalV:=\Bigset{V_\beta}{\beta\in\mcalJ}$为$X$的另一族开覆盖。
+如果存在$\rho:\mcalJ\to\mcalI$使得$\mcalV$为$\mcalU$的加细，
+则存在自然的同态
+\begin{eqnarray*}
+  \rho^q:C^q(\mcalU,\mcalF)&\to&
+  C^q(\mcalV,\mcalF)
+\\
+  c&\mapsto&
+  (\rho^qc)_{\beta_0\cdots\beta_q}
+  :=c_{\rho(\beta_0)\cdots\rho(\beta_q)}|_{V_{\beta_0\cdots\beta_q}}
+\end{eqnarray*}
+则上述$\rho^q$诱导了链映射
+$$
+  \rho\updot:C\updot(\mcalU,\mcalF)
+\to C\updot(\mcalV,\mcalF)
+$$
+进而诱导了\Cech 上同调之间的同态
+$H\updot(\rho):\check{H}\updot(\mcalU,\mcalF)\to\check{H}\updot(\mcalV,\mcalF)$.
 \end{prop}
 
-%%%%%%改用电子版了%%%%%%
-so, $\rho$ induces a map
-$$H^q(\rho):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$$
-
-Let $\tilde{\rho}:\mcalJ\to\mcalI$ be another refinement of $\mcalU$
-
-(induces $H^q(\tilde{\rho}):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$)
-then $\rho,\tilde{\rho}$ are homotopic
-%%%homotopy%%%
-(chain homotopy$\rightsquigarrow H^q(\rho)=H^q(\tilde(\rho))$)
-
-so, if $\rho:\mcalJ\to \mcalI$ is refinement, then
-$$H^q(\rho)$$
-is independent of the refinement.
-
-\begin{definition}
-$$\check{H}^q(X,\mcalF):=\lim_{\to\atop\mcalU} H^q(\mcalU,\mcalF)$$
-i.e. $a\in H^q(\mcalU,\mcalF)\sim\in H^q(\mcalV,\mcalF)$ iff
-$\exists$ a refinement $\mcalW$ of $\mcalU$ and $\mcalV$ such that
-$a,b$ have the same image in $H^q(\mcalW,\mcalF)$
-\end{definition}
-
-\begin{rem}
-$$\check{H}^0(X,\mcalF)=\Gamma(X,\mcalF)$$
-
-Exercise: For $q=1$, if $\mcalV$ is a refinement of $\mcalU$,
-then
-$$H^1(\mcalU,\mcalF)\to H^1(\mcalV,\mcalF)$$
-is injective.
-\end{rem}
-
-so ,for any open cover $\mcalU$,
-$$H^1(\mcalU,\mcalF)\to \check{H}^1(X,\mcalF)$$
-is injective.
-
-\textbf{Homological Algebra}
-recall：let $(K\updot,\td_k),(L\updot,\td_l)$ and $(M\updot,\td_M)$,
-if we have a short exact sequence
-$$0\to K\updot\xra{\fai} L\updot\xra{\psi}M\updot\to 0$$
-then it induces a long exact sequence :
-$$
-  \cdots\to H^q(K\updot)\to
-  H^q(L\updot)\to
-  H^q(M\updot)\to
-  H^{q+1}(K\updot)\to\cdots
-$$
-
-analogy of Cech cohomology: $X$ is a topological space,
-$\mcalU$ is an open covering of $X$.
-$\mcalA$ and $\mcalB$ sheaves on $X$, Let
-$$\fai:\mcalA\to\mcalB$$
-be a morphism, then it induces
-$$\fai\updot:C\updot(\mcalU,\mcalA)\to C\updot(\mcalU,\mcalB)$$
-
-Let
-$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$
-be an exact sequence of sheaves, then we have:
-for any open set $\Omg$,
-$$0\to \mcalA(\Omg)\to \mcalB(\Omg)\to\mcalC(\Omg)$$
-left exact.
-
-Example: consider
-$$0\to\bbZ\to\mcalO\xra{exp}\to0$$
-is exact on $bbC^{\times}:=\bbC\setminus\{0\}$
-
-but we have :
-$$0\to\mcalA(\Omg)\xra{\psi}\mcalB(\Omg)\to\im\psi(\Omg)\to 0$$
-is exact.
-
-First we have the following exact sequence
-$$C^q(\mcalU,\mcalA)\to C^q(\mcalU,\mcalB)\to C^q_{\mcalB}(\mcalU,\mcalC)\to 0$$
-where $C_{\mcalB}^q$ is the image of ...
-
-then we get an exact sequence
-$$0\to (C\updot(\mcalU,\mcalA),\delta)\to
-(C\updot(\mcalU,\mcalB),\delta)\to
-(C\updot_{\mcalB}(\mcalU,\mcalC),\delta)\to 0$$
-
-it induces a long exact sequence
-$$\cdots\to
-H^q(\mcalU,\mcalA)\to
-H^q(\mcalU,\mcalB)\to
-H^q_{\mcalB}(\mcalU,\mcalC)\to
-H^{q+1}(\mcalU,\mcalA)\to\cdots
-$$
-
-\begin{thm}
-If $X$ is paracompact,
-$$0\to\mcalA\to\mcalB\to\mcalC\to 0$$
-is a sheaf exact sequence.
-Then there is a long exact sequence
-$$
-\cdots\to
-\check{H}^q(X,\mcalA)\to
-\check{H}^q(X,\mcalB)\to
-\check{H}^q(X,\mcalC)\to
-\check{H}^{q+1}(X,\mcalZ)\to \cdots
-$$
-\end{thm}
 \begin{proof}
-
-Key lemma: need to prove
-$$\lim_{\to\atop\mcalU}H^q(\mcalU,\mcalC)=
-\lim_{\to\atop\mcalU}H^q_{\mcalB}(\mcalU,\mcalC)
-$$
-if $X$ is paracompact.
-
-Omit.
+  显然成立。
 \end{proof}
 
-
-if
-$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$
-exact,
-
-recall:(cohomology by resolutions)
+但是要注意一点，对于如此的$\mcalU,\mcalV$，
+使得$\mcalV$是$\mcalU$的加细的$\rho:\mcalJ\to\mcalI$
+未必唯一。事实上若$\rho_1,\rho_2:\mcalJ\to\mcalI$
+都使得$\mcalV$为$\mcalU$的加细，则链映射
 $$
-0\to\mcalA\to\mcalF^0\to\mcalF^1\to\cdots
+  \rho_1\updot,\rho_2\updot:
+  C\updot(\mcalU,\mcalF)
+  \to
+  C\updot(\mcalV,\mcalF)
 $$
-flabby resolution. then it induces
-$$0\to\Gamma(X,\mcalA)\to\Gamma(X,\mcalF^0)\to\Gamma(X,\mcalF^1)\to\cdots$$
-then define the sheaf cohomology...
+是\textbf{链同伦}的（我们承认这一点），因此
+它们诱导的\Cech 上同调之间的同态相同：$H\updot(\rho_1)=H\updot(\rho_2)$.
+从而我的可以定义如下：
 
-we have a long exact sequence
-$$
-\cdots\to H^q(X,\mcalA)\to H^q(X,\mcalB)\to H^q(X,\mcalC)\to H^{q+1}(X,\mcalA)\to\cdots
-$$
-it is homological algebra...
+%\begin{prop}
+%Let $\mcalV$ be a refinement of $\mcalU$, then $\rho$ induces a map
+%$$\rho^q:C^q(\mcalU,\mcalF)\to C^q(\mcalV,\mcalF)$$
+%$$(\rho^qC)_{\beta_0,...,\beta_q}\mapsto
+%C_{\rho(\beta_0),...,\rho(\beta_q)}|_{V_{\beta_0,...,\beta_q}}$$
+%$\rho$ is a morphism of complexes.
+%\end{prop}
+%%%%%%改用电子版了%%%%%%
+%so, $\rho$ induces a map
+%$$H^q(\rho):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$$
+%Let $\tilde{\rho}:\mcalJ\to\mcalI$ be another refinement of $\mcalU$
+%(induces $H^q(\tilde{\rho}):H^q(\mcalU,\mcalF)\to H^q(\mcalV,\mcalF)$)
+%then $\rho,\tilde{\rho}$ are homotopic%%%homotopy%%%
+%(chain homotopy$\rightsquigarrow H^q(\rho)=H^q(\tilde(\rho))$)
+%so, if $\rho:\mcalJ\to \mcalI$ is refinement, then
+%$$H^q(\rho)$$is independent of the refinement.
 
-\begin{thm}(Leray's acyclic theorem)
-Let $\mcalU=(U_{\alpha})_{\alpha\in\mcalI}$ be an open covering of $X$,
-($\mcalF$ is a sheaf on $X$), if satisfying
-$$H^k(U_{\alpha_0,...,\alpha_q})=0$$
-for any $k \geq 1$ ,then
-$$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)$$
+\begin{definition}（层关于拓扑空间的\Cech 上同调）
+\index{\Cech 上同调}
 
-and if $X$ is paracompact ,we also have
-$$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)\cong H^q(X,\mcalF)$$
-
-\end{thm}
-(this $\mcalU$ is called acyclic covering)
-
-\section{de Rham- Weil 定理}
-\begin{definition}
-$\mcalF$ is a sheaf on $X$, $\Omg$ is an open set of $X$,
-then $\mcalF$ is called \textbf{acyclic sheaf} if
-$$H^q(\Omg,\mcalF)=0$$
-for any $q\geq 1$.
+对于拓扑空间$X$上的$\mcalA$-模层$\mcalF$，定义$\mcalF$
+关于拓扑空间$X$的\textbf{\Cech 上同调}
+$$\check{H}^q(X,\mcalF):=\rlim_{\mcalU} H^q(\mcalU,\mcalF)$$
+其中$\mcalU$取遍$X$的开覆盖，并且若$\mcalV$为$\mcalU$的加细，
+则$\check{H}^q(\mcalU,\mcalF)\to\check{H}^q(\mcalV,\mcalF)$.
 \end{definition}
 
+由此定义容易看出，$\check{H}^0(X,\mcalF)=\mcalF(X)$为整体截面。
+
+%i.e. $a\in H^q(\mcalU,\mcalF)\sim\in H^q(\mcalV,\mcalF)$ iff
+%$\exists$ a refinement $\mcalW$ of $\mcalU$ and $\mcalV$ such that
+%$a,b$ have the same image in $H^q(\mcalW,\mcalF)$
+%\begin{rem}
+%$$\check{H}^0(X,\mcalF)=\Gamma(X,\mcalF)$$
+%\end{rem}
+
+{
+  \color{gray}
+  据说容易验证，对于开覆盖$\mcalU$的加细$\mcalV$，则
+  $\check{H}^1(\mcalU,\mcalF)\to\check{H}^1(\mcalV,\mcalF)$
+  是单同态。从而对任何开覆盖$\mcalU$，有嵌入
+  $\check{H}^1(\mcalU,\mcalF)\inj\check{H}^1(X,\mcalF)$.
+}
+%Exercise: For $q=1$, if $\mcalV$ is a refinement of $\mcalU$,then
+%$$H^1(\mcalU,\mcalF)\to H^1(\mcalV,\mcalF)$$
+%is injective. so ,for any open cover $\mcalU$,
+%$$H^1(\mcalU,\mcalF)\to \check{H}^1(X,\mcalF)$$ is injective.
+%\textbf{Homological Algebra}
+%recall：let $(K\updot,\td_k),(L\updot,\td_l)$ and $(M\updot,\td_M)$,
+%if we have a short exact sequence
+%$$0\to K\updot\xra{\fai} L\updot\xra{\psi}M\updot\to 0$$
+%then it induces a long exact sequence :
+%$$\cdots\to H^q(K\updot)\to
+%H^q(L\updot)\toH^q(M\updot)\toH^{q+1}(K\updot)\to\cdots
+%$$analogy of Cech cohomology:
+
+我们已经初步探讨不同开覆盖的\Cech 上同调之间的关系；
+现在考虑不同的层的\Cech 上同调。
+
+\begin{prop}
+设$X$为拓扑空间，$\mcalF,\mcalG$为$X$上的$\mcalA$-模层，
+$\mcalU$为$X$的一个开覆盖，$\fai:\mcalF\to\mcalG$为$\mcalA$-模层同态。
+则$\fai$自然诱导链映射
+$$
+  \fai\updot:C\updot(\mcalU,\mcalF)
+  \to C\updot(\mcalU,\mcalG)
+$$
+\end{prop}
+
+\begin{proof}
+这是显然的。
+\end{proof}
+
+如果再有$\mcalU$的加细$(\mcalV,\rho)$，则有如下交换图：
+$$
+  \xymatrix{
+     C\updot(\mcalU,\mcalF)
+       \ar[r]^{\fai\updot}
+       \ar[d]^{\rho\updot}
+    &C\updot(\mcalU,\mcalG)
+       \ar[d]^{\rho\updot}
+  \\
+     C\updot(\mcalV,\mcalF)
+       \ar[r]^{\fai\updot}
+    &C\updot(\mcalV,\mcalG)
+  }
+$$
+从而由余极限的泛性质可知，层同态$\fai$诱导了\Cech
+上同调的同态$\check{H}\updot(\fai):\check{H}\updot(X,\mcalF)
+\to\check{H}\updot(X,\mcalG)$.\vs
+
+%$X$ is a topological space,$\mcalU$ is an open covering of $X$.
+%$\mcalA$ and $\mcalB$ sheaves on $X$, Let
+%$$\fai:\mcalA\to\mcalB$$be a morphism, then it induces
+%$$\fai\updot:C\updot(\mcalU,\mcalA)\to C\updot(\mcalU,\mcalB)$$
+%Let$$0\to \mcalA\to\mcalB\to\mcalC\to 0$$
+%be an exact sequence of sheaves, then we have:for any open set $\Omg$,
+%$$0\to \mcalA(\Omg)\to \mcalB(\Omg)\to\mcalC(\Omg)$$left exact.
+%Example: consider$$0\to\bbZ\to\mcalO\xra{exp}\to0$$
+%is exact on $bbC^{\times}:=\bbC\setminus\{0\}$
+
+现在，对于拓扑空间$X$的开覆盖$\mcalU$，以及$\mcalA$-模层短正合列
+$$0\to\mcalF\xra{\fai}\mcalG\xra{\psi}\mcalH\to 0$$
+注意对$X$的任意开集$U$，“取截面”函子$\Gma(U,-)$是左正合的，即有左短正合列
+$$
+  0\to\mcalF(U)\xra{\fai_U}
+  \mcalG(U)\xra{\psi_U}
+  \mcalH(U)
+$$
+但一般来说$\Gma(U,-)$不是右正合的，即不保持满同态。
+但退而求其次，我们有如下的短正合列：
+$$
+  0\to\mcalF(U)\xra{\fai_U}
+  \mcalG(U)\xra{\psi_U}
+  \im\psi_U\to 0
+$$
+
+\begin{notation}
+设$\psi:\mcalG\to\mcalH$
+为拓扑空间$X$上的$\mcalA$-模层同态，
+$\mcalU=\Bigset{U_\afa}{\afa\in\mcalI}$
+为$X$上的一族开覆盖，则对任意$q\geq 0$，记
+$$
+  C_\psi^q(\mcalU,\mcalH)
+:=
+  \prod_{\afa_0,...,\afa_q\in\mcalI
+         \atop\afa_0\prec\afa_1\prec\cdots\prec\afa_q}
+    \im(\psi_{U_{\afa_0\cdots\afa_k}})
+\subseteq
+  C^q(\mcalU,\mcalH)
+$$
+其中$\prec$为开覆盖指标集$\mcalI$上的一个良序。
+\end{notation}
+容易验证，\Cech 微分$\delta^q:C^q(\mcalU,\mcalF)
+\to C^{q+1}(\mcalU,\mcalF)$
+在$C^q_\psi(\mcalU,\mcalF)$上的限制给出了
+$$
+  \delta_\psi^q:
+  C^q_\psi(\mcalU,\mcalF)
+  \to C^{q+1}_\psi(\mcalU,\mcalF)
+$$
+并且有上链复形$(C\updot_\psi(\mcalU,\mcalF),\delta\updot_\psi)$.
+因此有同调代数的标准工具，得到以下：
+
+%but we have :$$0\to\mcalA(\Omg)\xra{\psi}\mcalB(\Omg)
+%\to\im\psi(\Omg)\to 0$$is exact.First we have the following exact sequence
+%$$C^q(\mcalU,\mcalA)\to C^q(\mcalU,\mcalB)\to C^q_{\mcalB}(\mcalU,\mcalC)\to 0$$
+%where $C_{\mcalB}^q$ is the image of ...
+%then we get an exact sequence$$0\to (C\updot(\mcalU,\mcalA),\delta)\to
+%(C\updot(\mcalU,\mcalB),\delta)\to(C\updot_{\mcalB}(\mcalU,\mcalC),\delta)\to 0$$
+%it induces a long exact sequence$$\cdots\toH^q(\mcalU,\mcalA)\to
+%H^q(\mcalU,\mcalB)\toH^q_{\mcalB}(\mcalU,\mcalC)\toH^{q+1}(\mcalU,\mcalA)\to\cdots$$
+
+\begin{prop}设$\mcalU$为拓扑空间$X$的一族开覆盖，
+则$\mcalA$-模层短正合列
+$$0\to\mcalF\xra{\fai}\mcalG\xra{\psi}\mcalH\to 0$$
+诱导了如下的上链复形短正合列：
+$$
+  0\to C\updot(\mcalU,\mcalF)
+  \xra{\fai\updot}
+  C\updot(\mcalU,\mcalG)
+  \xra{\psi\updot}
+  C_\psi\updot(\mcalU,\mcalH)
+  \to 0
+$$
+进而诱导相应的同调对象的长正合列
+$$
+  0\to\check{H}^0(\mcalU,\mcalF)
+  \to\check{H}^0(\mcalU,\mcalG)
+  \to\check{H}^0_\psi(\mcalU,\mcalH)
+  \to\check{H}^1(\mcalU,\mcalF)
+  \to\cdots
+$$
+\end{prop}
+
+如果拓扑空间$X$是仿紧的，我们会有更好的结果。
+以下定理述而不证：
+
 \begin{thm}
-Let
-$$0\to\mcalF\to(L\updot,\td)$$
-be an acyclic resolution of $\mcalF$
-(i.e. $L^q$is acyclic on $X$)
-then
-$$H^q(X,\mcalF)\cong H^q(\Gamma(X,L\updot),\td)$$
-for any $q\geq 0$.
+设$X$为仿紧拓扑空间，
+$0\to\mcalF\xra{\fai}\mcalG\xra{\psi}\mcalH\to 0$
+为$X$上的$\mcalA$-模层正合列，则成立：
+$$
+  \rlim_{\mcalU}\check{H}\updot(\mcalU,\mcalH)
+= \rlim_{\mcalU}\check{H}\updot\psi(\mcalU,\mcalH)
+$$
+其中$\mcalU$取遍$X$的开覆盖。并且由此可以得出，
+该层短正合列诱导\Cech 上同调的长正合列：
+$$
+ 0\to\check{H}^0(\mcalU,\mcalF)
+  \to\check{H}^0(\mcalU,\mcalG)
+  \to\check{H}^0(\mcalU,\mcalH)
+  \to\check{H}^1(\mcalU,\mcalF)
+  \to\cdots
+$$
 \end{thm}
 
-(先看例子)
+\begin{proof}
+从略。
+\end{proof}
 
-\begin{example}
-Let $X$ be a differential manifold,
-$\mcalE^p$:sheaf of smooth $p$-forms, then we have a resolution
-(de Rham complex)
-$$0\to\bbR\inj\mcalE^0\xra{\td}\mcalE^1
-\xra{\td}\mcalE^2\xra{\td}\mcalE^3\to\cdots$$
-where $\td$ differential operators.
-(Why it is a resolution? because of Poincare lemma...locally solvable..)
+%\begin{thm}
+%If $X$ is paracompact,$$0\to\mcalA\to\mcalB\to\mcalC\to 0$$
+%is a sheaf exact sequence.Then there is a long exact sequence
+%$$\cdots\to\check{H}^q(X,\mcalA)\to
+%\check{H}^q(X,\mcalB)\to\check{H}^q(X,\mcalC)\to
+%\check{H}^{q+1}(X,\mcalZ)\to \cdots$$
+%\end{thm}\begin{proof}Key lemma: need to prove
+%$$\lim_{\to\atop\mcalU}H^q(\mcalU,\mcalC)=
+%\lim_{\to\atop\mcalU}H^q_{\mcalB}(\mcalU,\mcalC)
+%$$if $X$ is paracompact.Omit.\end{proof}
 
-Note that
-$$\mcalE^0=\mcalC^{\infty}$$
-$\mcalE^p$ is a sheaf of $C^{\infty}$-modules..
+目前我们介绍了层的\Cech 上同调，在回顾之前所介绍的“通常的”层上同调——
+事实上这两者之间有如下联系：
 
-then we have
-$$H^q(X,\mcalE^p)=0$$
-for all $q\geq1$
+\begin{thm}（Leray 零调定理）
 
-and then
-$$H^q(X,\bbR)\cong
-\frac{\ker(\td:\Gamma(X,\mcalE^q)\to\Gamma(X,\mcalE^{q+1}))}
-     {\im(\td:\Gamma(X,\mcalE^{q-1})\to\Gamma(X,\mcalE^q))}
-=H_{DR}^q(X,\mcalR)
+设$\mcalU:=\Bigset{U_\afa}{\afa\in\mcalI}$为拓扑空间$X$的一族开覆盖，
+$\mcalF$为$X$上的$\mcalA$-模层。如果对$\mcalI$中的任意有限个指标
+$\afa_0,\afa_1,...,\afa_N$，都有
 $$
-\end{example}
+  H^q(U_{\afa_0\afa_1\cdots\afa_q},
+     \mcalF|_{U_{\afa_0\afa_1\cdots\afa_q}})
+=0\qquad
+(\forall q\geq 1)
+$$
+那么对任意$q\geq 1$，有同构
+$H^q(X,\mcalF)\cong \check{H}^q(\mcalU,\mcalF)$.
 
-\begin{example}
-Let $X$ be a complex manifold,
-$\mcalE^{p,q}$ sheaf of smooth $(p,q)$ forms,
-$\Omg^p$ is the sheaf of holomorphic $p$-forms
-(i.e. $(p,0)$-form $\fai$ with $\pbar\fai=0$).
+更进一步，若$X$是仿紧的，我们还有
+$$H^q(X,\mcalF)\cong \check{H}^q(\mcalU,\mcalF)
+\cong\check{H}^q(X,\mcalF)$$
+\end{thm}
 
-Then we have resolution
-$$0\to \Omg^p\xra{j}\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
-(Why it is a resolution?  because of the Dolbeault lemma),remain to Exercise...
+%\begin{thm}(Leray's acyclic theorem)Let $\mcalU=(U_{\alpha})
+%_{\alpha\in\mcalI}$ be an open covering of $X$,($\mcalF$ is a
+% sheaf on $X$), if satisfying$$H^k(U_{\alpha_0,...,\alpha_q})
+%=0$$for any $k \geq 1$ ,then$$H^q(\mcalU,\mcalF)\cong \check(H)^q(X,\mcalF)$$
+%and if $X$ is paracompact ,we also have$$H^q(\mcalU,\mcalF)\cong
+%\check(H)^q(X,\mcalF)\cong H^q(X,\mcalF)$$
+%\end{thm}(this $\mcalU$ is called acyclic covering)
 
-$$H^q(X,\Omg^p)\cong H^{p,q}_{\pbar}(X,\bbC)$$
-\end{example}
+\begin{proof}
+  从略。
+\end{proof}
+
+满足此定理条件的开覆盖$\mcalU$也被称为“零调覆盖”
+（acyclic covering）。
+
+%\section{de Rham-Weil 定理}
+%\begin{definition}
+%$\mcalF$ is a sheaf on $X$, $\Omg$ is an open set of $X$,
+%then $\mcalF$ is called \textbf{acyclic sheaf} if
+%$$H^q(\Omg,\mcalF)=0$$for any $q\geq 1$.(先看例子)
+%\end{definition}\begin{thm}Let$$0\to\mcalF\to(L\updot,\td)$$
+%be an acyclic resolution of $\mcalF$(i.e. $L^q$is acyclic on $X$)then
+%$$H^q(X,\mcalF)\cong H^q(\Gamma(X,L\updot),\td)$$for any $q\geq 0$.\end{thm}
+%\begin{example}Let $X$ be a differential manifold,
+%$\mcalE^p$:sheaf of smooth $p$-forms, then we have a resolution
+%(de Rham complex)$$0\to\bbR\inj\mcalE^0\xra{\td}\mcalE^1
+%\xra{\td}\mcalE^2\xra{\td}\mcalE^3\to\cdots$$
+%where $\td$ differential operators.(Why it is a resolution?
+% because of Poincare lemma...locally solvable..)Note that
+%$$\mcalE^0=\mcalC^{\infty}$$$\mcalE^p$ is a sheaf of $C^{\infty}$-modules..
+%then we have$$H^q(X,\mcalE^p)=0$$for all $q\geq1$and then
+%$$H^q(X,\bbR)\cong\frac{\ker(\td:\Gamma(X,\mcalE^q)\to\Gamma(X,\mcalE^{q+1}))}
+%{\im(\td:\Gamma(X,\mcalE^{q-1})\to\Gamma(X,\mcalE^q))}=H_{DR}^q(X,\mcalR)$$
+%\end{example}
 
 %%%%%%%%%%%%%%%%%2019.3.28第五周周四%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Today： de Rham-Weil Isomorphism Thm
-
-\begin{thm}
-Let $X$ be a topological space, $\mcalF$ be a sheaf of abelian groups on $X$,
-$$0\to\mcalF\to(\mcalL\updot,\td)$$
-be an acyclic resolution, i.e.
-$$H^k(X,\mcalL^q)=0$$
-for all $k\geq 1$ and $q\geq 0$.
-Then,
-$$H^q(X,\mcalF)\cong H^q((\Gamma(\mcalL\updot),\td))$$
-\end{thm}
-
-\begin{proof}
-Since
-$$
-0\to \mcalF\xra{j}\mcalL^0\xra{\td^0}\mcalL^1\xra{\td^1}\mcalL^2\to\cdots
-$$
-be an exact sequence, denote
-$$\mcalZ^q:=\ker \td^q$$
-then we have short exact sequences
-$$0\to \mcalZ^q\to\mcalL^q\to\mcalZ^{q+1}\to 0$$
-for any $q$. They induce long exact sequence of cohomology groups:
-$$\cdots\to H^k(X,\mcalZ^q)\to H^k(X,\mcalL^q)\to H^k(X,\mcalZ^{q+1})\xra{\p}
-H^{k+1}(X,\mcalL^q)\to H^{q+1}(X,\mcalL^q)\to\cdots$$
-For any $k\geq 1$, since $\mcalL^q$ are acyclic on $X$,
-$$H^k(X,\mcalZ^{q+1})\cong H^{k+1}(X,\mcalZ^q)$$
-and for $k=0$, we have
-$$
-0\to H^0(X,\mcalZ^q)\to H^0(X,\mcalL^q)\to H^0(X,\mcalZ^{q+1})\to
-H^1(X,\mcalZ^q)\to H^1(X,\mcalL^q)=0\to\cdots
-$$
-so,
-$$H^1(X,\mcalZ^q)\cong H^0(X,\mcalZ^{q+1})\big/\im\td^q
-\cong H^{q+1}((\Gamma(\mcalL\updot),\td))$$
-
-$$H^{q+1}(\Gamma(\mcalL\updot))\cong H^1(X,\mcalZ^q)\cong H^2(X,\mcalZ^{q-1})\cong\cdots
-H^{q+1}(X,\mcalZ^0)=H^{q+1}(X,\mcalF)$$
-\end{proof}
-
+%Today： de Rham-Weil Isomorphism Thm
+%\begin{thm}Let $X$ be a topological space, $\mcalF$ be a sheaf of abelian groups on $X$,
+%$$0\to\mcalF\to(\mcalL\updot,\td)$$be an acyclic resolution, i.e.
+%$$H^k(X,\mcalL^q)=0$$for all $k\geq 1$ and $q\geq 0$.Then,
+%$$H^q(X,\mcalF)\cong H^q((\Gamma(\mcalL\updot),\td))$$\end{thm}
+%\begin{proof}Since$$0\to \mcalF\xra{j}\mcalL^0\xra{\td^0}
+%\mcalL^1\xra{\td^1}\mcalL^2\to\cdots$$be an exact sequence, 
+%denote$$\mcalZ^q:=\ker \td^q$$then we have short exact sequences
+%$$0\to \mcalZ^q\to\mcalL^q\to\mcalZ^{q+1}\to 0$$
+%for any $q$. They induce long exact sequence of cohomology groups:
+%$$\cdots\to H^k(X,\mcalZ^q)\to H^k(X,\mcalL^q)\to H^k(X,\mcalZ^{q+1})\xra{\p}
+%H^{k+1}(X,\mcalL^q)\to H^{q+1}(X,\mcalL^q)\to\cdots$$
+%For any $k\geq 1$, since $\mcalL^q$ are acyclic on $X$,
+%$$H^k(X,\mcalZ^{q+1})\cong H^{k+1}(X,\mcalZ^q)$$and for $k=0$, we have
+%$$0\to H^0(X,\mcalZ^q)\to H^0(X,\mcalL^q)\to H^0(X,\mcalZ^{q+1})\to
+%H^1(X,\mcalZ^q)\to H^1(X,\mcalL^q)=0\to\cdots$$so,
+%$$H^1(X,\mcalZ^q)\cong H^0(X,\mcalZ^{q+1})\big/\im\td^q
+%\cong H^{q+1}((\Gamma(\mcalL\updot),\td))$$
+%$$H^{q+1}(\Gamma(\mcalL\updot))\cong H^1(X,\mcalZ^q)\cong H^2(X,\mcalZ^{q-1})\cong\cdots
+%H^{q+1}(X,\mcalZ^0)=H^{q+1}(X,\mcalF)$$\end{proof}
 %%%%%%%上次课讲了两个经典例子：De Rham cohomology and Doulbeault cohomology%%%%%%55
-
-$$0\to\bbR\to\mcalE^0\xra{\td}\mcalE^1\xra{\td}\mcalE^2\to\cdots$$
-(de Rham resolution) then we have
-$$H^k(X,\mcalR)\cong H_{DR}^k(X;\mcalR)$$
-(if $X$ is compact ,then by Hodge theory, it also isomorphic to $\ker(\td\td^*+\td^*\td)$)
-
-Another example:$X$ is a complex manifold, then
-$$0\to\Omg^p\to\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
-then
-$$H^{q}(X,\Omg^p)\cong H_{\pbar}^{p,q}(X,\bbC)$$
-(RHS$=$ Dolbeault cohomology)
+%$$0\to\bbR\to\mcalE^0\xra{\td}\mcalE^1\xra{\td}\mcalE^2\to\cdots$$
+%(de Rham resolution) then we have$$H^k(X,\mcalR)\cong H_{DR}^k(X;\mcalR)$$
+%(if $X$ is compact ,then by Hodge theory, it also isomorphic to $\ker(\td\td^*+\td^*\td)$)
+%Another example:$X$ is a complex manifold, then
+%$$0\to\Omg^p\to\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
+%then$$H^{q}(X,\Omg^p)\cong H_{\pbar}^{p,q}(X,\bbC)$$(RHS$=$ Dolbeault cohomology)
 
 
-$X$ be a smooth manifold, we define
-$$C_q(X,\bbZ):=\text{the free abelian group generated by continuous map}$$
-$$\phi:\triangle_q:=\{(t_1,...,t_{q+1})\in[0,1]^{q+1}|\sum_{i=1}^nt_i=1\}$$
-and we define (for $\phi\in C_q(X,\bbZ)$)
-$$\p\phi:=\sum_{i=1}^{q+1}(-1)^q\phi|_{\triangle_{q,i}}$$
-$$\triangle_{q,i}:=\{t\in\triangle_q|t_i=0\}$$
-we define
-$$(C_{sing}\updot,\p)$$
-be the dual complex of $(C^{sing}\downdot),\p$.
-
-(These are all Basic Algebraic Topology)
-
-For any open $U\subseteq X$, we have
-$$U\to C_{sing}^q(U,\bbZ)$$
-we get a sheaf
-$$\mcalC_{sing}^q$$
-
-FACT: $(\mcalC_{sing}\updot,\p)$ is a flabby resolution of $\bbZ$. (check!)So,
-$$H^q_{sing}(X,\bbZ)= H^q(\Gamma(\mcalC_{sing}\updot),\p)
-\cong H^q(X,\bbZ)$$
-
-%%%%%%%%%%%%%%%以后还要讲谱序列，so scared...好怕怕……%%%%%%%%%%%%%%%%%%%5
-%推荐读一读，现在学的东西应该能读懂了。。。
-%Tate : rigid analytic spaces
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
