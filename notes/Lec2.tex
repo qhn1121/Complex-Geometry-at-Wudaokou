@@ -2316,7 +2316,7 @@ $$H^q(X,\mcalF)\cong \check{H}^q(\mcalU,\mcalF)
 %$$H^k(X,\mcalL^q)=0$$for all $k\geq 1$ and $q\geq 0$.Then,
 %$$H^q(X,\mcalF)\cong H^q((\Gamma(\mcalL\updot),\td))$$\end{thm}
 %\begin{proof}Since$$0\to \mcalF\xra{j}\mcalL^0\xra{\td^0}
-%\mcalL^1\xra{\td^1}\mcalL^2\to\cdots$$be an exact sequence, 
+%\mcalL^1\xra{\td^1}\mcalL^2\to\cdots$$be an exact sequence,
 %denote$$\mcalZ^q:=\ker \td^q$$then we have short exact sequences
 %$$0\to \mcalZ^q\to\mcalL^q\to\mcalZ^{q+1}\to 0$$
 %for any $q$. They induce long exact sequence of cohomology groups:
@@ -2338,6 +2338,79 @@ $$H^q(X,\mcalF)\cong \check{H}^q(\mcalU,\mcalF)
 %$$0\to\Omg^p\to\mcalE^{p,0}\xra{\pbar}\mcalE^{p,1}\xra{\pbar}\mcalE^{p,2}\to\cdots$$
 %then$$H^{q}(X,\Omg^p)\cong H_{\pbar}^{p,q}(X,\bbC)$$(RHS$=$ Dolbeault cohomology)
 
+
+\begin{Example}（光滑线丛）
+
+设$X$为光滑流形，$E\to X$为$X$上的光滑线丛（即$\rank E=1$）。
+取$E$的一族局部平凡化开覆盖$\mcalU=\Bigset{U_\afa}{\afa\in\mcalI}$，
+并记相应的转移矩阵（在这里是转移函数）为$g_{\afa\beta}$.
+考虑$\mcalE^*_X$为$X$上的可逆光滑函数层，即对任意开集$U$，
+$\mcalE^*_X(U)=\Bigset{f\in C^{\infty}(U)}{f\text{在$U$上恒不为零}}$.
+注意$\mcalE^*_X$为在通常的函数乘法下构成Abel群层。
+
+容易验证$(g_{\afa\beta})_{\afa,\beta\in\mcalI}\in C^1(\mcalU,\mcalE^*_X)$，
+并且在\Cech 微分$\delta$作用下是闭的，从而线丛$E$的转移函数$(g_{\afa\beta})$
+给出了$\check{H}^1(\mcalU,\mcalE^*_X)$中的元素。又因为
+$$
+  \check{H}^1(\mcalU,\mcalE^*_X)
+  \inj\check{H}^1(X,\mcalE^*_X)
+$$
+（这个我们承认），从而线丛$E$的转移函数$(g_{\afa\beta})$
+诱导了$\check{H}^1(X,\mcalE^*_X)$中的一个元素。
+\end{Example}
+
+\begin{proof}
+对于$g=(g_{\afa\beta})\in C^1(\mcalU,\mcalE^*_X)$，
+注意向量丛转移函数的cocycle性质，直接计算其\Cech 微分得
+$$
+  (\delta g)_{\afa\beta\gma}
+ =g_{\beta\gma}g^{-1}_{\afa\gma}g_{\afa\beta}
+ =1
+$$
+从而$g=(g_{\afa\beta})$是$\delta$-闭的，
+$[g]\in\check{H}^1(\mcalU,\mcalE^*_X)$.
+\end{proof}
+
+\begin{rem}事实上，有一一对应
+$$
+  \Big\{\text{$X$上的光滑线丛同构类}\Big\}
+\cong
+  \check{H}^1(X,\mcalE^*_X)
+$$
+\end{rem}
+
+%\textbf{Special Case: line bundle}rank $E$=1.
+%then $g_{\alpha\beta}\in C^{\infty}(U_{\alpha\beta},\bbK^*)=\mcalE^*(U_{\alpha\beta})$
+%invertible smooth function on $U_{\alpha\beta}$.
+%then, Cech cohomology,$$(\delta g)_{\alpha\beta\gamma}
+%=g_{\beta\gamma}g_{\alpha\gamma}^{-1}g_{\alpha\beta}=1$$
+%so,$$(g_{\alpha,\beta})\in\mcalZ^1(\mcalU,\mcalE^*)
+%\surj H^1(\mcalU,\mcalE^*)\inj\check{H}^1(X,\mcalE^*)$$
+%we get a map$$\{\text{line bundles}\}\to \check{H}^1(X,\mcalE^*)$$
+%actually, we have$$\{\text{isomorphic classes of line bundles}\}
+%\longleftrightarrow H^1(X,\mcalE^*)$$1-1 correspondence.
+
+\begin{Example}（全纯线丛）
+
+考虑复流形$X$，$\mcalO^*_X$为$X$上的可逆全纯函数层，
+在通常的函数乘法下构成Abel群层。与上例类似，
+对于全纯线丛$E\to X$，$E$的一族局部平凡化覆盖的转移函数
+诱导了$\check{H}^1(X,\mcalO^*_X)$中的一个元素。
+\end{Example}
+
+事实上，也有一一对应
+$$
+  \Big\{\text{$X$上的全纯线丛同构类}\Big\}
+\cong
+  \check{H}^1(X,\mcalO^*_X)
+$$
+此结论我们也述而不证。
+
+%Now, $X$ be a complex manifold,a complex vector bundle $E$ is called homomorphic,
+%if ... the transition matrix $g_{\alpha\beta}$ is holomorphic...
+%Holomorphic line bundles :$$g_{\alpha\beta}\in\mcalO^*(U_{\alpha\beta})$$
+%$\mcalO^*$:sheaf of invertible holomorphic functions...FACT: there is a map
+%$$\{\text{holomorphic line bundle}\}\to\check{H}^1(X,\mcalO^*)$$
 
 
 

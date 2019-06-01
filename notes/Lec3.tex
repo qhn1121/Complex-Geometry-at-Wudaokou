@@ -1,268 +1,442 @@
 \chapter{Hermite向量丛}
-\section{联络与曲率}
+\section{向量丛的联络与曲率}
 
-Recall: $X$ is a smooth manifold, $E$ is a vector bundle of rank $r$, if
+先回顾一下光滑向量丛的联络（活动标架版本），这是黎曼几何的标准内容。
+我们考察光滑的实向量丛或者复向量丛。为表述方便，令$\bbK:=\bbR$或$\bbC$.
 
-(1)$\pi:E\to X$ is smooth map,
+\begin{notation}（向量值微分形式）
 
-(2)for any $x\in X$, $E_x:=\pi^{-1}(x)$ is a vector space over $\bbK$
-($\bbK=\bbR$ or $\bbC$) of dimension $r$.
-
-(3)there an open covering $\mcalU=(\mcalU_{\alpha})_{\alpha\in I}$ and trivializations
-$$\theta_\alpha: E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^r$$
-and for any intersection $U_{\alpha}\cap U_{\beta}$, we have
-%%%%%%%见笔记%%%%%%%%%5
-
-\begin{rem}
-$$g_{\alpha\beta}=g_{\beta\alpha}^{-1}$$
-$$g_{\alpha\beta}g_{\beta\gamma}g_{\gamma\alpha}=1$$
-(cocycle condition)
-\end{rem}
-
-\textbf{Special Case: line bundle}
-rank $E$=1.
-
-then $g_{\alpha\beta}\in C^{\infty}(U_{\alpha\beta},\bbK^*)=\mcalE^*(U_{\alpha\beta})$
-invertible smooth function on $U_{\alpha\beta}$.
-then, Cech cohomology,
-$$(\delta g)_{\alpha\beta\gamma}=g_{\beta\gamma}g_{\alpha\gamma}^{-1}g_{\alpha\beta}=1$$
-so,
-$$(g_{\alpha,\beta})\in\mcalZ^1(\mcalU,\mcalE^*)
-\surj H^1(\mcalU,\mcalE^*)\inj\check{H}^1(X,\mcalE^*)$$
-we get a map
-$$\{\text{line bundles}\}\to \check{H}^1(X,\mcalE^*)$$
-actually, we have
-$$\{\text{isomorphic classes of line bundles}\}
-\longleftrightarrow H^1(X,\mcalE^*)$$
-1-1 correspondence.
-
-Now, $X$ be a complex manifold,
-a complex vector bundle $E$ is called homomorphic,
-if ... the transition matrix $g_{\alpha\beta}$ is holomorphic...
-
-Holomorphic line bundles :
-$$g_{\alpha\beta}\in\mcalO^*(U_{\alpha\beta})$$
-$\mcalO^*$:sheaf of invertible holomorphic functions...
-
-FACT: there is a map
-$$\{\text{holomorphic line bundle}\}\to\check{H}^1(X,\mcalO^*)$$
-
-\begin{example}trivial vector bundle $X\times\bbK^r$
-\end{example}
-
-\begin{example}Tangent bundle $TX$.
-(transition matrix $g_{\alpha\beta}$ are given by Jacobi matrix..)
-\end{example}
-
-\begin{definition}(Local frame of vector bundles)
-
-$$\theta_{\alpha}:E|_{U_{\alpha}}\xra{\sim} U_{\alpha}\times\bbK^r$$
-be a trivialization, we define
-$$
-  e_{\lmd}(x):=
-  \theta_{\alpha}^{-1}
-  (x,\begin{pmatrix}
-       0\\
-       \ldots\\
-       1(\leftarrow i\text{th})\\
-       \ldots\\
-       0
-     \end{pmatrix})
-$$
-then, $\{e_1,...,e_r\}$ be a local smooth section
-$s\in\Gamma(U_{\alpha},E)$ can be written as
-$$s(x)=\sum\sigma_{\lmd}(x)$$
-where $\sigma_{\lmd}\in C^{\infty}(U_\alpha,\bbK)$.
-\end{definition}
-
-\textbf{(Connection)}
-
-\begin{notation}
-
-For $X$ be a smooth manifold, $E$ is a vector bundle(real or complex), denote
-$$C_p^k(\Omg,E):=C^k(\Omg,\wedgeform{p}T^*M\ten E)$$
-is the space of $k$-differential $p$-forms with values in $E$.
-
-Locally, consider a trivialization of $E$,
-$$\theta_{\alpha}E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^{r}$$
-($\rightsquigarrow$ frame $(e_1,...e_r)$)
-$$s\in \sum\fai_{\lmd}(x)\ten e_{\lmd}(x)$$
-where $\fai_{\lmd}$ is a $p$-form.
+设$X$为光滑流形，$E\to X$为$X$上的光滑$\bbK$-向量丛
+，记$$\Omg^p(X,E):=\Gma(X,(\wedgeform{p}T^*M)\ten E)$$
+为$X$上的取值于$E$的光滑$p$-形式空间。
 \end{notation}
+%For $X$ be a smooth manifold, $E$ is a vector bundle(real or complex), denote
+%is the space of $k$-differential $p$-forms with values in $E$.
 
-\begin{definition}
-a (linear) connection on $E$ is a linear differential operator of order $1$ acting on
-$C^{\infty}\downdot(X,E)$:
-$$D:C_{p}^{\infty}(X,E)\to C_{p+1}^{\infty}(X,E)$$
-$$D(f\wedge x):= \td f\wedge s+(-1)^p f\wedge Ds$$
-where $f\in C^{\infty}(X,\wedgeform{p}T^*M)$, $s\in C^{\infty}(X,E)$.
+我们将$\Omg\updot(X,E):=\bigoplus\limits_{p\geq 0}\Omg^p(X,E)$
+自然视为分次线性空间，使得该空间的$p$次齐次子空间为$\Omg^p(X,E)$.
+注意到$X$上的微分$p$-形式空间$\Omg^p(X)\cong\Omg^p(X,\bbK)$，
+此处的$\bbK$为$X$上的平凡线丛。
+注意$\Omg\updot(X)$上的外积结构$\wedge$，它自然诱导了
+$$
+  \wedge:
+  \Omg^p(X)\times\Omg^q(X,E)
+  \to\Omg^{p+q}(X,E)
+$$
+事实上这给出了$\Omg\updot(X,E)$的一个分次$\Omg\updot(X)$-模结构。
+
+局部地，取向量丛$E$的一个局部平凡化
+$$\theta_{\alpha}:E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^{r}$$
+记$\{e_1,...,e_r\}$为$U_\afa$上的一组局部标架，则
+$\Omg^p(X,E)$中的元素$s$在此局部标架下形如
+$$s=\sum_{\lmd=1}^r\fai^{\lmd}\ten e_{\lmd}
+=:\fai^\lmd\ten e_\lmd$$
+其中每个$\fai_\lmd$均为光滑$p$-形式，并采用Einstein求和约定。
+
+%Locally, consider a trivialization of $E$,($\rightsquigarrow$ frame $(e_1,...e_r)$)
+%$$s\in \sum\fai_{\lmd}(x)\ten e_{\lmd}(x)$$where $\fai_{\lmd}$ is a $p$-form.
+
+\begin{definition}（向量丛上的联络）
+\index{connection\kong 联络}
+
+设$E\to X$为光滑流形$X$上的光滑向量丛，
+丛$E$上的\textbf{联络}(connection)
+是指作用在分次向量空间$\Omg\updot(X,E)$上的
+次数为$1$的齐次线性映射$\tD:\Omg\updot(X,E)
+\to\Omg^{\bullet+1}(X,E)$，
+并且满足:
+$$
+  \tD(\fai\wedge s)
+=
+  \td\fai\wedge s
+ +(-1)^p\fai\wedge\tD s
+$$
+对任意$\fai\in\Omg^p(X)$以及$s\in\Omg^q(X,E)$成立。
 \end{definition}
 
-Locally, consider a local trivialization
-$$\theta:E|_{\Omg}\xra{\sim}\Omg\times\bbK^r$$
-with a frame $\{e_1,...,e_r\}$. any section
-$t\in C^{\infty}_p(\Omg,E)$ can be written as
-$$t=\sum_{1\leq\lmd\leq r}\sgm_{\lmd}\ten e_{\lmd}$$
-$$Ds=\sum_{\lmd=1}^r\td\sgm_{\lmd}\wedge e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge De_{\lmd}$$
-where
-$$De_{\lmd}\in C_1^{\infty}(\Omg, E)$$
-can be written as
-$$De_{\lmd}=\sum_{\mu=1}^r
-             a_{\mu\lmd}\ten e_{\mu}$$
-where "$a_{\mu \lmd}$" is called the coefficients of $D$
- with respect to frame $\{e_1,...,e_r\}$ .
+%a (linear) connection on $E$ is a linear differential operator 
+%of order $1$ acting on$C^{\infty}\downdot(X,E)$:
+%$$D:C_{p}^{\infty}(X,E)\to C_{p+1}^{\infty}(X,E)$$
+%$$D(f\wedge x):= \td f\wedge s+(-1)^p f\wedge Ds$$
+%where $f\in C^{\infty}(X,\wedgeform{p}T^*M)$, $s\in C^{\infty}(X,E)$.
 
-so,
-$$D(t)=
-\sum_{\lmd,\mu}
-  \td\sgm_{\lmd}\wedge e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge a_{\mu\lmd}\wedge e_{\mu}
-=\sum_{\mu}
-   \sum_{\lmd}
+注意定义中并没要求$\tD^2=0$，一般地$(\Omg\updot(X,E),\tD)$
+并不是上链复形。易知向量丛$E\to X$，
+$E$上的联络之全体，构成$\bbK$-线性空间.
+联络的典型例子是，考虑$X$上的平凡线丛$\bbK$，则
+$\Omg\updot(X,\bbK)\cong\Omg\updot(X)$上的外微分$\td$
+即为丛$\bbK$上的联络。\vs 
+
+取$E\to X$的局部平凡化坐标卡$U$及其局部标架$\{e_1,e_2,...,e_r\}$，
+则对任意$t\in\Omg^p(X,E)$，其中$r:=\rank E$.若在该局部标架下
+$t=\fai^\lmd\ten e_\lmd$，则有
+$$
+  \tD t=
+    \td\fai^\lmd\ten e_\lmd
+   +(-1)^p\fai^\lmd\wedge\tD e_\lmd
+$$
+其中$\tD e_\lmd\in\Omg^1(U,E)$.
+可见只要确定了$\tD$在$e_\lmd\in\Omg^0(X,E)$上的作用，
+则联络$\tD$被唯一确定。
+我们令$\tD e_\lmd=a_\lmd^\mu\ten e_\mu$，其中$a_\lmd^\mu\in\Omg^1(U)$，
+称为$\tD$关于局部标架$\{e_1,e_2,...,e_r\}$的\textbf{联络$1$-形式}，
+称$r\times r$矩阵$A:=(a^\mu_\lmd)$为
+$\tD$关于局部标架$\{e_1,e_2,...,e_r\}$的\textbf{系数矩阵}。
+若记$e:=(e_1,e_2,...,e_r)$为标架排成的行向量，
+则有紧凑的表达式$\tD e=eA$.
+
+在局部标架$\{e_1,e_2,...,e_r\}$下，$\Omg^p(X,E)$中的元素$t$
+可以用以$p$-形式为分量的列向量$\fai:=(\fai^\lmd)_{1\leq\lmd\leq r}$来表示，
+即$t=\fai^\lmd\ten e_\lmd$.在此意义下，有
+\begin{eqnarray*}
+     \tD t
+&=&
+     \td\fai^\lmd\ten e_\lmd
+    +(-1)^p\fai^\lmd\wedge\tD e_\lmd
+ =
+     \td\fai^\lmd\ten e_\lmd
+    +(-1)^p\fai^\lmd\wedge a_\lmd^\mu\ten e_\mu\\
+&=&
      \left(
-       \td\sgm_{\mu}+
-       a_{\mu\lmd}\wedge\sgm_{\lmd}
-     \right)$$
-%平凡化下，用矩阵再写一下，自己脑补%
-$$Dt=\td\sgm+A\wedge\sgm$$
-where $A=(a_{\mu\lmd})$.
+       \td\fai^\mu+a_\lmd^\mu\wedge\fai^\lmd
+     \right)\ten e_\mu
+ =
+     (\td\fai+A\wedge\fai)^\mu\ten e_\mu
+\end{eqnarray*}
+或者简记为
+$$\tD\fai=\td\fai+A\wedge\fai$$
 
-RMK: connection always exists!
+%Locally, consider a local trivialization
+%$$\theta:E|_{\Omg}\xra{\sim}\Omg\times\bbK^r$$
+%with a frame $\{e_1,...,e_r\}$. any section
+%$t\in C^{\infty}_p(\Omg,E)$ can be written as
+%$$t=\sum_{1\leq\lmd\leq r}\sgm_{\lmd}\ten e_{\lmd}$$
+%$$Ds=\sum_{\lmd=1}^r\td\sgm_{\lmd}\wedge e_{\lmd}+(-1)^p
+%\sgm_{\lmd}\wedge De_{\lmd}$$ where$$De_{\lmd}\in C_1^{\infty}(\Omg, E)$$
+%can be written as$$De_{\lmd}=\sum_{\mu=1}^r
+%a_{\mu\lmd}\ten e_{\mu}$$where "$a_{\mu \lmd}$" is called the coefficients of $D$
+%with respect to frame $\{e_1,...,e_r\}$ .so,$$D(t)=\sum_{\lmd,\mu}\td\sgm_{\lmd}\wedge 
+%e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge a_{\mu\lmd}\wedge e_{\mu}
+%=\sum_{\mu}\sum_{\lmd}\left(\td\sgm_{\mu}+ a_{\mu\lmd}\wedge\sgm_{\lmd}
+%\right)$$%平凡化下，用矩阵再写一下，自己脑补%$$Dt=\td\sgm+A\wedge\sgm$$where $A=(a_{\mu\lmd})$.
+%RMK: connection always exists!
 
 %%%%%%%2019.4.2第六周周二%%%%%%%%%%%%%%
 
-Recall: for any (connected) smooth manifold,
-$E\to X$ is a smooth vector bundle,
+%Recall: for any (connected) smooth manifold,
+%$E\to X$ is a smooth vector bundle,Connection:
+%$$D:C^\infty_p(X,E)\to C_{p+1}^\infty(X,E)$$
+%where $C^\infty_p(X,E):=C^\infty(X,\wedge^pT^*M\ten E)$
+%$$D(f\wedge s)=\td f\wedge s+(-1)^{\deg f}f\wedge Ds$$
+%Essentially,$$D:C^\infty(X,E)\to C_1^\infty(X,E)$$
+%Locally, consider a trivialization
+%$\theta:E|_\Omg\xra{\sim}\Omg\times \bbK^r$, and a local frame
+%$(e_1,...,e_r)$ where $e_k(x)=\theta^{-1}(x,\begin{pmatrix}
+%0\\\vdots\\1 (k^{th})\\\vdots\\0\end{pmatrix})$.
+%Let $s\in C^\infty(\Omg,E)$, i.e.$$s=\sum_{i=1}^r\sgm_ie_i$$
+%where $\sgm_i$ are smooth functions.$$Ds=\td\sgm+A\wedge\sgm$$where
+%$$\sgm=\begin{pmatrix}\sgm_1\\\vdots\\\sgm_r\end{pmatrix}
+%\quad A={a_{ij}}$$
 
-Connection:
-$$D:C^\infty_p(X,E)\to C_{p+1}^\infty(X,E)$$
-where $C^\infty_p(X,E):=C^\infty(X,\wedge^pT^*M\ten E)$
+\begin{prop}（联络矩阵的变换）
 
-$$D(f\wedge s)=\td f\wedge s+(-1)^{\deg f}f\wedge Ds$$
-Essentially,
-$$D:C^\infty(X,E)\to C_1^\infty(X,E)$$
-
-Locally, consider a trivialization
-$\theta:E|_\Omg\xra{\sim}\Omg\times \bbK^r$, and a local frame
-$(e_1,...,e_r)$ where $e_k(x)=\theta^{-1}(x,\begin{pmatrix}
-0\\\vdots\\1 (k^{th})\\
-\vdots\\0
-\end{pmatrix})$.
-
-Let $s\in C^\infty(\Omg,E)$, i.e.
-$$s=\sum_{i=1}^r\sgm_ie_i$$
-where $\sgm_i$ are smooth functions.
-$$Ds=\td\sgm+A\wedge\sgm$$
-where
+设$E\to X$为光滑向量丛，$\tD$为$E$上的一个联络。设
+$(U,e)$与$(\Util,\etil)$为丛$E$的两个局部平凡化，
+其中$e=(e_1,e_2...,e_r),\,\etil=(\etil_1,\etil_2,...,\etil_r)$
+为相应的局部标架。记它们之间的转移函数为
+$\etil_\lmd=g_\lmd^\mu e_\mu$，$G:=(g_\lmd^\mu)$.
+若$A,\Atil$分别为联络$\tD$关于
+标架$e,\etil$的系数矩阵，则有变换关系
 $$
-  \sgm=
-  \begin{pmatrix}
-  \sgm_1\\\vdots\\\sgm_r
-  \end{pmatrix}
-  \quad
-  A={a_{ij}}
+  \Atil
+=
+  G^{-1}AG+G^{-1}\td G
 $$
+\end{prop}
 
-consider another trivialization
-$$\tilde\theta:E|_\Omg\xra{\sim}\Omg\times\bbK^r$$
-$\rightsquigarrow$ a local frame $(\tilde{e_1},...,\tilde{e_r})$.
-Then there exists a invertible linear transform s.t.
-$$\tilde{e_k}=g_k^me_m$$
-assume
-$$De_k=a_k^le_l\qquad
-D\tilde{e_k}=\tilde{a}_k^l\tilde{e}_l$$
-we have
-$$\td g_k^ne_n+g_k^ma_m^ne_n=\tilde{a}_k^lg_l^ne_n$$
-$$\rightsquigarrow\quad
-\tilde{a}_k^lg_l^n(g^{-1})^p_n=\td g_k^n(g^{-1})^p_n+g_k^ma_m^n(g^{-1})^p_n$$
-$$\rightsquigarrow\quad
-\tilde{a}_l^p=\td g_k^n(g^{-1})^p_n)+g_k^ma^n_m(g^{-1})^p_n
-$$
-$$\rightsquigarrow\quad
-\tilde{A}=\td g\cdot g^{-1}+g\cdot A\cdot g^{-1}$$
+\begin{proof}
+将$\etil_\lmd=g_\lmd^\mu e_\mu$写为紧凑的矩阵形式，
+有$\etil=eG$.从而我们有
+\begin{eqnarray*}
+\tD\etil&=&\tD(eG)=(\tD e)G+e\td G=eAG+e\td G\\
+\tD\etil&=&\etil\Atil=eG\Atil
+\end{eqnarray*}
+因此整理得$\Atil=G^{-1}AG+D^{-1}\td G$.
+\end{proof}
 
-\textbf{Curvature}
+%consider another trivialization
+%$$\tilde\theta:E|_\Omg\xra{\sim}\Omg\times\bbK^r$$
+%$\rightsquigarrow$ a local frame $(\tilde{e_1},...,\tilde{e_r})$.
+%Then there exists a invertible linear transform s.t.
+%$$\tilde{e_k}=g_k^me_m$$ assume
+%$$De_k=a_k^le_l\qquadD\tilde{e_k}=\tilde{a}_k^l\tilde{e}_l$$
+%we have$$\td g_k^ne_n+g_k^ma_m^ne_n=\tilde{a}_k^lg_l^ne_n$$
+%$$\rightsquigarrow\quad\tilde{a}_k^lg_l^n(g^{-1})^p_n
+%=\td g_k^n(g^{-1})^p_n+g_k^ma_m^n(g^{-1})^p_n$$
+%$$\rightsquigarrow\quad\tilde{a}_l^p=\td g_k^n(g^{-1})^p_n)
+%+g_k^ma^n_m(g^{-1})^p_n$$$$\rightsquigarrow\quad
+%\tilde{A}=\td g\cdot g^{-1}+g\cdot A\cdot g^{-1}$$
+%\textbf{Curvature}$$H_D:=D^2$$%H要加一个圈。。。
 
-$$H_D:=D^2$$%H要加一个圈。。。
-locally,
-$$D^2s=D(\td\sgm+A\wedge\sgm)=
-\td(\td\sgm+A\wedge\sgm)+A\wedge(\td\sgm+A\wedge\sgm)$$
-$$
-  =\td A\wedge\sgm-A\wedge\td\sgm+A\wedge\td\sgm+A\wedge A\wedge\sgm
-  =(\td A+A\wedge A)\wedge\sgm
-$$
-so we have
-$$H=\td A+A\wedge A$$
+\begin{definition}（曲率）
+\index{curvature\kong 曲率}
 
-Similarly to $\tilde{A},A$ we have
-
-Exercise:
-$$\tilde{H}=gHg^{-1}$$
-曲率在不同平凡化下的表达式。where
-$$\tilde{e}=ge$$
-
-$\rightsquigarrow H$ can be considered as a section of $C^\infty_2(X,\Hom(E,E))$.
-because
-$$\tilde{H}\tilde{e}=gHg^{-1}\tilde{e}=gHe$$
-independent of the choice of local frames.
-
-\section{向量丛的构造}
-\begin{definition}(dual of vector bundles)
-$E\to X$, and $g_{\alpha\beta}$ :transition matrix of $E$,
-the dual is given by
-$(g_{\alpha\beta})^{-1}$.
-（用转移函数来定义向量丛）
+设$E\to X$为光滑流形$X$上的光滑$\bbK$-向量丛，
+$\tD$为$E$上的一个联络，则记
+$$\Theta:=\tD\circ\tD$$
+为联络$\tD$的\textbf{曲率}(curvature).
 \end{definition}
 
-\begin{definition}
-direct sum of two vector bundles $(E,F)\to E\oplus F$.
-locally,
-$$(g_{\alpha,\beta})\oplus(h_{\alpha\beta})$$
-direct sum of transition matrices.
-\end{definition}
+在局部标架$e=(e_1,e_2,...,e_k)$下，对于$t\in\Omg^p(X,E)$，
+若$t=e\fai$，其中$\fai$为分量为$p$-形式的列向量，
+利用局部标架下的联络公式$\tD\fai=\td\fai+A\wedge\fai$，
+其中$A$为联络$\tD$在关于此标架的系数矩阵，可得
+\begin{eqnarray*}
+     \Theta\fai
+&=&
+     \tD(\td\fai+A\wedge\fai)\\
+&=&
+     \td(\td\fai+A\wedge\fai)
+    +A\wedge(\td\fai+A\wedge\fai)\\
+&=&
+     \td^2\fai+\td A\wedge\fai
+    -A\wedge\td\fai+A\wedge\td\fai+A\wedge A\wedge\fai\\
+&=&
+     (\td A+A\wedge A)\wedge\fai
+\end{eqnarray*}
+即在局部标架$e$下，曲率算子$\Theta$的矩阵$\Omg=\td A+A\wedge A$，
+此矩阵的矩阵元为光滑$2$-形式，称为\textbf{曲率形式}。
 
-\begin{definition}
-tensor product of two vector bundles.
+%locally,$$D^2s=D(\td\sgm+A\wedge\sgm)=
+%\td(\td\sgm+A\wedge\sgm)+A\wedge(\td\sgm+A\wedge\sgm)$$
+%$$=\td A\wedge\sgm-A\wedge\td\sgm+A\wedge\td\sgm+A\wedge A\wedge\sgm
+%=(\td A+A\wedge A)\wedge\sgm$$so we have$$H=\td A+A\wedge A$$
 
-locally, tensor product of two transition matrices.
-\end{definition}
+\begin{prop}（曲率形式在不同局部平凡化下的变化）
 
-fact: let $D_E$ be a connection on $E$,then it induces a connection $D_{E^*}$.
-Let $u$ be a local section of $E^*$, $s$ local section of $E$,
-then we define
-$$\td\langle u,s\rangle=\langle D_{E^*}u,s\rangle+\langle u,D_{E}s\rangle$$
+设$E\to X$为光滑向量丛，$\tD$为$E$上的联络，
+$\Theta$为联络$\tD$的曲率。
+设$e=(e_1,e_2,...,e_r)$与$\etil=(\etil_1,\etil_2,...,\etil_r)$
+为$E$的两组局部标架，转移矩阵$G$满足$\etil=eG$.
+则曲率$\Theta$在标架$e,\etil$下的矩阵$\Omg,\Omgtil$满足
+$$
+  \Omgtil=G^{-1}\Omg G
+$$
+\end{prop}
 
-Exercise:
-$$H(D_{E^*})=-H(D_E)^T$$
-
-and for two vector bundles $E,F$, connections $D_E,D_F$, then
-$$D_{E\oplus F}:=D_E\oplus D_F$$
-$$H(E\oplus F)=H_E\oplus H_F$$
-
-as for tensor product,
-we define $D_{E\ten F}$ as follows:
-$$D_{E\ten F}(s\ten t)=D_Es\ten t+s\ten D_Ft$$
-check the curvature
-$$H_{E\ten F}=H_E\ten id_F+id_E\ten H_F$$
+\begin{proof}
+我们已有$\Atil=G^{-1}AG+G^{-1}\td G$，从而
+$G\Atil=AG+\td G$，两边外微分得到
+$$
+  \td G\wedge\Atil+G\td\Atil
+= \td A\cdot G-A\wedge\td G
+$$
+因此有
+\begin{eqnarray*}
+     \td\Atil
+&=&
+     G^{-1}\td A\cdot G
+    -G^{-1}\td G\wedge\Atil
+    -G^{-1}A\wedge\td G\\
+&=&
+     G^{-1}\td A\cdot G
+    -G^{-1}\td G\wedge(G^{-1}AG+G^{-1}\td G)
+    -G^{-1}A\wedge\td G\\
+&=&
+     G^{-1}\td A\cdot G
+    -G^{-1}\td G\cdot G^{-1}AG
+    -G^{-1}\td G\cdot G^{-1}\td G
+    -G^{-1}A\wedge\td G
+\end{eqnarray*}
+\begin{eqnarray*}
+     \Atil\wedge\Atil
+&=&
+     (G^{-1}AG+G^{-1}\td G)
+     \wedge
+     (G^{-1}AG+G^{-1}\td G)\\
+&=&
+     G^{-1}A\wedge AG
+    +G^{-1}A\wedge\td G
+    +G^{-1}\td G\cdot G^{-1}AG
+    +G^{-1}\td G\cdot G^{-1}\td G
+\end{eqnarray*}
+从而得到
+$$
+  \Omgtil=\td\Atil+\Atil\wedge\Atil
+= G^{-1}(\td A+A\wedge A)G=G^{-1}\Omg G
+$$
+\end{proof}
 
 \begin{rem}
-we can also consider wedge product of vector bundles.
-Consider vector bundles $E_1,...,E_k$,
-with connections $D_{E_1},...,D_{E_k}$,
-let $s_i\in C_{p_i}^\infty(X,E^i)$
-then
-$$D_{E_1\wedge,...,\wedge E_k}(s_1\wedge...\wedge s_k)
-=\sum_{i=1}^k(-1)^{p_1+...+p_{i-1}}s_1
-\wedge...\wedge D_{E_i}s_i\wedge...\wedge s_k$$
+此定理表明，曲率$\Theta$是丛$E$上的$2$-形式值$(1,1)$型张量，
+故称为\textbf{曲率张量}。具体地，
+$$\Theta\in\Omg^2(X,\Hom(E,E))$$
 \end{rem}
 
-Let $E$ be a vector bundle of rank $r$,
-then $\wedgeform{r}E$ is a line bundle,
-with transition matrix by $\det(g_{\alpha\beta})$.
-this bundle is denoted by $\det E$.(Det-bundle)
+%Similarly to $\tilde{A},A$ we haveExercise:
+%$$\tilde{H}=gHg^{-1}$$曲率在不同平凡化下的表达式。where
+%$$\tilde{e}=ge$$$\rightsquigarrow H$ can be 
+%considered as a section of $C^\infty_2(X,\Hom(E,E))$.
+%because$$\tilde{H}\tilde{e}=gHg^{-1}\tilde{e}=gHe$$
+%independent of the choice of local frames.
 
-Let $s_1,...,s_r$ be local sections of $E$,
-then we have
-$$D_{\det E}(s_1\wedge\cdots\wedge s_r)= tr(H_E)s_1\wedge\cdots\wedge s_r$$
+\begin{Example}（对偶丛的联络与曲率）
+
+设$E\to X$为光滑向量丛，$E^*$为$E$的对偶丛。
+注意到有如下自然的配对：
+\begin{eqnarray*}
+     \pair{}{}:
+     \Omg^p(X,E^*)\times\Omg^q(X,E)
+     &\to&\Omg^{p+q}(X)
+\\
+     \pair{\fai_\lmd\ten e^\lmd}{\psi^\mu\ten e_\mu}
+&:=&
+     \pair{e^{\lmd}}{e_\mu}
+     \fai_\lmd\wedge\psi^\mu     
+\end{eqnarray*}
+若$\tD_E$为$E$上的联络，则$\tD_E$诱导了对偶丛$E^*$上的联络$\tD_{E^*}$，
+使得对任意$s\in\Omg^p(X,E^*)$以及$t\in\Omg^q(X,E)$都成立
+$$
+  \td\pair{s}{t}
+=
+  \pair{\tD_{E^*}s}{t}
+ +(-1)^p\pair{s}{\tD_E t}
+$$
+\end{Example}
+
+取$E$的局部标架$e=(e_1,e_2,...,e_r)$，记$e^*:=(e_1^*,e_2^*,...,e_r^*)$
+为其对偶标架（也排成行向量），记对偶丛联络$\tD^*:=\tD_{E^*}$
+的曲率为$\Theta^*$，它们在对偶标架$e^*$上的矩阵记作$A^*,\Omg^*$，则成立：
+$
+  \left\{
+    \begin{array}{l}
+      A^*=-A^T\\
+      \Omg^*=-\Omg^T
+    \end{array}
+  \right.
+$.这是因为，由于$\pair{e^{*T}}{e}=I$，从而
+$$
+  0=\td\pair{e^{*T}}{e}
+=\pair{\tD^* e^{*T}}{e}+\pair{e^{*T}}{\tD e}
+=\pair{(e^*A^*)^T}{e}+\pair{e^{*T}}{eA}
+=A^{*T}+A
+$$
+因此对偶联络的系数矩阵$A^*=-A^T$.从而对偶联络的曲率矩阵
+$$
+  \Omg^*=\td A^*+A^*\wedge A^*
+        =-\td A^T+A^T\wedge A^T
+        =-(\td A+A\wedge A)^T
+        =-\Omg^T
+$$
+
+这里要特别注意微分形式矩阵的运算，注意$A$的矩阵元为微分$1$-形式，
+从而易验证有$(A\wedge A)^T=-A^T\wedge A^T$.
+
+%fact: let $D_E$ be a connection on $E$,then it induces a connection $D_{E^*}$.
+%Let $u$ be a local section of $E^*$, $s$ local section of $E$,
+%then we define$$\td\langle u,s\rangle=\langle D_{E^*}u,s\rangle
+%+\langle u,D_{E}s\rangle$$Exercise:$$H(D_{E^*})=-H(D_E)^T$$
+
+\begin{Example}（直和丛的联络与曲率）
+
+设$E,F\to X$均为$X$上的光滑向量丛，$\tD_E,\tD_F$
+分别为$E,F$上的联络，则直和丛$E\oplus F$上自然有联络
+$\tD_{E\oplus F}$，使得对任意$u\in \Omg^p(X,E)$
+以及$v\in\Omg^p(X,F)$，成立
+$$
+  \tD_{E\oplus F}(u\oplus v)
+=
+  \tD_E u\oplus\tD_Fv
+$$
+\end{Example}
+取定$E$的局部标架$e=(e_1,e_2,...,e_r)$
+以及$F$的局部标架$f=(f_1,f_2,...,f_s)$，则$E\oplus F$
+有局部标架$e\oplus f=(e_1,...,e_r;f_1,...,f_s)$.
+容易验证相应的联络、曲率矩阵满足
+$$
+  A_{E\oplus F}
+=
+  \begin{pmatrix}
+    A_E &  \\
+        & A_F
+  \end{pmatrix},
+\qquad
+  \Omg_{E\oplus F}
+=
+  \begin{pmatrix}
+    \Omg_E &  \\
+           & \Omg_F
+  \end{pmatrix}
+$$
+
+%and for two vector bundles $E,F$, connections $D_E,D_F$, then
+%$$D_{E\oplus F}:=D_E\oplus D_F$$$$H(E\oplus F)=H_E\oplus H_F$$
+
+\begin{Example}（张量丛的联络与曲率）
+
+设$E,F\to X$均为$X$上的光滑向量丛，$\tD_E,\tD_F$
+分别为$E,F$上的联络，则张量丛$E\ten F$上自然有联络
+$\tD_{E\ten F}$，使得对任意$E$的截面$u$以及$F$的截面$v$，成立
+$$
+  \tD_{E\ten F}(u\ten v)
+=
+  \tD_Eu\ten v+u\ten\tD_Fv
+$$
+\end{Example}
+
+取定$E$的局部标架$e=(e_1,e_2,...,e_r)$
+以及$F$的局部标架$f=(f_1,f_2,...,f_s)$，则$E\ten F$
+有局部标架$e\ten f=\Bigset{e_\afa\ten f_\beta}
+{1\leq\afa\leq r,\,1\leq\beta\leq s }$.
+同意验证有关的联络、曲率矩阵满足
+\begin{eqnarray*}
+A_{E\ten F} &=& A_E\ten I_F+I_E\ten A_F\\
+\Omg_{E\ten F}&=&  \Omg_E\ten I_F+I_E\ten\Omg_F
+\end{eqnarray*}
+在计算曲率时要当心微分$1$-形式系数的矩阵的外积运算结果的符号。
+
+\begin{Example}（行列式丛的联络与曲率）
+
+设$E\to X$为$X$上的秩为$r$的光滑向量丛，
+$\tD_E$为$E$上的联络，则$\tD_E$自然诱导了\textbf{行列式从}
+$\det E:=\wedgeform{r}E$上的联络$\tD_{\det E}$，使得
+对任意局部标架$e=(e_1,e_2,...,e_r)$，
+$$
+  \tD_{\det E}
+  e_1\wedge e_2\wedge\cdots\wedge e_r
+=
+  \sum_{k=1}^{r}
+  e_1\wedge\cdots\wedge\tD_Ee_k\wedge\cdots\wedge e_r
+$$
+\end{Example}
+
+$E$的局部标架$e=(e_1,e_2,...,e_r)$诱导了线丛$\det E$的局部标架
+$e_1\wedge e_2\wedge\cdots\wedge e_r$，容易验证相应的联络、曲率
+矩阵满足
+$
+  \left\{
+    \begin{array}{lcl}
+      A_{\det E} &=& \tr A_E\\
+      \Omg_{\det E}&=& \tr\Omg_E
+     \end{array}
+  \right.
+$.只需注意到$A_{\det E}$与$\Omg_{\det_E}$都是一阶矩阵，无非是普通的微分形式；
+验证曲率时注意$\tr(A_E\wedge A_E)=0$.
+
+%as for tensor product,we define $D_{E\ten F}$ as follows:
+%$$D_{E\ten F}(s\ten t)=D_Es\ten t+s\ten D_Ft$$
+%check the curvature $$H_{E\ten F}=H_E\ten id_F+id_E\ten H_F$$
+%\begin{rem}we can also consider wedge product of vector bundles.
+%Consider vector bundles $E_1,...,E_k$,with connections $D_{E_1},...,D_{E_k}$,
+%let $s_i\in C_{p_i}^\infty(X,E^i)$ then
+%$$D_{E_1\wedge,...,\wedge E_k}(s_1\wedge...\wedge s_k)
+%=\sum_{i=1}^k(-1)^{p_1+...+p_{i-1}}s_1
+%\wedge...\wedge D_{E_i}s_i\wedge...\wedge s_k$$\end{rem}
+%Let $E$ be a vector bundle of rank $r$,then $\wedgeform{r}E$ is a line bundle,
+%with transition matrix by $\det(g_{\alpha\beta})$.
+%this bundle is denoted by $\det E$.(Det-bundle)
+%Let $s_1,...,s_r$ be local sections of $E$,then we have
+%$$D_{\det E}(s_1\wedge\cdots\wedge s_r)= tr(H_E)s_1\wedge\cdots\wedge s_r$$
 
 \section{陈省身示性类}
 chern classes (defined by curvature).

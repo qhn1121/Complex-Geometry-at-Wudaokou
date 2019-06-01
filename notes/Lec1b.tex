@@ -1,0 +1,73 @@
+\chapter{复流形（待补）}
+计划详细介绍复流形、复微分形式，以及复流形的例子。
+
+\section{复流形（暂定）}
+
+\section{微分形式（暂定）}
+\section{复向量丛与全纯向量丛（暂定）}
+Recall: $X$ is a smooth manifold, $E$ is a vector bundle of rank $r$, if
+
+(1)$\pi:E\to X$ is smooth map,
+
+(2)for any $x\in X$, $E_x:=\pi^{-1}(x)$ is a vector space over $\bbK$
+($\bbK=\bbR$ or $\bbC$) of dimension $r$.
+
+(3)there an open covering $\mcalU=(\mcalU_{\alpha})_{\alpha\in I}$ and trivializations
+$$\theta_\alpha: E|_{U_{\alpha}}\cong U_{\alpha}\times \bbK^r$$
+and for any intersection $U_{\alpha}\cap U_{\beta}$, we have
+%%%%%%%见笔记%%%%%%%%%5
+
+\begin{rem}
+$$g_{\alpha\beta}=g_{\beta\alpha}^{-1}$$
+$$g_{\alpha\beta}g_{\beta\gamma}g_{\gamma\alpha}=1$$
+(cocycle condition)
+\end{rem}
+
+\begin{example}trivial vector bundle $X\times\bbK^r$
+\end{example}
+
+\begin{example}Tangent bundle $TX$.
+(transition matrix $g_{\alpha\beta}$ are given by Jacobi matrix..)
+\end{example}
+
+\begin{definition}(Local frame of vector bundles)
+
+$$\theta_{\alpha}:E|_{U_{\alpha}}\xra{\sim} U_{\alpha}\times\bbK^r$$
+be a trivialization, we define
+$$
+  e_{\lmd}(x):=
+  \theta_{\alpha}^{-1}
+  (x,\begin{pmatrix}
+       0\\
+       \ldots\\
+       1(\leftarrow i\text{th})\\
+       \ldots\\
+       0
+     \end{pmatrix})
+$$
+then, $\{e_1,...,e_r\}$ be a local smooth section
+$s\in\Gamma(U_{\alpha},E)$ can be written as
+$$s(x)=\sum\sigma_{\lmd}(x)$$
+where $\sigma_{\lmd}\in C^{\infty}(U_\alpha,\bbK)$.
+\end{definition}
+
+\begin{definition}(dual of vector bundles)
+$E\to X$, and $g_{\alpha\beta}$ :transition matrix of $E$,
+the dual is given by
+$(g_{\alpha\beta})^{-1}$.
+（用转移函数来定义向量丛）
+\end{definition}
+
+\begin{definition}
+direct sum of two vector bundles $(E,F)\to E\oplus F$.
+locally,
+$$(g_{\alpha,\beta})\oplus(h_{\alpha\beta})$$
+direct sum of transition matrices.
+\end{definition}
+
+\begin{definition}
+tensor product of two vector bundles.
+
+locally, tensor product of two transition matrices.
+\end{definition}
+\section{例子（暂定）}
