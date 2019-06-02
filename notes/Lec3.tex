@@ -54,7 +54,7 @@ $$
 对任意$\fai\in\Omg^p(X)$以及$s\in\Omg^q(X,E)$成立。
 \end{definition}
 
-%a (linear) connection on $E$ is a linear differential operator 
+%a (linear) connection on $E$ is a linear differential operator
 %of order $1$ acting on$C^{\infty}\downdot(X,E)$:
 %$$D:C_{p}^{\infty}(X,E)\to C_{p+1}^{\infty}(X,E)$$
 %$$D(f\wedge x):= \td f\wedge s+(-1)^p f\wedge Ds$$
@@ -65,7 +65,7 @@ $$
 $E$上的联络之全体，构成$\bbK$-线性空间.
 联络的典型例子是，考虑$X$上的平凡线丛$\bbK$，则
 $\Omg\updot(X,\bbK)\cong\Omg\updot(X)$上的外微分$\td$
-即为丛$\bbK$上的联络。\vs 
+即为丛$\bbK$上的联络。\vs
 
 取$E\to X$的局部平凡化坐标卡$U$及其局部标架$\{e_1,e_2,...,e_r\}$，
 则对任意$t\in\Omg^p(X,E)$，其中$r:=\rank E$.若在该局部标架下
@@ -115,7 +115,7 @@ $$\tD\fai=\td\fai+A\wedge\fai$$
 %\sgm_{\lmd}\wedge De_{\lmd}$$ where$$De_{\lmd}\in C_1^{\infty}(\Omg, E)$$
 %can be written as$$De_{\lmd}=\sum_{\mu=1}^r
 %a_{\mu\lmd}\ten e_{\mu}$$where "$a_{\mu \lmd}$" is called the coefficients of $D$
-%with respect to frame $\{e_1,...,e_r\}$ .so,$$D(t)=\sum_{\lmd,\mu}\td\sgm_{\lmd}\wedge 
+%with respect to frame $\{e_1,...,e_r\}$ .so,$$D(t)=\sum_{\lmd,\mu}\td\sgm_{\lmd}\wedge
 %e_{\lmd}+(-1)^p\sgm_{\lmd}\wedge a_{\mu\lmd}\wedge e_{\mu}
 %=\sum_{\mu}\sum_{\lmd}\left(\td\sgm_{\mu}+ a_{\mu\lmd}\wedge\sgm_{\lmd}
 %\right)$$%平凡化下，用矩阵再写一下，自己脑补%$$Dt=\td\sgm+A\wedge\sgm$$where $A=(a_{\mu\lmd})$.
@@ -161,7 +161,7 @@ $$
 \tD\etil&=&\tD(eG)=(\tD e)G+e\td G=eAG+e\td G\\
 \tD\etil&=&\etil\Atil=eG\Atil
 \end{eqnarray*}
-因此整理得$\Atil=G^{-1}AG+D^{-1}\td G$.
+因此整理得$\Atil=G^{-1}AG+G^{-1}\td G$.
 \end{proof}
 
 %consider another trivialization
@@ -270,12 +270,12 @@ $$
 \begin{rem}
 此定理表明，曲率$\Theta$是丛$E$上的$2$-形式值$(1,1)$型张量，
 故称为\textbf{曲率张量}。具体地，
-$$\Theta\in\Omg^2(X,\Hom(E,E))$$
+$$\Theta\in\Omg^2(X,\End(E))\cong\Omg^2(X,E^*\ten E)$$
 \end{rem}
 
 %Similarly to $\tilde{A},A$ we haveExercise:
 %$$\tilde{H}=gHg^{-1}$$曲率在不同平凡化下的表达式。where
-%$$\tilde{e}=ge$$$\rightsquigarrow H$ can be 
+%$$\tilde{e}=ge$$$\rightsquigarrow H$ can be
 %considered as a section of $C^\infty_2(X,\Hom(E,E))$.
 %because$$\tilde{H}\tilde{e}=gHg^{-1}\tilde{e}=gHe$$
 %independent of the choice of local frames.
@@ -292,7 +292,7 @@ $$\Theta\in\Omg^2(X,\Hom(E,E))$$
      \pair{\fai_\lmd\ten e^\lmd}{\psi^\mu\ten e_\mu}
 &:=&
      \pair{e^{\lmd}}{e_\mu}
-     \fai_\lmd\wedge\psi^\mu     
+     \fai_\lmd\wedge\psi^\mu
 \end{eqnarray*}
 若$\tD_E$为$E$上的联络，则$\tD_E$诱导了对偶丛$E^*$上的联络$\tD_{E^*}$，
 使得对任意$s\in\Omg^p(X,E^*)$以及$t\in\Omg^q(X,E)$都成立
@@ -331,6 +331,8 @@ $$
 
 这里要特别注意微分形式矩阵的运算，注意$A$的矩阵元为微分$1$-形式，
 从而易验证有$(A\wedge A)^T=-A^T\wedge A^T$.
+此外，若把对偶标架记为上指标$e^*=(e^1,e^2,...,e^r)^T$，则有
+$\tD e^\lmd=-A^\lmd_\mu e^\mu$.
 
 %fact: let $D_E$ be a connection on $E$,then it induces a connection $D_{E^*}$.
 %Let $u$ be a local section of $E^*$, $s$ local section of $E$,
@@ -438,173 +440,558 @@ $.只需注意到$A_{\det E}$与$\Omg_{\det_E}$都是一阶矩阵，无非是普
 %Let $s_1,...,s_r$ be local sections of $E$,then we have
 %$$D_{\det E}(s_1\wedge\cdots\wedge s_r)= tr(H_E)s_1\wedge\cdots\wedge s_r$$
 
-\section{陈省身示性类}
-chern classes (defined by curvature).
-
-Let $E\to X$ be a smooth complex vector bundle of rank $r$,
-where $X$ be a complex manifold.
-
-(Chern-Weil theory)
-
-$V$ be a complex vector space, $f:\underbrace{V\times\cdots\times V}_k\to \bbC$
-be a symmetric multi-linear form of degree $k$.
-
-$\rightsquigarrow f(v):=f(v,v,...,v)$ is a homogeneous polynomial of degree $k$.
-\begin{definition}
-assume $G$ is a group (left) acting on $V$, s.t.
-$$f(g(v_1),...,g(v_k))=f(v_1,...,v_k)$$
-for any $g\in G,v_i\in V$, then we say $f$ is $G$-invariant.
-\end{definition}
-
-Special case: $G=GL(r,\bbC)$ and $V=Lie G=\mfkgl{r,\bbC}$ be the Lie algebra of $G$.
-the action is
-$$(g,M)\mapsto gMg^{-1}$$
-
-Consider
-$$\det(I+\frac{i}{2\pi}tm)=I+tf_1(M)+t^2f_2(M)+\cdots t^rf_r(M)$$
-
-$\rightsquigarrow\forall 1\leq k\leq r$, $f_k$ is $G$-invariant.
-
-Let $E\to X$ complex vector bundle on a complex manifold,
-let $D_E$ be a connection,
-curvature $H_E\in C_2^\infty(X,\Hom(E,E))$.
- Let $f\in GL(r,\bbC)$- invariant "$k$-form",then
-
-(1)Let $H_{\alpha},H_{\beta}$ be the curvature forms of $E$ in different trivialization,
-then $f(H_\alpha)=f(H_{\beta})$ , so we get a globally defined $2k$-form.
-
-assume $H_\alpha=gH_\beta g^{-1}$, then
-$$f(H_\alpha)=f(g H_\beta g^{-1})=f(H_\beta)$$
-
-(2) we also have
-$$\td f(H)=0$$
-locally , $H=H_\alpha=\td a_\alpha+A_\alpha\wedge A_\alpha$,then
-$$\td f(H)=\td f(H_\alpha,H_\alpha,...,H_\alpha)
-=\sum_{i=1}^kf(H_\alpha,...,\underbrace{\td H_\alpha}_{i},...,\H_\alpha)$$
-$$
-=\sum_{i=1}^kf(H_\alpha,...,\td A_\alpha\wedge A_\alpha-A_\alpha\wedge\td A_\alpha,...,H_\alpha)
-$$
-
-Fact:(in Riemannian geometry) For any $x\in X$,
-we always can find a local frame s.t.
-$A_\alpha(x)=0$.
-
-so, choose this frame,
-$$\td f(H)=0$$
-
-So, $[f(H)]\in H^{2k}(X,\bbC)$
-
-(3) Claim : the class $[f(H)]$ is independent of the choice of the connections $D_E$.
-
-Let $D_0,D_1$ be two connections, consider
-$$D_t=(1-t)D_0+tD_1$$
-$t\in[0,1]$, curvature $H_t$
-%%%%%%%%将以上所有的H都换成\Theta%%%%%%%%%
-
-Fact: $\alpha:=A_1-A_0$ is globally defined, and in $C_1^\infty(X,\Hom(E,E))$.
-
-Fact: $$\frac{\td}{\td t}f(H_t)=k\td f(\alpha,H_t,H_t,...,H_t)$$
-
-So,
-$$f(H_1)-f(H_0)=
-\int_0^1\frac{\td}{\td t}f(H_t)\td t
-=\td\int_0^1f(\alpha,H_t,H_t,...,H_t)\td t$$
-So,
-$$[f(H_1)]-[f(H_0)]$$
-
-\begin{definition}
-the $k$-th Chern class of $E$
-$$c_k(E):=[f_k(\Theta_E)]\in H^{2k}(X,\bbC)$$
-\end{definition}
-
-%%%%%%%%%%2019.4.04第六周星期四；清明节前最后一节课%%%%%%%%%%%%%%%
-Recall: Chern Class
-
-$X$ complex manifold, $E\to X$ is a smooth complex vector bundle of rank $r$.
-$D$ is a connection, curvature $\Theta(D)\in C_2^\infty(X,\Hom(E,E))$.
-
-linear algebra:
-$$\det(I+\frac{i}{2\pi}tM)=I+tf_1(M)+t^2f_2(M)+\cdots+t^rf_r(M)$$
-
-Chern class $\{f_k(\Theta)\}\in H^{2k}_{DR}(X,\bbC)$ is independent of choice of connection.
-
-Today:
-
-Special case: $E$ is a complex line bundle.
-Let $D_0$ be a connection on $E$, locally $D_0e=A_0e$, $A_0$ is $1$-form.
-curvature
-$$\Theta(D_0)=D_0^2=\td A_0+A_0\wedge A_0=\td A_0$$
-so, curvature is $\td$-exact, so $\td\Theta(D_0)=0$.
-$$\det(I+\frac{i}{2\pi}tM)=I+\frac{i}{2\pi}tM$$
-so, the first Chern class of line bundle is
-$$c_1(E)=\{\frac{i}{2\pi}\Theta(D_0)\}$$
-
-Let $D_1$ be another connection, locally $D_1e=A_1e$, so
-$\Theta(D_1)=\td A_1$.so,
-$$\Theta(D_1)-\Theta(D_0)=\td(A_1-A_0)$$
-where
-$$A_1-A_0\in C_1^\infty(X,\Hom(E,E))$$
-(when $E$ is line bundle ,$\Hom(E,E)\cong E^*\ten E$ is trivial bundle)
-
-so, $A_1-A_0$ is a globally defined smooth function on $X$. So,
-$$\{\Theta(D_1)\}=\{\Theta(D_0)\}\in H^2(X,\bbC)$$
-independent of the choice of connection.
-
-\section{Hermite向量丛}
-
-\begin{definition}
-a complex vector bundle $E\to X$ of rank $r$ is called a Hermitian vector bundle, if
-we have an inner product on $E$, i.e. locally, consider a local frame
-$\{e_1,...,e_r\}$, we have
-$$\{e_i(x),e_j(x)\}=h_{ij}(x)$$
-s.t. $(h_{ij}(x))$ is a positive definite Hermitian matrix depending smoothly on $x$.
-\end{definition}
-
-\begin{rem}
-For any complex vector bundle, Hermitian structure always exists.
-\end{rem}
-
-证明与黎曼几何类似。（黎曼度量的存在性）
-
-\begin{definition}(Hermitian connection)%connection compatible with Hermitian metric
-
-A connection $D$ on $E$ is called Hermitian, if
-$$\td\{e_i,e_j\}=\{De_i,e_j\}+\{e_i,De_j\}$$
-\end{definition}
-
-More generally, let $t\in C_p^{\infty}(X,E)$, $s\in C_q^\infty(X,Y)$,
-$$\td\{s,t\}=\{\td t,s\}+(-1)^p\{t,Ds\}$$
-
-\begin{prop}
-$D$ is a Hermitian connection ,then the curvature
-$$\Theta(D)^*=-\Theta(D)$$
-(where $(-)^*$ is conjugate transpose of matrix)
+\begin{prop}（$\Hom$丛的联络与曲率）
+\label{Hom丛的联络与曲率-prop}
+设$E,F\to X$为$X$上的光滑向量丛，$\tD_E,\tD_F$分别为$E,F$上的联络，
+则$\Hom$丛$\Hom(E,F)\cong E^*\ten F$上自然有
+（由张量丛、对偶丛诱导的）联络$\tD_{\Hom(E,F)}$，
+相应的曲率记为$\Theta_{\Hom(E,F)}\in\Omg^2(X,\End(\Hom(E,F)))$.
+则对任意$f\in\Omg^p(X,\Hom(E,F))$以及$u\in\Omg^q(X,E)$，成立
+\begin{eqnarray*}
+  \tD_F\pair{f}{u}
+&=&
+  \pair{\tD_{\Hom(E,F)}f}{u}
+ +(-1)^p\pair{f}{\tD_Eu}
+\\
+  \Theta_F\pair{f}{u}
+&=&
+  \pair{\Theta_{\Hom(E,F)}f}{u}
+ +\pair{f}{\Theta_Eu}
+\end{eqnarray*}
 \end{prop}
 
-it means that, $i\Theta(D)\in C_2^\infty(X,\text{Herm}(E,E))$
-
 \begin{proof}
-$$0=\td^2\{e_i,e_j\}=\td\{De_i,e_j\}+\td\{e_i,De_j\}$$
-$$=\{D^2e_i,e_j\}-\{De_i,De_j\}+\{De_i,De_j\}+\{e_i,D^2e_j\}=
-\{(\Theta+\Theta^*)e_i,e_j\}$$
+  不妨$f=u^*\ten v$，其中$u^*\in\Omg^p(X,E^*),\,v\in\Omg^0(X,F)$.
+为方便书写，不妨省略$\tD,\Theta$的下标，这不会产生歧义。
+则由对偶丛与张量丛的联络运算法则，易知
+\begin{eqnarray*}
+     \tD\pair{f}{u}
+&=&
+     \tD(\pair{u^*}{u}\ten v)\\
+&=&
+        \left(
+          \pair{\tD u^*}{u}
+         +(-1)^p\pair{u^*}{\tD u}
+        \right)\ten v
+    +(-1)^{p+q}\pair{u^*}{u}\ten\tD v\\
+&=&
+     \pair{\tD u^*\ten v}{u}
+    +(-1)^p\pair{u^*\ten v}{\tD u}
+    +(-1)^{p+q}(-1)^q\pair{u^*\ten\tD v}{u}\\
+&=&
+     \pair{\tD(u^*\ten v)}{u}
+    +(-1)^p\pair{u^*\ten v}{\tD u}\\
+&=&
+     \pair{\tD f}{u}
+    +(-1)^p\pair{f}{\tD u}
+\end{eqnarray*}
+利用上式，容易得到$\tD_{\Hom(E,F)}$的曲率的表达式：
+\begin{eqnarray*}
+      \Theta\pair{f}{u}
+&=&
+     \tD(\tD\pair{f}{u})
+ =
+     \tD(\pair{\tD f}{u}+(-1)^p\pair{f}{\tD u})\\
+&=&
+     \pair{\tD^2 f}{u}
+    +(-1)^{p+1}\pair{\tD f}{\tD u}
+    +(-1)^{p  }\pair{\tD f}{\tD u}
+    +(-1)^{p+p}\pair{f}{\tD^2 u}\\
+&=&
+     \pair{\Theta f}{u}+\pair{f}{\Theta u}
+\end{eqnarray*}
 \end{proof}
 
+\begin{prop}（Bianchi恒等式）
+\label{Bianchi恒等式-prop}
+
+设$E\to X$为光滑向量丛，$\tD_E$为$E$上的一个联络，其曲率为
+$\Theta\in\Omg^2(X,\End(E))$.考虑$\End(E)\cong E^*\ten E$
+上的由$\tD_E$诱导的联络$\tD_{\End{E}}$，则有
+$$\tD_{\End(E)}\Theta=0\in\Omg^3(X,\End(E))$$
+\end{prop}
+
+\begin{proof}对任意$u\in\Omg^p(X,E)$，
+由性质\ref{Hom丛的联络与曲率-prop}可知，
+$$
+  \tD\pair{\Theta}{u}
+= \pair{\tD\Theta}{u}
+  +(-1)^2\pair{\Theta}{\tD u}
+$$
+因此有
+\begin{eqnarray*}
+     \pair{\tD\theta}{u}
+&=&
+     \tD\pair{\Theta}{u}-\pair{\Theta}{\tD u}\\
+&=&
+     \tD(\tD^2u)-\tD^2(\tD u)
+ =
+     0
+\end{eqnarray*}
+从而由$u$的任意性，得证。
+\end{proof}
+
+\section{陈省身示性类}
+%chern classes (defined by curvature).
+%Let $E\to X$ be a smooth complex vector bundle of rank $r$,
+%where $X$ be a complex manifold.(Chern-Weil theory)
+%$V$ be a complex vector space, $f:\underbrace{V\times\cdots\times V}_k\to \bbC$
+%be a symmetric multi-linear form of degree $k$.
+%$\rightsquigarrow f(v):=f(v,v,...,v)$ is a homogeneous polynomial of degree $k$.
+%\begin{definition}assume $G$ is a group (left) acting on $V$, s.t.
+%$$f(g(v_1),...,g(v_k))=f(v_1,...,v_k)$$
+%for any $g\in G,v_i\in V$, then we say $f$ is $G$-invariant.
+%\end{definition}Special case: $G=GL(r,\bbC)$ and $V=Lie 
+%G=\mfkgl{r,\bbC}$ be the Lie algebra of $G$.the action is
+%$$(g,M)\mapsto gMg^{-1}$$
+
+对于$r$阶方阵$M$，考虑$r$次多项式
+$$
+  f(t):=\det(I+tM)
+=
+  I+f_1(M)t+f_2(M)t^2+\cdots+f_r(M)t^r
+$$
+由线性代数不难知道，函数$f_k\,(1\leq k\leq r)$在矩阵相似变换下不变，
+即对任意的$r$阶可逆矩阵$P$，有
+$f_k(P^{-1}MP)=f_k(M)$.此外众所周知，$f_1(M)=\tr M$以及
+$f_r(M)=\det M$.
+
+此外，由代数学，$f_k$唯一决定了一个$k$重对称线性泛函
+（仍记为$f_k$）$f_k:\Sym^k\mfkgl(r,\bbK)\to\bbK$，
+使得对任意矩阵$M\in\mfkgl(r,\bbK)$，成立
+$f_k(M)=f_k(\underbrace{M,M,...,M}_{k})$，
+并且每个$f_k\in\Sym^k\mfkgl(r,\bbK)$都是$\GL(r,\bbK)$-不变的，
+即对任意$r$阶方阵$M_1,M_2,...,M_k$以及$r$阶可逆矩阵$P$，成立
+$$
+  f_k(P^{-1}M_1P,P^{-1}M_2P,...,P^{-1}M_kP)
+= f_k(M_1,M_2,...,M_k)
+\eqno{(*)}
+$$
+对于任意$r$阶矩阵$M\in\mfkgl(r,\bbK)$，
+若令$P=e^{tM}$代入$(*)$式，并求$t=0$处的导数，容易得到
+$$
+  \sum_{j=1}^{k}
+    f_k(M_1,...,[M,M_j],...,M_k)
+=0\eqno{(**)}
+$$
+
+\begin{lemma}\label{Hom丛联络-矩阵表示-lem}
+设$E\to X$为光滑向量丛，$\tD_E$为$E$上的一个联络，
+取$e=(e_1,e_2,...,e_r)$为$E$的一个局部标架，$\tD_E$在此标架下的系数矩阵为$A$，
+则对于任意$\fai\in C^k(X,\End(E))$，$\fai$在此局部标架下
+可表示为系数为$k$-形式的$r$阶矩阵。
+则在此意义下，$\tD_E$诱导的$\End(E)$上的联络$\tD_{\End(E)}$满足
+$$
+  \tD\fai=\td\fai+[A,\fai]
+$$
+其中$[A,\fai]=A\wedge\fai-(-1)^p\fai\wedge A$为分次对易子。
+\end{lemma}
+
+\begin{proof}局部标架下直接计算即可。注意$\fai=\fai_i^je^i\ten e_j$，
+其中矩阵元$\fai^j_i$为$p$-形式。则有
+\begin{eqnarray*}
+     \tD(\fai^j_i e^i\ten e_j)
+&=&
+     \td\fai_i^j e^i\ten e_j
+    +(-1)^p
+     \left(
+       \fai^j_i\wedge(-A_k^i)e^k\ten e_j
+      +\fai_i^j e^i\ten A_j^k e_k
+     \right)\\
+&=&
+     \left(
+       \td\fai_i^j
+      +A_k^j\wedge\fai_i^k
+      -(-1)^k\fai_k^j\wedge A_i^k
+     \right)e^i\ten e_j\\
+&=&
+     \left(
+       \td\fai+[A,\fai]
+     \right)_i^j
+     e^i\ten e_j
+\end{eqnarray*}
+\end{proof}
+
+\begin{prop}（陈省身示性类）
+\index{Chern class\kong 陈类}
+\label{陈类的定义-prop}
+
+设$E\to X$为秩为$r$的光滑向量丛，$\tD$为$E$的一个联络，
+$\Theta$为$\tD$的曲率。设$e=(e_1,e_2,...,e_n)$为$E$的一个局部标架，
+$\Theta$在该标架下的矩阵为$\Omg$.记
+$$
+  c_k(E;\tD)
+:=
+  f_k(\frac{\sqrt{-1}}{2\pi}\Omg),
+\quad
+  (1\leq k\leq r)
+$$
+则事实上$c_k(E;\tD)$为$X$上整体定义的$2k$-形式，并且$\td c_k(E;\tD)=0$，
+从而$c_k(E;\tD)\in H^{2k}_{\DR}(X)$.
+称$c_k(E;\tD)$为向量丛$E$关于联络$\tD$的第$k$阶\textbf{陈省身示性类}，
+简称\textbf{陈类}（Chern class）.
+\end{prop}
+
+\begin{proof}
+若$\etil=(\etil_1,\etil_2,...,\etil_r)$为$E$的另一组局部标架，
+且有转移矩阵$\etil=eG$，则我们已证$\Omgtil=G^{-1}\Omg G$，
+从而$f_k(\frac{\ii}{2\pi}\Omgtil)=f_k(\frac{\ii}{2\pi}\Omg)$，
+从而$c_k(E,\tD)\in\Omg^{2k}(X)$整体定义。
+
+再证明所有的$c_k(E,\tD)$都是闭形式。
+注意到在某局部标架下，
+$$
+  c_k(E,\tD)=f_k(\frac{\ii}{2\pi}\Omg)
+= \left(\frac{\ii}{2\pi}\right)^k
+  f_k(\Omg,\Omg,...,\Omg)
+$$
+其中$\Omg=\td A+A\wedge A$为曲率$\Theta$在局部标架下的矩阵。
+直接外微分，有
+\begin{eqnarray*}
+     \td c_k(E,\tD)
+&=&
+     \left(\frac{\ii}{2\pi}\right)^k
+     \td f_k(\Omg,\Omg,...,\Omg)
+ =
+     \left(\frac{\ii}{2\pi}\right)^k
+     \sum_{j=1}^{k}
+       f_k(\Omg,...,\underbrace{\td\Omg}_{\text{第$j$个}},...,\Omg)\\
+&=&
+     \left(\frac{\ii}{2\pi}\right)^k
+     \sum_{j=1}^{k}
+       f_k(\Omg,...,\underbrace{(\tD\Omg-[A,\Omg])}
+       _{\text{第$j$个}},...,\Omg)\\
+&=&
+     -\left(\frac{\ii}{2\pi}\right)^k
+     \sum_{j=1}^{k}
+       f_k(\Omg,...,\underbrace{[A,\Omg]}
+       _{\text{第$j$个}},...,\Omg)
+ =0
+\end{eqnarray*}
+其中注意到Bianch恒等式$\tD\Omg=0$（见性质\ref{Bianchi恒等式-prop}）、
+引理\ref{Hom丛联络-矩阵表示-lem}以及该引理上方的$(**)$式。
+\end{proof}
+
+%Consider$$\det(I+\frac{i}{2\pi}tm)=I+tf_1(M)+t^2f_2(M)+\cdots t^rf_r(M)$$
+%$\rightsquigarrow\forall 1\leq k\leq r$, $f_k$ is $G$-invariant.
+%Let $E\to X$ complex vector bundle on a complex manifold,
+%let $D_E$ be a connection,curvature $H_E\in C_2^\infty(X,\Hom(E,E))$.
+% Let $f\in GL(r,\bbC)$- invariant "$k$-form",then
+%(1)Let $H_{\alpha},H_{\beta}$ be the curvature forms of $E$ in different trivialization,
+%then $f(H_\alpha)=f(H_{\beta})$ , so we get a globally defined $2k$-form.
+%assume $H_\alpha=gH_\beta g^{-1}$, then
+%$$f(H_\alpha)=f(g H_\beta g^{-1})=f(H_\beta)$$(2) we also have$$\td f(H)=0$$
+%locally , $H=H_\alpha=\td a_\alpha+A_\alpha\wedge A_\alpha$,then
+%$$\td f(H)=\td f(H_\alpha,H_\alpha,...,H_\alpha)
+%=\sum_{i=1}^kf(H_\alpha,...,\underbrace{\td H_\alpha}_{i},...,\H_\alpha)$$
+%$$=\sum_{i=1}^kf(H_\alpha,...,\td A_\alpha\wedge A_\alpha-A_\alpha\wedge\td
+%A_\alpha,...,H_\alpha)$$Fact:(in Riemannian geometry) For any $x\in X$,
+%we always can find a local frame s.t.$A_\alpha(x)=0$.so, choose this frame,
+%$$\td f(H)=0$$So, $[f(H)]\in H^{2k}(X,\bbC)$
+
+\begin{lemma}（联络的形变）
+\label{联络的形变-lemma}
+
+设$E\to X$为光滑向量丛，$\tD$为$E$的一个联络，
+则对于任意$\afa\in\Omg^1(X,\End(E))$，$\tD+\afa$
+也是$E$的一个联络，并且其曲率为
+$$
+  \Theta_{\tD+\afa}
+=
+  \Theta_{\tD}+\tD\afa+\afa\wedge\afa
+$$
+其中“$\tD\afa$”当中的“$\tD$”为$\End(E)$上的联络。
+\end{lemma}
+
+\begin{proof}显然$\tD+\afa$也是联络，并且在局部标架下的系数矩阵为$A+\afa$，
+其中$A$为$\tD$的系数矩阵，$\afa$也用来表示相应的系数矩阵。
+我们来验证曲率，有
+\begin{eqnarray*}
+     \Omg_{\tD+\afa}
+&=&
+     \td(A+\afa)+(A+\afa)\wedge(A+\afa)\\
+&=&
+     \td A+\td\afa+A\wedge A+A\wedge\afa+\afa\wedge A+\afa\wedge\afa\\
+&=&
+     \Omg_{\tD}+\td\afa+[A,\afa]+\afa\wedge\afa
+\end{eqnarray*}
+注意到引理\ref{Hom丛联络-矩阵表示-lem}，从而可知
+$
+  \Theta_{\tD+\afa}
+=
+  \Theta_{\tD}+\tD\afa+\afa\wedge\afa
+$，证毕。
+\end{proof}
+
+\begin{thm}（陈类与向量丛的联络选取无关）
+
+设$E\to X$为秩为$r$的光滑向量丛，则对任意$1\leq k\leq r$，
+上同调类$[c_k(E,\tD)\in H^{2k}(X)]$与$E$的联络$\tD$选取无关。
+\end{thm}
+
+\begin{proof}
+设$\tD_0$与$\tD_1$为丛$E$上的两个联络，对于$t\in[0,1]$，记
+$$\tD_t:=(1-t)\tD_0+t\tD_1$$
+则$\tD_t$显然也是联络。令$\afa:=\tD_1-\tD_0$，则容易验证
+$\afa\in\Omg^1(X,\End(E))$为整体定义的张量。
+再记$\afa_t:=\tD_t-\tD_0\in\Omg^1(X,\End(E))$，则$\afa_t=t\afa$.
+记联络$\tD_t$的曲率为$\Theta_t$，则由引理\ref{联络的形变-lemma}可知
+\begin{eqnarray*}
+     \Theta_t
+&=& 
+     \Theta_0+t\tD_0\afa+t^2\afa\wedge\afa
+\\
+     \tdd{t}\Theta_t
+&=&
+     \tD_0\afa+2t\afa\wedge\afa\\
+&=&
+     \tD_t\afa-(\tD_t-\tD_0)\afa+2t\afa\wedge\afa\\
+&=&
+     \tD_t\afa-t[\afa,\afa]+2t\afa\wedge\afa\\
+&=&
+     \tD_t\afa
+\end{eqnarray*}
+因此有
+\begin{eqnarray*}
+& &
+     c_k(E,\tD_1)-c_k(E,\tD_0)
+ =
+     \int_{0}^{1}
+       \tdd{t}c_k(E,\tD_t)\td t
+ =
+     \left(
+       \frac{\ii}{2\pi}
+     \right)^k
+     \int_{0}^{1}
+       \tdd{t}f_k(\Theta_t,\Theta_t,...,\Theta_t)
+       \td t\\
+&=&
+     k\left(
+       \frac{\ii}{2\pi}
+     \right)^k
+     \int_{0}^{1}
+       f_k(\tdfrac{\Theta_t}{t},\Theta_t,...,\Theta_t)
+       \td t
+ =
+     k\left(
+       \frac{\ii}{2\pi}
+     \right)^k
+     \int_{0}^{1}
+       f_k(\tD_t\afa,\Theta_t,...,\Theta_t)
+       \td t\\
+&=&
+     k\left(
+       \frac{\ii}{2\pi}
+     \right)^k
+     \td\left(
+       \int_{0}^{1}
+         f_k(\afa,\Theta_t,...,\Theta_t)
+         \td t
+     \right)
+\end{eqnarray*}
+最后一步利用了Bianchi恒等式$\tD_t\Theta_t=0$以及
+$f_k$的$\mfkgl(r,\bbK)$-不变性（与性质\ref{陈类的定义-prop}的证明过程类似）。
+因此$[c_k(E,\tD_1)]=[c_k(E,\tD_0)]$，
+即位于同一个上同调类。
+\end{proof}
+
+%(3) Claim : the class $[f(H)]$ is independent of the choice of the connections $D_E$.
+%Let $D_0,D_1$ be two connections, consider$$D_t=(1-t)D_0+tD_1$$
+%$t\in[0,1]$, curvature $H_t$%%%%%%%%将以上所有的H都换成\Theta%%%%%%%%%
+%Fact: $\alpha:=A_1-A_0$ is globally defined, and in $C_1^\infty(X,\Hom(E,E))$.
+%Fact: $$\frac{\td}{\td t}f(H_t)=k\td f(\alpha,H_t,H_t,...,H_t)$$
+%So,$$f(H_1)-f(H_0)=\int_0^1\frac{\td}{\td t}f(H_t)\td t
+%=\td\int_0^1f(\alpha,H_t,H_t,...,H_t)\td t$$So,$$[f(H_1)]-[f(H_0)]$$
+%\begin{definition}the $k$-th Chern class of $E$
+%$$c_k(E):=[f_k(\Theta_E)]\in H^{2k}(X,\bbC)$$\end{definition}
+%%%%%%%%%%%2019.4.04第六周星期四；清明节前最后一节课%%%%%%%%%%%%%%%
+%Recall: Chern Class$X$ complex manifold, $E\to X$
+%is a smooth complex vector bundle of rank $r$.
+%$D$ is a connection, curvature $\Theta(D)\in C_2^\infty(X,\Hom(E,E))$.
+%linear algebra:$$\det(I+\frac{i}{2\pi}tM)=I+tf_1(M)+t^2f_2(M)+\cdots+t^rf_r(M)$$
+%Chern class $\{f_k(\Theta)\}\in H^{2k}_{DR}(X,\bbC)$ 
+%is independent of choice of connection.Today:
+
 \begin{rem}
-$E$ is a Hermitian line bundle, $D$ is a Hermitian connection,
-then $i\Theta(D)$ is a real $2$-form ,
-$c_1(E)\in H^2(X,\bbR)$.
+对于向量丛$E\to X$，既然陈类$[c_k(E,\tD)]$与联络选取无关，
+我们可记$[c_k(E)]:=[c_k(E,\tD)]$，其中$\tD$为$E$上的任何一个联络。
+\end{rem}
+在黎曼几何中，我们知道黎曼度量总存在，并且黎曼度量诱导的Levi-Civita联络非平凡（即不恒为$0$）.
+类似地，后文将会在向量丛上引入某种度量，该度量诱导了某个非平凡的联络。
+也就是我，向量丛上的（不恒为零的）联络总存在。
+
+\begin{example}（线丛的第一陈类）
+
+设$E\to X$为光滑线丛，即$\rank_{\bbK}E=1$.设$\tD$为$E$上的联络，
+$A$为$\tD$在某局部标架下的系数矩阵（无非是局部的$1$-形式），此时曲率形式
+$\Omg=\td A+A\wedge A=\td A$.
+容易验证第一陈类为
+$$c_1(E,\tD)=\frac{\ii}{2\pi}\Theta$$
+在此特殊情况下，若$\tD_0$与$\tD_1$为线丛$E$的两个联络，则容易验证
+$$
+  c_1(E,\tD_1)-c_1(E,\tD_0)
+=
+  \frac{\ii}{2\pi}\td(\tD_1-\tD_0)
+$$
+其中$\tD_1-\tD_0\in\Omg^1(X)$为整体定义的$1$形式。特别地，
+$[c_1(E,\tD_1)]=[c_1(E,\tD_0)]\in H^2(X)$
+\end{example}
+
+%Special case: $E$ is a complex line bundle.
+%Let $D_0$ be a connection on $E$, locally $D_0e=A_0e$, $A_0$ is $1$-form.
+%curvature$$\Theta(D_0)=D_0^2=\td A_0+A_0\wedge A_0=\td A_0$$
+%so, curvature is $\td$-exact, so $\td\Theta(D_0)=0$.
+%$$\det(I+\frac{i}{2\pi}tM)=I+\frac{i}{2\pi}tM$$
+%so, the first Chern class of line bundle is
+%$$c_1(E)=\{\frac{i}{2\pi}\Theta(D_0)\}$$
+%Let $D_1$ be another connection, locally $D_1e=A_1e$, so
+%$\Theta(D_1)=\td A_1$.so,$$\Theta(D_1)-\Theta(D_0)=\td(A_1-A_0)$$
+%where$$A_1-A_0\in C_1^\infty(X,\Hom(E,E))$$
+%(when $E$ is line bundle ,$\Hom(E,E)\cong E^*\ten E$ is trivial bundle)
+%so, $A_1-A_0$ is a globally defined smooth function on $X$. So,
+%$$\{\Theta(D_1)\}=\{\Theta(D_0)\}\in H^2(X,\bbC)$$
+%independent of the choice of connection.
+
+\section{Hermite向量丛}
+本节开始考虑复向量丛。
+
+\begin{definition}（Hermite 向量丛）
+\index{Hermite 向量丛}
+
+设$E\to X$为光滑流形$X$上的复向量丛，
+称$E$为Hermite向量丛，若任意$x\in X$，
+纤维$E_x$上配以Hermite内积结构$h\in\Omg^0(X,\Herm(E,E))$:
+\begin{eqnarray*}
+  h_x:E_x\times E_x&\to&\bbC\\
+  (s_x,t_x)&\mapsto&\bair{s_x}{t_x}
+\end{eqnarray*}
+并且对于任意局部标架$e(x)=(e_1(x),e_2(x),..,e_r(x))$，
+$h_{ij}(x):=\bair{e_i(x)}{e_j(x)}$是光滑的。
+此时$h$称为$E$的\textbf{Hermite度量}。
+\end{definition}
+
+%\begin{definition}a complex vector bundle 
+%$E\to X$ of rank $r$ is called a Hermitian vector bundle, if
+%we have an inner product on $E$, i.e. locally, consider a local frame
+%$\{e_1,...,e_r\}$, we have$$\{e_i(x),e_j(x)\}=h_{ij}(x)$$
+%s.t. $(h_{ij}(x))$ is a positive definite Hermitian matrix depending smoothly on $x$.
+%\end{definition}\begin{rem}For any complex vector bundle,
+%Hermitian structure always exists.\end{rem}证明与黎曼几何类似。（黎曼度量的存在性）
+
+由定义知，在局部标架$e=(e_1,e_2,...,e_r)$下，
+矩阵$h=(h_{ij})$为正定Hermite矩阵。我们假定$\bair{}{}$关于第一个位置共轭线性。
+我们用符号“$\dag$”来表示矩阵的共轭转置，则$h^\dag=h$.
+显然此定义是良定的，若$\etil$为另一组局部标架，并有转移矩阵
+$G$使得$\etil=eG$，则有
+$$
+  \htil_{ij}=\bair{\etil_i}{\etil_j}
+= \bair{G_i^ke_k}{G_j^le_l}
+= \Gbar_i^kG_j^l\bair{e_k}{e_l}
+= \Gbar_i^kh_{kl}G^l_j
+= (G^\dag hG)_{ij}
+$$
+即$\htil=G^\dag hG$.又由于转移矩阵$G$是光滑的，
+从而$h$光滑当且仅当$\htil$光滑。
+
+\textbf{任何复向量丛都存在Hermite度量}，
+原因与黎曼几何当中的“黎曼度量存在性”完全类似。
+此外，Hermite度量$h$可自然地线性延拓为
+\begin{eqnarray*}
+  h:\Omg^p(X,E)\times\Omg^q(X,E)
+  &\to&\Omg^{p+q}(X)
+\end{eqnarray*}
+满足共轭超对称性：对任意$u\in\Omg^p(X,E)$以及$v\in\Omg^q(X,E)$，
+$\bair{u}{v}=(-1)^{pq}\overline{\bair{v}{u}}$等等性质。
+
+\begin{definition}（Hermite联络）
+
+设复向量丛$(E,h)\to X$为Hermite向量丛，$\tD$为$E$上的联络。
+称$\tD$与Hermite度量$h$相容，或称$\tD$为\textbf{Hermite 联络}，
+若对任意$u\in\Omg^p(X,E)$以及$v\in\Omg^q(X,E)$，都有
+$$
+  \td\bair{u}{v}
+=
+  \bair{\tD u}{v}+(-1)^p\bair{u}{\tD v}
+$$
+\end{definition}
+特别地，在局部标架$e=(e_1,e_2,...,e_r)$下，成立
+$$
+  \td h_{ij}=\bair{\tD e_i}{e_j}+\bair{e_i}{\tD e_j}
+            =\Abar^k_ih_{kj}+A^k_jh_{ik}
+            =(A^\dag h+hA)_{ij}
+$$
+其中$A$为$\tD$在该标架下的系数。从而有
+$$\td h=A^\dag h+hA=A^\dag h+h^\dag A=[A^\dag,h]$$
+
+%\begin{definition}(Hermitian connection)
+%connection compatible with Hermitian metric
+%A connection $D$ on $E$ is called Hermitian, if
+%$$\td\{e_i,e_j\}=\{De_i,e_j\}+\{e_i,De_j\}$$\end{definition}
+%More generally, let $t\in C_p^{\infty}(X,E)$, $s\in C_q^\infty(X,Y)$,
+%$$\td\{s,t\}=\{\td t,s\}+(-1)^p\{t,Ds\}$$
+
+\begin{prop}（Hermite联络的曲率）
+
+设$E\to X$为复向量丛，$h$为$E$的一个Hermite结构，
+$\tD$为$E$上的与$h$相容的联络，$e=(e_1,e_2,...,e_r)$为$E$的一组局部标架，
+则$\tD$的曲率$\Theta$在标架$e$下的矩阵$\Omg$满足
+$$\Omg^\dag=-\Omg$$
+\end{prop}
+
+\begin{proof}只需注意到
+\begin{eqnarray*}
+     0
+&=&
+     \td^2\bair{e_i}{e_j}
+ =
+     \td\left(
+       \bair{\tD e_i}{e_j}
+      +\bair{e_i}{\tD e_j}
+     \right)\\
+&=&
+     \bair{\tD^2e_i}{e_j}
+    -\bair{\tD e_i}{\tD e_j}
+    +\bair{\tD e_i}{\tD e_j}
+    +\bair{e_i}{\tD^2e_j}
+ =
+     \Omgbar^j_i+\Omg^i_j
+\end{eqnarray*}
+因此$\Omg^\dag=-\Omg$.
+\end{proof}
+
+%\begin{prop}$D$ is a Hermitian connection ,then the curvature
+%$$\Theta(D)^*=-\Theta(D)$$(where $(-)^*$ is conjugate transpose of matrix)
+%\end{prop}it means that, $i\Theta(D)\in C_2^\infty(X,\text{Herm}(E,E))$
+%\begin{proof}$$0=\td^2\{e_i,e_j\}=\td\{De_i,e_j\}+\td\{e_i,De_j\}$$
+%$$=\{D^2e_i,e_j\}-\{De_i,De_j\}+\{De_i,De_j\}+\{e_i,D^2e_j\}=
+%\{(\Theta+\Theta^*)e_i,e_j\}$$\end{proof}\begin{rem}
+%$E$ is a Hermitian line bundle, $D$ is a Hermitian connection,
+%then $i\Theta(D)$ is a real $2$-form ,$c_1(E)\in H^2(X,\bbR)$.\end{rem}
+
+\begin{rem}
+此性质表明，Hermite联络$\tD$的曲率$\Theta$满足：
+$\ii\Theta\in\Omg^2(X,\Herm(E,E))$.特别地，$\ii\Theta$的系数矩阵$\ii\Omg$
+的对角元都是实的$2$-形式，从而第一陈类
+$$[c_1(E)]=\frac{1}{2\pi}[\tr(\ii\Theta)]\in H^2(X,\bbR)$$
 \end{rem}
 
-(Chern connection)
+\section{复流形上的联络}
+现在，我们考虑\textbf{复流形}$X$上的光滑向量丛。
 
-\begin{definition}Let $X$ be a complex manifold.
-$D'$ is called a connection of type $(1,0)$ on $E$,
-if for any section $s\in C_{p,q}^\infty(X,E)$, we have
-$D's\in C_{p+1,q}^\infty(X,E)$.
+\begin{definition}（$(1,0)$与$(0,1)$型联络）
 
-A connection $D''$ is called a connection of type $(0,1)$, if ...
-$D''s\in C_{p,q+1}^\infty(X,E)$.
+对于复流形$X$上的光滑向量丛$E$，称$E$上的联络$\tD'$为$(1,0)$型的，
+若任意$p,q\geq 0$，$\tD':\Omg^{p,q}(X,E)\to\Omg^{p+1,q}(X,E)$；
+称$E$上的联络$\tD''$为$(0,1)$型的，若
+任意$p,q\geq 0$，$\tD'':\Omg^{p,q}(X,E)\to\Omg^{p,q+1}(X,E)$.
 \end{definition}
+
+%\begin{definition}Let $X$ be a complex manifold.
+%$D'$ is called a connection of type $(1,0)$ on $E$,
+%if for any section $s\in C_{p,q}^\infty(X,E)$, we have
+%$D's\in C_{p+1,q}^\infty(X,E)$.A connection $D''$ is called 
+%a connection of type $(0,1)$, if ...$D''s\in 
+%C_{p,q+1}^\infty(X,E)$.\end{definition}
 
 \begin{rem}Let $E\to X$ be a %holomorphic  这里需要是全纯向量丛吗？
 vector bundle.
