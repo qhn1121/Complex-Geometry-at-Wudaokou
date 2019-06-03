@@ -541,7 +541,7 @@ $$
 %\begin{definition}assume $G$ is a group (left) acting on $V$, s.t.
 %$$f(g(v_1),...,g(v_k))=f(v_1,...,v_k)$$
 %for any $g\in G,v_i\in V$, then we say $f$ is $G$-invariant.
-%\end{definition}Special case: $G=GL(r,\bbC)$ and $V=Lie 
+%\end{definition}Special case: $G=GL(r,\bbC)$ and $V=Lie
 %G=\mfkgl{r,\bbC}$ be the Lie algebra of $G$.the action is
 %$$(g,M)\mapsto gMg^{-1}$$
 
@@ -738,7 +738,7 @@ $\afa\in\Omg^1(X,\End(E))$为整体定义的张量。
 记联络$\tD_t$的曲率为$\Theta_t$，则由引理\ref{联络的形变-lemma}可知
 \begin{eqnarray*}
      \Theta_t
-&=& 
+&=&
      \Theta_0+t\tD_0\afa+t^2\afa\wedge\afa
 \\
      \tdd{t}\Theta_t
@@ -809,7 +809,7 @@ $f_k$的$\mfkgl(r,\bbK)$-不变性（与性质\ref{陈类的定义-prop}的证�
 %is a smooth complex vector bundle of rank $r$.
 %$D$ is a connection, curvature $\Theta(D)\in C_2^\infty(X,\Hom(E,E))$.
 %linear algebra:$$\det(I+\frac{i}{2\pi}tM)=I+tf_1(M)+t^2f_2(M)+\cdots+t^rf_r(M)$$
-%Chern class $\{f_k(\Theta)\}\in H^{2k}_{DR}(X,\bbC)$ 
+%Chern class $\{f_k(\Theta)\}\in H^{2k}_{DR}(X,\bbC)$
 %is independent of choice of connection.Today:
 
 \begin{rem}
@@ -870,7 +870,7 @@ $h_{ij}(x):=\bair{e_i(x)}{e_j(x)}$是光滑的。
 此时$h$称为$E$的\textbf{Hermite度量}。
 \end{definition}
 
-%\begin{definition}a complex vector bundle 
+%\begin{definition}a complex vector bundle
 %$E\to X$ of rank $r$ is called a Hermitian vector bundle, if
 %we have an inner product on $E$, i.e. locally, consider a local frame
 %$\{e_1,...,e_r\}$, we have$$\{e_i(x),e_j(x)\}=h_{ij}(x)$$
@@ -904,6 +904,7 @@ $$
 $\bair{u}{v}=(-1)^{pq}\overline{\bair{v}{u}}$等等性质。
 
 \begin{definition}（Hermite联络）
+\label{Hermite联络-def}
 
 设复向量丛$(E,h)\to X$为Hermite向量丛，$\tD$为$E$上的联络。
 称$\tD$与Hermite度量$h$相容，或称$\tD$为\textbf{Hermite 联络}，
@@ -921,7 +922,7 @@ $$
             =(A^\dag h+hA)_{ij}
 $$
 其中$A$为$\tD$在该标架下的系数。从而有
-$$\td h=A^\dag h+hA=A^\dag h+h^\dag A=[A^\dag,h]$$
+$$\td h=A^\dag h+hA\eqno(*)$$
 
 %\begin{definition}(Hermitian connection)
 %connection compatible with Hermitian metric
@@ -931,9 +932,12 @@ $$\td h=A^\dag h+hA=A^\dag h+h^\dag A=[A^\dag,h]$$
 %$$\td\{s,t\}=\{\td t,s\}+(-1)^p\{t,Ds\}$$
 
 \begin{prop}（Hermite联络的曲率）
+\label{Hermite 联络的曲率-prop}
 
 设$E\to X$为复向量丛，$h$为$E$的一个Hermite结构，
-$\tD$为$E$上的与$h$相容的联络，$e=(e_1,e_2,...,e_r)$为$E$的一组局部标架，
+$\tD$为$E$上的与$h$相容的联络，
+$e=(e_1,e_2,...,e_r)$为$E$的一组局部\textbf{幺正标架}
+（即$\bair{e_i}{e_j}=\delta_{ij}$），
 则$\tD$的曲率$\Theta$在标架$e$下的矩阵$\Omg$满足
 $$\Omg^\dag=-\Omg$$
 \end{prop}
@@ -959,6 +963,9 @@ $$\Omg^\dag=-\Omg$$
 因此$\Omg^\dag=-\Omg$.
 \end{proof}
 
+容易验证，在一般的标架（未必幺正）下，Hermite联络的曲率的系数矩阵满足
+$$\Omg^\dag h+h\Omg=0$$
+
 %\begin{prop}$D$ is a Hermitian connection ,then the curvature
 %$$\Theta(D)^*=-\Theta(D)$$(where $(-)^*$ is conjugate transpose of matrix)
 %\end{prop}it means that, $i\Theta(D)\in C_2^\infty(X,\text{Herm}(E,E))$
@@ -977,247 +984,468 @@ $$[c_1(E)]=\frac{1}{2\pi}[\tr(\ii\Theta)]\in H^2(X,\bbR)$$
 
 \section{复流形上的联络}
 现在，我们考虑\textbf{复流形}$X$上的光滑向量丛。
+对于复流形，注意到微分形式空间的分解
+$$\Omg^{m}(X)=\bigoplus_{p+q=m}\Omg^{p,q}(X)$$
+现在，若$E\to X$为复流形$E$上的光滑向量丛，我们类似定义
+$$\Omg^{p,q}(X,E)=\Gma(X,\wedgeform{p,q}(T^*M)\ten E)$$
+为取值于$E$上的$(p,q)$形式空间。在复流形上，外微分算子$\td=\td'+\td''$，
+其中$\td':=\p,\td'':=\pbar$.
 
-\begin{definition}（$(1,0)$与$(0,1)$型联络）
+\begin{definition}（$(1,0)$型联络）
 
-对于复流形$X$上的光滑向量丛$E$，称$E$上的联络$\tD'$为$(1,0)$型的，
-若任意$p,q\geq 0$，$\tD':\Omg^{p,q}(X,E)\to\Omg^{p+1,q}(X,E)$；
-称$E$上的联络$\tD''$为$(0,1)$型的，若
-任意$p,q\geq 0$，$\tD'':\Omg^{p,q}(X,E)\to\Omg^{p,q+1}(X,E)$.
+对于复流形$X$上的光滑向量丛$E$，称算子
+$\tD':\Omg^{\bullet,\bullet}(X,E)\to\Omg^{\bullet+1,\bullet}(X,E)$
+为$(1,0)$型联络，如果对任意$u\in\Omg^{p,q}(X)$
+以及$v\in\Omg^{p',q'}(X,E)$，成立
+$$
+  \tD'(u\wedge v)
+= \td'u\wedge v+(-1)^{p+q}u\wedge\tD' v
+$$
 \end{definition}
 
+注意“$(1,0)$型联络”虽然字面上有“联络”，
+但它一般不是向量丛的联络（从定义能看出）。
+类似地，我们也可以定义$(0,1)$型联络
+$\tD'':\Omg^{\bullet,\bullet}(X,E)\to\Omg^{\bullet,\bullet+1}(X,E)$，
+使得对任意$u\in\Omg^{p,q}(X)$
+以及$v\in\Omg^{p',q'}(X,E)$，成立
+$$
+  \tD''(u\wedge v)
+= \td''u\wedge v+(-1)^{p+q}u\wedge\tD'' v
+$$
 %\begin{definition}Let $X$ be a complex manifold.
 %$D'$ is called a connection of type $(1,0)$ on $E$,
 %if for any section $s\in C_{p,q}^\infty(X,E)$, we have
-%$D's\in C_{p+1,q}^\infty(X,E)$.A connection $D''$ is called 
-%a connection of type $(0,1)$, if ...$D''s\in 
+%$D's\in C_{p+1,q}^\infty(X,E)$.A connection $D''$ is called
+%a connection of type $(0,1)$, if ...$D''s\in
 %C_{p,q+1}^\infty(X,E)$.\end{definition}
 
-\begin{rem}Let $E\to X$ be a %holomorphic  这里需要是全纯向量丛吗？
-vector bundle.
-Let $D$ be a connection on $E$, locally
-$$Ds\xra{\sim}\td\sgm+A\wedge\sgm$$
-$$\td\sgm=\p\sgm+\pbar\sgm$$
-so,let $A'$ be the $(1,0)$-part of $A$,...,
-$$Ds=\p\sgm+A'\wedge\sgm+(\pbar\sgm+A''\wedge\sgm)=:D's+D''s$$
+\begin{rem}对于复流形上的光滑向量丛$E\to X$，
+若$\tD'$与$\tD''$分别为$E$上的$(1,0),(0,1)$型联络，
+则易验证$\tD:=\tD'+\tD''$必为$E$上的联络。
+反之，$E$上的任何联络$\tD$都可自然地分解为
+$(1,0)$部分与$(0,1)$部分之和：$\tD=\tD'+\tD''$.
 \end{rem}
 
+设$\tD'$为$(1,0)$型联络，则在$E$的局部（光滑）标架下，
+类似定义$\tD'$的系数矩阵$A'$，注意$A'$的每个矩阵元都是$(1,0)$形式；
+而$(0,1)$型联络的系数矩阵也类似。类似地，也有局部标架下的表达式$\tD'=\td'+A'$
+以及$\tD''=\td''+A''$.
+
+%\begin{rem}Let $E\to X$ be avector bundle.Let $D$ be a 
+%connection on $E$, locally$$Ds\xra{\sim}\td\sgm+
+%A\wedge\sgm$$$$\td\sgm=\p\sgm+\pbar\sgm$$
+%so,let $A'$ be the $(1,0)$-part of $A$,...,$$Ds
+%=\p\sgm+A'\wedge\sgm+(\pbar\sgm+A''\wedge\sgm)=:D's+D''s$$\end{rem}
+
 \begin{prop}
-$E$:Hermitian vector bundle, $D$ is a Hermitian connection, locally,
-take a $C^\infty$-frame $e_1,...,e_r$ which is orthonomal
-(i.e. $\{e_i(x),e_j(x)\}=\delta_{ij}$), then the  connection coefficient
-$A=A'+A''$ satisfies
-$$(A')^*=-A''$$
-($\iff \overline(iA)=iA$ )
+设$(E,h)\to X$为复流形$X$上的光滑Herimite向量丛，
+$\tD$为$E$上的与$h$相容的Hermite联络，则对于
+$E$的光滑\textbf{幺正标架}$e=(e_1,e_2,...,e_n)$，
+联络$\tD$的系数矩阵$A$的$(1,0),(0,1)$部分$A',A''$满足
+$$A''=-(A')^\dag$$
 \end{prop}
 
-\begin{proof}
-because
-$$0=\td{e_i,e_j}=\{De_i,e_j\}+\{e_i,De_j\}
-=\{a_i^ke_k,e_j\}+\{e_i,a_j^le_l\}
-=a^j_i+\overline{a^i_j}$$
-so, $A^*=-A$.
+\begin{proof}直接验证即可，只需注意
+$$
+  0=\tD\bair{e_i}{e_j}
+   =\tD'\bair{e_i}{e_j}+\tD''\bair{e_i}{e_j}
+   =\left((\Abar')^j_i+(A'')^i_j\right)
+   +\left((A')^i_j+(\Abar'')^j_i\right)
+$$
+注意其$(1,0)$分量与$(0,1)$分量，从而$A'=-(A'')^\dag$.
 \end{proof}
 
-\begin{cor}
-$E\to X$ is a Hermitian vector bundle,
-$D_0''$ is a connection of type $(0,1)$ on $E$.
-Then exists a unique Hermitian connection $D$
-such that $D''=D_0''$.
+%\begin{prop}
+%$E$:Hermitian vector bundle, $D$ is a Hermitian connection, locally,
+%take a $C^\infty$-frame $e_1,...,e_r$ which is orthonomal
+%(i.e. $\{e_i(x),e_j(x)\}=\delta_{ij}$), then the  connection coefficient
+%$A=A'+A''$ satisfies$$(A')^*=-A''$$($\iff \overline(iA)=iA$ )\end{prop}
+%\begin{proof}because$$0=\td{e_i,e_j}=\{De_i,e_j\}+\{e_i,De_j\}
+%=\{a_i^ke_k,e_j\}+\{e_i,a_j^le_l\}=a^j_i+\overline{a^i_j}$$
+%so, $A^*=-A$.\end{proof}
+
+事实上，联络$\tD$在幺正标架下的系数矩阵满足$(A'')^\dag=-A'$
+当且仅当$\tD$为Hermite联络。由此不难得出：
+
+\begin{cor}\label{Hermite 联络的分解-cor}
+设$E\to X$为复流形$X$上的光滑Hermite向量丛，则对于$E$上的任何$(0,1)$型
+联络$\tD''$，存在唯一的Hermite联络$\tD$，使得$\tD$的$(0,1)$部分恰为$\tD''$.
 \end{cor}
 
+%\begin{cor}$E\to X$ is a Hermitian vector bundle,
+%$D_0''$ is a connection of type $(0,1)$ on $E$.
+%Then exists a unique Hermitian connection $D$
+%such that $D''=D_0''$.\end{cor}\begin{proof}Let $A''=A_0''$ and $A'
+%=-(A_0'')^*\rightsquigarrow A=A'+A''$, and$D$ is given by $A$.\end{proof}
+
 \begin{proof}
-Let $A''=A_0''$ and $A'=-(A_0'')^*\rightsquigarrow A=A'+A''$, and
-$D$ is given by $A$.
+  任取$E$的光滑幺正标架$e=(e_1,e_2,...,e_r)$，令
+$\tD''$在标架$e$下的系数矩阵为$A''$.令$A:=-(A'')^\dag+A''$，
+则矩阵$A$确定了一个Hermite联络$\tD$，使得$\tD$在该标架下的矩阵为$A$.
+易验证$\tD$的良定性。
 \end{proof}
 
-Let $E\to X$ is a holomorphic Hermitian vector bundle,
-observe that $\pbar$ defines a connection of type $(0,1)$ on $E$(check!)
+现在，假设$E\to X$为全纯向量丛。
 
-assume $E$ is a holomorphic line bundle, take a section
-$s\in C_p^\infty(X,E)$, i.e. we have a family of $p$-forms $(s_\afa)$
-such that $s_\afa=g_{\afa\beta}s_\beta$
-where $g_{\afa,\beta}$ is the holomorphic transition matrix.
-$$\pbar s\xra{\sim}\pbar s_\beta$$
-then
-$$\pbar s_\afa=g_{\afa,\beta}\pbar s_\beta$$
+\begin{Example}（全纯向量丛上的典范$(0,1)$型联络）
 
-(so, $\pbar$ is a connection of $(0,1)$)
+设$E\to X$为全纯向量丛，
+则微分算子$\td''=\pbar$自然给出了$E$上的一个
+$(0,1)$型联络，称为\textbf{典范$(0,1)$}型联络。
+\end{Example}
 
-this connection is called the canonical connection of type $(0,1)$.
+任取$E$的\textbf{全纯标架}$e=(e_1,e_2...,e_r)$，
+则对于任意的$u\in\Omg^{p,q}(X,E)$，局部上有
+$u=u^\afa\ten e_\afa$，其中$u^\afa\in\Omg^{p,q}(X)$，则令
+$$\pbar u:=(\pbar u^\afa)\ten e_\afa$$
+特别地，对于全纯标架场$e_\afa$，有$\pbar e_\afa=0$.
+容易验证上述定义的良定性，从而$\pbar$诱导了$E$
+上的一个$(0,1)$型联络。
 
-\begin{definition}
-Let $E\to X$ holomorphic Hermitian vector bundle,
-the connection $D$ on $E$ is called Chern connection if
-$$D''=\pbar$$
+%Let $E\to X$ is a holomorphic Hermitian vector bundle,
+%observe that $\pbar$ defines a connection of type $(0,1)$ on $E$(check!)
+%assume $E$ is a holomorphic line bundle, take a section
+%$s\in C_p^\infty(X,E)$, i.e. we have a family of $p$-forms $(s_\afa)$
+%such that $s_\afa=g_{\afa\beta}s_\beta$
+%where $g_{\afa,\beta}$ is the holomorphic transition matrix.
+%$$\pbar s\xra{\sim}\pbar s_\beta$$then
+%$$\pbar s_\afa=g_{\afa,\beta}\pbar s_\beta$$
+%(so, $\pbar$ is a connection of $(0,1)$)
+%this connection is called the canonical connection of type $(0,1)$.
+
+\begin{definition}（全纯Hermite向量丛的陈联络）
+\index{Chern connection\kong 陈联络}
+
+设$E\to X$为\textbf{全纯Hermite向量丛}
+（即它为全纯向量丛且配以Hermite结构$h$，），
+则存在唯一的Hermite联络$\tD$，使得其$(0,1)$分量$\tD''=\pbar$.
+称此联络为全纯Hermite向量丛$(E,h)\to X$的\textbf{陈联络}（Chern connection）。
 \end{definition}
 
-\textbf{Curvature of Chern connection}
+显然，陈联络的存在唯一性是推论\ref{Hermite 联络的分解-cor}的推论。
+全纯Hermite丛的陈联络就像Riemann流形上的Levi-Civita联络一样典范。
+另外，注意全纯Hermite向量丛的Hermite结构$h$
+在全纯标架下的矩阵\textbf{未必}是全纯的，仅仅光滑即可，
+并不存在Hermite结构与全纯结构的“相容性”。
 
-$E\to X$ is holomorphic Hermite vector bundle , $D$ is the Chern connection,
-Locally let $\{e_1,...,e_r\}$ be a holomorphic frame, and two local sections
-$$s,t\in C^\infty(\Omg, E)$$
-where
-$$s=\sum_{i=1}^r\sgm_ie_i$$
-$$t=\sum_{i=1}^r t_ie_i$$
-Since $D$ is Hermitian ,
-$$\td \{s,t\}=\td ((\sgm_1,...,\sgm_r)H
-\begin{pmatrix}
-t_1\\
-\vdots\\
-t_r
-\end{pmatrix})
-=(\td\sgm)^THt+\sgm^T(\td H)t+\sgm^TH\td(t)
+%\begin{definition}Let $E\to X$ holomorphic Hermitian vector bundle,
+%the connection $D$ on $E$ is called Chern connection if$$D''=\pbar$$\end{definition}
+%\textbf{Curvature of Chern connection}
+
+\begin{lemma}
+设$(E,h)\to X$为全纯Hermite向量丛，$\tD=\tD'+\tD''$为其陈联络，
+任取$E$的全纯标架$e=(e_1,e_2,...,e_r)$，
+将$h$在该标架下的矩阵也记为$h$，
+则陈联络$\tD$在该标架下的系数矩阵$A$及其$(1,0),(0,1)$分量$A',A''$满足
 $$
-so, we have
-$$\{Ds,t\}+\{s,Dt\}=(\td\sgm+\overline{H}^{-1}\p\overline{H}\wedge\sgm)^T\wedge H\overline{t}
-+\sgm^T\wedge H\overline{(\td t+\overline{H}^{-1}\p\overline{H}\wedge t)}$$
-
-so ,
-$$Ds=\td\sgm+\overline{H}^{-1}\p\overline{H}\wedge\sgm$$
-$$D's=\p\sgm+\overline{H}^{-1}\p\overline{H}\wedge\sgm
-=\overline{H}^{-1}\p(\overline{H}\sgm)$$
-$$D''s=\pbar\sgm$$
-so,
-$$(D')^2s=\overline{H}^{-1}\p(\overline{H}(\overline{H}^{-1}\p(\overline{H}\sgm)))
-=\cdots=0$$
-
-$$(D'')^2s=\cdots=0$$
-
-So we have
-$$\Theta(D)=(D'+D'')^2=D'D''+D''D'$$
-
-Locally ,
-$$\Theta s=D'D''s+D''D's=\overline{H}^{-1}\p(\overline{H}\pbar\sgm)
-+\pbar(\overline{H}^{-1}\pbar(\overline{H}\sgm))
-=\cdots=\overline{H}^{-1}\p\overline{H}\wedge\pbar\sgm
-+\pbar(\overline{H}^{-1})\sgm
+  A=A'=h^{-1}\p h
+\qquad
+  A''=0
 $$
-$$
-  = \pbar(\overline{H}^{-1}\p\overline{H})\sgm
-$$
+\end{lemma}
 
-So, Chern curvature
-$$\Theta_D=\pbar(\overline{H}^{-1}\p\overline{H})$$
-
-%Next time: Hodge theory...
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%2019.4.9周二第七周%%%%%%%%%%%%%%%%%
-
-Last time: $E\to X$ is a holomorphic vector bundle
-with a Hermitian metric $H$.
-Then there is a unique connection $D_E$s.t. ... called Chern connection.
-
-Curvature of Chern Connection:
-$$\Theta(D_E)=\pbar(\overline{H}^{-1}\p\overline{H})$$
-
-so,
-$$i\Theta(D_E)\in C_{1,1}^\infty(X,\Hom(E,E))$$
-
-\begin{example}(Special case: $E$ is  a holomorphic line bundle)
-
-locally, let $e$ be ha holomorphic frame,
-$\langle e,e\rangle=h$ is the metric.
-then,
-$$\Theta=\pbar(h^{-1}\p h)=\pbar\p\log h$$
-so,
-$$i\Theta(E)=-i\p\pbar\log h$$
-\end{example}
-if $h=e^{-2\fai}$ where $\fai$ is a smooth function, then
-$$i\Theta(E)=2i\p\pbar\fai
-=2\sqrt{-1}\sum_{k,l}\pmfrac{\fai}{z_k}{\overline{z_l}}
-\td z_k\wedge\td\overline{z_l}
-$$
-
-\textbf{Question}: let $s$ be a local holomorphic section of $E$,
-$$-i\p\pbar\log|s|_h^2=?$$
-(Hint:$\frac{i}{\pi}\p\pbar\log z=?$单复变，
-按分布意义下求导 .等于狄拉克测度2333333)
-{\color{red}可能是期末题目？}
-
-\begin{example}
-$\mcalO(-1)$ on $\bbC P^n$, tautological line bundle.
-(Recall: $\bbC P^n$ is a compact complex manifold with holomorphic charts
-$$\Omg_j:=\{[z_0;z_1;...;z_n]|z_j\neq 0\}\to
-\left(
-\frac{z_0}{z_j},\cdots,\hat{1},\cdots
-\frac{z_n}{z_j}
-\right)\in\bbC^n$$
-)
-\end{example}
-
-Let $V$ be a complex vector space, $\dim_\bbC V=n+1$.
-Denote the projective space by
-$$\bbP(V)=(V\setminus\{0\})/\bbC^*$$
-Let $\underline{V}:=\bbP(V)\times V$ be the trivial vector bundle,
-define
-$$\mcalO(-1):=\{([x],\xi)|\xi\in\bbC\cdot x\}$$
-
-\begin{prop}
-$\mcalO(-1)$ is a holomorphic line bundle on $\bbP(V)$.
-\end{prop}
 \begin{proof}
-$\mcalO(-1)|_{\Omg_j}$ has a non-vanishing holomorphic section $\mcalE_j$ defined by
-$$\mcalE_j([x])=\frac{x}{x_j}$$
-for $0\leq j\leq n$.
+由于$\tD''=\pbar$，从而系数矩阵$A''=0$是显然的，也有$A'=A$.
+注意$\tD$首先是Hermite联络，
+从而定义\ref{Hermite联络-def}下方的$(*)$式成立，即
+$$
+  hA+A^\dag h=\td h=\p h+\pbar h
+$$
+比较$(1,0)$分量，得到$hA=\p h$，因此$A=h^{-1}\p h$.
 \end{proof}
 
-Assume $V$ has a Hermitian inner product, then $\mcalO(-1)$ has an
-Hermitian structure induced from $V$.
+{\color{blue}
+注意在我这里，Hermite内积$\bair{}{}$\textbf{关于第一个位置}是共轭线性的，
+即$\bair{\lmd u}{v}=\overline{\lmd}\bair{u}{v}$.
+而在其它版本中，若假定$\bair{}{}$关于第二个位置共轭线性，
+则陈联络在全纯标架下的系数矩阵为
+$A=\hbarr^{-1}\p\hbarr$.
+}
 
-Let $e_0,...,e_n$ be an orthonormal basis of $V$, then
-$\mcalO(-1)|_{\Omg_0}$ has a non-vanishing holomorphic section:
-$$\mcalE_0(z_1,...,z_n)=e_0+z_1e_1+...+z_ne_n$$
-where
-$$\Omg_0=\{[1;z_1;...;z_n]|z_j\in\bbC\}\cong\bbC^n$$
-then,
-$$|\mcalE_0|^2_h=1+|z_1|^2+...+|z_n|^2$$
-so the Chern curvature of $\mcalO(-1)$ on $\Omg_0$ is given by
-$$\Theta=\pbar\p\log(1+|z_1|^2+\cdots+|z_n|^2)$$
+\begin{lemma}
+设$(E,h)\to X$为全纯Hermite向量丛，$\tD=\tD'+\tD''$为其陈联络，
+则有$(\tD')^2=(\tD'')^2=0$，特别地，$\tD$的曲率
+$$\Theta=\tD^2=(\tD'+\tD'')^2=\tD'\tD''+\tD''\tD'$$
+\end{lemma}
 
-Denote $\mcalO(1):=\mcalO(-1)^*$, then
-$$\Theta(\mcalO(1))=-\pbar\p\log(1+|z_1|^2+...+|z_n|^2)$$
-on $\Omg_0$.
-$$i\Theta(\mcalO(1))=i\p\pbar\log(1+|z_0|^2+...+|z_n|^2)
-=\sqrt{-1}\sum_{1\leq k,l\leq n}
-c_{k,l}\td z_k\wedge\td\overline{z_l}$$
+\begin{proof}
+注意$\tD''=\pbar$，从而显然$(\tD'')^2=\pbar^2=0$.
+至于$(\tD')^2=0$，我们在全纯局部标架下验证。
+对于全纯标架$e=(e_1,e_2...,e_r)$，设$\fai\in\Omg^{0,0}(X,E)$
+为$E$的光滑截面，$\fai:=\fai^\afa e_\afa$，
+我们将$\fai$在标架$e$下的坐标函数仍记为$\fai$
+（这里的$\fai$是$r$维列向量，每个分量都为光滑函数），则有
+$$\tD'\fai=\p\fai+A'\fai=\p\fai+h^{-1}\p h\cdot \fai$$
+注意到$\p^2=0$，以及$\p(h^{-1})=-h^{-1}\p h\cdot h^{-1}$，因此有
+\begin{eqnarray*}
+     (\tD')^2\fai
+&=&
+     \tD'(\p\fai+h^{-1}\p h\cdot\fai)\\
+&=&
+     \p(\p\fai+h^{-1}\p h\cdot\fai)
+    +h^{-1}\p h\cdot(\p\fai+h^{-1}\p h\cdot\fai)\\
+&=&
+     \p(h^{-1}\p h\cdot \fai)
+    +h^{-1}\p h\cdot\p\fai
+    +h^{-1}\p h\cdot h^{-1}\p h\cdot\fai\\
+&=&
+    -h^{-1}\p h\cdot h^{-1}\p h\cdot\fai
+    -h^{-1}\p h\cdot\p\fai
+    +h^{-1}\p h\cdot\p\fai
+    +h^{-1}\p h\cdot h^{-1}\p h\cdot\fai\\
+&=&
+     0
+\end{eqnarray*}
+\end{proof}
 
-Exercise: $(c_{kl})$ is a positive definite Hermitian matrix.
+\begin{prop}（陈联络的曲率）
 
-"Fubini-Study metric" on $\bbP(V)$.$\mcalO(1)$ is
-"hyperplane line bundle of $\bbP(V)$".
-
-Exercise: calculate
-$$\int_{\bbP(V)}
-    \left(
-      \frac{i}{2\pi}
-      \Theta(\mcalO(1))
-    \right)^{\wedge n}
-=?
+设$(E,h)\to X$为全纯Hermite向量丛，$\tD$为其陈联络，则
+$\tD$的曲率$\Theta$在全纯标架$e=(e_1,e_2,...,e_r)$下的系数矩阵为
 $$
-(Hint: $\bbP(V)\setminus\Omg_0$ is a zero-measure set)
-
-$E\to X$ : holomorphic line bundle, $D_E$ is a Chern connection.
-$$c_1(E)=\{\frac{i}{2\pi}\Theta(D_E)\}\in H_{DR}^2(X,\bbR)$$
-
-Exercise:
-{\color{red} $60\%$的概率出现于期末试题}
-
-Consider the sequence
-$$0\to\bbZ\to\mcalO\xra{e^{2\pi i *}}\mcalO^*\to 0$$
-it induces a long exact sequence
-$$\cdots\to
-H^1(X,\mcalO)\to H^1(X,\mcalO^*)\xra{\delta}H^2(X,\bbZ)\to H^2(X,\mcalO)\to\cdots
+  \Omg=\pbar(h^{-1}\p h)
 $$
-prove: Consider $E$ as an element of $H^1(X,\mcalO^*)$, then the
-image of $\delta(E)$ in $H^2(X,\bbR)\cong H^2_{DR}(X,\bbR)$ is $c_1(E)$.
+\end{prop}
 
-Exercise: $E$ is a holomorphic line bundle, denote
-$\theta:=\frac{i}{2\pi}\Theta(D_E)$ real $(1,1)-form$,
-where $D_E$ is Chern connection
-with a metric $h$.
-Prove: for any smooth function $f\in C^\infty(X,\bbR)$,
-there exists a Hermitian metric $h_f$ s.t.
-$$\frac{i}{2\pi}\Theta_{E,h_f}=\theta+i\p\pbar f$$
+\begin{proof}
+记号同之前，则
+\begin{eqnarray*}
+     \Omg&=&\td A+A\wedge A
+ =
+     (\p+\pbar)(h^{-1}\p h)+h^{-1}\p h\cdot h^{-1}\p h
+ =
+     \pbar(h^{-1}\p h)
+\end{eqnarray*}
+\end{proof}
+
+%$E\to X$ is holomorphic Hermite vector bundle , $D$ is the Chern connection,
+%Locally let $\{e_1,...,e_r\}$ be a holomorphic frame, and two local sections
+%$$s,t\in C^\infty(\Omg, E)$$where$$s=\sum_{i=1}^r\sgm_ie_i$$
+%$$t=\sum_{i=1}^r t_ie_i$$Since $D$ is Hermitian ,$$\td \{s,t\}=\td 
+%((\sgm_1,...,\sgm_r)H\begin{pmatrix}t_1\\\vdots\\t_r\end{pmatrix})
+%=(\td\sgm)^THt+\sgm^T(\td H)t+\sgm^TH\td(t)$$so, we have
+%$$\{Ds,t\}+\{s,Dt\}=(\td\sgm+\overline{H}^{-1}\p\overline{H}
+%\wedge\sgm)^T\wedge H\overline{t}+\sgm^T\wedge H\overline{
+%(\td t+\overline{H}^{-1}\p\overline{H}\wedge t)}$$
+%so ,$$Ds=\td\sgm+\overline{H}^{-1}\p\overline{H}\wedge\sgm$$
+%$$D's=\p\sgm+\overline{H}^{-1}\p\overline{H}\wedge\sgm
+%=\overline{H}^{-1}\p(\overline{H}\sgm)$$$$D''s=\pbar\sgm$$so,
+%$$(D')^2s=\overline{H}^{-1}\p(\overline{H}(\overline{H}^{-1}\p(\overline{H}\sgm)))
+%=\cdots=0$$$$(D'')^2s=\cdots=0$$So we have
+%$$\Theta(D)=(D'+D'')^2=D'D''+D''D'$$Locally ,
+%$$\Theta s=D'D''s+D''D's=\overline{H}^{-1}\p(\overline{H}\pbar\sgm)
+%+\pbar(\overline{H}^{-1}\pbar(\overline{H}\sgm))
+%=\cdots=\overline{H}^{-1}\p\overline{H}\wedge\pbar\sgm
+%+\pbar(\overline{H}^{-1})\sgm$$$$= \pbar(\overline{H}^{-1}\p\overline{H})\sgm
+%$$So, Chern curvature$$\Theta_D=\pbar(\overline{H}^{-1}\p\overline{H})$$
+%Nexttime: Hodge theory...%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%2019.4.9周二第七周%%%%%%%%%%%%%%%%%
+%Last time: $E\to X$ is a holomorphic vector bundlewith a Hermitian metric $H$.
+%Then there is a unique connection $D_E$s.t. ... called Chern connection.
+%Curvature of Chern Connection:$$\Theta(D_E)=\pbar(\overline{H}^{-1}\p\overline{H})$$
+
+\begin{rem}注意陈联络首先是Hermite联络，
+回顾性质\ref{Hermite 联络的曲率-prop}，陈联络的曲率满足
+$\ii\Theta\in\Omg^{2}(X,\Herm(E,E))$.
+而由$\Omg=\pbar(h^{-1}\p h)$不难看出，对于陈联络的曲率$\Theta$，
+$$\ii\Theta\in\Omg^{1,1}(X,\Herm(E,E))$$
+\end{rem}
+
+%so,$$i\Theta(D_E)\in C_{1,1}^\infty(X,\Hom(E,E))$$
+
+\begin{example}（全纯线丛的情形）
+
+特别地，若$(E,h)\to X$为全纯Hermite线丛，$\tD$为其陈联络，
+则在全纯标架$e$下，曲率形式$\Omg$满足
+$$\Omg=\pbar(h^{-1}\p h)=\pbar\p\log h=-\p\pbar\log h$$
+\end{example}
+若在该标架下，$h=e^{-2\fai}$，则曲率形式
+$$
+  \Omg=-\p\pbar\log h=2\p\pbar\fai
+= 2\pmfrac{\fai}{z^i}{\zbar^j}\td z^i\wedge\td\zbar^j
+$$
+
+%\begin{example}(Special case: $E$ is  a holomorphic line bundle)
+%locally, let $e$ be ha holomorphic frame,
+%$\langle e,e\rangle=h$ is the metric.
+%then,$$\Theta=\pbar(h^{-1}\p h)=\pbar\p\log h$$
+%so,$$i\Theta(E)=-i\p\pbar\log h$$\end{example}
+%if $h=e^{-2\fai}$ where $\fai$ is a smooth function, then
+%$$i\Theta(E)=2i\p\pbar\fai=2\sqrt{-1}\sum_{k,l}
+%\pmfrac{\fai}{z_k}{\overline{z_l}}\td z_k\wedge\td\overline{z_l}$$
+%\textbf{Question}: let $s$ be a local holomorphic section of $E$,
+%$$-i\p\pbar\log|s|_h^2=?$$(Hint:$\frac{i}{\pi}\p\pbar\log z=?$单复变，
+%按分布意义下求导 .等于狄拉克测度2333333){\color{red}可能是期末题目？}
+
+\begin{prop}
+\label{用全纯截面计算Hermite线丛的陈曲率-prop}
+设$(E,h)\to X$为全纯Hermite线丛，
+设$s$为$E$的任何一个（局部）非零的\textbf{全纯截面}，则成立
+$$-\ii\p\pbar\log\norm{s}^2_h=\sqrt{-1}\Theta$$
+其中$\Theta$为$(E,h)$陈联络的曲率形式。
+\end{prop}
+
+\begin{proof}任取$E$的全纯标架$e$，在全纯标架下验证。
+把$s$在该标架下的坐标函数仍记为$s$.则注意$s$为全纯标架，
+从而坐标函数$s$满足$\pbar s=\p\sbar=0$，因此有
+\begin{eqnarray*}
+  -\ii\p\pbar\log\norm{s}^2_h
+&=&
+  -\ii\p\pbar\log(s\sbar h)
+=
+  -\ii\p\pbar[\log(s\sbar)+\log h]\\
+&=&
+  -\ii\p\pbar\log h
+=
+  \ii\Theta
+\end{eqnarray*}
+\end{proof}
+
+\begin{cor}（$\p\pbar$-引理）
+
+设$(E,h)\to X$为复流形$X$上的全纯线丛，
+记$\Theta$为$h$的陈联络的曲率形式。则对任意实值光滑函数
+$f\in\Omg^0(X,\bbR)$，必存在$E$上的Hermite度量$\t=\htil$，
+使得其陈联络的曲率形式$\Thetatil$满足
+$$\Thetatil=\Theta+2\pi\p\pbar f$$
+\end{cor}
+\begin{proof}
+取$\htil=e^{-2\pi f}h$即可。
+\end{proof}
+
+%Exercise: $E$ is a holomorphic line bundle, denote
+%$\theta:=\frac{i}{2\pi}\Theta(D_E)$ real $(1,1)-form$,
+%where $D_E$ is Chern connection
+%with a metric $h$.Prove: for any smooth function $f\in C^\infty(X,\bbR)$,
+%there exists a Hermitian metric $h_f$ s.t.
+%$$\frac{i}{2\pi}\Theta_{E,h_f}=\theta+i\p\pbar f$$
+
+\begin{thm}（第一陈类的代数几何解释）
+
+设$X$为复流形，考虑$X$上的层正合列
+$0\to\bbZ\inj\mcalO\xra{e^{2\pi i*}}\mcalO^*\to 0$
+诱导的上同调长正合列
+$$
+  \cdots\to
+  H^1(X,\mcalO)\to H^1(X,\mcalO^*)
+  \xra{\delta}H^2(X,\bbZ)\to H^2(X,\mcalO)\to\cdots
+$$
+则对任意全纯线丛$E\in H^1(X,\mcalO^*)$，
+$\delta(E)\in H^2(X,\bbZ)\inj H^2(X,\bbR)\cong H^2_{\DR}(X,\bbR)$满足
+$$\delta(E)=[c_1(E)]$$
+\end{thm}
+
+\begin{proof}
+{\color{red}（待补）}
+\end{proof}
+
+%Consider the sequence$$0\to\bbZ\to\mcalO\xra{e^{2\pi i *}}
+%\mcalO^*\to 0$$it induces a long exact sequence
+%prove: Consider $E$ as an element of $H^1(X,\mcalO^*)$, then the
+%image of $\delta(E)$ in $H^2(X,\bbR)\cong H^2_{DR}(X,\bbR)$ is $c_1(E)$.
+
+\section{例子：复射影空间上的典范线丛$\mcalO(-1)$}
+
+设$V$为复线性空间，$\dim_{\bbC}V=n+1$，则我们已经熟悉
+复流形$\bbP(V)\cong\bbC\bbP^n$以及其上的典范线丛
+$\mcalO(-1):=\Bigset{([\xi],\eta)\in\bbP(V)\times V}{\eta\in[\xi]}$.
+回顾$\bbP(V)$具有典范的坐标覆盖$U_i:=\Bigset{[z_0;z_1;...;z_n]}{z_i\neq 0}$，
+这也是线丛$\mcalO(-1)$的局部平凡化覆盖。
+
+\begin{Example}
+设$V$为Hermite内积空间（酉空间），则线丛$\mcalO(-1)\to h$
+上自然配以Hermite内积结构$h$，
+该Hermite内积由$V$上的Hermite内积自然诱导。
+取线性空间$V$的一组幺正基$(e_0,e_1,...,e_n)$，
+该基下的坐标函数记为$(z_0,z_1,...,z_n)^T$.
+则在$\bbP(V)$的局部坐标卡
+$U_0:=\Bigset{[z_0;z_1;...;z_n]}{z_0\neq 0}\cong\bbC^n$下，
+$$\mcalE_0:=e_0+\sum_{k=1}^{n}z_ke_k$$
+为$\mcalO(-1)$在$U_0$下的一个非零全纯截面，即全纯标架。
+\end{Example}
+
+关于截面$\mcalE_0$，有一点轻微的记号混用。
+线丛的全纯截面在局部平凡化坐标卡下，应该是$\mcalU_0\cong\bbC^n$
+上的全纯函数。在此意义下，$\mcalE_0(z_1,z_2,...,z_n)\equiv 1$，
+是“最简单”的非零全纯函数。
+
+注意Hermite度量，容易知道在局部坐标
+$U_0=(z_1,z_2,...,z_n)$以及全纯标架$\mcalE_0$下有
+$$
+  h=\norm{\mcalE_0}^2_h=1+|z_1|^2+|z_2|^2+\cdots+|z_n|^2
+$$
+因此陈联络的曲率形式$\Theta(\mcalO(-1))$为
+$$
+  \Theta(\mcalO(-1))=-\p\pbar\log h
+=
+  -\p\pbar\log(1+|z_1|^2+|z_2|^2+\cdots+|z_n|^2)
+$$
+
+%Assume $V$ has a Hermitian inner product, then $\mcalO(-1)$ has an
+%Hermitian structure induced from $V$.
+%Let $e_0,...,e_n$ be an orthonormal basis of $V$, then
+%$\mcalO(-1)|_{\Omg_0}$ has a non-vanishing holomorphic section:
+%$$\mcalE_0(z_1,...,z_n)=e_0+z_1e_1+...+z_ne_n$$
+%where$$\Omg_0=\{[1;z_1;...;z_n]|z_j\in\bbC\}\cong\bbC^n$$
+%then,$$|\mcalE_0|^2_h=1+|z_1|^2+...+|z_n|^2$$
+%so the Chern curvature of $\mcalO(-1)$ on $\Omg_0$ is given by
+%$$\Theta=\pbar\p\log(1+|z_1|^2+\cdots+|z_n|^2)$$
+
+\begin{example}（超平面丛$\mcalO(1)$）
+记号同上，考虑$\mcalO(-1)$的对偶丛$\mcalO(1):=\mcalO(-1)^*$，
+则$\mcalO(1)$的曲率形式在坐标卡$U_0$下的表达式为
+$$
+  \Theta(\mcalO(1))=-\Theta(\mcalO(-1))
+=
+  \p\pbar\log(1+|z_1|^2+|z_2|^2+\cdots+|z_n|^2)
+$$
+\end{example}
+
+{\color{blue}
+记$f(z_1,z_2,...,z_n):=\log(1+|z_1|^2+|z_2|^2+\cdots+|z_n|^2)$，
+则矩阵$\left(\pmfrac{f}{z_k}{\zbar_l}\right)_{1\leq k,l\leq n}$
+是\textbf{正定}Hermite矩阵（为什么？）。
+}
+
+%Denote $\mcalO(1):=\mcalO(-1)^*$, then
+%$$\Theta(\mcalO(1))=-\pbar\p\log(1+|z_1|^2+...+|z_n|^2)$$
+%on $\Omg_0$.$$i\Theta(\mcalO(1))=i\p\pbar\log(1+|z_0|^2+...+|z_n|^2)
+%=\sqrt{-1}\sum_{1\leq k,l\leq n}c_{k,l}\td z_k\wedge\td\overline{z_l}$$
+%Exercise: $(c_{kl})$ is a positive definite Hermitian matrix.
+%"Fubini-Study metric" on $\bbP(V)$.$\mcalO(1)$ is
+%"hyperplane line bundle of $\bbP(V)$".
+
+\begin{thm}
+对于$n+1$维复向量空间$V$，则$\bbP(V)$上的线丛$\mcalO(1)$
+的第一陈形式$c_1(\mcalO(1))\in\Omg^{1,1}(\bbP(V))$满足
+$$
+  \int_{\bbP(V)}
+    [c_1(\mcalO(1))]^{\wedge n}
+=1
+$$
+\end{thm}
+
+%Exercise: calculate$$\int_{\bbP(V)}\left(
+%\frac{i}{2\pi}\Theta(\mcalO(1))\right)^{\wedge n}=?$$
+%(Hint: $\bbP(V)\setminus\Omg_0$ is a zero-measure set)
+%$E\to X$ : holomorphic line bundle, $D_E$ is a Chern connection.
+%$$c_1(E)=\{\frac{i}{2\pi}\Theta(D_E)\}\in H_{DR}^2(X,\bbR)$$
+
+注意$c_1(\mcalO(1))=\frac{\ii}{2\pi}\Theta$，
+其中$\Theta$为上文当中的陈联络的曲率形式。
+事实上，陈类的定义当中的系数“$\frac{\ii}{2\pi}$”
+存在的意义正是要让此定理成立（归一化）。
+
+\begin{proof}
+考虑$\bbP(V)$的坐标卡$U_0$，注意$\bbP(V)\setminus U_0$
+是零测的，从而只需计算它在$U_0$上的积分。
+
+{\color{red}（待补，似乎要暴力计算？）}
+\end{proof}
+
+
+
+
 
 

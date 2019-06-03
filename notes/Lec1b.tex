@@ -71,3 +71,30 @@ tensor product of two vector bundles.
 locally, tensor product of two transition matrices.
 \end{definition}
 \section{例子（暂定）}
+
+\begin{example}
+$\mcalO(-1)$ on $\bbC P^n$, tautological line bundle.
+(Recall: $\bbC P^n$ is a compact complex manifold with holomorphic charts
+$$\Omg_j:=\{[z_0;z_1;...;z_n]|z_j\neq 0\}\to
+\left(
+\frac{z_0}{z_j},\cdots,\hat{1},\cdots
+\frac{z_n}{z_j}
+\right)\in\bbC^n$$
+)
+\end{example}
+
+Let $V$ be a complex vector space, $\dim_\bbC V=n+1$.
+Denote the projective space by
+$$\bbP(V)=(V\setminus\{0\})/\bbC^*$$
+Let $\underline{V}:=\bbP(V)\times V$ be the trivial vector bundle,
+define
+$$\mcalO(-1):=\{([x],\xi)|\xi\in\bbC\cdot x\}$$
+
+\begin{prop}
+$\mcalO(-1)$ is a holomorphic line bundle on $\bbP(V)$.
+\end{prop}
+\begin{proof}
+$\mcalO(-1)|_{\Omg_j}$ has a non-vanishing holomorphic section $\mcalE_j$ defined by
+$$\mcalE_j([x])=\frac{x}{x_j}$$
+for $0\leq j\leq n$.
+\end{proof}
