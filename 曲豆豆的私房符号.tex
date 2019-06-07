@@ -171,10 +171,34 @@
 \newcommand*{\Hhat}{\widehat{H}}
 \newcommand*{\Xhat}{\widehat{X}}
 
+\newcommand*{\afahat}{\widehat{\alpha}}
+\newcommand*{\betahat}{\widehat{\beta}}
+
+\newcommand*{\gbar}{\overline{g}}
+\newcommand*{\hbarr}{\overline{h}}           %这里要小心
+\newcommand*{\rbar}{\overline{r}}
+\newcommand*{\sbar}{\overline{s}}
+\newcommand*{\ubar}{\overline{u}}
 \newcommand*{\zbar}{\overline{z}}            %complex number
 \newcommand*{\wbar}{\overline{w}}
-\newcommand*{\taubar}{\overline{\tau}}
 
+\newcommand*{\afabar}{\overline{\afa}}
+\newcommand*{\betabar}{\overline{\beta}}
+\newcommand*{\gmabar}{\overline{\gamma}}
+\newcommand*{\taubar}{\overline{\tau}}
+\newcommand*{\omgbar}{\overline{\omega}}
+\newcommand*{\Omgbar}{\overline{\Omega}}
+
+\newcommand*{\Abar}{\overline{A}}
+\newcommand*{\Bbar}{\overline{B}}
+\newcommand*{\Gbar}{\overline{G}}
+\newcommand*{\Hbar}{\overline{H}}
+\newcommand*{\Sbar}{\overline{S}}
+\newcommand*{\Tbar}{\overline{T}}
+
+\newcommand*{\atil}{\widetilde{a}}
+\newcommand*{\btil}{\widetilde{b}}
+\newcommand*{\etil}{\widetilde{e}}
 \newcommand*{\ftil}{\widetilde{f}}
 \newcommand*{\gtil}{\widetilde{g}}
 \newcommand*{\htil}{\widetilde{h}}
@@ -186,11 +210,17 @@
 \newcommand*{\ztil}{\widetilde{z}}
 \newcommand*{\wtil}{\widetilde{w}}
 
+\newcommand*{\Atil}{\widetilde{A}}
+\newcommand*{\Btil}{\widetilde{B}}
+\newcommand*{\Ctil}{\widetilde{C}}
 \newcommand*{\Ftil}{\widetilde{F}}
 \newcommand*{\Gtil}{\widetilde{G}}
 \newcommand*{\Htil}{\widetilde{H}}
 \newcommand*{\Ntil}{\widetilde{N}}
 \newcommand*{\Rtil}{\widetilde{R}}
+\newcommand*{\Stil}{\widetilde{S}}
+\newcommand*{\Ttil}{\widetilde{T}}
+\newcommand*{\Util}{\widetilde{U}}
 
 \newcommand*{\mcalFtil}{\widetilde{\mathcal{F}}}
 \newcommand*{\mcalGtil}{\widetilde{\mathcal{G}}}
@@ -199,6 +229,7 @@
 \newcommand*{\afatil}{\widetilde{\alpha}}
 \newcommand*{\faitil}{\widetilde{\varphi}}
 \newcommand*{\Omgtil}{\widetilde{\Omega}}
+\newcommand*{\Thetatil}{\widetilde{\Theta}}
 
 \newcommand*{\afa}{\alpha}
 \newcommand*{\lmd}{\lambda}
@@ -216,7 +247,9 @@
 \newcommand*{\pai}{\varpi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand*{\Cech}{C\v{e}ch}
+\newcommand*{\Cech}{\v{C}ech}
+\newcommand*{\Kahler}{K\"{a}hler}
+\newcommand*{\phjwll}{Poincar\'{e}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand*{\ra}{\rightarrow}
@@ -230,6 +263,7 @@
 \newcommand*{\rlim}{\varinjlim}                 %colimit，余极限，归纳极限，正向极限
 \newcommand*{\llim}{\varprojlim}                %limit，极限，投射极限，逆向极限
 \newcommand*{\suobing}{\lrcorner\,}             %张量的缩并
+\newcommand*{\ii}{\sqrt{-1}}                    %虚数单位
 
 \newcommand*{\xybigrow}{\xymatrixrowsep{5pc}}   %交换图排版专用
 \newcommand*{\xybigcol}{\xymatrixcolsep{5pc}}   %增大行、列间距
@@ -239,6 +273,7 @@
 \newcommand*{\yc}{\triangle}                    %余代数的乘法，co-product
 \newcommand*{\p}{\partial}                      %偏微分、边缘算子partial
 \newcommand*{\td}{\mathrm{d}}                   %微分算子d
+\newcommand*{\tD}{\mathrm{D}}                   %联络算子D
 \newcommand*{\pbar}{\overline{\partial}}        %Dolbeaut算子partial-bar
 \newcommand*{\ten}{\otimes}                     %张量积tensor product
 \newcommand*{\bigten}{\bigotimes}
@@ -267,6 +302,20 @@
     \langle
       #1,#2
     \rangle
+  }
+
+\newcommand*{\bair}[2]                   %花括号内积
+  {
+    \{
+      #1,#2
+    \}
+  }
+
+\newcommand*{\Bair}[2]                   %大花括号内积
+  {
+    \left\{
+      #1,#2
+    \right\}
   }
 
 \newcommand*{\Pair}[2]                   %大的的内积
@@ -332,12 +381,12 @@
       #2
   }\right]}
 
-\newcommand*{\dd}[1]                       %常微分算子
+\newcommand*{\tdd}[1]                       %常微分算子
   {\frac{\mathrm{d}   }
         {\mathrm{d} #1}
   }
 
-\newcommand*{\ddfrac}[2]
+\newcommand*{\tdfrac}[2]
   {\frac{\mathrm{d} #1}
         {\mathrm{d} #2}
   }                                       %一阶常微分
@@ -377,14 +426,17 @@
 \DeclareMathOperator{\Crit}{Crit}     %Critical locus
 \DeclareMathOperator{\Der}{Der}       %Derivation        导子
 \DeclareMathOperator{\Div}{div}       %divergence     散度
+\DeclareMathOperator{\Divs}{Div}      %divsior        除子
 \DeclareMathOperator{\DR}{DR}         %De-Rham
 \DeclareMathOperator{\End}{End}       %Endomorphism
-\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Ext}{Ext}       %Extension
 \DeclareMathOperator{\ev}{ev}         %evaluation
 \DeclareMathOperator{\Free}{Free}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Gal}{Gal}       %Galois
+\DeclareMathOperator{\GL}{GL}         %General Linear
+\DeclareMathOperator{\God}{God}       %Godement
 \DeclareMathOperator{\HC}{HC}         %Hochschild Cyclic (co)homology
+\DeclareMathOperator{\Herm}{Herm}     %Hermitian inner product
 \DeclareMathOperator{\HH}{HH}         %Hochschild (co)homology
 \DeclareMathOperator{\Hom}{Hom}       %Homorphism
 \DeclareMathOperator{\id}{id}         %identity
@@ -392,23 +444,29 @@
 \DeclareMathOperator{\Inn}{Inn}       %Inner Derivation  内导子
 \DeclareMathOperator{\Inv}{Inv}       %Invariant
 \DeclareMathOperator{\Lie}{Lie}       %Lie algebra or Lie derivation
+\DeclareMathOperator{\loc}{Loc}       %Local
 \DeclareMathOperator{\Mor}{Mor}       %Morphism
 \DeclareMathOperator{\Obj}{Obj}       %Object
 \DeclareMathOperator{\Obs}{Obs}       %Observable
 \DeclareMathOperator{\Ord}{Ord}       %Order
 \DeclareMathOperator{\per}{per}       %periodic cyclic complex
+\DeclareMathOperator{\PSH}{PSH}       %plurisubharmonic
 \DeclareMathOperator{\PV}{PV}         %Polyvector field
 \DeclareMathOperator{\ran}{ran}       %range
 \DeclareMathOperator{\rank}{rank}     %rank 秩
-\DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\Sh}{Sh}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\Spec}{Spec}     %素谱
+\DeclareMathOperator{\reg}{reg}       %regular
+\DeclareMathOperator{\Rep}{Rep}       %Representation
+\DeclareMathOperator{\sing}{sing}     %singularity
+\DeclareMathOperator{\sgn}{sgn}       %signature
+\DeclareMathOperator{\Sh}{Sh}         %Sheaf
+\DeclareMathOperator{\Span}{span}     %span
+\DeclareMathOperator{\Spec}{Spec}     %spectrum 素谱
 \DeclareMathOperator{\supp}{supp}     %Support 支撑集
 \DeclareMathOperator{\Sym}{Sym}       %Symmetry  对称张量积
-\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Tor}{Tor}       %Torsion
 \DeclareMathOperator{\Tot}{Tot}       %Total complex of a double-complex
+\DeclareMathOperator{\tr}{tr}         %trace
+\DeclareMathOperator{\Vol}{Vol}       %Volume
 \DeclareMathOperator{\YM}{YM}         %Yang-Mills   杨振宁-米尔斯
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -422,6 +480,7 @@
 \DeclareMathOperator{\modcat}{\!\text{-}\mathsf{Mod}}
 \DeclareMathOperator{\Shcat}{\mathsf{Sh}}
 \DeclareMathOperator{\pShcat}{\mathsf{pSh}}
+\DeclareMathOperator{\Cohcat}{\!\text{-}\mathsf{Coh}}
 
 \newcommand*{\Modcat}[2]
     {\Mod^{#1}_{#2}}
