@@ -1455,7 +1455,7 @@ Denote $C^s(X,\wedgeform{p}T^*X)$ the space
 of $s$-differentiable $p$-forms on $X$.
 
 Let $\Omg\subseteq X$ be a coordinate open set,
-$u\in C^s(X,\wedgeform{p}T^*X)$,write 
+$u\in C^s(X,\wedgeform{p}T^*X)$,write
 $$u=\sum_{|I|=p} u_I\td x_I$$
 where $u_I$ are $s$-differentiable functions.
 
@@ -1466,7 +1466,7 @@ $$
   \sup_{x\in K}
     \max_{|I|=p\atop|\afa|\leq s}
       |D^\afa u_I(x)|
-$$  
+$$
 ,where $D^\afa=\frac{\p^\afa}{\p x_1^{\afa_1}\cdots\p x_n^{\afa_n}}$.
 
 $\mcalE^p(X)$- the space $C^\infty(X,\wedgeform{p}T^*X)$
@@ -1487,7 +1487,7 @@ similarly we can define $\,^s\mcalD^p(K)$ and $\,^s\mcalD^p(K)$.
 \begin{rem}
 (1) $\mcalE^p(X)$(resp. $\,^s\mcalE^p(X)$)
 can be defined by countably many $P^s_k$.
-In particular, $\mcalE^p$, $\,^s\mcalE^p$ are 
+In particular, $\mcalE^p$, $\,^s\mcalE^p$ are
 Fr\'{e}chet spaces.
 
 (2)$\mcalD^p(X)$ is dense in $\mcalE^p(X)$.
@@ -1502,7 +1502,7 @@ s.t. $T|_{\mcalD^p(K)}$ is continuous.
 \end{definition}
 
 \begin{rem}
-A current can be considered as a form with 
+A current can be considered as a form with
 distribution coefficients.
 More precisely,
 $$
@@ -1520,7 +1520,7 @@ $$
 :=T_I(f)
 $$
 On the other hand, if $T$ is a current of dimension $p$,
-then we define 
+then we define
 $$
   T_I(f):=\pair{T}{f\td x_{I^c}}
 $$
@@ -1544,7 +1544,7 @@ for all $u\in\mcalD^p(X)$.
 \end{example}
 
 \begin{example}
-Let $f$ be a form of degree $n-p$, with 
+Let $f$ be a form of degree $n-p$, with
 coefficients in $L^1_{loc}(X)$. We define the following current $T_f$:
 $$
   \pair{T_f}{u}
@@ -1560,7 +1560,7 @@ Exterior derivative on Currents:
 
 \begin{definition}
 Let $T$ be a current of dimension $p$(or degree $n-p$),
-$u\in\mcalD^{p-1}(X)$. We define $\td T$ is the 
+$u\in\mcalD^{p-1}(X)$. We define $\td T$ is the
 current is defined as followes:
 $$
   \pair{\td T}{u}
@@ -1586,7 +1586,7 @@ $$
 \end{rem}
 
 \begin{example}
-$Z\subseteq X$ is a $p$-dimensional submanifold with 
+$Z\subseteq X$ is a $p$-dimensional submanifold with
 boundary $\p Z$, then by the stokes formula:
 for $u\in\mcalD^{p-1}(X)$,
 $$
@@ -1598,25 +1598,25 @@ $$
   (-1)^{n-p+1}\int_Z\td u
 = (-1)^{n-p+1}\int_{\p Z}u
 = (-1)^{n-p+1}\pair{[\p Z]}{u}
-$$ 
-so we have 
+$$
+so we have
 $$\td[Z]=(-1)^{n-p+1}[\p Z]$$
 \end{example}
 
 \begin{definition}
 A current $T\in\mcalD'_p(X)$ is called closed
-if $\td T=0$. 
+if $\td T=0$.
 \end{definition}
 
 Example: if $T=T_f$ for some $f\in\mcalE^p(X)\cap L^1_{loc}(X)$,
 then $T_f$ is closed if and only if $f$ is closed(differential form).
 
-Example: $Z\subseteq X$ a submanifold of $X$, then 
+Example: $Z\subseteq X$ a submanifold of $X$, then
 $\td[Z]=0\iff Z$ has no boundary.
 
 \textbf{Now, Let $X$ be a complex manifold...}
 of $\dim_{\bbC}=n$, similar to the smooth case,
-we can define: 
+we can define:
 $$
   \mcalE^{p,q}(X)\quad
   \,^s\mcalE^{p,q}(X)\quad
@@ -1657,7 +1657,7 @@ $$
   \pair{[V]}{u}
 :=
   \int_{V_{\reg}}u
-$$  
+$$
 (in general, $V_{\reg}$ is an open submanifold of $\dim_{\bbC}=p$.)
 \end{example}
 
@@ -1670,10 +1670,12 @@ $$
 $$
 \end{example}
 
+
+\section{微分形式的正性}
 \textbf{positivity of forms}
 
 \begin{definition}
-A $(p,p)$-form $\fai\in\wedgeform{p,p}(\bbC^n)$ 
+A $(p,p)$-form $\fai\in\wedgeform{p,p}(\bbC^n)$
 is called strongly positive if $\fai$
 is a convex combination as follows:
 $$
@@ -1711,9 +1713,9 @@ Check: $\mcalC_{sp}^k\subseteq\mcalC_p^k$.
 Consider a $(p,p)$-form as a linear function on $\wedgeform{n-p,n-p}$,
 then $C_p^k=(C_{sp}^{n-k})^*$
 
-(General setting: $\mcalC\subseteq V$, $V$ 
+(General setting: $\mcalC\subseteq V$, $V$
 is a real vector space of finite dimension,
-$\mcalC$ is a convex cone, $V^*$ is the dual of $V$, then we can define 
+$\mcalC$ is a convex cone, $V^*$ is the dual of $V$, then we can define
 $\mcalC^*:=\Bigset{l\in V^*}{l|_{\mcalC}\geq 0}$)
 
 Take double dual:
@@ -1721,15 +1723,551 @@ $$\overline{\mcalC_{sp}^{n-k}}=(\mcalC_p^k)^*$$
 (general fact: $(\mcalC^*)^*=\overline{\mcalC}$)
 
 \begin{cor}
-A $(p,p)$-form $\fai$ is strongly positive if and only if 
+A $(p,p)$-form $\fai$ is strongly positive if and only if
 for all $\psi\in\wedgeform{n-p,n-p}$ positive,
 $\fai\wedge\psi\geq 0$. In particular,
-"strongly positivity" is dual to "positivity". 
+"strongly positivity" is dual to "positivity".
 \end{cor}
 
+%%%%%%%%%%2019.6.4  特别的日子%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%马上期末了！！%%%%%%%%%%%%%%%%%%%%%%%
 
+Recall: positivity of forms.
 
+a $(p,p)$-form $\fai\in\wedgeform{p,p}(\bbC^n)$
+is strongly positive if
+$$
+  \fai=\sum_{c_s\geq 0}
+    c_s\ii\afa_{s,1}\wedge\afabar_{s,1}
+    \wedge\cdots\wedge
+    \ii\afa_{s,p}\wedge\afabar_{s,p}
+$$
+where $\afa_{s,j}\in\wedgeform{1,0}$
 
+A $(p,p)$-form $\psi\in\wedgeform{p,p}$
+is positive if $\psi\wedge\fai\geq 0$ for all $\fai\in\wedgeform{n-p,n-p}$
+strongly positive.
 
+Rem: $\{\text{positive $(p,p)$-forms}\}$ and
+$\{\text{strongly positive $(n-p,n-p)$-forms}\}$
+are dual to each other.
+
+Rem: an $(1,1)$-form $\fai=\ii\sum\limits_{i,j}\fai_{ij}\td z_i\wedge\td\zbar_j$
+is strongly positive $\iff$ positive $\iff$
+the matrix $[\fai_{ij}]$ is a semi-positive Hermitian matrix.
+
+Rem: for $p=1,n-1,0,n$, strongly positive $\iff$ positive.
+In particular, an $(n-1,n-1)$-form
+$\psi=c\sum\limits_{ij}\psi_{ij}\widehat{\td z_i\wedge\td\zbar_j}$
+(where $\widehat{\td z_i\wedge\td\zbar_j}$ is the $(n-1,n-1)$-form
+s.t. $\td z_i\wedge\td \zbar_j\wedge\widehat{\td z_i\wedge\td\zbar_j}
+=\td z_1\wedge\td\zbar_1\wedge\cdots\wedge\td z_n\wedge\td\zbar_n$.)
+is strongly positive $\iff$ $[\psi_{ij}]\geq 0$.
+
+\begin{prop}
+Let $(z_1,z_2,...,z_n)$ be a coordinate system of $\bbC^n$,
+then $\wedgeform{p,p}$ admits a basis consisting of strongly
+positive form
+$$
+  \beta_s
+=
+  \ii\beta_{s,1}\wedge\betabar_{s,1}
+  \wedge\cdots\wedge
+  \ii\beta_{s,p}\wedge\betabar_{s,p}
+$$
+with $1\leq s\leq {n\choose p}^2$, every $\beta_{s,j}\in\wedgeform{1,0}$
+is of the type $\td z_j\pm\td z_k, \td z_j\pm\ii\td z_k$,
+$1\leq j,k\leq n$.
+\end{prop}
+
+\begin{proof}
+note the identity
+$$
+  4\td z_j\wedge\td \zbar_k
+=
+  (\td z_j+\td z_k)\wedge
+  \overline{(\td z_j+\td z_k)}
+-
+  (\td z_j-\td z_k)\wedge
+  \overline{(\td z_j-\td z_k)}
++
+  \ii(\td z_j+\ii\td z_k)
+  \wedge
+  \overline{
+    \ii(\td z_j+\ii\td z_k)
+  }
+-
+  \ii(\td z_j-\ii\td z_k)
+  \wedge
+  \overline{
+    \ii(\td z_j-\ii\td z_k)
+  }
+$$
+and
+$$
+  \td z_{i_1}\wedge\cdots\wedge\td z_{i_p}
+\wedge
+  \td\zbar_{j_1}\wedge\cdots\wedge\td\zbar_{j_p}
+=
+  \pm\bigwedge_{1\leq s\leq p}
+  (\td z_{is}\wedge\td\zbar_{js})
+$$
+
+a set of generators contain a basis.
+\end{proof}
+
+\begin{cor}
+All positive $(p,p)$-forms are real, i.e.
+if $u\in\wedgeform{p,p}_{\bbC}$ is positive,and
+$$u=(\ii)^{p^2}
+\sum_{|I|=|J|=p}
+u_{IJ}
+\td z_I\wedge\td z_{J}
+$$
+then $u=\ubar$, i.e. $u_{IJ}=\overline{u_{JI}}$
+\end{cor}
+
+\begin{rem}
+For all $2\leq p\leq n-2$,
+$$\{\text{strongly positive $(p,p)$-forms}\}
+\subsetneqq
+\{\text{positive $(p,p)$-forms}\}$$
+
+The wedge product of positive forms may NOT be positive
+\end{rem}
+
+\begin{rem}Ref:
+
+\verb"Blocki-Pli\'{s}:Square or positive $(p,p)$-forms 2013"
+
+For $p=2$, if $\afa$ is a positive $(2,2)$-form,
+then $\afa^2$ is a positive $(4,4)$-form.
+\end{rem}
+（困难的线性代数题）
+
+Positivity of currents
+
+\begin{definition}
+A current $T\in\mcalD'_{p,p}(X)$ is called positive
+if $\pair{T}{\fai}\geq 0$ for all $\fai\in\mcalD^{p,p}(X)$
+strongly positive.
+
+$T$ is called strongly positive, if
+$\pair{T}{\fai}\geq 0$ for all $\fai\in\mcalD^{p,p}(X)$ positive.
+\end{definition}
+
+\begin{example}
+Let $V\subseteq X$ be a complex submanifold of $\dim=p$,
+then the current of integration $[V]$ is a
+strongly positive $(p,p)$-current $\in\mcalD'_{p,p}(X)$.
+\end{example}
+
+\begin{proof}
+Exercise.
+\end{proof}
+
+\begin{rem}
+In general, $\{\text{strongly positive $(p,p)$-currents}\}
+\subseteq\{\text{positive $(p,p)$-current}\}$
+with equality if $p=0,1,n-1,n$.
+\end{rem}
+
+\begin{rem}
+Every positive $(p,p)$-current
+$T=_{loc}(-1)^p\sum\limits_{|I|=|J|=p}T_{IJ}\td z_I\wedge\td\zbar_J$
+is real ,i.e. $T_{IJ}=\overline{T_{JI}}$ (as distribution) and
+$T_{I,I}\geq 0$. and
+$$
+  \lmd_I\lmd_J|T_{IJ}|\leq 2^p\sum\lmd_M^2T_{MM}
+$$
+if $I\cap J\subseteq M\subseteq I\cup J$,
+where $\lmd_I=\prod_{k\in I}\lmd_K$, $\lmd_k\geq 0$.
+\end{rem}
+
+\begin{proof}
+Omit.
+\end{proof}
+
+\textbf{Weak topology of currents}
+
+\begin{definition}
+The weak topology on $\mcalD'_p(X)$ is the
+topology defined by the collection of semi-norms
+$$
+  T\mapsto |\pair{T}{f}|
+  \qquad
+  f\in\mcalD^p(X)
+$$
+\end{definition}
+
+\begin{definition}
+A set $B\subseteq\mcalD_p'(X)$ is called
+weakly bounded if
+$|\pair{T}{f}|$ if bounded for ever $T\in B$ and $f\in\mcalD^p(X)$.
+\end{definition}
+
+\begin{rem}
+By Banach-Alaoglu Theorem（泛函大招）,
+every weakly bounded closed subset $B\subseteq \mcalD'_p(X)$
+is weakly compact.
+\end{rem}
+
+\begin{thm}
+$(X,\omg)$-Hermitian manifold, then
+the set
+$$\Bigset{T\in\mcalD'_{p,p}(X)\text{positive}}
+         {\sup_{\theta\in C^\infty(X)\text{with compact supp}}
+           \pair{T}{\theta\omg^p}\leq 1}
+$$
+is weakly compact in $\mcalD'_{p,p}$
+\end{thm}
+
+\textbf{$\td$-closed positive $(1,1)$-currents and plurisubharmonic (PSH) functions }
+
+$T\in\mcalD^{1,1}(X),T\geq 0,\td T=0$...
+
+\begin{example}
+$D\in\Divs(X)$ effective, then $[D]$ is a $\td$-closed
+positive $(1,1)$-current.
+\end{example}
+
+PSH functions
+
+\begin{definition}
+  $\Omg\subseteq X$ open subset, $u:\Omg\to[-\infty,+\infty)$
+is called \textbf{PSH}（多重次调和）， if
+
+(1)$u$ is upper-semi-continuous (usc)
+(rmk: $u$ has a upper bound on any compact subset)
+
+(2) for any complex line $L\subseteq\bbC^n$,
+$u|_{\Omg\cap L}$ is subharmonic.
+(i.e. $\forall a\in\Omg,\xi\in\bbC^n$ with $|\xi|<d(a,\p\Omg)$,
+we have the mean value inequality
+$$
+  u(a)\leq\frac{1}{2\pi}
+  \int_{0}^{2\pi}
+    u(a+e^{i\theta}\xi)\td \theta
+$$
+Denote $PSH(\Omg):=$ the set of PSH functions on $\Omg$
+)
+\end{definition}
+
+\begin{prop}
+(1) for all $u\in\PSH(\Omg)$, $u$ is subharmonic, i.e.
+for any $a\in\Omg,r<d(a,\p\Omg)$ we have
+$$
+  u(a)\leq\frac{1}{|B(a,r)|}
+  \int_{B(a,r)}u(z)\td\lmd(z)
+$$
+
+(2)Let $\{u_k\}_{k\geq 1}\subseteq\PSH(\Omg)$,
+assume $u_k\downarrow u$, then $u\in\PSH(\Omg)$.
+
+(cor: $u\in\PSH(\Omg)$, then either $u\equiv-\infty$ or $u\in L^1_{\loc}(\Omg)$)
+
+(3)Let $u\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$,
+take $(\rho_\veps)_{\veps>0}$ a family of smoothing kernels,
+then
+$$u*\rho_\veps\in C^{\infty}(\Omg_\veps)\cap\PSH(\Omg_\veps)$$
+where $\Omg_\veps:=\Bigset{x\in\Omg}{d(x,\p\Omg)>\omg}$,
+and $u*\rho_\veps\downarrow u$ as $\veps\to 0^+$.
+
+(4) Let $u_1,...,u_p\in\PSH(\Omg)$,
+$x:\bbR^p\to \bbR$ be a convex function and increasing w.r.t. every variable,
+then $x(u_1,...,u_p)\in\PSH(\Omg)$.
+
+In particular, $\max\{u_1,...,u_p\}$,$\log(e^{u_1}+\cdots+e^{u_p})$
+are also in $\PSH(\Omg)$.
+
+(5)If $u\in C^2(\Omg)$,then $u\in\PSH(\Omg)\iff\ii\p\pbar u$
+is a (strongly) positive $(1,1)$-form, i.e. Hessian
+$$\left(\pmfrac{u}{z_i}{\zbar_j}\right)\geq 0$$
+\end{prop}
+
+Use the formula
+$$
+  \frac{1}{2\pi}
+  \int_{0}^{2\pi}
+    u(a+e^{i\theta}\xi)\td\theta-u(a)
+=
+  \frac{2}{\pi}
+  \int_{0}^{1}\frac{\td t}{t}
+  \int_{|\xi|<t}
+    Hu(a+\zeta\xi)(\xi)\td\lmd(\zeta)
+$$
+where $Hu(z)(\xi):=\sum\limits_{1\leq i,j\leq n}
+\pmfrac{u}{z_i}{\zbar_j}(z)\xi_i\overline{\xi}_j$.
+
+\begin{proof}
+Exercise. Analysis.
+\end{proof}
+
+\begin{thm}
+(1) If $u\in\PSH(\Omg)\cap L_{\loc}^1(\Omg)$,
+then the current $\ii\p\pbar u\geq 0$.
+
+(2) if $f$ is a distribution on $\Omg$ and $\ii\p\pbar f\geq 0$
+in the sense of currents, then $\exists !u\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$
+s.t. $f$ is the distribution associative to $u$.
+\end{thm}
+
+\begin{proof}
+(1) $u\in\PSH(\Omg)\cap L_{\loc}^1(\Omg)
+\Rightarrow\ii\p\pbar u=\lim\limits_{\veps\to 0}\ii\p\pbar(u*\rho_\veps)$.
+
+(2)Assume $\ii\p\pbar f\geq 0$ as currents,then
+$$
+  \ii\p\pbar(f*\rho_\veps)
+=
+  (\ii\p\pbar f)*\rho_\veps
+$$
+so $f*\rho_\veps\in C^\infty(\Omg_\veps)\cap\PSH(\Omg_\veps)$.
+\end{proof}
+
+define:
+$$u:=\lim_{\veps\to 0}
+f*\rho_\veps\in\PSH(\Omg)
+$$
+
+\begin{cor}
+$$\PSH(\Omg)\cap L_{\loc}^1(\Omg)$$
+is a closed convex cone in $L^1_{\loc}(\Omg)$.
+
+Every bounded set (in $L^1_{\loc}(\Omg)$) in $\PSH(\Omg)$
+is (relatively) compact.
+\end{cor}
+
+%%%%%%%%%%%2019.6.6倒数第二节课%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%第15周 周四%%%%%%%%%%%%%%%%%%%%%
+
+Recall: $\Omg\in\bbC^n$ open set, 
+$u\in\PSH(\Omg)$ if $u$ is u.s.c. and $u|_L$
+is subharmonic $\iff\ii\td'\td'' u$ is a positive $(1,1)$-current on $\Omg$.
+
+Remark(check!): any $\td$-closed $(1,1)$ current $T$
+on $\Omg$ can be written as $T=\ii\td'\td''\fai$ locally.
+$\Rightarrow$ if $T$ is a $\td$-closed positive $(1,1)$-current on $\Omg$,
+then locally $T=\ii\td'\td''u$ for some PSH-function $u$.
+This $u$ is called \textbf{local potential} of $T$.
+
+Now, $X$ is a complex manifold,
+observation: $F:\Omg_1\to\Omg_2$ holomorphic map,
+then $F^*(\ii\td'\td''\fai)=\ii\td'\td''(F^*\fai)$.
+
+\begin{definition}
+$u\in\PSH(X)$, if:
+
+(1) $u$ is u.s.c.
+
+(2) $u|_\Omg$ is PSH on every coordinate open set. 
+\end{definition}
+
+\begin{prop}
+$f:X\to Y$ is holomorphic map between two complex manifolds,
+$u\in\PSH(Y)$, then $f^*u\in\PSH(X)$.
+\end{prop}
+
+\begin{proof}
+Easy.
+\end{proof}
+
+\begin{example}
+(1)Let $f\in H^0(X,\mcalO_X)$, then 
+$\log |f|\in\PSH(X)$.
+\end{example}
+
+\begin{proof}
+consider $f:X\to \bbC$, and 
+$\log|f|=f^*(\log|z|)$, note that 
+$\log|z|\in\PSH(\bbC)$
+\end{proof}
+note that $\frac{\ii}{2\pi}\td'\td''\log|z|=\delta_0$ is Dirac distribution.
+
+\begin{example}For any $f_1,f_2,...,f_k\in H^0(X,\mcalO_X)$, then
+$$\log(|f_1|^{\afa_1}+\cdots+|f_k|^{\afa_k})\in\PSH(X)$$
+for any $\afa_j\geq 0,1\leq j\leq k$.
+\end{example}
+
+\textbf{Skoda-El Mir extension theorem}
+
+Let $X$ be a complex manifold
+
+\begin{definition}
+$E\subseteq X$ is called pluripolar(多重极点) if 
+$X$ has an open covering $(\Omg)$, we have 
+$u\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$ s.t.
+$$E\cap\Omg=\Bigset{z\in\Omg}{u(z)=-\infty}$$
+\end{definition}
+
+if "$=$" holds, then $E$ is called \textbf{complete} pluripolar set.
+
+\begin{example}
+If $A$ is an analytic set, then $A$ is complete pluripolar set.
+\end{example}
+
+Locally ,$A\cap\Omg=\{f_1=\cdots f_k=0\}$ where $f_j\in\mcalO(\Omg)$,
+it also $= U^{-1}(-\infty)$, where
+$$u=\log(|f_1|^2+\cdots+|f_k|^2)$$
+
+\begin{thm}(Skoda 1982; El mir 1984; Sibory 1985)
+
+$X$ be a complex manifold, $E\subseteq X$ be (closed) pluripolar set in $X$,
+$T$ is a closed positive $(p,p)$-current on $X\setminus E$,
+s.t. $T$ has locally finite mass（局部有限质量） near $E$.
+(i.e. $\forall$ compact neighborhood $\Omg$ we have 
+$$\int_{\Omg\setminus E}T\wedge\omg^{n-p}<+\infty$$
+)
+
+Then, $1_{X\setminus E}T$ is also a closed positive $(p,p)$-current on $X$.
+\end{thm}
+(this current is called:current obtained by extending $T$ by $0$ on $E$.)
+
+\begin{proof}
+(1)Notice that : $\td$-closeness is a local property(check!)
+
+(2)we need to verify $1_{\Omg\setminus E}T$ is $\td-$closed on
+every open set $\Omg$ s.t. $\Omg\cap 1=
+\Bigset{z\in\Omg}{v(z)=-\infty}$ where $v\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$,
+
+(3)We can assume $v\leq 0$ on $\Omg$ after shrinking $\Omg$.
+
+Let $g:\bbR\to\bbR$ smooth, convex, increasing. $g(t)\equiv 0$ if $t\leq 1$,
+and $g(0)=1$. %笔记上有示意图%
+
+define $v_k=g(k^{-1}v*\rho_{\veps_k})$ where $\veps_k\to 0$ fast.
+
+(After shrinking $\Omg$ a little bit, $v_k\in\PSH(\Omg)\cap C^\infty(\Omg)$)
+
+Then, $0\leq v_k\leq 1$, $v_k=0$ in a neighborhood of $E\cap\Omg$.
+And $\lim\limits_{k\to\infty}v_k(x)=1$ for any $x\in\Omg\setminus E$.
+
+Let $\theta\in C^\infty[0,1]$ s.t. 
+$\theta =0$ on $[0,\frac{1}{3}]$, $\theta=1$ on $[\frac{1}{3},1]$,
+ and $\theta$ is smooth, increasing. 
+ 
+So, $\theta\circ v_k= 0$ near $E\cap \Omg $, and $\to 1$ on $\Omg\setminus E$.
+Moreover, $\theta\circ v_k\to 1_{\Omg\setminus E}$.
+
+In particular, $\widetilde{T}=1_{\Omg\setminus E}T
+=\lim\limits(k\to\infty)(\theta\circ v_k)T$
+in the sense of currents w.r.t. weak topology.
+Using the continuity of $\td$ on currents,
+$$
+  \td\widetilde{T}
+=\lim_{k\to\infty}\td(\theta\circ v_k)\wedge T
+$$
+Need to verify $\lim\limits_{k\to\infty}\td(\theta\circ v_k)\wedge T=0
+\iff\lim\limits_{k\to\infty}T\wedge\td'(\theta\circ v_k)=0$.
+
+First assume $T$ is a current of bi-degree $(n-1,n-1)$:
+need to verity $\forall \afa\in\mcalD^{1,0}(\Omg)$ we have
+$$
+  \pair{T\wedge\td'(\theta\circ v_k)}{\afabar}
+=
+  \pair{T}{\theta'(v_k)\td'v_k\wedge\afabar}\to 0
+$$
+
+Prop: (Linear algebra) For $\gma\in\mcalD^{1,0}(\Omg\setminus E)$,
+$$\gma\mapsto\pair{T}{\ii\gma\wedge\gmabar}$$
+is a non-negative Hermitian form, so we have Cauchy-Schwarz inequality:
+$$
+  |\pair{T}{\ii\beta\wedge\gmabar}|^2
+\leq
+  \pair{T}{\ii\beta\wedge\betabar}
+  +\pair{T}{\ii\gma\wedge\gmabar}
+$$
+so we have 
+$$
+  |\pair{T}{\theta'(v_k)\td'v_k\wedge\afabar}|^2
+\leq
+  \underbrace{
+  \pair{T}{\theta'(v_k)^2\afa\wedge\afabar}
+  }_{(1)}
+  \underbrace{
+  \pair{T}{\psi\td'v_k\wedge\td''v_k}
+  }_{(2)}
+$$
+where $0\leq\psi\leq 1$ s.t. $\supp\psi\supseteq\supp\afa$, $\psi\equiv 1$
+near $\supp\afa$.
+
+$(1):T$ has locally finite mass near $E$, $\Rightarrow$
+$$
+  \int_{\Omg\setminus E}T\wedge\ii\afa\wedge\afabar
+<+\infty
+$$
+note that $\theta'(v_k)\to 0$ on $\Omg$,
+use Lebesgue dominated convergent theorem, $(1)\to 0$ as $k\to\infty$.
+
+(2): use the formula:
+$$
+  \ii\td'\td'' v_k^2
+=
+  2v_k\ii\td'\td'' v_k+2\ii\td' v_k\wedge\td'' v_k
+\geq 
+  2\ii\td'v_k\wedge\td'' v_k
+$$ 
+so,
+\begin{eqnarray*}
+  (2)\leq \pair{T}{\psi\ii\td'\td'' v_k^2}
+&=&
+  \pair{T}{v_k^2\ii\td'\td''\psi}
+=
+  \int_{\Omg\setminus E}
+    v_k^2T\wedge\ii\td'\td''\psi\\
+&\leq&
+  \int_{\Omg\setminus E}
+    T\wedge\ii\td'\td''\psi
+\leq
+  C(\psi)\int_{\Omg\setminus E}T\wedge\omg
+<+\infty
+\end{eqnarray*}
+Conclusion:$\td\Ttil=0$.
+
+General bidegree $(p,p)$: Take $\Gma=\ii\gma_1
+\wedge\gmabar_1\wedge\cdots\wedge\ii\gma_{n-p-1}\wedge\gmabar_{n-p-1}$
+where $\gma_j\in\mcalD^{1,0}(\Omg)$ with constant coefficients,
+then $T\wedge T$ is a current of bidegree $(n-1,n-1)$
+with locally finite mass near $E$.
+$$0=
+  \td(1_{\Omg\setminus E}(T\wedge\Gma))
+= \td(\Ttil\wedge\Gma)=\td\Ttil\wedge\Gma
+$$
+by first case, $\Rightarrow$
+$\td\Ttil\wedge\Gma=0$ for any such $\Gma$.
+
+$\Rightarrow\forall \Gma\in\mcalD^{n-p-1,n-p-1}(\Omg)$,
+$\td\Ttil\wedge\Gma=0$, so $\td\Ttil=0$.
+\end{proof}
+
+\begin{cor}
+$T$ is a $\td$-closed positive current on $X$,
+$E\subseteq X$ (closed) complete pluripolar set, Then
+$1_{X\setminus E}T$ is a $\td$-closed positive current.
+\end{cor}
+(Since $1_{X\setminus E}$ is the trivial extension of $T|_{X\setminus E}$)
+($1_{E}T$ is a $\td$-closed positive current)
+($1_ET=T-1_{X\setminus E}T$)
+
+\begin{cor}(Exercise)
+
+$A\subseteq X$ an analytic subset of $X$
+$A$ is of pure dimension $\dim_{\bbC}=p$, then the current 
+$[A]$ is a \textbf{$\td$-closed} positive current of bidimension $(p,p)$
+\end{cor}
+
+\begin{proof}
+(1)$[A_{\reg}]$ is a closed positive current on $X\setminus A_{\sing}$.
+
+(2)$[A_{\reg}]$ has locally finite mass near $A_{\sing}$.
+(要用解析集局部参数化定理，可怕)
+(Using the local parameterization theorem of analytic set)
+
+(3)$[A]$ is the trivial extension of $[A_{\reg}]$,
+i.e. $[A]=1_{X\setminus A_{\sing}}[A_{\reg}]$
+\end{proof}
+
+Cor: if $X$ is compact (over $\bbC$), then (cohomology of current)
+$$\{[A]\}\in H^{p,p}(X,\bbR)$$
 
 
