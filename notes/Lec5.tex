@@ -1,118 +1,204 @@
-\chapter{Lefschitz分解}
+\chapter{\Kahler 流形}
 
 \section{线性代数版本的Lefschitz算子}
 
-Three goals:
+%Three goals:\textbf{Kahler package}\textbf{Lefschetz decomposition}
+%\textbf{Hodge-Riemann bilinear relations}Linear algebra(baby representation
+%theory)(local case)$\bbC^n$,$$\omg=\sqrt{-1}\sum_{i,j}h_{ij}
+%\td z_i\wedge\td\zbar_j$$Kahler metric with constant coefficients.(i.e.
+%$h_{ij}$ is constant, $(h_{ij})$ is positive Hermite matrix)
+%W.L.O.G, by taking a linear transformation, we can assume
+%$$\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\zbar_j$$
 
-\textbf{Kahler package}
+我们考虑复向量空间$V:=\bbC^n$，配以Hermite内积$h$，其Hermite形式为
+$\omg=\ii h_{ij}\td z^i\wedge\td\zbar^j$
+（不妨相差$\frac{1}{2}$倍）其中$(h_{ij})$为正定Hermite矩阵。
+适当选取$\bbC^n$的基，我们不妨
+$$\omg=\ii\sum_{k=1}^n\td z_k\wedge\td\zbar_k$$
+注意到空间$V$的Hermite内积自然诱导了
+$\wedgeform{\bullet}(V^*)$上的Hermite内积。
 
-\textbf{Lefschetz decomposition}
+注意线性空间$\wedgeform{\bullet}(V^*)$的自然分次
+$
+  \wedgeform{\bullet}(V^*)
+=\bigoplus\limits_{k\geq 0}\wedgeform{k}(V^*)
+$，其中$
+  \wedgeform{k}(V^*)
+=
+  \bigoplus_{p+q=k}\wedgeform{p,q}(V^*)
+$.在此意义下，$\wedgeform{\bullet}(V^*)$配以外积$\wedge$，
+构成\textbf{分次交换代数}。对于线性算子
+$A:\wedgeform{\bullet}(V^*)\to \wedgeform{\bullet}(V^*)$，
+称$A$的\textbf{分次}为$d$，若对任意$k\geq 0$都有
+$A:\wedgeform{k}(V^*)\to \wedgeform{k+d}(V^*)$；
+称$A$的\textbf{双分次}为$(p,q)$，若对任意$p',q'$，都有
+$A:\wedgeform{p',q'}(V^*)\to \wedgeform{p'+p,q'+q}(V^*)$.
+设算子$A,B$的分次分别为$d_1,d_2$，则定义\textbf{超对易子}
+$$[A,B]=AB-(-1)^{d_1d_2}BA$$
 
-\textbf{Hodge-Riemann bilinear relations}
+%\begin{notation} An operator is of pure degree $r$
+%if it transform a form of $\deg=k$to as form of degree $k+r$.
+%An operator ..of bi-degree $(p,q)$ if ...$(s,t)\to (s+p,t+q)$
+%(in this case, degree $=p+q$)if $A,B$ with degree $\deg A,\deg B$,define
+%$$[A,B]:=AB-(-1)^{\deg A\deg B}BA$$\end{notation}
 
-Linear algebra(baby representation theory)(local case)
+\begin{definition}（Lefschetz算子及其伴随）
+\index{Lefschetz 算子}
 
-$\bbC^n$,
-$$\omg=\sqrt{-1}\sum_{i,j}h_{ij}\td z_i\wedge\td\zbar_j$$
-Kahler metric with constant coefficients.(i.e.
-$h_{ij}$ is constant, $(h_{ij})$ is positive Hermite matrix)
-
-W.L.O.G, by taking a linear transformation, we can assume
-$$\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\zbar_j$$
-
-\begin{notation}
-An operator is of pure degree $r$ if it transform a form of $\deg=k$
-to as form of degree $k+r$.
-
-An operator ..of bi-degree $(p,q)$ if ...$(s,t)\to (s+p,t+q)$
-(in this case, degree $=p+q$)
-
-if $A,B$ with degree $\deg A,\deg B$,define
-$$[A,B]:=AB-(-1)^{\deg A\deg B}BA$$
-\end{notation}
-
-\begin{definition}
-$$L:\wedgeform{p,q}\to\wedgeform{p+1,q+1}$$
-$$u\mapsto \omg\wedge u$$
-is called Lefschetz operator.
-
-Denote $\Lmd$ to be the adjoint of $L$, adjointed by :
-Let $v\in\wedgeform{p-1,q-1}$ and $u\in\wedgeform{p,q}$
-$$\langle Lv,u\rangle:=\langle u,\Lmd u\rangle$$
+对于$n$维酉空间$(V,h)$，定义双分次$(1,1)$的线性算子
+\begin{eqnarray*}
+  L:\wedgeform{p,q}(V^*)&\to&\wedgeform{p+1,q+1}(V^*)\\
+                    \eta&\mapsto&\omg\wedge\eta
+\end{eqnarray*}
+其中$\omg$为$h$的Hermite形式。称算子$L$为\textbf{Lefschetz算子}。
+在记其（关于$\wedgeform{\bullet}(V^*)$的Hermite内积的）伴随算子为$\Lmd:=L^*$.
 \end{definition}
-The operator $\Lmd$ is of bi-degree $(-1,-1)$.
+
+%\begin{definition}$$L:\wedgeform{p,q}\to\wedgeform{p+1,q+1}$$
+%$$u\mapsto \omg\wedge u$$is called Lefschetz operator.
+%Denote $\Lmd$ to be the adjoint of $L$, adjointed by :
+%Let $v\in\wedgeform{p-1,q-1}$ and $u\in\wedgeform{p,q}$
+%$$\langle Lv,u\rangle:=\langle u,\Lmd u\rangle$$
+%\end{definition}The operator $\Lmd$ is of bi-degree $(-1,-1)$.
+
+对于$\omg=\ii\sum\limits_{k=1}^n\td z_k\wedge\td\zbar_k$的情形，
+若$u=\sum\limits_{|I|=p\atop |J|=q}i_{IJ}\td z_I\wedge\td\zbar_J
+\in\wedgeform{p,q}(V^*)$，则有
+\begin{eqnarray*}
+   Lu
+&=&
+   \ii(-1)^p
+   \sum_{|I|=p\atop|J|=q}
+     \sum_{k=1}^{n}
+       u_{IJ}
+       \left(
+         \td z_k\wedge\td z_I
+       \right)
+       \wedge
+       \left(
+         \td\zbar_k\wedge\td\zbar_J
+       \right)
+\\
+  \Lmd u
+&=&
+   \ii(-1)^p
+   \sum_{|I|=p\atop|J|=q}
+     \sum_{k=1}^{n}
+       \left(
+         \pp{z_k}\suobing \td z_I
+       \right)\wedge
+       \left(
+         \pp{\zbar_k}\suobing \td\zbar_J
+       \right)
+\end{eqnarray*}
+
+%\begin{prop}If$$u=\sum_{|I|=p\atop |J|=q}u_{IJ}\td z_I\wedge\td\zbar_j$$
+%then$$Lu=\sqrt{-1}\sum_{|I|=p\atop |J|=q}\sum_{m=1}^n
+%u_{IJ}\td z_m\wedge\td\zbar_m\wedge\td z_I\wedge\td\zbar_J$$$$\Lmd u
+%= \sqrt{-1}(-1)^p\sum_{|I|=p\atop|J|=q}\sum_{m=1}^nu_{IJ}\left(
+%\pp{z_m}\suobing\td z_I\right)\wedge\left(\pp{\zbar_m}\suobing\td\zbar_J
+%\right)$$where "$\suobing$" is contraction.\end{prop}
+%\begin{cor}(Exercise)Let$$\afa=\sqrt{-1}\sum_{j=1}^n\afa_j
+%\td z_j\wedge\zbar_j$$then,($\afa$ is a operator of bi-degree $(1,1)$)
+%$$[\afa,\Lmd]u=\sum_{|I|=p\atop |J|=q}\left(\sum_{i\in I}\afa_i
+%+\sum_{j\in J}\afa_j-\sum_{k=1}^n\afa_k\right)u_{IJ}\td z_I\wedge\td\zbar_J
+%$$where$$u=\sum_{|I|=p\atop |J|=q}u_{IJ}\td z_I\wedge\td\zbar_J$$\end{cor}
+%\begin{cor}if $u\in\wedgeform{p,q}$,then$$[L,\Lmd]u=(p+q-n)u$$\end{cor}
 
 \begin{prop}
-If
-$$u=\sum_{|I|=p\atop |J|=q}u_{IJ}\td z_I\wedge\td\zbar_j$$
-then
-$$Lu=\sqrt{-1}\sum_{|I|=p\atop |J|=q}
- \sum_{m=1}^n
- u_{IJ}\td z_m\wedge\td\zbar_m\wedge\td z_I\wedge\td\zbar_J$$
-
-$$
-  \Lmd u
-= \sqrt{-1}(-1)^p
-  \sum_{|I|=p\atop|J|=q}
-    \sum_{m=1}^n
-      u_{IJ}
-      \left(
-        \pp{z_m}\suobing\td z_I
-      \right)\wedge
-      \left(
-        \pp{\zbar_m}\suobing\td\zbar_J
-      \right)
-$$
-where "$\suobing$" is contraction.
+对于$n$维酉空间$(V,h)$，则在$\wedgeform{p,q}(V^*)$上成立超对易关系
+$$[L,\Lmd]=(p+q-n)\id$$
 \end{prop}
 
-\begin{cor}(Exercise)
-Let
-$$
-  \afa=\sqrt{-1}\sum_{j=1}^n
-       \afa_j\td z_j\wedge\zbar_j
-$$
-then,($\afa$ is a operator of bi-degree $(1,1)$)
-$$
-  [\afa,\Lmd]u
-=
-  \sum_{|I|=p\atop |J|=q}
-    \left(
-      \sum_{i\in I}
-        \afa_i
-     +\sum_{j\in J}
-        \afa_j
-     -\sum_{k=1}^n
-        \afa_k
-    \right)
-    u_{IJ}\td z_I\wedge\td\zbar_J
-$$
-where
-$$u=\sum_{|I|=p\atop |J|=q}
-u_{IJ}\td z_I\wedge\td\zbar_J$$
-\end{cor}
+\begin{proof}在正交基下暴力验证即可，
+即$\omg=\ii\sum\limits_{k=1}^n\td z_k\wedge\td\zbar_k$.
 
-\begin{cor}
-if $u\in\wedgeform{p,q}$,then
-$$[L,\Lmd]u=(p+q-n)u$$
-\end{cor}
+对于任意$u=\sum\limits_{|I|=p\atop|J|=q}u_{IJ}
+\td z_I\wedge\td\zbar_J\in\wedgeform{p,q}(V^*)$，有
+\begin{eqnarray*}
+     L\Lmd u
+&=&
+      \sum_{|I|=p\atop|J|=q}
+       u_{IJ}\sum_{k,l=1}^{n}
+         \left(
+           \td z_k\wedge
+           (\pp{z_l}\suobing\td z_I)
+         \right)\wedge
+         \left(
+           \td\zbar_k\wedge
+           (\pp{\zbar_l}\suobing\td\zbar_j)
+         \right)
+\end{eqnarray*}
+\begin{eqnarray*}
+     \Lmd Lu
+&=&
+      \sum_{|I|=p\atop|J|=q}
+       u_{IJ}\sum_{k,l=1}^{n}
+         \left(
+           \pp{z_l}\suobing
+           (\td z_k\wedge\td z_I)
+         \right)\wedge
+         \left(
+           \pp{\zbar_l}\suobing
+           (\td\zbar_k\wedge\td\zbar_j)
+         \right)\\
+&=&
+      \sum_{|I|=p\atop|J|=q}
+       u_{IJ}\sum_{k,l=1}^{n}
+         \left(
+           \delta_{kl}\td z_I
+          -\td z_k\wedge(\pp{z_l}\suobing\td z_I)
+         \right)\wedge
+         \left(
+           \delta_{kl}\td\zbar_j
+          -\td\zbar_k\wedge(\pp{\zbar_l}\suobing\td\zbar_J)
+         \right)\\
+&=&
+      \sum_{|I|=p\atop|J|=q}
+       u_{IJ}
+         \left(
+           (n-p-q)\td z_I\wedge\td\zbar_J
+          +\sum_{k,l=1}^{n}
+         \left(
+           \td z_k\wedge
+           (\pp{z_l}\suobing\td z_I)
+         \right)\wedge
+         \left(
+           \td\zbar_k\wedge
+           (\pp{\zbar_l}\suobing\td\zbar_j)
+         \right)
+         \right)\\
+&=&
+     L\Lmd u
+    +(n-p-q)u
+\end{eqnarray*}
+因此$[L,\Lmd]u=(p+q-n)u$.
+\end{proof}
 
-\begin{cor}
-Denote $B:=[L,\lmd]$, then
-$$[B,L]=2L$$
-$$[B,\Lmd]=-2\Lmd$$
+\begin{cor}若记算子$B:=[L,\Lmd]$，则有对易关系
+$$
+  [B,L]=2L\qqquad
+  [B,\Lmd]=-2\Lmd\qqquad
+  [L,\Lmd]=B
+$$
 \end{cor}
 
 \begin{proof}
-Take $u\in\wedgeform{p,q}$, then
-$$[B,L]=BLu-LBu=(p+q-n+2)Lu-(p+q-n)Lu=2Lu$$
-the second is similar..
+只需注意$B$在$\wedgeform{p,q}(V^*)$上为标量作用$(p+q-n)$，因此有
+$$[B,L]=BL-LB=[(p+1)+(q+1)-n]L-L(p+q-n)=2L$$
+第二式同理。第三式为$B$的定义。
 \end{proof}
 
+%\begin{cor}Denote $B:=[L,\lmd]$, then$$[B,L]=2L$$$$[B,\Lmd]=-2\Lmd$$\end{cor}
+%\begin{proof}Take $u\in\wedgeform{p,q}$, then$$[B,L]=BLu-LBu=(p+q-n+2)
+%Lu-(p+q-n)Lu=2Lu$$the second is similar..\end{proof}
+%\textbf{$\mfksl(2,\bbC)$-representation}
+%$$\mfksl(2,\bbC)=\Span_\bbC{l,\lmd,b}$$where
 
-\textbf{$\mfksl(2,\bbC)$-representation}
-$$\mfksl(2,\bbC)=\Span_\bbC{l,\lmd,b}$$
-where
+\begin{rem}（李代数表示论）
+
+上述结果表明，空间$\wedgeform{\bullet}(V^*)$自然视为
+李代数$\mfksl(2,\bbC):=\Span_{\bbC}\{l,b,\lmd\}$的一个表示，其中
 $$
   l=\begin{pmatrix}
       0 & 0\\
@@ -129,524 +215,1058 @@ $$
       0 & -1
     \end{pmatrix}
 $$
-we have
-$$[l,\lmd]=b\quad
-  [b,l]=2l\quad
-  [b,\lmd]=-2\lmd
-$$
-
-\begin{prop}
-There exists a natural action
-$$\rho:\mfksl(2,\bbC)\to\End(\bigoplus_{p,q}\wedgeform{p,q})$$
-with
-$$\rho(l)=L$$
-$$\rho(\lmd)=\Lmd$$
-$$\rho(b)=B$$
-\end{prop}
-
-\begin{thm}(HL)
-$$L^{n-k}:\wedgeform{k}\to\wedgeform{2n-k}$$
-$$u\to\omg^{n-k}\wedge u$$
-is an isomorphism.
-
-$$L^{n-k}:\wedgeform{p,q}\to \wedgeform{n-k+p,n-k+q}$$
-is also an isomorphism.
-\end{thm}
-
-\begin{proof}
-
-Lemma:
-$$[L^r,\Lmd]u=r(k-n+r-1)L^{r-1}u$$
-(induction, omit)
-
-Assume $\afa\in\wedgeform{k}_\bbC$, $L^{n-k}\afa=0$,
-need to verify $\afa=0$.
-
-Claim:
-$$L^r:\wedgeform{k}\to\wedgeform{k+2r}$$
-is injective whenever $r\leq n-k$.
-
-proof of the claim:
-
-claim is true when $k=0$ or $k=1$.(check)
-
-Let $\afa\in \wedgeform{k}$ s.t. $L^r\afa=0(r\leq n-k)$.
-By the lemma,
-$$L^r\Lmd\afa-\lmd L^r\afa=r(k-n+r-1)L^{r-1}\afa$$
-so,
-$$L^{r-1}(L\Lmd\afa-r(k-n+r-1)\afa)=0$$
-by the induction on $r$,
-$$L\Lmd\afa=r(k-n+r-1)\afa$$
-since $r(k-n+r-1)\neq 0$, $\afa=L\beta$ for some $\beta\in\wedgeform{k-2}$.
-so,$L^r\afa=L^{r+1}\beta=0$, by induction on $k$, we have
-$\beta=0$,so $\afa=0$.
-
-The claim is proved.
-\end{proof}
-
-\begin{definition}(Primitive form)
-
-$\afa\in\wedgeform{k}(k\leq n)$ is called primitive form, if
-$$L^{n-k+1}\afa=0$$
-\end{definition}
-
-\begin{cor}(Lefischtz Decomposition)(LD)
-
-For any $\afa\in\wedgeform{k},(1\leq k\leq 2n)$,
-we have a unique decomposition:
-$$
-  \afa
-=
-  \sum_{\gma\geq(k-n)_+}
-    L^\gma\afa_r
-$$
-($(k-n)_+:=\max\{k-n,0\}$)
-with $\afa_r\in\wedgeform{k-2r}$ is primitive
-\end{cor}
-
-\begin{proof}
-Existence: assume $k\leq n$, consider
-$$L^{n-k+1}\afa\in\wedgeform{2n-k+2}$$
-by HL, $\exists !\,\beta\in\wedgeform{k-2}$ s.t.
-$L^{n-k+2}\beta=L^{n-k+1}\afa$, so
-$L^{n-k+1}(\afa-L\beta)=0$, i.e. $\afa_0=\afa-L\beta$
-is primitive. $\afa=\afa_0+L\beta$, then induction on degrees,
-we get the decomposition for $\afa$.
-
-If $k>n$, we apply HL to reduce it to case 1.
-
-Uniqueness: Next time..
-\end{proof}
-
-%%%%%%%%%%%%%%%2019.4.23第九周周二%%%%%%%%%%%%%%%%%%%%%%
-
-Today: Continuous to Hard Lef decomposition, Hodge-Riemann bilinear relations.
-
-Hard-Lefschitz: HL
-
-Lefschitz decomposition :LD
-
-Hodge-Riemann bilinear relations :HRR
-
-Recall: $\bbC^n,\wedgeform{k}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}$,
-$\omg$: a Kahler metric on $\bbC^n$
-with constant coefficient $\in\wedgeform{1,1}_\bbR$.
-
-Lefschitz operator : $Lu=\omg\wedge u$.
-
-\begin{thm}(HL)
-
-Assume $k\leq n,p+q\leq n$, then
-$$L^{n-k}:\wedgeform{k}\to \wedgeform{2n-k}$$
-is a linear isomorphism.
-
-$$L^{n-k}:\wedgeform{p,q}\to\wedgeform{p+n-k,q+n-k}$$
-is also a linear isomorphism.
-\end{thm}
-
-Linear algebra..
-
-\begin{thm}(LD)
-for any $u\in\wedgeform{k}$,we have a unique decomposition
-$$u=\sum_{r\geq(k-n)_+}L^ru_r$$
-where $u_r\in\wedgeform{k-2r}_{prim}$ is a primitive form.
-\end{thm}
-Recall: a $k$-form $u\in\wedgeform{k}(k\leq n)$ is called primitive,
-if $L^{n-k+1}(u)=0$. When $k>n$, $u$ is called primitive,
-$\Lmd(u)=0$, where $\Lmd$ is the adjoint of $L$.
-
-\begin{proof}
-
-Existence: application of $HL$.
-
-Uniqueness: Omit.
-\end{proof}
-
-\begin{prop} Assume $\afa\in\wedgeform{p,q}_{prim}$, and $p+q\leq n$.
-(i.e. $L^{n-p-q+1}\afa=0$),then
-$$
-  *\afa
-=
-  (-1)^{\frac{(p+q)(p+q-1)}{2}}
-  (\sqrt{-1})^{p-q}
-  \frac{1}{(n-p-q)!}
-  L^{n-p-q}\afa
-$$
-\end{prop}
-
-\begin{proof}
-  See [Humphreys, Prop 1.2.31]
-\end{proof}
-
-\begin{thm}(HRR)
-Define the bilinear form $Q$ on $\wedgeform{k}\,\,(k\leq n)$ as follows:
-$$Q(\afa,\beta):=L^{n-k}\wedge\afa\wedge\overline{\beta}$$
-Then
-$$(\sqrt{-1})^{p-q}(-1)^{\frac{(p+q)(p+q-1)}{2}}Q(u,u)\geq 0$$
-for any $u\in \wedgeform{p,q}_{prim},p+q=k\leq n$,
-and equal holds $$\iff u=0$$
-
-(i.e. $Q|_{\wedgeform{p,q}_{prim}}$ is positive definite up to a factor)
-\end{thm}
-
-\begin{proof}
-Take $u\in\wedgeform{p,q}_{prim}$,
-$$Q(u,u)=L^{n-k}\wedge u\wedge\overline{u}
-=*u\wedge\overline{u}=\langle\overline{u},\overline{u}\rangle\td Vol
-=|u|^2\td Vol\geq 0$$
-(up to a factor!)
-
-(We apply the following result: $\overline{*\fai}=*\overline{\fai}$,
-i.e. $*$ is a real operator)
-\end{proof}
-
-Summary: $\wedgeform{\bullet}=\bigoplus\limits_{1\leq k\leq n}\wedgeform{k}_\bbC$,
-where$\wedgeform{k}_{\bbC}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}_\bbC$.
-
-Lefschitz operator $L\rightsquigarrow$ HL,LD,HRR.
-
-
-\section{紧Kahler流形的上同调群}
-
-The analogue of compact Kahler manifolds,
-
-$$H^k_{DR}(X,\bbC)\cong\bigoplus_{p+q=k}H^{p,q}_{Dol}(X,\bbC)$$
-
-$\omg$: A Kahler metric $\in H^{1,1}_{Dol}(X,\bbR)$.
-
-Denote $L\curvearrowright H^k_{DR}(X,\bbC)$,
-$$L(u)=[\omg,u]=[\omg]\wedge u$$
-
-\textbf{Commutative relations on Kahler manifolds}
-
-$$(\bbC^n,\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\overline{z}_j)$$
-$u\in C^\infty(\bbC^n,\wedgeform{p,q})$, locally
-$$u=\sum_{|I|=p,|J|=q}u_{I,J}\td z_I\wedge \td z_j,\quad
-v=\sum_{|I|=p,|J|=q}v_{I,J}\td z_I\wedge \td z_j
-$$
-
-$$\langle\langle u,v\rangle\rangle=
-\int_{\bbC^n}\sum_{|I|=p,|J|=q}
-u_{I,J}\overline{V_{I,J}}\td Vol$$
-
-$\td=\td'+\td''$, $\td'=\p,\td''=\pbar$.
-
-$$\td' u=\sum_{I,J}\sum_k\pfrac{u_{I,J}}{z_k}\td z_k\wedge\td z_I\wedge\td z_J$$
-$$\td''u=\cdots$$
-
-\begin{thm}
-$$
-  (\td'')^*u
-=
-  -\sum_{I,J}
-    \sum_k
-    \pfrac{u_{I,J}}{\zbar_k}
-    \pp{\zbar_k}
-    \suobing
-    (\td z_I\wedge\td\zbar_J)
-$$
-
-$$
-  (\td')^*u
-=
-  -\sum_{I,J}
-    \sum_k
-      \pfrac{u_{I,J}}{\zbar_k}
-      \pp{z_k}
-      \suobing
-      (\td z_I\wedge\td\zbar_J)
-$$
-\end{thm}
-
-\begin{prop}
-$$[(\td'')^*,L]=\sqrt{-1}\td'$$
-\end{prop}
-\begin{proof}
-Exercise.
-\end{proof}
-
-\begin{thm}
-Let $X$ be a Kahler manifold (may not compact), with Kahler metric $\omg$,
-then we have
-$$[(\td'')^*,L]=\sqrt{-1}\td'$$
-\end{thm}
-
-\begin{proof}
-Only need to verify $u\in  C^\infty_c(X,\wedgeform{p,q})$
-with compact support in a holomorphic chart at $x$.
-
-Assume the holomorphic chart near $x$ is choosen s.t.
-$$\omg(z)=\sqrt{-1}\sum_{1\leq j\leq n}\td z_j\wedge\td\zbar_j+O(|z|^2)$$
-
-$$u\in\sum_{I,J}u_{I,J}\td z_I\wedge\zbar_J$$
-is a $(p,q)$-form, $v$ is also...
-
-$$\langle u,q\rangle= u_{I,J}\overline{v_{M,N}}
-\langle \td z_I,\td z_M\rangle\langle\td\zbar_J,\td\zbar_N\rangle
-=u_{IJ}\overline{V_{ij}}+a_{IJMN}(z)u_{IJ}\overline{V_{MN}}$$
-where $a_{IJMN}=O(|z|^2)$.
-
-So,
-$$(\td'')^*u=-\sum_{IJk}\pfrac{u_{IJ}}{z_k}\pp{\zbar_k}
-\suobing(\td z_I\wedge\td\zbar_J)+
-\sum_{IJMN}b_{IJMN}u_{IJ}\td z_M\wedge\td\zbar_N
-$$
-where $b_{IJMN}(z)=O(|z|)$. So,
-
-$$[(\td'')^*,L]u(x)=
-\sqrt{-1}\td'u(x)$$
-
-$$\Longrightarrow [(\td'')^*,L]=\sqrt{-1}\td'$$
-\end{proof}
-
-\begin{prop}In Kahler manifold,
-$$[(\td')^*,L]=-\sqrt{-1}\td''$$
-$$[\Lmd,\td'']=-\sqrt{-1}(\td')^*$$
-$$[\Lmd,\td']=\sqrt{-1}(\td'')^*$$
-\end{prop}
-
-\begin{cor}$(X,\omg)$ is a Kahler manifold, then
-$$\yc_{\td}=2\yc_{\td'}=2\yc_{\td''}$$
-\end{cor}
-\begin{proof}
-For example, $\yc_\td=2\yc_{\td''}$,
-$$\yc_\td=(\td'+\td'')(\td'+\td'')^*+(\td'+\td'')^*(\td'+\td'')
-=(\td'+\td'')(\td'^*-\sqrt{-1}[\Lmd,\td'])
-+(\td'^*-\sqrt{-1}[\Lmd,\td'])(\td'+\td'')$$
-然后暴力展开， 12项？？？$\cdots$
-
-从略。
-\end{proof}
-
-\begin{cor}
-If $(X,\omg)$ is a Kahler manifold, then
-$$\yc_\td:C^\infty(C,\wedgeform{p,q})\to C^\infty(C,\wedgeform{p,q})$$
-\end{cor}
-\begin{proof}
-Since $\yc_\td=2\yc_{\td'}$,
-$\yc_{td'}$ preserves the bi-degree.
-\end{proof}
-
-\begin{cor}
-If $(X,\omg)$ is a compact Kahler manifold,
-$u$ is a $\yc_\td$-harmonic $k$-form. Assume
-$$u=\sum_{p+q=k}u^{p,q}$$
-$$u^{p,q}\in C^\infty(X,\wedgeform{p,q})$$
-then each $u^{p,q}$ is also harmonic.
-\end{cor}
-
-\begin{thm}(Hodge decomposition)
-
-$X$ is a compact Kahler manifold, then we have a decomposition
-$$H_{\td}^k(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
-
-Equivalently, (sheaf cohomology)
-$$H^k(X,\bbC)\cong\bigoplus_{p+q=k}H^q(X,\Omg^p)$$
-\end{thm}
-\begin{proof}
-take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'},\yc_{\td''}$,
-then
-$$\ker\yc_{\td}:=\mcalH^k(X,\bbC)
-\cong\bigoplus\limits_{p+q=k}\mcalH^{p,q}_{\td''}(X,\bbC)$$
-
-then $\Longrightarrow$ the decomposition for $H_\td^k(X,\bbC)$
-
-the decomposition for $H^k_\td(X,\bbC)$ is independent of the choice of $\omg$
-(Next time)
-\end{proof}
-
-%%%%%%%%%%%%%%%2019.4.25第九周周四%%%%%%%%%%%%%%%%%%%%%
-
-Recall: Hodge decomposition,
-
-$X$ compact Kahler manifold, $\dim_\bbC X=n$,
-
-Thm:(Hodge decomposition)
-$$H^k_{DR}(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}(X,\bbC)
-\cong\bigoplus_{p+q=n}H^{p,q}_{\td''}(X,\bbC)$$
-where
-
-$$H^{p,q}(X,\bbC)=\{[\afa]\in H_{DR}^k(X,\bbC)|\afa\text{is a $\td$-closed s.m. $(p,q)$-form}\}$$
-
-Proof: take a Kahler metric $\omg$,
-$$
-H^k_{DR}(X,\bbC)
-\cong
-\mcalH_{\td}^k(X,\bbC)=\bigoplus\mcalH_\td^{p,q}(X,\bbC)
-=\bigoplus\mcalH_{\td''}^{p,q}(X,\bbC)$$
-
-\begin{prop}There is a canonical isomorphism
-$$H^{p,q}_{\td}(X,\bbC)\xra{\sim}H^{p,q}_{\td''}(X,\bbC)$$
-$$[\afa]_{\td}\mapsto[\afa]_{\td''}$$
-where $\td\afa=0$,$\afa$ is a $(p,q)$-form.
-$\Rightarrow \td''\afa=0$
-\end{prop}
-\begin{proof}
-  Check: this map is well defined. Need to verify:
-if $\afa=\td\beta$ is a $(p,q)$-form, then $[\afa]_{\td''}=0$,
-i.e. $\afa$ is also $\td''$-exact.
-
-$\afa$ is a $(p,q)$-form,
-$$\Rightarrow\afa=\td'\beta^{p-1,q}+\td''\beta^{p,q-1}$$
-we have $\td''\td'\beta^{p-1,q}=0$, $\td'\td''\beta^{p,q-1}=0$
-
-We need a very important lemma:
-\end{proof}
-
-\begin{lemma}($\p\pbar$-lemma)
-
-Let $X$ is a Kahler manifold, $\afa$ is a smooth form which is
-$\td'$ and $\td''$ closed. Then, if $\afa$ is
-$\td$ or $\td'$ or $\td''$-exact, then $\afa=\td'\td''\gma$
-for some $\gma$.
-\end{lemma}
-
-Using $\p\pbar$-lemma, this map is well-defined.
-
-Now, notice that the two space has the same dimension. So,
-we need to show the map is injective(or, surjective).
-Claim : this map is injective. If $\afa$ is a $\td$-closed
-with $[\afa]_{\td''}=0$, i.e. $\afa=\td''\beta^{p,q-1}$.
-$\afa$ is $\td$-closed$\Rightarrow\td'\td''\beta^{p,q-1}=0$,
-$\p\pbar$-lemma applying to $\td''\beta^{p,q-1}$, we have
-$$\td''\beta^{p,q-1}=\td'\td''\gma=\td(\td''\gma)$$
-for some $\gma$.
-
-\vs
-
-Proof of $\p\pbar$-lemma:
-
-\begin{proof}
-Assume $\afa$ is $\td''$ exact, 1.e. $\afa=\td''\beta$,
-write
-$$\beta=H(\beta)+\yc_\td\gma$$
-where $H(\beta)$ is $\yc_\td$-harmonic, so
-$$\afa=\td'' H(\beta)+\td''\yc_\td\gma-2\td''\yc_{\td'}\gma$$
-(Since $\yc_\td=2\yc_{\td''}$)
-$$\Rightarrow\afa=2\td''(\td'\td'^*+\td'^*\td')
-=2\td''\td;\td'^*\gma-2\td'^*\td''\td'\gma$$
-
-By the assumption, $\td'\afa=0$, so
-$\td'^*\td''\td'\gma=0$
-$$\afa=-2\td'\td''\td'^*\gma$$
-\end{proof}
-
-\begin{rem}(Deligne-Griffiths-Morrora)
-
-If $\widehat{X}$ is bimeromapic to $X$, where $X$ is
-acompact Kahler, then$\hat{X}$ is also satisfys the $\p\pbar$-lemma.
-
-$X$ is a kahler manifold, then
-$$H^{p,q}_\td(X,\bbC)\cong H^{p,q}_{\td''}(C,\bbC)\cong
-H^{p,q}——{X,\bbC}$$
+该表示为$l\mapsto L,\,\lmd\mapsto\Lmd,\,b\mapsto B$.
 \end{rem}
 
-$X$ us a compact complex manifold,define
-$$H_{BC}^{p,q}:=
-\frac{\td\text{-closed $(p,q)$)}}{\td'\td;;\text{exact}}$$
-Bott-Chern cohomology
+注意到$\wedgeform{\bullet}(V^*)$作为$\mfksl(2,\bbC)$-模，
+刚好具有\textbf{权空间分解}
+$$
+  \wedgeform{\bullet}(V^*)
+=
+  \bigoplus_{k\geq 0}
+    \wedgeform{k}(V^*)
+$$
+其中$\wedgeform{k}(V^*)$的权为$k-n$
+（即算子$B$的属于本征值$(p+q-n)$的本征子空间）。
+李代数$\mfksl(2,\bbC)$的有限维模结构我们众所周知，
+由此立刻得到：
 
-Exercise" If $X$ is Kahler , then $H^{p,q}_{BC}=H^{p,q}_\td$
+%we have$$[l,\lmd]=b\quad[b,l]=2l\quad[b,\lmd]=-2\lmd$$
+%\begin{prop}There exists a natural action
+%$$\rho:\mfksl(2,\bbC)\to\End(\bigoplus_{p,q}\wedgeform{p,q})$$
+%with$$\rho(l)=L$$$$\rho(\lmd)=\Lmd$$$$\rho(b)=B$$\end{prop}
+%$$L^{n-k}$$$$u\to\omg^{n-k}\wedge u$$is an isomorphism.
+%$$L^{n-k}:\wedgeform{p,q}\to \wedgeform{n-k+p,n-k+q}$$
+%is also an isomorphism.
 
-$$H^{p,q}_A(X,\bbC):=
-\frac{\td'\td''\text{closed}}{(\td')\text{-exact}+\{\td''\text{exact}\}}$$
-(Appeli cohomology)
+\begin{thm}（Hard Lefschitz定理）
+\label{HL-局部-thm}
 
-denote
-$$h_{BC}^k:=\sum_{p+q=k}\dim_{\bbC}H_{BC}^{p,q}$$
-$$h_{A}^k:=\sum_{p+q=k}\dim_{\bbC}H_{A}^{p,q}$$
-
-\begin{thm}
-$X$ satisfies $\p\pbar$-lemma $\iff$
-$$h_B^k+h_A^k=2b_k$$
-where
-$$b_k=\dim_\bbC H_{DR}^k(X,\bbC)$$
-\end{thm}
-%这是比较新的结果，仅供了解
-
-\begin{thm}(Hard Lef)
-
-$X$ is a compact Kahler, $\dim_\bbC X=n$, denote
-$L=\{\omg\}\curvearrowright H_{DR}^k(X,\bbC)$, $\omg$ is a Kahler metric,
-Then we have:
-$$L^{n-k}: H_{DR}^k(X,\bbC)\cong H_{DR}^{2n-k}(X,\bbC)$$
-$$H^{p,q}(X,\bbC)\cong H^{p+n-k,q+n-k}(X,\bbC)$$
-where $k\leq n$, $p+q\leq n$.
+条件、记号承上，则对任意$0\leq k\leq n$，算子
+$$L^{n-k}:\wedgeform{k}(V^*)\to\wedgeform{2n-k}(V^*)$$
+为线性同构。此外，事实上对于$p+q=k$，算子
+$$L^{n-k}:\wedgeform{p,q}(V^*)\to\wedgeform{n-q,n-p}(V^*)$$
+也为线性同构。
 \end{thm}
 
-\begin{proof}Fox a Kahler metric $\omg$,
-$$L^{n-k}:H_{DR}^k\to H_{DR}^{2n-k}$$
-($\cong \mcalH_\td^k$, $\cong\mcalH_{\td}^{2n-k}$ respectively)
-(there is a commutative diagram...)
+\begin{proof}
+第一式由李代数$\mfksl(2,\bbC)$的表示论立刻得到。
+再注意到$L$的$(1,1)$-双分次性，比较分次立刻得第二式。
+\end{proof}
 
-need to proof: For any $\fai\in\mcalH_\td^k$, then
-$$L^{n-k}(\fai)=\omg^{n-k}\wedge\fai$$
-is also harmonic.
+%\begin{proof}Lemma:$$[L^r,\Lmd]u=r(k-n+r-1)L^{r-1}u$$
+%(induction, omit)Assume $\afa\in\wedgeform{k}_\bbC$, $L^{n-k}\afa=0$,
+%need to verify $\afa=0$.Claim:$$L^r:\wedgeform{k}\to\wedgeform{k+2r}$$
+%is injective whenever $r\leq n-k$.proof of the claim:
+%claim is true when $k=0$ or $k=1$.(check)
+%Let $\afa\in \wedgeform{k}$ s.t. $L^r\afa=0(r\leq n-k)$.
+%By the lemma,$$L^r\Lmd\afa-\lmd L^r\afa=r(k-n+r-1)L^{r-1}\afa$$
+%so,$$L^{r-1}(L\Lmd\afa-r(k-n+r-1)\afa)=0$$by the induction on $r$,
+%$$L\Lmd\afa=r(k-n+r-1)\afa$$since $r(k-n+r-1)\neq 0$, $\afa=L\beta$
+%for some $\beta\in\wedgeform{k-2}$.so,$L^r\afa=L^{r+1}\beta=0$,
+%by induction on $k$, we have$\beta=0$,so $\afa=0$.The claim is proved.\end{proof}
+
+\begin{definition}（本原形式）
+
+条件、记号承上。则对于$0\leq k\leq n$，若$L^{n-k+1}\afa=0$,则
+称$\afa\in\wedgeform{k}(V^*)$为\textbf{本原形式}
+（primitive form）。
+\index{primitive form\kong 本原形式}
+\end{definition}
+
+我们将本原$(p,q)$-形式之全体记作$\wedgeform{p,q}_{\prim}(V^*)$.
+表示论的解释：考虑$\mfksl(2,\bbC)$-模$\wedgeform{\bullet}(V^*)$
+的不可约模分解。易知本原形式就是表示论当中的\textbf{最低权向量}。
+从而由表示论立刻得到：
+
+\begin{thm}（Lefschitz分解定理）
+\label{LD-局部-thm}
+
+条件记号承上，则对任意的$\afa\in\wedgeform{\bullet}(V^*)$，
+则存在唯一的形如下述的分解
+$$
+  \afa=\sum_{i=1}^{N}
+    L^{s_i}\afa_i
+$$
+其中$\afa_1,\afa_2,...,\afa_N$为本原形式，$s_i\geq 0$.
+\end{thm}
+\begin{proof}
+只需在$\wedgeform{\bullet}(V^*)$的每个不可约子模的最低权空间
+之中适当选取本原形式（最低权向量）即可。
+\end{proof}
+
+%\begin{definition}(Primitive form)$\afa\in\wedgeform{k}
+%(k\leq n)$ is called primitive form, if\end{definition}
+%\begin{cor}(Lefischtz Decomposition)(LD)For any $\afa\in\wedgeform{k},
+%(1\leq k\leq 2n)$,we have a unique decomposition:$$\afa=\sum_{\gma\geq(k-n)_+}
+%L^\gma\afa_r$$($(k-n)_+:=\max\{k-n,0\}$)with $\afa_r\in\wedgeform{k-2r}$
+%is primitive\end{cor}\begin{proof}Existence: assume $k\leq n$, consider
+%$$L^{n-k+1}\afa\in\wedgeform{2n-k+2}$$by HL, $\exists !\,\beta\in\wedgeform{k-2}$ s.t.
+%$L^{n-k+2}\beta=L^{n-k+1}\afa$, so$L^{n-k+1}(\afa-L\beta)=0$, i.e. $\afa_0=\afa-L\beta$
+%is primitive. $\afa=\afa_0+L\beta$, then induction on degrees,we get the
+%decomposition for $\afa$.If $k>n$, we apply HL to reduce it to case 1.
+%Uniqueness: Next time..\end{proof}%%%%%%%%%%%%%%%2019.4.23第九周周二%%%%%%%%%
+%Today: Continuous to Hard Lef decomposition, Hodge-Riemann
+%bilinear relations.Hard-Lefschitz: HL Lefschitz decomposition :LD
+%Hodge-Riemann bilinear relations :HRR
+%Recall: $\bbC^n,\wedgeform{k}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}$,
+%$\omg$: a Kahler metric on $\bbC^n$with constant coefficient $\in\wedgeform{1,1}_\bbR$.
+%Lefschitz operator : $Lu=\omg\wedge u$.\begin{thm}(HL)Assume $k\leq n,
+%p+q\leq n$, then$$L^{n-k}:\wedgeform{k}\to \wedgeform{2n-k}$$
+%is a linear isomorphism.$$L^{n-k}:\wedgeform{p,q}\to\wedgeform{p+n-k,q+n-k}$$
+%is also a linear isomorphism.\end{thm}Linear algebra..
+%\begin{thm}(LD)for any $u\in\wedgeform{k}$,we have a unique decomposition
+%$$u=\sum_{r\geq(k-n)_+}L^ru_r$$where $u_r\in\wedgeform{k-2r}_{prim}$ is a
+%primitive form.\end{thm}Recall: a $k$-form $u\in\wedgeform{k}(k\leq n)$
+%is called primitive,if $L^{n-k+1}(u)=0$. When $k>n$, $u$ is called primitive,
+%$\Lmd(u)=0$, where $\Lmd$ is the adjoint of $L$.\begin{proof}
+%Existence: application of $HL$.Uniqueness: Omit.\end{proof}
+
+%听到一首歌：《Two Days》   -  2019-06-09
+
+对于酉空间$(V,h)$，回顾Hodge$\star$算子
+$
+  \star:\wedgeform{p,q}(V^*)\to
+  \wedgeform{n-q,n-p}(V^*)
+$
+使得对任意$\afa,\beta\in\wedgeform{p,q}(V^*)$，成立
+$$\afa\wedge\star\betabar=\pair{\afa}{\beta}\td\Vol$$
+容易验证$\star$是实算子，即对任意的$\beta\in\wedgeform{p,q}(V^*)$，
+成立$\overline{\star\beta}=\star\betabar$.
+这是因为对任意$\afa\in\wedgeform{p,q}(V^*)$，
+$$
+  \afa\wedge\overline{\star\beta}
+=
+  \overline{\afabar\wedge\star\beta}
+=
+  \overline{\pair{\afabar}{\betabar}}\td V
+=
+  \pair{\afa}{\beta}\td V
+=
+  \afa\wedge\star\betabar
+$$
+之后由$\afa$的任意性即可。
+
+%%%%  正确性待验证     %%%%
+
+%容易验证在幺正标架下，Hodge$\star$算子有显式表达式
+%$$
+%  \star:\td z_I\wedge\td\zbar_J
+%  \mapsto(-1)^{n(n-p)}
+%  \sgn(I,I^c)\sgn(J,J^c)
+%  \td z_{J^c}\wedge\td\zbar_{I^c}
+%$$
+%由此还可以推出在$\wedgeform{p,q}(V^*)$
+%上成立$\star^2=(-1)^{p+q-n}\id$.
+
+%歌曲： Midsummer Madness
+
+\begin{lemma}（Hodge$\star$算子与Lefschitz算子的基本关系）
+$$\star\Lmd=L\star$$
+\end{lemma}
+
+\begin{proof}
+对于任意$\afa\in\wedgeform{p+1,q+1}(V^*)$
+以及$\beta\in\wedgeform{p,q}(V)$，注意到
+\begin{eqnarray*}
+     \pair{\afa}{L\beta}\td\Vol
+&=&
+     \overline{\pair{L\beta}{\afa}}\td\Vol
+ =
+     \overline{L\beta\wedge\star\afabar}
+ =
+     \overline{\omg\wedge\beta\wedge\star\afabar}
+ =
+     \overline{\beta\wedge L\star\afabar}\\
+&=&
+     \overline{\beta\wedge\star\star^{-1}L\star\afabar}
+ =
+     \overline{\beta\wedge\star\overline{\star^{-1}L\star\afa}}
+ =
+     \overline{\pair{\beta}{\star^{-1}L\star\afa}}\td\Vol
+ =
+     \pair{\star^{-1}L\star\afa}{\beta}\td\Vol
+\end{eqnarray*}
+因此$\Lmd=\star^{-1}L\star$，也就是说$\star\Lmd=L\star$.
+\end{proof}
+
+\begin{thm}（Hodge$\star$算子在$\wedgeform{\bullet}(V^*)$
+的$\mfksl(2,\bbC)$不可约子模上的作用）
+\label{Hodge star与L的关系 - thm}
+
+设$\afa\in\wedgeform{p,q}_{\prim}(V^*)$为本原$(p,q)$-形式，
+记$k:=p+q$，则成立
+$$
+  \star L^j\afa
+=
+  (-1)^{\frac{k(k+1)}{2}}
+  \sqrt{-1}^{p-q}
+  \frac{j!}{(n-k-j)!}
+  L^{n-k-j}\afa
+$$
+\end{thm}
+
+%\begin{prop} Assume $\afa\in\wedgeform{p,q}_{prim}$, and $p+q\leq n$.
+%(i.e. $L^{n-p-q+1}\afa=0$),then$$*\afa=(-1)^{\frac{(p+q)(p+q-1)}{2}}
+%(\sqrt{-1})^{p-q}\frac{1}{(n-p-q)!}L^{n-p-q}\afa$$\end{prop}
+
+\begin{proof}暴力计算，异常复杂。{\color{red}\textbf{(待补)}}
+
+[详见\verb"Huybrechts, Prop 1.2.31"]
+\end{proof}
+特别地，此定理表明，$\wedgeform{\bullet}(V^*)$作为
+$\mfksl(2,\bbC)=\Span_{\bbC}\{L,B,\Lmd\}$-模，每个不可约子模都是
+$\star$-不变子空间。
+
+%Define the bilinear form $Q$ on $\wedgeform{k}\,\,(k\leq n)$ as follows:
+%for any $u\in \wedgeform{p,q}_{prim},p+q=k\leq n$,
+%and equal holds $$\iff u=0$$
+\begin{thm}（Hodge-Riemann双线性关系）
+\label{HRR-局部-thm}
+
+对于$k\leq n$，定义$\wedgeform{k}(V^*)$上的共轭双线性型$Q$如下：
+$$Q(\afa,\beta):=L^{n-k}\afa\wedge\overline{\beta}$$
+那么对任意$u\in \wedgeform{p,q}_{\prim}(V^*)$，若$k:=p+q\leq n$，则
+$$(\sqrt{-1})^{p-q}(-1)^{\frac{(p+q)(p+q-1)}{2}}Q(u,u)\geq 0$$
+且等号成立当且仅当$u=0$.
+\end{thm}
+
+\begin{proof}利用定理\ref{Hodge star与L的关系 - thm}，
+容易验证在相差常数倍意义下，有%Take $u\in\wedgeform{p,q}_{prim}$,
+$$Q(u,u)=L^{n-k}\wedge u\wedge\overline{u}
+=*u\wedge\overline{u}=\langle\overline{u},\overline{u}\rangle\td\Vol
+=|u|^2\td\Vol\geq 0$$%(up to a factor!)
+\end{proof}
+
+{\color{blue}（细节待补，可能有小错，但基本精神如此）}
+
+%Summary: $\wedgeform{\bullet}=\bigoplus\limits_{1\leq k\leq n}\wedgeform{k}_\bbC$,
+%where$\wedgeform{k}_{\bbC}=\bigoplus\limits_{p+q=k}\wedgeform{p,q}_\bbC$.
+%Lefschitz operator $L\rightsquigarrow$ HL,LD,HRR.
+
+
+\section{\Kahler 流形上的算子对易关系}
+
+%The analogue of compact Kahler manifolds,
+%$$H^k_{DR}(X,\bbC)\cong\bigoplus_{p+q=k}H^{p,q}_{Dol}(X,\bbC)$$
+%$\omg$: A Kahler metric $\in H^{1,1}_{Dol}(X,\bbR)$.
+%Denote $L\curvearrowright H^k_{DR}(X,\bbC)$,
+%$$L(u)=[\omg,u]=[\omg]\wedge u$$
+
+现在，设$(X,\omg)$为\Kahler 流形，考虑$\Omg^{p,q}(X,\bbC)$为
+$X$上的光滑$(p,q)$-形式之全体.对于$u\in\Omg^{p,q}(X,\bbC)$，局部上
+$$
+  u=\sum_{|I|=p\atop |J|=q}
+    u_{IJ}\td z_I\wedge\td\zbar_J
+$$
+再回顾微分算子$\td,\td':=\p$以及$\td'':=\pbar$.
+回顾我们之前介绍的Lefschitz算子$L$及其伴随$\Lmd$，
+我们在Hermite流形上也可定义之，只需在每点处的切空间上考虑即可。
+即有$L:\Omg^{p,q}(X,\bbC)\to\Omg^{p+1,q+1}(X,\bbC)$，以及
+$\Lmd:\Omg^{p,q}(X,\bbC)\to\Omg^{p-1,q-1}(X,\bbC)$.
+
+%$$(\bbC^n,\omg=\sqrt{-1}\sum_{j=1}^n\td z_j\wedge\td\overline{z}_j)$$
+%$u\in C^\infty(\bbC^n,\wedgeform{p,q})$, locally
+%$$u=\sum_{|I|=p,|J|=q}u_{I,J}\td z_I\wedge \td z_j,\quad
+%v=\sum_{|I|=p,|J|=q}v_{I,J}\td z_I\wedge \td z_j
+%$$$$\langle\langle u,v\rangle\rangle=\int_{\bbC^n}\sum_{|I|=p,|J|=q}
+%u_{I,J}\overline{V_{I,J}}\td Vol$$$\td=\td'+\td''$, $\td'=\p,\td''=\pbar$.
+%$$\td' u=\sum_{I,J}\sum_k\pfrac{u_{I,J}}{z_k}\td z_k\wedge\td z_I
+%\wedge\td z_J$$$$\td''u=\cdots$$
+
+回顾$\Omg^{p,q}(X,\bbC)$上的内积结构$\ppair{}{}$
+（视$\bbC$为$X$上的平凡线丛，配以标准Hermite度量）。
+在此意义下可谈论微分算子的形式伴随$\td^*,\td'^*,\td''^*$.
+容易验证，在$X=\bbC^n,\omg=\ii\sum\limits_{k=1}^n\td z_k\wedge\td\zbar_k$
+的经典情况下，对于$u=\sum\limits_{|I|=p\atop|J|=q}u_{IJ}
+\td z_I\wedge\td\zbar_J\in\Omg^{p,q}(X,\bbC)$，则有
+\begin{eqnarray*}
+  \td'^*u
+&=&
+  -\sum_{|I|=p\atop |J|=q}
+    \sum_{k=1}^n
+    \pfrac{u_{I,J}}{\zbar_k}
+    \pp{z_k}
+    \suobing
+    (\td z_I\wedge\td\zbar_J)
+\\
+  \td''^*u
+&=&
+  -\sum_{|I|=p\atop |J|=q}
+    \sum_{k=1}^n
+      \pfrac{u_{I,J}}{z_k}
+      \pp{\zbar_k}
+      \suobing
+      (\td z_I\wedge\td\zbar_J)
+\end{eqnarray*}
+
+%\begin{prop}$$[(\td'')^*,L]=\sqrt{-1}\td'$$
+%\end{prop}\begin{proof}Exercise.\end{proof}
+
+\begin{lemma}
+\label{Kahler对易关系-基本引理-lem}
+对于$X=\bbC^n$，$\omg=\ii\sum\limits_{k=1}^n\td z_k\wedge\td\zbar_k$，
+则微分算子$\td'$与Lefshictz算子$L$满足对易关系
+$$[\td''^*,L]=\ii\td'$$
+\end{lemma}
+
+\begin{proof}
+暴力验证即可。对于$u\in\Omg^{p,q}(X,\bbC)$，不妨$u$为单项式
+$u=u_{IJ}\td z_I\wedge\td\zbar_J$，其中多重指标$|I|=p,|J|=q$.则有
+\begin{eqnarray*}
+     L\td''^*u
+&=&
+     \omg\wedge
+     \left(
+       -\sum_{k=1}^{n}
+         \pfrac{u_{IJ}}{z_k}
+         \pp{\zbar_k}\suobing
+         \left(
+           \td z_I\wedge\td\zbar_J
+         \right)
+     \right)
+=
+     -\sqrt{-1}
+     \sum_{k,l=1}^{n}
+     \td z_I\wedge
+     \left(
+       \td z_l\wedge
+       \left(
+         \pp{\zbar_k}\suobing\td\zbar_J
+       \right)
+     \right)
+\end{eqnarray*}
+\begin{eqnarray*}
+     \td''^*Lu
+&=&
+     \sqrt{-1}(-1)^{p+1}
+     \sum_{k,l=1}^{n}
+       \pfrac{u_{IJ}}{z_l}
+       \pp{\zbar_l}\suobing
+       \Big[
+         (\td z_k\wedge\td z_I)\wedge
+         (\td\zbar_k\wedge\td\zbar_J)
+       \Big]\\
+&=&
+     \sqrt{-1}
+     \sum_{k,l=1}^{n}
+       \pfrac{u_{IJ}}{z_l}
+         (\td z_k\wedge\td z_I)\wedge
+         \left(
+           \delta_{lk}\td\zbar_J-\td\zbar_k\wedge
+           \left(
+             \pp{\zbar_l}\suobing\td\zbar_J
+           \right)
+         \right)\\
+&=&
+     \ii\sum_{k=1}^{n}
+     \pfrac{u_{IJ}}{z_k}
+     \td z_k\wedge\td z_I\wedge\td\zbar_J
+    -\ii\sum_{k,l=1}^{n}
+       \pfrac{u_{IJ}}{z_l}
+       \td\zbar_k\wedge
+       \left(
+         \pp{\zbar_l}\suobing\td\zbar_J
+       \right)\\
+&=&
+     \ii\td' u+L\td''^*u
+\end{eqnarray*}
+因此有$[\td''^*,L]=\ii\td'$.
+\end{proof}
+
+%\begin{thm}Let $X$ be a Kahler manifold (may not compact), with Kahler metric
+%$\omg$,then we have$$[(\td'')^*,L]=\sqrt{-1}\td'$$\end{thm}
+%\begin{proof}Only need to verify $u\in  C^\infty_c(X,\wedgeform{p,q})$
+%with compact support in a holomorphic chart at $x$.
+%Assume the holomorphic chart near $x$ is choosen s.t.
+%$$\omg(z)=\sqrt{-1}\sum_{1\leq j\leq n}\td z_j\wedge\td\zbar_j+O(|z|^2)$$
+%$$u\in\sum_{I,J}u_{I,J}\td z_I\wedge\zbar_J$$is a $(p,q)$-form, $v$
+%is also...$$\langle u,q\rangle= u_{I,J}\overline{v_{M,N}}
+%\langle \td z_I,\td z_M\rangle\langle\td\zbar_J,\td\zbar_N\rangle
+%=u_{IJ}\overline{V_{ij}}+a_{IJMN}(z)u_{IJ}\overline{V_{MN}}$$
+%where $a_{IJMN}=O(|z|^2)$.So,$$(\td'')^*u=-\sum_{IJk}\pfrac{u_{IJ}}
+%{z_k}\pp{\zbar_k}\suobing(\td z_I\wedge\td\zbar_J)+\sum_{IJMN}b_{IJMN}u_{IJ}
+%\td z_M\wedge\td\zbar_N$$where $b_{IJMN}(z)=O(|z|)$. So,
+%$$[(\td'')^*,L]u(x)=\sqrt{-1}\td'u(x)$$$$\Longrightarrow [(\td'')^*,L]=\sqrt{-1}\td'$$
+%\end{proof}\begin{prop}In Kahler manifold,$$[(\td')^*,L]=-\sqrt{-1}\td''$$
+%$$[\Lmd,\td'']=-\sqrt{-1}(\td')^*$$$$[\Lmd,\td']=\sqrt{-1}(\td'')^*$$\end{prop}
+
+
+
+\begin{thm}（\Kahler 流形上的基本对易关系）
+\label{Kahler 流形上的基本对易关系-thm}
+
+设$(X,\omg)$为\Kahler 流形（可以非紧），则成立算子对易关系
+\begin{eqnarray*}
+  [\td''^*,L]=\ii\td'
+&\qquad&
+  [\td'^*,L]=-\ii\td''
+\\
+  \,[\Lmd,\td'']=-\ii\td'^*
+&\qquad&
+  \,[\Lmd,\td']=\ii\td''^*
+\end{eqnarray*}
+\end{thm}
+
+
+\begin{proof}由于$\omg$为\Kahler 形式，从而由
+性质\ref{Kahler流形的测地坐标-简单版本-prop}可知
+对任意$x\in X$，存在$x$的全纯坐标邻域$(z_1,z_2,...,z_n)$，
+使得$x$位于该坐标卡原点，并且
+$$
+  \omg=\ii\sum_{k=1}^{n}\td z_k\wedge\td\zbar_k
+  +O(|z|^2)
+$$
+从而对于$u=\sum\limits_{|I|=p\atop|J|=q}
+u_{IJ}\td z_I\wedge\td\zbar_J$，容易验证成立
+\begin{eqnarray*}
+     \td'^*u
+&=&
+     -\sum_{|I|=p\atop|J|=q}
+      \sum_{k=1}^{n}
+        \pfrac{u_{IJ}}{\zbar_k}
+        \pp{z_k}\suobing
+        \left(\td z_I\wedge\td\zbar_J\right)+O(|z|)
+\\
+     \td''^*u
+&=&
+     -\sum_{|I|=p\atop|J|=q}
+      \sum_{k=1}^{n}
+        \pfrac{u_{IJ}}{z_k}
+        \pp{\zbar_k}\suobing
+        \left(\td z_I\wedge\td\zbar_J\right)+O(|z|)
+\end{eqnarray*}
+之后与引理\ref{Kahler对易关系-基本引理-lem}的证明完全类似，
+可知$[\td''^*,L]=\ii\td'$.对此式取共轭，即得$[\td'^*,L]=-\ii\td''$.
+再取形式伴随，即可得到余下的两个关于$\Lmd$的对易关系。
 \end{proof}
 
 \begin{lemma}
-$$[\yc_{\td},L]=0$$
+\label{Kahler流形微分算子对易-lem}
+设$(X,\omg)$为\Kahler 流形（可以非紧），则成立
+$$[\td',\td''^*]=[\td'',\td'^*]=0$$
 \end{lemma}
 
-\begin{proof}
-$$[\yc_\td,L]=2[\yc_{\td'},L]
-=2\left([\td'\td'^*,L]+[\td'^*\td',L]\right)
-=2\left(\td'[\td'*,L]+[\td'^*,L]\td'\right)$$
-(check: $[L,\td']=0$)
-So,
-$$=-2\sqrt{-1}(\td'\td''+\td''\td')=0$$
+\begin{proof}注意利用对易关系（定理\ref{Kahler 流形上的基本对易关系-thm}）
+
+$$
+  [\td',\td''^*]
+=
+  -\ii[\td',[\Lmd,\td']]
+$$
+而再注意超对易子$[,]$的超雅可比恒等式，以及$(\td')^2=0$，从而有
+$$
+  [\td',[\Lmd,\td']]
+=
+  [[\td',\Lmd],\td']+[\Lmd,[\td',\td']]
+=
+  -[\td',[\Lmd,\td']]
+$$
+因此$[\td',[\Lmd,\td']]=0$，从而$[\td',\td''^*]=0$.
+另一式也类似。
 \end{proof}
 
-\textbf{Exercise}: Complex tori
-$$\bbT^n:=\bbC^n/\Gma$$
-where $\Gma=\bbZ^n$. $\bbT^n$ is a compact Kahler manifold.
-Then
-$$H^{1,1}(\bbT^n,\bbC)\cong\wedgeform{1,1}_{\bbC}$$
-the space of $(1,1)$-forms on $\bbC^n$ with constant coefficient,
-in particular,
-$$\dim_\bbC H^{1,1}(\bbT^n,\bbC)=n^2$$
+\begin{prop}（\Kahler 流形上的Laplace算子）
 
-\textbf{Exercise}: the set of all the Kahler class on $\bbT^n
-\subseteq H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$ is equal to
-the set of $n\times n$ positive definite Hermitian metrics.
+设$(X,\omg)$为\Kahler 流形（可以非紧），则成立
+$$
+  \yc'=\yc''=\frac{1}{2}\yc
+$$
+其中$\yc:=[\td,\td^*]$，$\yc':=[\td',\td'^*]$，
+$\yc'':=[\td'',\td''^*]$为Laplace算子。
+\end{prop}
 
-(Hint: using Hodge theory)
+\begin{proof}
+注意利用对易关系（定理\ref{Kahler 流形上的基本对易关系-thm}）
+以及超对易子$[,]$的超雅可比恒等式，再注意到$[\td',\td'']=0$，从而
+\begin{eqnarray*}
+     \yc''
+&=&
+     [\td'',\td''^*]
+=
+     -\ii[\td'',[\Lmd,\td']]
+=
+     -\ii\left(
+       [[\td'',\Lmd],\td']+[\Lmd,[\td'',\td']]
+     \right)\\
+&=&
+     -\ii[[\td'',\Lmd],\td']
+=
+     -\ii\cdot\ii[\td'^*,\td']
+=
+     \yc'
+\end{eqnarray*}
+从而再注意引理\ref{Kahler流形微分算子对易-lem}，可知
+\begin{eqnarray*}
+     \yc
+&=&
+     [\td'+\td'',\td'^*+\td''^*]\\
+&=&
+     [\td',\td'^*]
+    +[\td',\td''^*]
+    +[\td'',\td'^*]
+    +[\td'',\td''^*]\\
+&=&
+    \yc'+\yc''
+\end{eqnarray*}
+从而证毕。
+\end{proof}
 
-\begin{thm}(Lefschitz decomposition)
+%\begin{cor}$(X,\omg)$ is a Kahler manifold, then
+%$$\yc_{\td}=2\yc_{\td'}=2\yc_{\td''}$$\end{cor}
+%\begin{proof}For example, $\yc_\td=2\yc_{\td''}$,
+%$$\yc_\td=(\td'+\td'')(\td'+\td'')^*+(\td'+\td'')^*(\td'+\td'')
+%=(\td'+\td'')(\td'^*-\sqrt{-1}[\Lmd,\td'])
+%+(\td'^*-\sqrt{-1}[\Lmd,\td'])(\td'+\td'')$$
+%然后暴力展开， 12项？？？$\cdots$从略。\end{proof}
 
-Define a class $\afa\in H^{k}_{DR}(X,\bbC)$
-to be positive if
-$$L^{n-k+1}(\afa)=0$$
-if $k\leq n$.
+\begin{cor}
+\label{Kahler-Laplace 保持双分次-cor}
+设$(X,\omg)$为\Kahler 流形，则$\yc$保持双分次，即
+$$
+  \yc:\Omg^{p,q}(X,\bbC)\to\Omg^{p,q}(X,\bbC)
+$$
+\end{cor}
 
-(When $\afa\in H^k_{DR}(X,\bbC)$, $k>n$, we call $\afa$ positive)
+\begin{proof}
+只需注意$\yc=2\yc'$，而$\yc'$保持双分次。
+\end{proof}
+由此可得，若$\afa\in\Omg\updot(X,E)$使得$\yc\afa=0$，
+则$\afa$在每个$\Omg^{p,q}(X,\bbC)$的分量也是$\yc$-调和的。
 
-Then $\forall\fai\in H^k_{DR}(X,\bbC)$, exist unique decomposition
-$$\fai=\sum_{\gma\geq(k-n)_+}
-L^\gma\fai_\gma$$
-where $\fai_\gma\in H_{prim}^{k-2\gma}(X,\bbC)$.
+\begin{thm}（Laplace算子的对易性）
+\label{紧Kahler-Laplace算子对易性}
 
-Similarly,
-$$H^{p,q}(X,\bbC)=\bigoplus_{r\geq(p+q-n)_+} H_{prim}^{p-r,q-r}(X,\bbC)$$
+设$(X,\omg)$为\Kahler 流形（可以非紧），则
+算子$\yc$与以下算子都对易：
+$$
+  \star\quad
+  \td'\quad
+  \td''\quad
+  \td'^*\quad
+  \td''^*\quad
+  L\quad
+  \Lmd
+$$
 \end{thm}
 
 \begin{proof}
-Exercise.
+$[\yc,\star]=0$与黎曼流形的情形类似；直接验证$[\yc',\td']=[\yc',\td'^*]=0$
+以及$[\yc'',\td'']=[\yc'',\td''^*]=0$，而$\yc=2\yc''=2\yc''^*$，从而
+$\yc$与$\td',\td'',\td'^*,\td''^*$对易。
+
+而注意$\omg$为\Kahler 形式，$\td\omg=0$，比较分次得$\td'\omg=\td''\omg=0$，从而
+对任意$u\in\Omg\updot(X,\bbC)$，
+$$
+  [\td,L]u
+=
+  \td(\omg\wedge u)-\omg\wedge\td u
+=
+  \td\omg\wedge u=0
+$$
+从而$[\td,L]=0$.比较分次可知$[\td',L]=[\td'',L]=0$.
+从而由超雅可比恒等式，
+$$
+  [\yc',L]=[[\td',\td'^*],L]
+=
+  [\td',[\td'^*,L]]+[[\td',L],\td'^*]
+=
+  -\ii[\td',\td'']
+=0
+$$
+再注意到$\yc=2\yc'$，从而$\yc$与$L$对易。
+再取伴随，注意$\yc$是自伴的，从而易知$\yc$也与$\Lmd$对易。
 \end{proof}
 
-\begin{thm}(HRR)
+%\begin{cor}If $(X,\omg)$ is a Kahler manifold, then
+%$$\yc_\td:C^\infty(C,\wedgeform{p,q})\to C^\infty(C,\wedgeform{p,q})$$
+%\end{cor}\begin{proof}Since $\yc_\td=2\yc_{\td'}$,
+%$\yc_{td'}$ preserves the bi-degree.\end{proof}
+%\begin{cor}If $(X,\omg)$ is a compact Kahler manifold,
+%$u$ is a $\yc_\td$-harmonic $k$-form. Assume
+%$$u=\sum_{p+q=k}u^{p,q}$$$$u^{p,q}\in C^\infty(X,\wedgeform{p,q})$$
+%then each $u^{p,q}$ is also harmonic.\end{cor}
 
-$X$ compact Kahler, $\dim_\bbC X=n$, $\omg$ is Kahler metric, define
-$$Q(\afa,\beta)=L^{n-k}\afa\wedge\overline{\beta}$$
-where $\afa,\beta\in H^{p,q}(X,\bbC)$, and $p+q=k$.
+\section{紧\Kahler 流形的上同调群}
 
-Then $Q|_{H_{prim}^{p,q}}$ is positive defined (up to a factor).
+对于一般的紧Hermite流形$(X,h)$，回顾Hodge分解定理
+（定理\ref{紧复流形的Hodge理论-thm}），考虑$E=X\times\bbC$为平凡线丛
+并配以标准Hermite度量的情形，有Hodge分解
+$$
+  \Omg^{p,q}(X,\bbC)=
+  \mcalH^{p,q}_{\td''}(X,\bbC)+\im\td''+\im\td''^*
+$$
+在平凡线丛的特殊情形下，注意到$(\td')^2=0$，
+我们亦可类似得到关于$\yc'=[\td',\td'^*]$的Hodge分解
+$$
+  \Omg^{p,q}(X,\bbC)=
+  \mcalH^{p,q}_{\td'}(X,\bbC)+\im\td'+\im\td'^*
+$$
+
+而对于\Kahler 流形$(X,\omg)$，注意到$\yc=2\yc'=2\yc''$，从而有
+$$
+     \mcalH^{p,q}_{\td}(X,\bbC)
+\cong\mcalH^{p,q}_{\td'}(X,\bbC)
+\cong\mcalH^{p,q}_{\td''}(X,\bbC)
+$$
+于是为了方便，我们将其记作$\mcalH^{p,q}(X,\bbC)$，省略下标不会有歧义。
+由于$\yc=2\yc'=2\yc''$，从而推论\ref{Kahler-Laplace 保持双分次-cor}表明
+$\mcalH^{k}(X,\bbC)=\bigoplus\limits_{p+q=k}\mcalH^{p,q}(X,\bbC)$.
+再注意$\yc,\yc',\yc''$都为实算子，从而立刻得到：
+
+\begin{thm}（紧\Kahler 流形的Hodge分解定理）
+\label{紧Kahler流形的Hodge分解-thm}
+
+设$X$为紧\Kahler 流形，则其de Rham上同调与Dolbeault上同调满足
+\begin{eqnarray*}
+  H^k_{\DR}(X,\bbC)&\cong&
+  \bigoplus_{p,q=k}H^{p,q}_{\td''}(X,\bbC)
+\\
+  H^{p,q}_{\td''}(X,\bbC)&\cong&
+  \overline{
+  H^{q,p}_{\td''}(X,\bbC)
+  }
+\end{eqnarray*}
 \end{thm}
 
 \begin{proof}
-Exercise.
+任取\Kahler 度量$\omg$，
+只需注意到Hodge同构$H^k(X,\bbC)\cong\mcalH^k(X,\bbC)$
+以及$H^{p,q}_{\td''}(X,\bbC)=\mcalH^{p,q}(X,\bbC)$.
 \end{proof}
-%要求：对这三个定理非常熟悉！！！
+
+事实上，上述同构是典范的，与$X$上的\Kahler 度量选取无关。
+为说明这一点，我们需要一个引理：
+
+\begin{lemma}（紧\Kahler 流形的$\p\pbar$-引理）
+\label{紧Kahler流形的ppbar引理}
+
+设$(X,\omg)$为紧\Kahler 流形，
+$\afa\in\Omg^{p,q}(X,\bbC)$满足$\td\afa=0$，
+则以下等价：
+
+（1）$\afa$是$\td$-恰当的；
+
+（2）$\afa$是$\td'$-恰当的；
+
+（3）$\afa$是$\td''$-恰当的；
+
+（4）$\afa$是$\td'\td''$-恰当的；
+
+（5）$\afa$与空间$\mcalH^{p,q}(X,\bbC)$正交。
+\end{lemma}
+
+\begin{proof}分以下几步：
+
+\textbf{(1)(2)(3)(4)$\to$(5)：}对于任意$\beta\in\mcalH^{p,q}(X,\bbC)$，
+则$\yc'\beta=\yc''\beta=0$.类似于引理\ref{Hodge分解-引理-lem}可知
+$\td'^*\beta=\td''^*\beta=0$，从而易证(5)成立。
+
+\textbf{(4)$\to$(1)(2)(3)：}若（4）成立，则（2）（3）显然。
+令$\afa=\td'\td''\beta$，则$\afa=\frac{1}{2}(\td'+\td'')(\td''-\td')\beta=
+\td\frac{(\td''-\td')\beta}{2}$，从而（1）成立。
+
+\textbf{最后只需再证(5)$\to$(4)：}若$\afa\bot\mcalH^{p,q}(X,\bbC)$，
+则注意到关于$\yc'$的Hodge分解，必有
+$$\afa=\td'\gma+\td'^*\gma'$$
+而由$\td\afa=0$比较分次可得$\td'\afa=\td''\afa=0$，因此
+$$0=\td'\afa=\td'\td'^*\gma'$$
+因此$0=\ppair{\td'\td'^*\gma'}{\gma'}=\ppair{\td'^*\gma'}{\td'^*\gma'}
+=\norm{\td'^*\gma'}^2$，迫使$\td'^*\gma'=0$.因此$\afa=\td'\gma$.
+
+再对$\gma$考虑关于$\yc''$的Hodge分解，令
+$$
+  \gma=\td''\beta+\td''^*\beta'+\beta''
+$$
+其中$\yc''\beta''=0$，从而$\td''\beta''=0$
+（类似于引理\ref{Hodge分解-引理-lem}）.于是
+$$
+  \afa=\td'\gma
+=
+  \td'\td''\beta+\td'\td''^*\beta'
+=
+  \td'\td''\beta-\td''^*\td'\beta'
+$$
+其中第二个等号利用了引理\ref{Kahler流形微分算子对易-lem}.
+又因为$\td''\afa=0$，从而得到$\td''\td''^*\td'\beta'=0$，因此
+$0=\ppair{\td''\td''^*\td'\beta'}{\td'\beta'}
+=\norm{\td''^*\td'\beta'}^2$，迫使$\td''^*\td'\beta'=0$，因此
+$\afa=\td'\td''\beta$证毕。
+\end{proof}
+
+%\begin{thm}(Hodge decomposition)$X$ is a compact Kahler manifold, 
+%then we have a decomposition$$H_{\td}^k(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
+%Equivalently, (sheaf cohomology)$$H^k(X,\bbC)\cong\bigoplus_{p+q=k}H^q(X,\Omg^p)$$\end{thm}
+%\begin{proof}take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'}
+%,\yc_{\td''}$,then\ker\yc_{\td}:=\mcalH^k(X,\bbC)
+%\cong\bigoplus\limits_{p+q=k}\mcalH^{p,q}_{\td''}(X,\bbC)$$
+%then $\Longrightarrow$ the decomposition for $H_\td^k(X,\bbC)$
+%the decomposition for $H^k_\td(X,\bbC)$ is independent of the choice of $\omg$
+%(Next time)\end{proof}%%%%%%%%%%%%%%2019.4.25第九周周四%%%%%%%%%%%%%%%%%%%%%
+%Recall: Hodge decomposition,$X$ compact Kahler manifold, 
+%$\dim_\bbC X=n$,Thm:(Hodge decomposition)
+%$$H^k_{DR}(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}(X,\bbC)
+%\cong\bigoplus_{p+q=n}H^{p,q}_{\td''}(X,\bbC)$$where
+%$$H^{p,q}(X,\bbC)=\{[\afa]\in H_{DR}^k(X,\bbC)|\afa\text{is a $\td$-closed s.m. $(p,q)$-form}\}$$
+%Proof: take a Kahler metric $\omg$,$$H^k_{DR}(X,\bbC)\cong
+%\mcalH_{\td}^k(X,\bbC)=\bigoplus\mcalH_\td^{p,q}(X,\bbC)
+%=\bigoplus\mcalH_{\td''}^{p,q}(X,\bbC)$$
+
+从而我们有以下结果，由此可知定理\ref{紧Kahler流形的Hodge分解-thm}
+当中的同构是典范的：
+
+\begin{prop}设$X$为紧\Kahler 流形，则存在典范同态
+$$
+  H^{p,q}_{\td''}(X,\bbC)\to H^{p+q}_{\td}(X,\bbC)
+$$
+\end{prop}
+
+\begin{proof}
+任取$X$的\Kahler 度量$\omg$，即相应的Laplace算子为$\yc=2\yc_{td''}$.
+对任意$[\afa]_{\td''}\in H^{p,q}_{\td''}(X,\bbC)$，
+注意Hodge同构，可取$[\afa]_{\tdd''}$的代表元$\afa$，
+使得$\yc_{\td''}\afa=0$，从而$\yc\afa=0$，从而$\td\afa=0$.
+这就给出了$[\afa]_{\td}\in H^{p+q}_{\td}(X,\bbC)$.
+
+我们需要验证此映射的良定性，即与\Kahler 度量选取无关。
+现在，若$\omg$与 $\omgtil$都为$X$上的\Kahler 度量，
+记相应的Laplace算子为$\yc,\yctil$.则对于
+$[\afa]\in H^{p,q}_{\td''}(X,\bbC)$，取调和代表元
+$
+  \left\{
+    \begin{array}{l}
+      \afa_1\in\mcalH^{p,q}_{\yc}(X,\bbC)\\
+      \afa_2\in\mcalH^{p,q}_{\yctil}(X,\bbC)
+    \end{array}
+  \right.
+$，则$\td\afa_1=\td\afa_2=0$.注意$[\afa_1]_{\td''}=[\afa_2]_{\td''}$，
+从而存在$\gma$使得$\afa_1-\afa_2=\td''\gma$.则
+$$\td\td''\gma=\td(\afa_1-\afa_2)=0$$
+又容易直接验证$\td''\gma\bot\mcalH^{p,q}_{\yc}(X,\bbC)$，从而
+由$\p\pbar$-引理可知，$\td''\gma$是$\td$-正合的。
+因此$[\afa_1]_{\td}=[\afa_2]_{\td}$.证毕。
+\end{proof}
+
+%\begin{prop}There is a canonical isomorphism$$H^{p,q}_{\td}(X,\bbC)
+%\xra{\sim}H^{p,q}_{\td''}(X,\bbC)$$$$[\afa]_{\td}\mapsto[\afa]_{\td''}$$
+%where $\td\afa=0$,$\afa$ is a $(p,q)$-form.$\Rightarrow \td''\afa=0$
+%\end{prop}\begin{proof}Check: this map is well defined. Need to verify:
+%if $\afa=\td\beta$ is a $(p,q)$-form, then $[\afa]_{\td''}=0$,
+%i.e. $\afa$ is also $\td''$-exact.$\afa$ is a $(p,q)$-form,
+%$$\Rightarrow\afa=\td'\beta^{p-1,q}+\td''\beta^{p,q-1}$$
+%we have $\td''\td'\beta^{p-1,q}=0$, $\td'\td''\beta^{p,q-1}=0$\end{proof}
+%We need a very important lemma:\begin{lemma}($\p\pbar$-lemma)
+%Let $X$ is a Kahler manifold, $\afa$ is a smooth form which is
+%$\td'$ and $\td''$ closed. Then, if $\afa$ is
+%$\td$ or $\td'$ or $\td''$-exact, then $\afa=\td'\td''\gma$
+%for some $\gma$.\end{lemma}Using $\p\pbar$-lemma, this map is well-defined.
+%Now, notice that the two space has the same dimension. So,
+%we need to show the map is injective(or, surjective).
+%Claim : this map is injective. If $\afa$ is a $\td$-closed
+%with $[\afa]_{\td''}=0$, i.e. $\afa=\td''\beta^{p,q-1}$.
+%$\afa$ is $\td$-closed$\Rightarrow\td'\td''\beta^{p,q-1}=0$,
+%$\p\pbar$-lemma applying to $\td''\beta^{p,q-1}$, we have
+%$$\td''\beta^{p,q-1}=\td'\td''\gma=\td(\td''\gma)$$for some $\gma$.
+%Proof of $\p\pbar$-lemma:\begin{proof}Assume $\afa$ is $\td''$ exact, 
+%1.e. $\afa=\td''\beta$,write$$\beta=H(\beta)+\yc_\td\gma$$
+%where $H(\beta)$ is $\yc_\td$-harmonic, so
+%$$\afa=\td'' H(\beta)+\td''\yc_\td\gma-2\td''\yc_{\td'}\gma$$
+%(Since $\yc_\td=2\yc_{\td''}$)$$\Rightarrow\afa=2\td''(\td'\td'^*+\td'^*\td')
+%=2\td''\td;\td'^*\gma-2\td'^*\td''\td'\gma$$
+%By the assumption, $\td'\afa=0$, so$\td'^*\td''\td'\gma=0$
+%$$\afa=-2\td'\td''\td'^*\gma$$\end{proof}
+
+\begin{rem}（Bott-Chern 上同调）\index{Bott-Chern 上同调}
+
+对于复流形$X$，定义$X$的\textbf{Bott-Chern 上同调}
+$$
+  H^{p,q}_{\BC}(X,\bbC)
+:=
+  \frac{\ker\td\cap\Omg^{p,q}(X,\bbC)}
+       {\im(\td'\td'')\cap\Omg^{p,q}(X,\bbC)}
+$$
+\end{rem}
+
+则由$\p\pbar$-引理（引理\ref{紧Kahler流形的ppbar引理}）
+可知，若$X$为紧\Kahler 流形，则有同构
+$$
+  H^{p,q}_{\BC}(X,\bbC)
+\cong
+  H^{p,q}_{\td}(X,\bbC)
+:=\frac{(\ker\td)\cap\Omg^{p,q}(X,\bbC)}
+       {(\im\td)\cap\Omg^{p,q}(X,\bbC)}
+\cong
+  H^{p,q}_{\td''}(X,\bbC)
+$$
+
+%\begin{rem}(Deligne-Griffiths-Morrora)If $\widehat{X}$ is bimeromapic 
+%to $X$, where $X$ isacompact Kahler, then$\hat{X}$ is also satisfys the 
+%$\p\pbar$-lemma.$X$ is a kahler manifold, then
+%$$H^{p,q}_\td(X,\bbC)\cong H^{p,q}_{\td''}(C,\bbC)\cong
+%H^{p,q}——{X,\bbC}$$\end{rem}$X$ us a compact complex manifold,define
+%$$H_{BC}^{p,q}:=\frac{\td\text{-closed $(p,q)$)}}{\td'\td;;\text{exact}}$$
+%Bott-Chern cohomologyExercise" If $X$ is Kahler , then $H^{p,q}_{BC}=H^{p,q}_\td$
+
+\begin{rem}（Appeli上同调）
+\index{Appeli上同调}
+
+对于复流形$X$，还可以定义$X$的\textbf{Appeli}上同调如下：
+$$
+  K^{p,q}_{\tA}(X,\bbC)
+:=
+  \frac{\ker(\td'\td'')\cap\Omg^{p,q}(X,\bbC)}
+       {(\im\td'+\im\td'')\cap\Omg^{p,q}(X,\bbC)}
+$$
+\end{rem}
+
+%$$H^{p,q}_A(X,\bbC):=\frac{\td'\td''\text{closed}}{(\td')
+%\text{-exact}+\{\td''\text{exact}\}}$$(Appeli cohomology)
+%denote$$h_{BC}^k:=\sum_{p+q=k}\dim_{\bbC}H_{BC}^{p,q}$$
+%$$h_{A}^k:=\sum_{p+q=k}\dim_{\bbC}H_{A}^{p,q}$$
+%\begin{thm}$X$ satisfies $\p\pbar$-lemma $\iff$
+%$$h_B^k+h_A^k=2b_k$$where$$b_k=\dim_\bbC H_{DR}^k(X,\bbC)$$
+%\end{thm}%这是比较新的结果，仅供了解
+
+\begin{Example}（复环面的Dolbeault上同调）
+
+考虑$X:=\bbC^n/\Gma$，其中$\Gma:=\bbZ^{2n}$使得
+$\Gma=\Span_{\bbZ}\{e_1,e_2,...,e_n;\ii e_1,\ii e_2,...,\ii e_n\}$，
+其中$\{e_1,e_2,...,e_n\}$为$\bbC^n$的一组$\bbC$-基。
+则$X$为\Kahler 流形，并且其Dolbeault上同调满足
+$$H^{p,q}_{\td''}(X,\bbC)\cong\wedgeform{p,q}(\bbC^n)$$
+\end{Example}
+
+\begin{proof}首先在拓扑上，$X\cong (S^1)^n$.
+由代数拓扑中的K\"{u}nneth公式可知
+$$
+  H^{k}_{\DR}(X,\bbC)
+=
+  \bigoplus_{a_1+a_2+\cdots+a_{2n}=k}
+    H^{a_1}_{\DR}(S^1)\ten
+    H^{a_2}_{\DR}(S^1)\ten\cdots\ten
+    H^{a_{2n}}_{\DR}(S^1)
+$$
+注意到$H^0_{\DR}(S^1,\bbC)\cong\bbC$
+以及$H^1_{\DR}(S^1)\cong\bbC\td x$.从而可知De Rham上同调满足
+$$
+  H^k_{\DR}(X,\bbC)
+\cong
+  \bigoplus_{|I|=k}\bbC\td x_I
+$$
+其中$I=(a_1,a_2,...,a_k)$满足$1\leq a_1<a_2<\cdots< a_k\leq 2n$.
+事实上，对任意$[u]\in H^{k}_{\DR}(X,\bbC)$，该同调类中存在形如
+$u=\sum\limits_{|I|=k}u_I\td x_I$的代表元，使得$u_I\in\bbC$为常数。
+
+注意到$X$为\Kahler 流形，从而由Hodge分解
+$$H^k_{\DR}(X,\bbC)\cong\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
+立刻得到
+$$
+  H^{p,q}_{\td''}(X,\bbC)
+=
+  \Bigset{\Big[\sum_{|I|=p\atop|J|=q}u_{IJ}\td z_I\wedge\td\zbar_J\Big]}
+         {u_{IJ}\in\bbC}
+$$
+\end{proof}
+
+\begin{rem}对于该复环面$X$，存在一一对应
+$$
+  \Bigset{[\omg]\in H^{1,1}_{\td''}(X,\bbC)\cap H^2_{\DR}(X,\bbR)}
+         {\text{$\omg$为$X$上的\Kahler 度量}}
+\Leftrightarrow
+  \Big\{\text{$n$阶正定Hermite方阵}\Big\}
+$$
+\end{rem}
+
+%\textbf{Exercise}: Complex tori$$\bbT^n:=\bbC^n/\Gma$$
+%where $\Gma=\bbZ^n$. $\bbT^n$ is a compact Kahler manifold.
+%Then$$H^{1,1}(\bbT^n,\bbC)\cong\wedgeform{1,1}_{\bbC}$$
+%the space of $(1,1)$-forms on $\bbC^n$ with constant coefficient,
+%in particular,$$\dim_\bbC H^{1,1}(\bbT^n,\bbC)=n^2$$
+%\textbf{Exercise}: the set of all the Kahler class on $\bbT^n
+%\subseteq H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$ is equal to
+%the set of $n\times n$ positive definite Hermitian metrics.
+%(Hint: using Hodge theory)
+
+\begin{thm}(Hard Lefschitz定理)
+
+设$X$为紧\Kahler 流形，$\dim_\bbC X=n$，则对任意
+$k:=p+q\leq n$，Lefschitz算子$L^{n-k}$诱导同构
+\begin{eqnarray*}
+L^{n-k}: H_{\DR}^k(X,\bbC)&\cong& H_{\DR}^{2n-k}(X,\bbC)\\
+H^{p,q}_{\td''}(X,\bbC)&\cong& H^{n-q,n-p}_{\td''}(X,\bbC)
+\end{eqnarray*}
+\end{thm}
+
+\begin{proof}
+任取$X$上的\Kahler 形式$\omg$.
+由Hodge同构，$H^{p,q}_{\td''}(X,\bbC)\cong\mcalH^{p,q}_{\td}(X,\bbC)$.
+由定理\ref{HL-局部-thm}知，$L^{n-k}$在每一点$x\in X$处都给出了同构
+$$
+  L^{n-k}:\wedgeform{p,q}T^*_xX
+\cong
+  \wedgeform{n-q,n-p}T^*_xX
+$$
+再注意定理\ref{紧Kahler-Laplace算子对易性}，$[\yc,L]=0$，
+从而有同构
+$$
+  L^{n-k}:\mcalH^{p,q}_{\td}(X,\bbC)
+\cong     \mcalH^{n-q,n-p}_{\td}(X,\bbC)
+$$
+再利用Hodge分解$H^k_{\DR}(X,\bbC)\cong\bigoplus\limits_{p+q=k}
+H^{p,q}_{\td''}(X,\bbC)$即可。
+\end{proof}
+
+%$X$ is a compact Kahler, $\dim_\bbC X=n$, denote$L=\{\omg\}\curvearrowright 
+%H_{DR}^k(X,\bbC)$, $\omg$ is a Kahler metric,Then we have:$$L^{n-k}: H_{DR}^k
+%(X,\bbC)\cong H_{DR}^{2n-k}(X,\bbC)$$$$H^{p,q}(X,\bbC)
+%\cong H^{p+n-k,q+n-k}(X,\bbC)$$where $k\leq n$, $p+q\leq n$.
+%\begin{proof}Fox a Kahler metric $\omg$,$$L^{n-k}:H_{DR}^k
+%\to H_{DR}^{2n-k}$$($\cong \mcalH_\td^k$, $\cong\mcalH_{\td}^{2n-k}$ 
+%respectively)(there is a commutative diagram...)need to proof: 
+%For any $\fai\in\mcalH_\td^k$, then$$L^{n-k}(\fai)=\omg^{n-k}\wedge\fai$$
+%is also harmonic.\end{proof}\begin{lemma}$$[\yc_{\td},L]=0$$\end{lemma}\begin{proof}$
+%$[\yc_\td,L]=2[\yc_{\td'},L]=2\left([\td'\td'^*,L]+[\td'^*\td',L]\right)
+%=2\left(\td'[\td'*,L]+[\td'^*,L]\td'\right)$$
+%(check: $[L,\td']=0$)So,$$=-2\sqrt{-1}(\td'\td''+\td''\td')=0$$\end{proof}
+
+回顾Lefschitz分解当中的\textbf{本原形式}，对于复流形$X$，
+记$\Omg^{p,q}_{\prim}(X,\bbC):=
+\Bigset{\afa\in\Omg^{p,q}(X,\bbC)}
+{\forall\, x\in X,\,\afa(x)\in\wedgeform{p,q}_{\prim}T^*_xX}$.
+而对于Hermite流形$X$，令$\mcalH^{p,q}_{\prim}(X,\bbC):=
+\Bigset{\afa\in\Omg^{p,q}_{\prim}(X,\bbC)}{\yc\afa=0}$，
+称其中元素为\textbf{本原调和形式}。
+类似地，我们有如下定理：
+
+%Define a class $\afa\in H^{k}_{DR}(X,\bbC)$to be positive if
+%$$L^{n-k+1}(\afa)=0$$if $k\leq n$.
+%(When $\afa\in H^k_{DR}(X,\bbC)$, $k>n$, we call $\afa$ positive)
+%Then $\forall\fai\in H^k_{DR}(X,\bbC)$, exist unique decomposition
+%$$\fai=\sum_{\gma\geq(k-n)_+}L^\gma\fai_\gma$$
+%where $\fai_\gma\in H_{prim}^{k-2\gma}(X,\bbC)$.Similarly,
+%$$H^{p,q}(X,\bbC)=\bigoplus_{r\geq(p+q-n)_+} H_{prim}^{p-r,q-r}(X,\bbC)$$
+
+\begin{thm}(Lefschitz分解定理)
+
+设$X$为紧\Kahler 流形，则成立
+$$
+  \mcalH^{p,q}(X,\bbC)
+=
+  \bigoplus_{r\geq(p+q-n)_+}
+  L^r\mcalH^{p-r,q-r}_{\prim}(X,\bbC)
+$$
+\end{thm}
+这里的$(p+q-n)_+:=\max\{p+q-n,0\}$.
+
+\begin{proof}
+对于任意$u\in\Omg^{p,q}(X,\bbC)$，
+由之前结果（定理\ref{LD-局部-thm}）易知存在唯一的分解
+$$
+  u=\sum_{r\geq(p+q-n)_+}L^r\fai_r
+$$
+其中$\fai_r\in\Omg^{p-r,q-r}_{\prim}(X,\bbC)$
+为本原形式。注意到$[\yc,L]=0$，以及Lefshcitz分解的唯一性，易知
+$\yc u=0$当且仅当$\yc\fai_r=0$对每个$r$都成立。从而证毕。
+\end{proof}
+
+%$X$ compact Kahler, $\dim_\bbC X=n$, $\omg$ is Kahler metric, define
+%$$Q(\afa,\beta)=L^{n-k}\afa\wedge\overline{\beta}$$
+%where $\afa,\beta\in H^{p,q}(X,\bbC)$, and $p+q=k$.
+%Then $Q|_{H_{prim}^{p,q}}$ is positive defined (up to a factor).
+
+\begin{thm}（Hodge-Riemann双线性关系）
+
+设$X$为紧\Kahler 流形，若$p+q\leq n$，
+则$\mcalH_{\prim}^{p,q}(X,\bbC)$上的双线性型
+$$
+  Q(\afa,\beta)
+:=
+  \lmd_{p,q}\int_XL^{n-p-q}\afa\wedge\betabar
+$$
+是严格正定的。其中$\lmd_{p,q}$为某常数。
+\end{thm}
+
+\begin{proof}
+只需注意定理\ref{HRR-局部-thm}.
+\end{proof}
+
+%要求：对这三个定理非常熟悉！！！\begin{prop}$X$ is a compact Kahler, then
+%$$\overline{H^{p,q}(X,\bbC)}=H^{q,p}(X,\bbC)$$
+%\end{prop}\begin{proof}Use harmonic form.. 
+%and $\yc_\td$ is a real operator...\end{proof}
+%\textbf{Summary} $X$-compact Kahler with a Kahler metric $\omg$, then
+%define Lefschitz operator $L=[\omg]\wedge$, then:Hodge decomposition:
+%$$H^k=\bigoplus_{p+q=k}H^{p,q}$$$$\overline{H^{p,q}}=H^{q,p}$$
+%Hard Lefschitz:$$L^{n-k}:H^{p,q}\cong H^{p+n-k,q+n-k}$$where $p+q=k$
+%Lefschitz decomposition:$$H^{p,q}=\bigoplus_{r\geq(p+q-1)_+} L^r H^{p-r,q-r}_{prim}$$HRR:...
+%\textbf{References}Kahler pairing in other settings..
+%\verb"Adiprusito-Huh-Katz: Hodge theory in combinatorial geometries"
+%\verb"McMullen: On simple polytopes"\verb"Deligne: Weil II"
+%\verb"Beillinson-Bernstein-Deligne-Gabber: Faisceaux Pervers"
+%\verb"Adiprasito: Combinatorial Lefschetz theorem beyond positivity, 2018"
+%%%%%%%%%%2019.5.7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Recall: Kahler pairing:$X$-compact Kahler manifold of complex 
+%dimension $n$, $\omg$-Kahler metric.Lefischitz operator
+%$$L=\{\omg\}\curvearrowright H\updot$$Hodge decomposition
+%$$H^k=\bigoplus_{p+q=k}H^{p,q},\qquad \overline{H^{p,q}}=H^{q,p}$$
+
+\begin{notation}(Betti数与Hodge数)
+
+对于紧\Kahler 流形$X$，记其Dolbeault上同调、de Rham上同调的维数
+\begin{eqnarray*}
+  h^{p,q}&:=&\dim_{\bbC}H^{p,q}_{\td''}(X,\bbC)\\
+  b^{k}&:=&\dim_{\bbC}H^{k}_{\DR}(X,\bbC)
+\end{eqnarray*}
+分别称为$X$的\textbf{Hodge 数}、\textbf{Betti 数}.
+\end{notation}
+则对于紧\Kahler 流形，我们有以下关系：
+$$
+  \left\{
+    \begin{array}{lcl}
+      h^{p,q}=h^{q,p}     && \text{共轭}           \\
+      h^{p,q}=h^{n-q,n-p} && \text{Serre对偶}      \\
+      \,\,\,\,
+       b^k=\sum\limits_{p+q=k}h^{p,q}&&\text{Hodge 分解}
+    \end{array}
+  \right.
+$$
+特别地，\textbf{当$k$为奇数时，$b^k$为偶数}，
+这是紧Kahler流形的又一拓扑限制。
+
+若再令$h^{p,q}_{\prim}:=\dim_{\bbC}\mcalH^{p,q}_{\prim}(X,\bbC)$，
+则Lefschitz分解定理与Serre对偶定理表明
+$$
+  h^{p,q}
+=
+  \left\{
+    \begin{array}{ll}
+      h^{p,q}_{\prim}
+     +h^{p-1,q-1}_{\prim}
+     +h^{p-2,q-2}_{\prim}+\cdots
+    &p+q\leq n
+    \\
+      h^{n-q,n-p}_{\prim}
+     +h^{n-q-1,n-p-1}_{\prim}
+     +h^{n-q-2,n-p-2}_{\prim}+\cdots
+    &p+q>n
+    \end{array}
+  \right.
+$$
+由此得到Betti数与Hodge数满足不等式
+$$
+  \left\{
+    \begin{array}{ll}
+      \text{如果$p+q\leq n$,}
+     &h^{p,q}\geq h^{p-1,q-1},b^k\geq b^{k-2}\\
+       \text{如果$p+q\geq n$,}
+     &h^{p,q}\geq h^{p+1,q+1},b^k\geq b^{k+2}
+    \end{array}
+  \right.
+$$
+
+%(Corollary: if $k$ is odd, then $b_k:=\dim_{\bbC}H^k(X,\bbC)$ is even.)
+%Rmk: if $X$ is compact complex surface($\dim_{\bbC}=2$),$X$ is Kahler $\iff b_1$ is even.
+%(The proof of "$\Leftarrow$" we not given...Ref: Kodaira\&Siu,Lamari 1999)
 
 \textbf{Exercise}:Consider $X$-compact Kahler,$\dim_\bbC X=n$, $\omg$-Kahler metric,
 Then $\forall\afa,\beta\in H^{1,1}(X,\bbR)=H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$,
@@ -671,85 +1291,17 @@ $$(\afa,\beta)^2\geq \afa^2\beta^2$$
 Hint: Using HRR, and Lefschitz decomposition...
 "Alg-Geom-inequality over Kahler manifold".
 
-\begin{prop}
-$X$ is a compact Kahler, then
-$$\overline{H^{p,q}(X,\bbC)}=H^{q,p}(X,\bbC)$$
-\end{prop}
-\begin{proof}
-Use harmonic form.. and $\yc_\td$ is a real operator...
-\end{proof}
+%Hard Lef. ($p+q=k$)$$L^{n-k}:H^{p,q}\xra{\sim}H^{p+n-k,q+n-k}$$
+%Lef. decomposition:$$H^{p,q}=\bigoplus_{r\geq (k-n)_+} L^rH_{prim}^{p-r,q-r}$$
+%Denote $h^{p,q}:=\dim_{\bbC}H^{p,q}$,"Hodge number".Cor:$$h^{p,q}=
+%\left\{\begin{array}{lc}h_{prim}^{p,q}+h_{prim}^{p-1,q-1}+\cdots 
+%& p+q\leq n\\h_{prim}^{n-q,n-p}+h_{prim}^{n-q-1,n-p-1}+\cdots & p+q\geq n
+%\end{array}\right.$$(Using the property of $L^r$)If $p+q\leq n$, $h^{p,q}
+%\geq h^{p-1,q-1}\Rightarrowb_k\geq b_{k-2}$ if $k\leq n$.
+%If $p+q\geq n$, $h^{p,q}\leq h^{p-1,q-1}\Rightarrow b_k\leq b_{k-2}$if $k\geq n$.
 
-\textbf{Summary} $X$-compact Kahler with a Kahler metric $\omg$, then
-define Lefschitz operator $L=[\omg]\wedge$, then:
-
-Hodge decomposition:
-$$H^k=\bigoplus_{p+q=k}H^{p,q}$$
-$$\overline{H^{p,q}}=H^{q,p}$$
-
-Hard Lefschitz:
-$$L^{n-k}:H^{p,q}\cong H^{p+n-k,q+n-k}$$
-where $p+q=k$
-
-Lefschitz decomposition:
-$$H^{p,q}=\bigoplus_{r\geq(p+q-1)_+} L^r H^{p-r,q-r}_{prim}$$
-
-HRR:...
-
-\textbf{References}
-Kahler pairing in other settings..
-
-\verb"Adiprusito-Huh-Katz: Hodge theory in combinatorial geometries"
-
-\verb"McMullen: On simple polytopes"
-
-\verb"Deligne: Weil II"
-
-\verb"Beillinson-Bernstein-Deligne-Gabber: Faisceaux Pervers"
-
-\verb"Adiprasito: Combinatorial Lefschetz theorem beyond positivity, 2018"
-
-%%%%%%%%%%2019.5.7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-Recall: Kahler pairing:
-$X$-compact Kahler manifold of complex dimension $n$, $\omg$-Kahler metric.
-Lefischitz operator
-$$L=\{\omg\}\curvearrowright H\updot$$
-
-Hodge decomposition
-$$H^k=\bigoplus_{p+q=k}H^{p,q},\qquad \overline{H^{p,q}}=H^{q,p}$$
-(Corollary: if $k$ is odd, then $b_k:=\dim_{\bbC}H^k(X,\bbC)$ is even.)
-
-Rmk: if $X$ is compact complex surface($\dim_{\bbC}=2$),$X$ is Kahler $\iff b_1$ is even.
-(The proof of "$\Leftarrow$" we not given...Ref: Kodaira\&Siu,Lamari 1999)
-
-Hard Lef. ($p+q=k$)
-$$L^{n-k}:H^{p,q}\xra{\sim}H^{p+n-k,q+n-k}$$
-
-Lef. decomposition:
-$$H^{p,q}=\bigoplus_{r\geq (k-n)_+} L^rH_{prim}^{p-r,q-r}$$
-Denote $h^{p,q}:=\dim_{\bbC}H^{p,q}$,"Hodge number".
-Cor:
-$$
-  h^{p,q}=
-  \left\{
-    \begin{array}{lc}
-      h_{prim}^{p,q}+h_{prim}^{p-1,q-1}+\cdots & p+q\leq n\\
-      h_{prim}^{n-q,n-p}
-       +h_{prim}^{n-q-1,n-p-1}+\cdots & p+q\geq n
-    \end{array}
-  \right.
-$$
-(Using the property of $L^r$)
-
-If $p+q\leq n$, $h^{p,q}\geq h^{p-1,q-1}\Rightarrow
-b_k\geq b_{k-2}$ if $k\leq n$.
-
-If $p+q\geq n$, $h^{p,q}\leq h^{p-1,q-1}\Rightarrow b_k\leq b_{k-2}$
-if $k\geq n$.
-
-\textbf{(Hodge-Frolicher spectral sequence)}
-
+\section{Hodge-Frolicher谱序列}
+%spectral sequence
 $X$-compact Kahler, then Hodge decomposition
 $$\Rightarrow b_k=\sum_{p+q=k}h^{p,q}$$
 
@@ -951,7 +1503,6 @@ is holomorphic.
 %%%%%%%%%%期末考试：最后一堂课随堂考%%%%%%%%%%%%%5
 
 %%%%%%%%%%%2019.5.9%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 

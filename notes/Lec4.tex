@@ -483,8 +483,8 @@ $的符号。
 
 设$E\to X$为黎曼流形上的Hermite向量丛，则定义
 \begin{eqnarray*}
-* :\wedgeform{p}T^*X\ten E&\to&\wedgeform{n-p}X^*M\ten E \\
-\#:\wedgeform{p}T^*X\ten E&\to&\wedgeform{n-p}X^*M\ten E^*
+\star :\wedgeform{p}T^*X\ten E&\to&\wedgeform{n-p}X^*M\ten E \\
+\#    :\wedgeform{p}T^*X\ten E&\to&\wedgeform{n-p}X^*M\ten E^*
 \end{eqnarray*}
 使得对任意$u,v\in \wedgeform{p}T^*X\ten E$，成立
 \begin{eqnarray*}
@@ -495,7 +495,9 @@ u\wedge\# v      &=&\pair{u}{v}\td\Vol
 
 其中双线性型$\bair{}{}$由$\wedgeform{\bullet}T^*X$
 中外积$\wedge$与$E$的Hermite结构诱导，
-$u\wedge\# v$当中的“$\wedge$”则由通常的外积与$E^*,E$的配对所诱导。
+$u\wedge\# v$当中的“$\wedge$”则由通常的外积与$E^*,E$的配对所诱导
+（其实$\bair{u}{\star v}$与$u\wedge\star v$是一个意思，
+但$\{,\}$强调$E$中的Hermite内积，而不是$E^*$与$E$配对）。
 容易验证，在$\wedgeform{\bullet}T^*X$的幺正标架$\{\xi_I^*\}$与$E$
 的幺正标架$e=(e_1,...,e_r)$下，成立
 \begin{eqnarray*}
@@ -539,6 +541,7 @@ $$\ppair{s}{t}:=\int_X\pair{u}{v}\td\Vol$$
 %=\langle\langle s,D_E^*t\rangle\rangle$$so,$$D_E^*t=(-1)^{np+1}*D_E*$$\end{proof}
 
 \begin{prop}（Hermite联络的形式伴随）
+\label{Hermite联络的形式伴随-prop}
 
 设$E\to X$为紧定向黎曼流形上的Hermite向量丛，
 $\tD_E:\Omg^p(X,E)\to\Omg^{p+1}(X,E)$为Hermite联络，则有
@@ -912,6 +915,7 @@ $$
 \end{proof}
 
 \begin{thm}（Hodge分解定理）
+\label{Hodge分解定理-thm}
 
 设$E\to X$是紧定向黎曼流形$X$上的Hermite向量丛，
 $\tD_E$为$E$上的一个平坦联络，则有正交直和分解
@@ -945,6 +949,7 @@ $$
 \end{proof}
 
 \begin{thm}（Hodge同构定理）
+\label{Hodge同构定理-thm}
 
 设$E\to X$是紧定向黎曼流形$X$上的Hermite向量丛，
 $\tD_E$为$E$上的一个平坦联络，则有同构
@@ -998,6 +1003,7 @@ $$\dim H^{p}_{\DR}(X,E)<+\infty$$
 \end{proof}
 
 \begin{thm}（庞加莱对偶）
+\label{庞加莱对偶-thm}
 
 设$X$为紧定向$n$维光滑流形，$E\to X$为$X$上的Hermite向量丛，
 $\tD_E$为$E$上的平坦Hermite联络，
@@ -1080,7 +1086,7 @@ $[t]\mapsto\int_Xs\wedge t$是非退化的。
 %$$(C^\infty(M,\wedgeform*T^*M\ten E),D_E)$$$$\rightsquigarrow H^p_{DR}(M,E)
 %:=\frac{\ker D_E}{\im D_E}$$Exercise: we have decomposition
 %$$C^\infty(M,\wedgeform{p}T^*M\ten E)=\ker\yc_{D_E}\oplus\im D_E\oplus \im D_E^*$$
-%$$H^p_{DR}(M,E)\cong \ker\yc_{D_E}$$and the pairing$$H^p_{DR}(M,E)\times 
+%$$H^p_{DR}(M,E)\cong \ker\yc_{D_E}$$and the pairing$$H^p_{DR}(M,E)\times
 %H^{n-p}_{DR}(M,E^*)\to\bbC$$$$(s,t)\mapsto \int_M s\wedge t$$
 %is non-degenerate..以上是实的Hodge理论。
 
@@ -1140,6 +1146,7 @@ $$
 $$
 即$\omg$是$h$的虚部的相反数。显然$\omg$是实的$(1,1)$-形式，
 即$\omg=\omgbar$，也就是说$\omg\in\Omg^2(X,\bbR)$.
+称如此由Hermite度量诱导的$\omg$为\textbf{Hermite 形式}.
 
 \begin{definition}（\Kahler 度量与\Kahler 流形）
 \index{\Kahler 流形}
@@ -1150,7 +1157,7 @@ $$
 称复流形$X$为\textbf{\Kahler 流形}，若$X$上存在\Kahler 度量。
 \end{definition}
 
-%\begin{definition}$(X,\omg)$ is an Hermitian manifold, 
+%\begin{definition}$(X,\omg)$ is an Hermitian manifold,
 %$X$ is K\"{a}hler if $\td\omg=0$.\end{definition}
 
 注意到$\td\omg=0$当且仅当$\p\omg=\pbar\omg=0$，而Hermite形式
@@ -1215,7 +1222,7 @@ $$
 
 %\begin{prop}Locally, $\omg=\frac{\sqrt{-1}}{2}\sum_{jk} h_{jk}
 %\td z_j\wedge\td \zbar_k$is Kaehler, $\iff \p\omg=0$ and $\pbar\omg=0$, i.e.
-%$$\pfrac{h_{jk}}{z_l}=\pfrac{h_{lk}}{z_j}$$If $(X,\omg)$ 
+%$$\pfrac{h_{jk}}{z_l}=\pfrac{h_{lk}}{z_j}$$If $(X,\omg)$
 %is a compact Kaehler manifold, then$$H^{2k}(X,\bbR)\neq 0$$
 %\end{prop}\begin{proof}$\td\omg=0$, so $\omg\in H^2(M,\bbR)$. Claim:
 %$$0\neq \omg^k\in H^{2k}(M,\bbR)$$proof of the claim:
@@ -1235,15 +1242,21 @@ $$X:=(\bbC^2\setminus\{0\})/\Gma$$
 \begin{proof}
 容易验证在拓扑同胚意义下$X\cong S^1\times S^3$，
 从而紧致。其复流形结构由$\bbC^2\setminus\{0\}$的商流形给出。
-由代数拓扑（K\"{u}nneth 公式）可知
-$H^2(X,\bbR)=H^2(S^1\times S^3,\bbR)=0$，
+回顾代数拓扑中的\textbf{K\"{u}nneth 公式}：对于紧流形$M,N$，成立
+$$
+  H^k(M\times N,\bbZ)
+\cong
+  \bigoplus_{p+q=k}
+  H^p(M,\bbZ)\ten H^q(N,\bbZ)
+$$
+由此可知，$H^2(X,\bbR)=H^2(S^1\times S^3,\bbR)=0$，
 从而由性质\ref{紧Kahler流形的拓扑限制-prop}可知$X$不是\Kahler 流形。
 \end{proof}
 
 %\begin{example}(Exists a complex manifold NOT Kaehler)
 %(Hopf Surface)$$X=(\bbC^2\setminus\{0\})\big/\Gma$$
 %where discrete group $\Gma:=\{\lmd^n|n\in \bbZ\}$,
-%$0<\lmd<1$ fixed.\end{example}Exercise: $X\cong S^1\times S^3$ 
+%$0<\lmd<1$ fixed.\end{example}Exercise: $X\cong S^1\times S^3$
 %$C^\infty$ homeomorphism..and $X$ is compact complex manifold.
 %and $H^2(X,\bbR)=H^2(S^1\times S^3,\bbR)=0$by K\"{u}nneth Formula...
 %So, $X$ is non-Kahler...
@@ -1272,8 +1285,8 @@ $$\Theta(\mcalO(1))=\ii\p\pbar\log(1+|z_1|^2+\cdots+|z_n|^2)$$
 因此$\Theta(\mcalO(1))$是$\bbC\bbP^n$上的\Kahler 形式。
 \end{proof}
 
-%\begin{example}Examples of Kaehler manifold)(1)Riemann surface 
-%must be Kaehler...(trivial)(2)(complex torus) $X=C^n\big/\Gma$, 
+%\begin{example}Examples of Kaehler manifold)(1)Riemann surface
+%must be Kaehler...(trivial)(2)(complex torus) $X=C^n\big/\Gma$,
 %$\Gma$ is a lattice.(this manifold may not compact...)
 %$$\omg=\sqrt{-1}\sum_{j,k}h_{jk}\td z_j\wedge\td\zbar_k$$
 %is a Kahler metric on $X$ if $(H_{jk})>0$, $h_{jk}$ are constant.
@@ -1281,194 +1294,320 @@ $$\Theta(\mcalO(1))=\ii\p\pbar\log(1+|z_1|^2+\cdots+|z_n|^2)$$
 %locally,$$\omg=\sqrt{-1}\p\pbar\log(1+|z_1|^2+...+|z_n|^2)$$
 %on $\Omg$. This $\omg$ is a Kahler metric,\end{example}
 
-\begin{example}
-Let $(X,\omg)$ is a Kahler manifold,
-then  any complex submanifold $Y\subseteq X$ is also Kahler.
-$$i:Y\inj X$$
-with the Kahler metric $i^*\omg$.
-\end{example}
-Exercise: Let $f:Y\to X$ be a holomorphic immersion, and assume $X$ is Kahler,
-then $Y$ is Kahler.
-\begin{cor}
-Any projective manifold (i.e. $X\inj \bbC P^N$) is K\"{a}hler.
-\end{cor}
-(Algebraic Geometry.....)
+\begin{example}（全纯浸入）
 
-\begin{prop}(Equivalent definition of Kaehler metrics)
-a Hermitian metric $\omg$ is Kahler, $iff$
-for all $x_0\in X$, there exists a holomorphic chart $(z_1,...,z_n)$
-centered at $x_0$, s.t.
-$$\omg(z)=\sqrt{-1}\sgm_{jk}\delta_{jk}\td z_j\wedge\td\zbar_k
-+O(|z|^2)
+设$X,Y$为复流形，$f:X\to Y$为全纯浸入
+（即$f$在$X$的任何一点处的全纯切映射都是单射），
+若$Y$为\Kahler 流形，则$X$也为\Kahler 流形。
+\end{example}
+
+\begin{proof}
+设$\omg$为$Y$的一个\Kahler 形式，则易验证其拉回$f^*\omg$
+是$X$上的\Kahler 形式。
+\end{proof}
+
+特别地，射影流形（$\bbC\bbP^n$的复子流形）都是\Kahler 流形。
+这就与代数几何联系密切了。
+
+%\begin{example}Let $(X,\omg)$ is a Kahler manifold,
+%then  any complex submanifold $Y\subseteq X$ is also Kahler.
+%$$i:Y\inj X$$with the Kahler metric $i^*\omg$.\end{example}
+%Exercise: Let $f:Y\to X$ be a holomorphic immersion, and assume $X$ is Kahler,
+%then $Y$ is Kahler.\begin{cor}Any projective manifold (i.e. $X\inj \bbC P^N$)
+%is K\"{a}hler.\end{cor}(Algebraic Geometry.....)
+
+\begin{prop}（特殊坐标下的\Kahler 形式）
+\label{Kahler流形的测地坐标-简单版本-prop}
+
+设$(X,h)$为Hermite流形，$\omg$为$h$的Hermite形式。
+则$\omg$为\Kahler 形式当且仅当对任意$p\in X$，
+存在$p$附近的全纯坐标卡$(z^1,z^2,...,z^n)$，
+使得$p$位于坐标原点，并且$\omg$在该坐标卡下形如
+$$
+  \omg=\ii\delta_{ij}\td z^i\wedge\td\zbar^j+O(|z|^2)
+  \eqno{(*)}
 $$
 \end{prop}
 
-($\Leftarrow$ is trivial...)
-(left to HW)
+%\begin{prop}(Equivalent definition of Kaehler metrics)
+%a Hermitian metric $\omg$ is Kahler, $iff$
+%for all $x_0\in X$, there exists a holomorphic chart $(z_1,...,z_n)$
+%centered at $x_0$, s.t.$$\omg(z)=\sqrt{-1}\sgm_{jk}\delta_{jk}
+%\td z_j\wedge\td\zbar_k+O(|z|^2)$$\end{prop}
+%($\Leftarrow$ is trivial...)(left to HW)
 
-\begin{thm}(Exercise)
+\begin{proof}
+如果$\omg$在某全纯坐标卡下形如$(*)$，则显然$\td\omg=0$，
+从而$\omg$是\Kahler 的。另一方面，若$\omg$是\Kahler 的，
+则对任意一点$p\in X$，取$p$附近的一个全纯坐标卡$(x^1,x^2,...,x^n)$，
+使得$p$位于该坐标的原点，并且切标架$\pp{x^1},\pp{x^2},...,\pp{x^n}$
+在点$p$处幺正，这总可以取到。则在此局部坐标下，
+$$
+  \omg
+=
+  \ii\left(
+    \delta_{lm}
+   +a_{jlm}x^j
+   +a_{jlm}'\xbar^j
+  \right)
+  \td x^l\wedge\td\xbar^m
+  +O(|x|^2)
+$$
+注意$\omg$是实形式（$\omg=\omgbar$），从而易验证
+$
+  \left\{
+    \begin{array}{l}
+      a_{jlm}=\overline{a'_{jml}}\\
+      a'_{jlm}=\overline{a_{jml}}
+    \end{array}
+  \right.
+$.再注意到$\td\omg=0$，从而易验证$a_{jlm}=a_{ljm}$.
+取新的坐标
+$$z^m:=x^m+\frac{1}{2}a_{rsm}x^rx^s$$
+（注意指标“$m$”上下对不齐，有点别扭），于是
+$$
+  \td z^m=\td x^m+\frac{1}{2}
+  a_{rsm}\left(x^r\td x^s+x^s\td x^r\right)
+=
+  \td x^m+a_{rsm}x^r\td x^s
+$$
+类似地$\td\zbar^m=\td\xbar^m+a'_{rms}\xbar^r\td\xbar^s$，从而
+$$
+  \td z^l\wedge\td\zbar^m
+=
+  \td x^l\wedge\td\xbar^m
+ +a_{rsl}x^r\td x^s\wedge\td\xbar^m
+ +a_{rms}'\xbar^r\td x^l\wedge\td\xbar^s+O(|x|^2)
+$$
+从而容易验证在此坐标下，成立
+$$\omg=\delta_{ij}\td z^i\wedge\td\zbar^j+O(|z|^2)$$
+\end{proof}
 
-If $(X,\omg)$ is Kahler, then for all $x_0\in X$,
-$\exists$ holomorphic chart $z_1,...,z_n$ centered at $x_0$, s.t.
-assume
-$$\omg=\sqrt{-1}h_{jk}\td z_j\wedge\td\zbar_k$$
-then
+%\begin{thm}(Exercise)If $(X,\omg)$ is Kahler, then for all $x_0
+%\in X$,$\exists$ holomorphic chart $z_1,...,z_n$ centered at $x_0$,
+%s.t.assume$$\omg=\sqrt{-1}h_{jk}\td z_j\wedge\td\zbar_k$$then$$h_{lm}(z)
+%=\delta_{lm}-\sum_{j,k}c_{jk,lm}z_j\zbar_k+O(|z|^3)$$where $c_{jk,lm}$ is
+%the coefficients of the Chern curvature tensor,$$\Theta(TX)_{x}:=\sum c_{jk,lm}
+%\td z_j\wedge\td\zbar_k\ten(\pp{z_l})^*\ten\pp{z_m}$$\end{thm}（查书）
 
-$$h_{lm}(z)=\delta_{lm}-\sum_{j,k}c_{jk,lm}z_j\zbar_k+O(|z|^3)$$
-where $c_{jk,lm}$ is the coefficients of the Chern curvature tensor,
-$$\Theta(TX)_{x}:=\sum c_{jk,lm}\td z_j\wedge\td\zbar_k\ten(\pp{z_l})^*\ten
-\pp{z_m}$$
-\end{thm}
-（查书）
+\begin{prop}（\Kahler 流形的测地坐标系）
 
+设$(X,\omg)$为\Kahler 流形，则对任意$x\in X$，
+存在以$p$为中心的全纯坐标卡$(z^1,z^2,...,z^n)$，使得
+\Kahler 形式$\omg$在该坐标卡下形如
+$$
+  \omg=\ii
+  \left(
+    \delta_{lm}-c_{jklm}z^j\zbar^k
+  \right)\td z^l\wedge\td\zbar^m+O(|z|^3)
+$$
+其中$c_{jklm}$为Hermite度量$h$的陈联络的曲率张量
+$\Theta\in\Omg^2(X,\End(TX))$的系数，即
+$$
+  \Theta=\sum_{jklm}
+  c_{jklm}\td z^j\wedge\td\zbar^k
+  \ten\left(\pp{z^l}\right)^*
+  \ten\pp{z^m}
+$$
+\end{prop}
 
+\begin{proof}
+{\color{red}（待补）}
+\end{proof}
 
 \section{紧复流形上的Hodge理论}
 
-$(X,\omg)$ is a compact Hermitian manifold,
-$E\to X$ is a homomorphic Hermitian vector bundle.
-$$D_E:=D_E'+D_E''$$
-Chern connection, $D_E''=\pbar$.
-
-\begin{definition}
-$$\yc_E:=D_ED_E^*+D_E^*D_E$$
-\end{definition}
-$$(D_E')^*=-*D_E''*$$
-$$(D_E'')^*=-*D_E'*$$
-$$\yc_E'=D_E'(D_E')^*+...$$
-$$\yc_E''=...$$
-
-Note that $(D_E'')^2=0$, consider the complex
-$$C^\infty(X,\wedgeform{p,q}\ten E)\xra{D_E''}C^\infty(X,\wedgeform{p,q+1}\ten E)$$
-$$\rightsquigarrow H^{p,q}_{D_E''}(X,E)$$
-Dolbeaut cohomology...
-it isom to $\ker\yc_E''$
-
-%下次课仔细再讲
-%%%%%%%%%%%%2019.4.18第八周周四%%%%%%%%%%%%%%%%%%%%%%%
-
-Hodge theory in compact complex manifold.
-
-Let $(X,\omg)$ be a compact complex manifold of dimension $n$.
-$E\to X$ holomorphic Hermitian vector bundle, with Chern connection $D_E$,
-$D_E=D_E'+D_E''$ where $D_E''=\pbar$.
-
-Recall: $L^2$ inner product: $u\in C^\infty(X\wedgeform{p,q}\ten E)$,
-$$\langle\langle u,v\rangle\rangle:=
-\int_X\langle u,v\rangle
-\td\text{vol}
+在本节，总假设$X$为紧Hermite流形，$\dim_{\bbC}X=n$.
+$E\to X$为全纯Hermite向量丛，
+$\tD_E=\tD_E'+\tD_E''$为$E$的陈联络。
+特别地，$\tD_E''=\pbar$为$E$的典范$(0,1)$型联络。
+注意$\tD_{E}''$总是平坦的，从而有上链复形
 $$
+  \tD_{E}'':=\Omg^{p,q}(X,E)
+  \to\Omg^{p,q+1}\Omg(X,E)
+$$
+该上链复形的上同调$H^{p,q}_{\tD_E''}(X,\bbC)
+:=H^q(\Omg^{p,\bullet}(X,E),\tD_E'')$
+称为丛$E$的第$(p,q)$阶\textbf{Dolbeault 上同调}。
+注意到对于$p\in X$，$X$上的Hermite度量$h$诱导了
+切空间（$2n$维实空间）$T_pX$上的（实线性）欧氏内积结构，
+即取Hermite内积的实部。该欧氏内积自然延拓为
+$T_pX\ten_{\bbR}\bbC\cong\bbC^{2n}$上的Hermite内积。
+在此意义下，我们可类似定义$\Omg^{\bullet,\bullet}(X,E)$
+上的Hermite内积$\ppair{}{}$.
 
-Hodge star operator $*$:
-$u,v\in C^\infty(X,\wedgeform{p,q}\ten E)$,
-\begin{definition}
-$$*:\wedgeform{p,q}\ten E\to\wedgeform{n-q,n-p}\ten E$$
-s.t.
-$$u\wedge *v=\langle u,v\rangle\td\text{vol}$$
-(wedge product from $\wedgeform{p,q}$, with inner product from $E$)
-\end{definition}
+我们也可讨论联络$\tD_E,\tD_E',\tD_E''$
+关于$\ppair{}{}$的形式伴随算子
+$\tD_E^*,\tD_E'^{*},\tD_E''^{*}$.
+与黎曼流形的情形完全一样，我们有Hodge星算子$\star:\Omg^p(X,E)\to\Omg^{2n-p}(X,E)$，
+使得对任意$u,v\in\Omg^{p}(X,E)$，
+成立$u\wedge\overline{\star v}=\pair{u}{v}\td\Vol$
+（{\color{blue}这里关于\textbf{右边}变量共轭线性}）。事实上有
+$$\star:\Omg^{p,q}(X,E)\to\Omg^{n-q,n-p}(X,E)$$
 
-Exercise: Take a holomorphic chart $(z_1,...,z_n)$
-s.t.
-$$\omg=\sqrt{-1}\sum_j \td z_j\wedge\td\zbar_j$$
-at some point $p$. An orthonormal frame
-$\{e_1,...,e_r\}$, Let
-$$u=\sum_{|I|=p\atop |J|=q}
-\sum_{\lmd=1}^r
-u_{IJ}\td z_I\wedge\td\zbar_j\ten e_\lmd\in\wedgeform{p,q}\ten E$$
-WHAT IS $*u$?
+%$(X,\omg)$ is a compact Hermitian manifold,
+%$E\to X$ is a homomorphic Hermitian vector bundle.
+%$$D_E:=D_E'+D_E''$$Chern connection, $D_E''=\pbar$.
+%Note that $(D_E'')^2=0$, consider the complex
+%$$C^\infty(X,\wedgeform{p,q}\ten E)\xra{D_E''}C^\infty(X,
+%\wedgeform{p,q+1}\ten E)$$$$\rightsquigarrow H^{p,q}_{D_E''}(X,E)$$
+%Dolbeaut cohomology...it isom to $\ker\yc_E''$
+%\begin{definition}$$\yc_E:=D_ED_E^*+D_E^*D_E$$\end{definition}$$(D_E')
+%^*=-*D_E''*$$$$(D_E'')^*=-*D_E'*$$$$\yc_E'=D_E'(D_E')^*+...$$$$\yc_E''=...$$
+%下次课仔细再讲%%%%%%%%%%%%2019.4.18第八周周四%%%%%%%%%%%%%%%%%%%%%%%
+%Hodge theory in compact complex manifold.
+%Let $(X,\omg)$ be a compact complex manifold of dimension $n$.
+%$E\to X$ holomorphic Hermitian vector bundle, with Chern connection $D_E$,
+%$D_E=D_E'+D_E''$ where $D_E''=\pbar$.Recall: $L^2$ inner product:
+%$u\in C^\infty(X\wedgeform{p,q}\ten E)$,$$\langle\langle u,v\rangle
+%\rangle:=\int_X\langle u,v\rangle\td\text{vol}$$
+%Hodge star operator $*$:$u,v\in C^\infty(X,\wedgeform{p,q}\ten E)$,
+%\begin{definition}$$*:\wedgeform{p,q}\ten E\to\wedgeform{n-q,n-p}\ten E$$
+%s.t.$$u\wedge *v=\langle u,v\rangle\td\text{vol}$$(wedge product from
+%$\wedgeform{p,q}$, with inner product from $E$)\end{definition}
+%Exercise: Take a holomorphic chart $(z_1,...,z_n)$s.t.$$\omg=\sqrt{-1}
+%\sum_j \td z_j\wedge\td\zbar_j$$at some point $p$. An orthonormal frame
+%$\{e_1,...,e_r\}$, Let$$u=\sum_{|I|=p\atop |J|=q}\sum_{\lmd=1}^ru_{IJ}\td z_I
+%\wedge\td\zbar_j\ten e_\lmd\in\wedgeform{p,q}\ten E$$WHAT IS $*u$?
+%Formal adjoint of $D_E,D_E',D_E''$?
 
-Formal adjoint of $D_E,D_E',D_E''$?
-\begin{prop}
-$$D_E^*=-*D_E*$$
-$$(D_E')^*=-*D_E''*$$
-$$(D_E'')^*=-*D_E'*$$
+\begin{prop}条件、记号承上，则有
+\begin{eqnarray*}
+\tD_E^*&=&-\star \tD_E\star\\
+\tD_E'^*&=&-\star \tD_E''\star\\
+\tD_E''^*&=&-\star \tD_E'\star
+\end{eqnarray*}
 \end{prop}
 
-\begin{definition}
-$$\yc_E:=D_ED_E^*+D_E^*D_E$$
-$$\yc_E':=D_E'D_E'^*+D_E'^*D_E'$$
-$$\yc_E'':=\cdots$$
-\end{definition}
-
-Check: $\yc_E,\yc_E',\yc_E''$ are self adjoint, elliptic operators.
-
-Hodge theory w.r.t. $\yc_E''$.
-
-\begin{thm}
-We have a decomposition
-$$C^\infty(X,\wedgeform{p,q}\ten E)=
-\ker\yc_E''\oplus\im D_E''\oplus \im D_E''^*$$
-
-As a consequence, Dolbeault cohomology
-$$H^{p,q}_{D_E''}(X,\bbC)\cong
-\ker\yc_E''$$
-\end{thm}
-
-\begin{cor}
-$$\dim_{\bbC}H^{p,q}_{D_E''}(X,\bbC)<+\infty$$
-\end{cor}
-
-Cohomology group
-$$H^{p,q}_{D_E''}(X,\bbC)$$
-$\Omg^p$:sheaf of holomorphic $p$-forms on $X$
-(i.e. a $(p,0)$-form $\fai$ is holomorphic if $\pbar\fai=0$).
-
-$\mcalE^{p,q}$:Sheaf of smooth $(p,q)$-forms on $X$.
-
-Similarly, we have $\Omg^p(E)$ the sheaf of holomorphic $p$-forms
-with values in $E$,and $\mcalE^{p,q}(E)$ the sheaf...smooth $(p,q)$-forms ...
-
-we have an acyclic resolutions
-$$0\to\Omg^p(E)\xra{D_E''}
-\mcalE^{p,1}(E)\xra{D_E''}
-\mcalE^{p,2}(E)\xra{D_E''}\cdots$$
-(check, it is a resolution)
-
-By de Rham-Weil theorem,
-$$H^q(X,\Omg^p(E))\cong D^{p,q}_{D_E''}(X,\bbC)
-\cong \mcalH^{p,q}_{D_E''}(X,\bbC):=\ker\yc_E''$$
-
-\begin{thm}(Serre duality)
-
-The pairing
-$$H^{p,q}_{D_E''}(X,E)
-\times H^{n-p,n-q}_{D_E''}(X,E^*)\to\bbC$$
-$$(s,t)\mapsto\int_X s\wedge t$$
-is non-degenerate
-\end{thm}
-
-\begin{proof}Define
-$$\#:\wedgeform{p,q}\ten E\to \wedgeform{n-p,n-q}\ten E^*$$
-by: for $u,v\in\wedgeform{p,q}\ten E$,
-$$u\wedge\# v:=\langle u,v \rangle\td\text{vol}$$
-
-Fact:
-$$\yc_{E^*}''\#=\#\yc_E''$$
+\begin{proof}
+第一个式子与性质\ref{Hermite联络的形式伴随-prop}完全类似，
+但注意复流形总是偶数维的。在毕竟$\tD_E'$与$\tD_E''$各自分次，
+容易从第一式得到后两式。
 \end{proof}
 
-Remark: take $E=X\times \bbC,D_E=\td=\td'+\td''$,($\td'=\p,\td''=\pbar$)
- then we have
- $$\yc'=\td'\td'^*+\td'^*\td'$$
- $$\yc''=\cdots$$
-then
-$$H^{p,q}_{\td''}(X,\bbC)\cong\ker\yc''\curvearrowright C^\infty(X,\wedgeform{p,q})$$
-the pairing
-$$H^{p,q}(X,\bbC)\times H^{n-p,n-q}(X,\bbC)\to\bbC$$
-is non-degenerate.
+\begin{definition}（Laplace 算子）
 
+条件、记号承上，则定义Laplace算子
+\begin{eqnarray*}
+\yc_E&:=&\tD_E\tD_E^*+\tD_E^*\tD_E\\
+\yc_E'&:=&\tD_E'\tD_E'^*+\tD_E'^*\tD_E'\\
+\yc_E''&:=&\tD_E''\tD_E''^*+\tD_E''^*\tD_E''
+\end{eqnarray*}
+\end{definition}
 
+%Check: $\yc_E,\yc_E',\yc_E''$
+%are self adjoint, elliptic operators.
+%Hodge theory w.r.t. $\yc_E''$.
 
+容易验证上述三者都是自伴、椭圆算子。
+注意$\tD_E''^2=0$，之后与黎曼流形的情形完全类似，
+我们也有Hodge分解定理与Hodge同构定理如下：
 
+\begin{thm}（紧复流形的Hodge理论）
+\label{紧复流形的Hodge理论-thm}
 
+设$(X,h)$为紧Hermite流形，$E\to X$为全纯Hermite线丛，
+$\tD_E$为$E$上的陈联络。则对任意$p,q\geq 0$，有正交直和分解
+$$
+  \Omg^{p,q}(X,E)
+=
+  \ker\yc_E''\oplus\im\tD_E''\yc\in\tD_E''^*
+$$
+并且$E$关于$\tD_E''$的Dolbeault上同调与$\yc_E''$-调和形式有同构
+$$H^{p,q}_{\tD_E''}(X,\bbC)\cong\ker\yc_E''$$
+并且有$\dim_{\bbC}H^{p,q}_{\tD_E''}(X,\bbC)<+\infty$.
+\end{thm}
 
+\begin{proof}
+与定理\ref{Hodge分解定理-thm}、定理\ref{Hodge同构定理-thm}
+完全类似。
+\end{proof}
 
+%We have a decomposition$$C^\infty(X,\wedgeform{p,q}\ten E)=
+%\ker\yc_E''\oplus\im D_E''\oplus \im D_E''^*$$
+%As a consequence, Dolbeault cohomology
+%$$H^{p,q}_{D_E''}(X,\bbC)\cong\ker\yc_E''$$\begin{cor}
+%$$\dim_{\bbC}H^{p,q}_{D_E''}(X,\bbC)<+\infty$$\end{cor}
 
+\begin{rem}（与层上同调的关系）
 
+对于紧Hermite流形$X$上的全纯Hermite向量丛$E\to X$，考虑
+$\mcalE^p(E)$为$X$上的取值于$E$的\textbf{全纯}$p$-形式层，
+$\mcalE^{p,q}(E)$为$X$上的取值于$E$的$(p,q)$形式层，
+则联络$\tD_E''=\pbar$诱导了层同态序列
+$$
+  0\to\mcalE^p(E)\inj
+  \mcalE^{p,0}(E)\xra{\tD_E''}
+  \mcalE^{p,1}(E)\xra{\tD_E''}
+  \mcalE^{p,2}(E)\to\cdots
+$$
+事实上这是层$\mcalE^p(E)$的一个零调消解（Dolbeault-Grothendieck引理），
+因此由de Rham-Weil定理与Hodge同构定理，可知有同构
+$$
+  H^q(X,\mcalE^p(E))
+  \cong H^{p,q}_{\tD_E''}(X,E)
+  \cong\ker\yc_E''^{p,q}
+$$
+\end{rem}
 
+%Cohomology group$$H^{p,q}_{D_E''}(X,\bbC)$$$\Omg^p$:sheaf of
+%holomorphic $p$-forms on $X$(i.e. a $(p,0)$-form $\fai$ is holomorphic
+%if $\pbar\fai=0$).$\mcalE^{p,q}$:Sheaf of smooth $(p,q)$-forms on $X$.
+%Similarly, we have $\Omg^p(E)$ the sheaf of holomorphic $p$-formswith values
+%in $E$,and $\mcalE^{p,q}(E)$ the sheaf...smooth $(p,q)$-forms ...we have an
+%acyclic resolutions$$0\to\Omg^p(E)\xra{D_E''}\mcalE^{p,1}(E)\xra{D_E''}\mcalE^{p,2}
+%(E)\xra{D_E''}\cdots$$(check, it is a resolution)By de Rham-Weil theorem,
+%$$H^q(X,\Omg^p(E))\cong D^{p,q}_{D_E''}(X,\bbC)\cong
+%\mcalH^{p,q}_{D_E''}(X,\bbC):=\ker\yc_E''$$The pairing is non-degenerate
 
+\begin{thm}(Serre 对偶)
 
+设$E\to X$为紧复流形上的全纯Hermite向量丛，$\tD_E$为$E$的陈联络，
+则双线性型
+\begin{eqnarray*}
+H^{p,q}_{\tD_E''}(X,E) \times H^{n-p,n-q}_{D_E''}(X,E^*)&\to&\bbC\\
+(s,t)&\mapsto&\int_X s\wedge t
+\end{eqnarray*}
+是良定的，并且非退化。
+\end{thm}
 
+\begin{proof}
+与黎曼流形的庞加莱对偶（\ref{庞加莱对偶-thm}）完全类似。该配对的良定性易验证。
+至于非退化性，首先任意给定$X$上的一个Hermite度量，
+使得$X$为Hermite流形，从而可谈论丛$E$的Laplace算子。
+由Hodge同构定理，不妨取$H^{p,q}_{\tD_E''}(X,E)$
+中的代表元为$\yc_E''$-调和形式。定义$\#$算子
+$\#:\omg^{p,q}(X,E)\to\omg^{n-q,n-p}(X,E^*)$使得
+对任意$s,t\in\omg^{p,q}(X,E)$都成立
+$$s\wedge\overline{\#t}=\pair{s}{t}\td\Vol$$
+容易验证$\#\yc_{E''}=\yc_{E''^*}\#$.
+特别地，若$s\in\Omg^{p,q}(X,E)$为$\yc_{E}''$-调和的，
+则$\#s\in\Omg^{n-p,n-q}$为$\yc_{E^*}''$-调和的，
+从而$[\#s]\in H^{n-p,n-q}_{\tD_{E^*}''}(X,E^*)$.
+从而$\int_Xs\wedge\#s=\norm{s}^2>0\,,\,(\forall s\neq 0)$.
+之后从略。
+\end{proof}
+
+%\begin{proof}Define$$\#:\wedgeform{p,q}\ten E\to \wedgeform{n-p,n-q}
+%\ten E^*$$by: for $u,v\in\wedgeform{p,q}\ten E$,
+%$$u\wedge\# v:=\langle u,v \rangle\td\text{vol}$$
+%Fact:$$\yc_{E^*}''\#=\#\yc_E''$$\end{proof}
+
+\begin{rem}对于紧复流形$X$，取$E\to X\times\bbC$为平凡线丛，
+配以标准的Hermite结构。此时$E$的陈联络$\tD_E$满足
+$\tD_E''=\pbar$为$X$上的$\pbar$-算子，丛$E$的Dolbeault
+上同调就是紧复流形$X$通常的Dolbeault上同调。
+此时由Serre对偶可得
+$$
+  \dim_{\bbC}H^{p,q}_{\pbar}(X,\bbC)
+= \dim_{\bbC}H^{n-p,n-q}_{\pbar}(X,\bbC)
+$$
+\end{rem}
+
+%Remark: take $E=X\times \bbC,D_E=\td=\td'+\td''$,($\td'=\p,\td''=\pbar$)
+%then we have$$\yc'=\td'\td'^*+\td'^*\td'$$$$\yc''=\cdots$$then
+%$$H^{p,q}_{\td''}(X,\bbC)\cong\ker\yc''\curvearrowright C^\infty(X,\wedgeform{p,q})$$
+%the pairing$$H^{p,q}(X,\bbC)\times H^{n-p,n-q}(X,\bbC)\to\bbC$$is non-degenerate.
 
 
 
