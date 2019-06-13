@@ -1,4 +1,6 @@
 \chapter{正性与消灭定理}
+
+\section{Bochner-Kodaira-Nakaino 恒等式}
 positivity and vanishing theorem
 
 $X$-Kahler manifold, i.e. $\exists$ Hermitian metric $\omg$ s.t. $\td\omg=0$,
@@ -239,7 +241,7 @@ the eigenvalue of $\afa$ at $x_0$ is $\afa_1\leq\afa_2\leq\cdots\leq\afa_n$,
 then (in the coordinate chart $(z_1,z_2,...,z_n)$, and
 $u=\sum\limits_{|I|=p\atop|J|=q}u_{IJ}\td z_I\wedge\td\zbar_J$)
 $$
-  [\afa,L]
+  [\afa,\Lmd]u
 =
   \sum_{I,J}
     \left(
@@ -512,7 +514,8 @@ $$[\sqrt{-1}\Theta_E,\Lmd_\omg]$$
 is positive on $\wedgeform{n,q}\ten E$ for $(q\geq 1)$
 \end{proof}
 
-\textbf{Ampleness}
+\section{Ampleness}
+%\textbf{Ampleness}
 
 $E\to X$, $E$: holomorphic line bundle of rank $r$,
 $X$:complex manifold.
@@ -561,6 +564,8 @@ Then $L$ is positive if and only if $L$ is ample.
 
 %%%%%%%%%%%%%%%%%2019.5.16%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%第12周了吗？%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{除子}
 
 We will prove:
 
@@ -625,9 +630,9 @@ then we have $f^{-1}(0)$ is emply of $\dim_{\bbC}$ isempty of $n-1$.
 \end{thm}
 
 
-\begin{definition}（Cartier-dividiot）
+\begin{definition}（Cartier-divisor）
 
-A divisor $D=\sum\lmd_j D_j$ locally giveb by a $\bbX$ linear combination of $div(f)$.
+A divisor $D=\sum\lmd_j D_j$ locally given by a $\bbC$ linear combination of $div(f)$.
 $f$ is locally holomorphic functions.
 \end{definition}
 
@@ -649,7 +654,7 @@ $f=u\coprod_j g_jm^{m_j}$, where $m_j=ord_z (f)$
 \end{thm}
 
 \begin{prop}If $X$ is a complex manifold, then any Weil divisor is
-also a Cantier divisor.
+also a Cartier divisor.
 \end{prop}
 
 Remark: NOT true for singular points.
@@ -2041,7 +2046,7 @@ is (relatively) compact.
 %%%%%%%%%%%2019.6.6倒数第二节课%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%第15周 周四%%%%%%%%%%%%%%%%%%%%%
 
-Recall: $\Omg\in\bbC^n$ open set, 
+Recall: $\Omg\in\bbC^n$ open set,
 $u\in\PSH(\Omg)$ if $u$ is u.s.c. and $u|_L$
 is subharmonic $\iff\ii\td'\td'' u$ is a positive $(1,1)$-current on $\Omg$.
 
@@ -2060,7 +2065,7 @@ $u\in\PSH(X)$, if:
 
 (1) $u$ is u.s.c.
 
-(2) $u|_\Omg$ is PSH on every coordinate open set. 
+(2) $u|_\Omg$ is PSH on every coordinate open set.
 \end{definition}
 
 \begin{prop}
@@ -2073,13 +2078,13 @@ Easy.
 \end{proof}
 
 \begin{example}
-(1)Let $f\in H^0(X,\mcalO_X)$, then 
+(1)Let $f\in H^0(X,\mcalO_X)$, then
 $\log |f|\in\PSH(X)$.
 \end{example}
 
 \begin{proof}
-consider $f:X\to \bbC$, and 
-$\log|f|=f^*(\log|z|)$, note that 
+consider $f:X\to \bbC$, and
+$\log|f|=f^*(\log|z|)$, note that
 $\log|z|\in\PSH(\bbC)$
 \end{proof}
 note that $\frac{\ii}{2\pi}\td'\td''\log|z|=\delta_0$ is Dirac distribution.
@@ -2094,8 +2099,8 @@ for any $\afa_j\geq 0,1\leq j\leq k$.
 Let $X$ be a complex manifold
 
 \begin{definition}
-$E\subseteq X$ is called pluripolar(多重极点) if 
-$X$ has an open covering $(\Omg)$, we have 
+$E\subseteq X$ is called pluripolar(多重极点) if
+$X$ has an open covering $(\Omg)$, we have
 $u\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$ s.t.
 $$E\cap\Omg=\Bigset{z\in\Omg}{u(z)=-\infty}$$
 \end{definition}
@@ -2115,7 +2120,7 @@ $$u=\log(|f_1|^2+\cdots+|f_k|^2)$$
 $X$ be a complex manifold, $E\subseteq X$ be (closed) pluripolar set in $X$,
 $T$ is a closed positive $(p,p)$-current on $X\setminus E$,
 s.t. $T$ has locally finite mass（局部有限质量） near $E$.
-(i.e. $\forall$ compact neighborhood $\Omg$ we have 
+(i.e. $\forall$ compact neighborhood $\Omg$ we have
 $$\int_{\Omg\setminus E}T\wedge\omg^{n-p}<+\infty$$
 )
 
@@ -2142,10 +2147,10 @@ define $v_k=g(k^{-1}v*\rho_{\veps_k})$ where $\veps_k\to 0$ fast.
 Then, $0\leq v_k\leq 1$, $v_k=0$ in a neighborhood of $E\cap\Omg$.
 And $\lim\limits_{k\to\infty}v_k(x)=1$ for any $x\in\Omg\setminus E$.
 
-Let $\theta\in C^\infty[0,1]$ s.t. 
+Let $\theta\in C^\infty[0,1]$ s.t.
 $\theta =0$ on $[0,\frac{1}{3}]$, $\theta=1$ on $[\frac{1}{3},1]$,
- and $\theta$ is smooth, increasing. 
- 
+ and $\theta$ is smooth, increasing.
+
 So, $\theta\circ v_k= 0$ near $E\cap \Omg $, and $\to 1$ on $\Omg\setminus E$.
 Moreover, $\theta\circ v_k\to 1_{\Omg\setminus E}$.
 
@@ -2177,7 +2182,7 @@ $$
   \pair{T}{\ii\beta\wedge\betabar}
   +\pair{T}{\ii\gma\wedge\gmabar}
 $$
-so we have 
+so we have
 $$
   |\pair{T}{\theta'(v_k)\td'v_k\wedge\afabar}|^2
 \leq
@@ -2204,9 +2209,9 @@ $$
   \ii\td'\td'' v_k^2
 =
   2v_k\ii\td'\td'' v_k+2\ii\td' v_k\wedge\td'' v_k
-\geq 
+\geq
   2\ii\td'v_k\wedge\td'' v_k
-$$ 
+$$
 so,
 \begin{eqnarray*}
   (2)\leq \pair{T}{\psi\ii\td'\td'' v_k^2}
@@ -2252,7 +2257,7 @@ $1_{X\setminus E}T$ is a $\td$-closed positive current.
 \begin{cor}(Exercise)
 
 $A\subseteq X$ an analytic subset of $X$
-$A$ is of pure dimension $\dim_{\bbC}=p$, then the current 
+$A$ is of pure dimension $\dim_{\bbC}=p$, then the current
 $[A]$ is a \textbf{$\td$-closed} positive current of bidimension $(p,p)$
 \end{cor}
 
@@ -2270,4 +2275,268 @@ i.e. $[A]=1_{X\setminus A_{\sing}}[A_{\reg}]$
 Cor: if $X$ is compact (over $\bbC$), then (cohomology of current)
 $$\{[A]\}\in H^{p,p}(X,\bbR)$$
 
+%%%%%%%%2019-6-11%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%最后一课%%%%%%%%%%%%%%%%%%%%%%%%
+
+介绍一些结果，不怎么证明。
+
+\textbf{Support theorems for normal currents}
+
+$X$- $C^\infty$-mfd, $\mcalD^p(X)\subseteq\,^s\mcalD^p(X)$,dual,
+$\mcalD'^p(X)\supseteq\,^s\mcalD^p(X)$.
+
+\begin{definition}
+$T\in\mcalD'^p(X)$ is called a normal current if
+$T$ and $\td T$ are currents of order $0$.
+\end{definition}
+
+\begin{example}
+$X$ be complex manifold, then any positive closed current is normal.
+\end{example}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\begin{definition}
+$T\in\mcalD'(X)$, support of $T$, $\supp T$ is defined by the
+smallest closed set $A$ s.t. $T|_{\mcalD^p(X/\setminus A)}$ is zero.
+\end{definition}
+
+\begin{thm}$X$ be a complex manifold,
+let $T\in\mcalD_{p,p}'(X)$ be a normal current,
+if $\supp T\subseteq A$, where $A$ is an analytic set with
+$\dim_{\bbC}A<p$, then $T\equiv 0$.
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\begin{thm}
+Assume $A$ is an analytic set of $\dim_{\bbC}=p$
+with global irreducible components $A_j$ of pure dimension $p$.
+$T$ is a $\td$-closed current of order zero,
+with $\supp T\subseteq A$. Then
+$$
+  T=\sum_{\lmd_j\in\bbC}
+  \lmd_j[A_j]
+$$
+moreover, if $T$ is positive, then all $\lmd_j\geq 0$.
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\textbf{Application}: Lelong-{\phjwll} equation.
+
+Baby case: consider $f(z)=z$ on $\bbC$, then
+$$\frac{\ii}{\pi}\td'\td''\log|f|=\delta_0$$
+i.e. $\fai\in C^\infty(\bbC)$ with compact supp, then
+$$\pair{\frac{\ii}{\pi}\td'\td''\log|f|}{\fai}=\fai(0)$$
+
+In other words, $\frac{\ii}{\pi}\td'\td''\log|z|=[f^{-1}(0)]$.
+
+\begin{thm}$X$ is a complex manifold, $f\in H^0(X,\mcalO_X)\setminus\{0\}$.
+Let $Z_f=\sum_{m_j\in\bbZ_{>0}} m_jz_j$ be the zero-divisor of $f$,
+then
+$$
+  \frac{\ii}{\pi}\td'\td''\log|f|
+=
+  [Z_f]
+=
+  \sum_{m_j\in\bbZ_{>0}}m_j[z_j]
+$$
+\end{thm}
+
+\begin{proof}
+Observation: if $f(x)\neq 0$, then $\td'\td''\log|f|(x)=0$.
+The support of $\frac{\ii}{\pi}\td'\td''\log|f|$
+is contained in $Z=\bigcup\limits_j Z_j$.
+\end{proof}
+
+\begin{proof}
+
+Take a point $a\in Z_j\cap Z_{\reg}$
+(note that $Z_{\sing}=\bigcup\limits_{j} Z_{j,\sing}
+\cup\bigcup\limits_{j\neq k}(Z_j\cap Z_k)$),
+$\dim Z_{\sing}\leq n-2$.
+
+Take a coordinate $(z_1,...,z_n)$ around $a$ s.t.
+$$Z_j=\{z_1=0\}$$
+near $a$. then $f(z)=u(z)z_1^{m_j}$ near $a$,
+where $u(a)\neq 0$ is an unit.So,
+$$
+  \frac{\ii}{\pi}\td'\td''\log|f|
+=\frac{\ii}{\pi}\td'\td''\log|u(z)|+ m_j
+\frac{\ii}{\pi}\td'\td''\log|z_1|
+$$
+Claim: $\frac{\ii}{\pi}\td'\td''\log|z_1|=[z_1=0]^{m_j}$.
+Consider the projection $\pi:\bbC^n\to\bbC$,
+$(z_1,...,z_n)\to z_1$, then
+$\frac{\ii}{\pi}\td'\td''\log|z_1|=\pi^*\delta_0=[Z_1=0]$,
+$\Rightarrow$
+$$
+  \frac{\ii}{\pi}\td'\td''\log|f|
+=[Z_f]
+$$
+holes on $Z_{\reg}$.so, $\frac{\ii}{\pi}\td'\td''\log|f|-[Z_f]$
+is a normal current (bidim= $(n-1,n-1)$)
+with support $\subseteq Z_{\sing}$ and
+$\dim Z_{\sing}<n-1$,so then current
+$$\frac{\ii}{\pi}\td'\td''=[Z_k]$$
+
+\end{proof}
+
+\begin{cor}Let $L$ be a holomorphic line bundle on $X$,and
+$s\in H^{0,0}(X,L)\setminus\{0\}$.(with a metric $h$).
+Then
+$$
+  \frac{\-i}{\pi}\td'\td''\log|h|
+=[Z_s]
+$$
+\end{cor}
+
+Recall, Line bundle $h$, chern curvature
+$$\Theta=1\p\pbar\log|s|=[Z_s]-
+\frac{\ii}{2\pi}\td'\td''\log h$$
+$$[Z_s]-\frac{\ii}{2\pi}\Theta_{...}$$
+
+
+\begin{cor}
+$(c_1(l))=\{\frac{\ii}{2\pi}\Theta_{L,H}\}=
+\{Z_LS\}$where $s\in H^{0,0}H^0(X,L)\setminus{o}$
+
+Morgeneally, if $s$ is nontri=vial section of $L$,yhen
+$$
+  \frac{\ii}{\pi}\log|s|_{\bbR}=[\mcalD]-\frac{\ii}{2\pi}\Theta_{(L,H)}.
+ $$ where $\mcalD'_X$ is the dividor associated of %$\pi,\pi$
+
+So if $.$ is algebraic, then for any Holomorphic line bundle $L$,
+$c_{i,i}*L=\{[D]\}.$
+\end{cor}
+
+%再来介绍一个，可视为代数几何中的超越版本
+
+\textbf{Lolong number of a (positive) current(1957)}
+
+For $\Omg\subseteq\bbC^n$ open set, $T\in\mcalD'_{p,p}(\Omg)$,
+is closed positive.define
+$$\nu(T,x,r):=
+\frac{1}{r^{2p}}
+\int_{B(x,r)}T\wedge
+\left(\frac{\ii}{\pi}\td'td''|z|^2\right)^p
+=
+  \frac{\sgm_T(B(X,B))\updot}
+       {\pi^pr^{2p}/p!}
+$$
+where $|z|^2=\sum_{k=1}^|z_k|^2$,
+$$\bullet:=
+\int_{B(x,r)}
+\sgm_T
+$$
+where $\sgm_T=T\wedge\frac{1}{p!}\left(
+\ii\td'\td''|z|^2\right)^p$
+is the \textbf{trace measure} in $\bbC^p$ with residues $r$.
+
+\begin{thm}
+$$\nu(T,x)=\lim_{r\to 0}\downarrow \nu(T,x,r)$$
+is called the Lelong number of $T$ at $x$.
+\end{thm}
+
+\begin{thm}
+if $u\in\PSH(\Omg)$, then
+$$
+  \nu(\frac{\ii}{\pi}\td'\td'' u,x)
+=
+  \sup\Bigset{t\geq 0}
+             {u(z)\leq t\log|z-x|+O(1)\text{near $x$}}
+=
+  \liminf_{z\to x}\frac{u(z)}{\log|z-x|}
+$$
+in particular, if $u=\log |f|$, $f\in\mcalO(\Omg)$, then
+$$
+  \nu(\frac{\ii}{\pi}\td'\td''\log|f|,x)
+=
+  \Ord_x(f)
+=
+  \max\Bigset{k}{\tD^\afa f(x)=0,\forall |\afa|<k}
+$$
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\begin{thm}(Thie 1967)
+
+If $T=[A]$ is the current of integration given by an
+analytic set; then for all $x\in A$, we have
+$$\nu(T,x)=\text{mult}_xA$$
+the multiplicity of $A$ at $x$.
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\begin{thm}(Siu, 1974)
+
+$X$ -complex manifold, $T\in\mcalD'_{p,p}(X)$ positive closed,
+then the set $E_c(T):=\Bigset{x\in X}{\nu(T,x)\geq c}$
+(where $c>0$ is a positive constant)
+is an analytic set of $\dim_{\bbC}\leq p$.
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+Rem: special case $p=1$, Siu's thm...(when $T\in\mcalD'_{1,1}(X)$)
+
+\begin{thm}(Demailly 1992)
+$\Omg\subseteq\bbC^n$ bounded psudoconvex
+(i.e. a set with PSH exhaustion function) open set,
+$\fai\in\PSH(\Omg)\cap L^1_{\loc}(\Omg)$, For $m\in\bbN$,
+denote
+$$
+  \mcalH_{\Omg}(m,\fai)=
+  \Bigset{f\in\mcalO(\Omg)}
+  {\int_\Omg|f|^2e^{-2m\fai}<+\infty}
+$$
+(FACT: it is a Hilbert space)
+Take $(\sgm_l)_l$ an orthonormal basis of $\mcalH_\Omg(m\fai)$,
+define $\fai_m=\frac{1}{2m}\log\sum\limits_l|\sgm_l|^2\in\PSH(\Omg)$,
+then $\exists c_1,c_2>0$(independent of $m$) s.t.
+
+(1)$\fai(z)-\frac{c_1}{m}\leq\fai_m(z)
+  \leq\sup_{|\xi-z|<r}\fai(\xi)+\frac{1}{m}\log\frac{c_2}{r^n}$
+
+(2)$\nu(\fai,z)-\frac{n}{m}\leq\nu(\fai_m,z)\leq\nu(\fai,z)$
+\end{thm}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+\begin{cor}
+Consider $E_c(\fai):=\Bigset{z\in\Omg}{\nu(\fai,z)\geq c}$,then
+$E_c(\fai)=\bigcap\limits_{m\geq m_0\gg 1}E_{c-\frac{n}{m}}(\fai_m)$.
+\end{cor}
+
+\begin{proof}
+  Omit.
+\end{proof}
+
+%课程结束，后天（本周四考试）
+%6+2题（两道加分题，6道简单题？2道40分送分题？），90分钟
+%有一道题，今天讲课说口头说了答案？。。。
+
+%关键词： Hodge theory， HL, LD, HRR.,
+% Kahler, Hodge decomposition ， Hodge isomorphism... 还要会用
+%Vanishing theorem (要知道结果)
+%其它比较基础。。。 Kahler manifold 的定义？
+%有两个Exercise？
+%所以已经送了80分了？
 

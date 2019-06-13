@@ -201,13 +201,13 @@ $$[B,L]=BL-LB=[(p+1)+(q+1)-n]L-L(p+q-n)=2L$$
 李代数$\mfksl(2,\bbC):=\Span_{\bbC}\{l,b,\lmd\}$的一个表示，其中
 $$
   l=\begin{pmatrix}
-      0 & 0\\
-      1 & 0
+      0 & 1\\
+      0 & 0
     \end{pmatrix}
 ,\qquad
   \lmd=\begin{pmatrix}
-      0 & 1\\
-      0 & 0
+      0 & 0\\
+      1 & 0
     \end{pmatrix}
 ,\qquad
   b=\begin{pmatrix}
@@ -734,6 +734,16 @@ $$
 由此可得，若$\afa\in\Omg\updot(X,E)$使得$\yc\afa=0$，
 则$\afa$在每个$\Omg^{p,q}(X,\bbC)$的分量也是$\yc$-调和的。
 
+\begin{cor}
+设$X$为紧\Kahler 流形，则$X$上的全纯微分形式都是$\td$-闭的。
+\end{cor}
+
+\begin{proof}
+设$\afa\in\Omg^{p,0}(X,\bbC)$并且$\td''\afa=0$
+（即$\afa$为全纯$p$-形式），注意显然$\td''^*\afa=0$（比较双分次），
+从而$\yc''\afa=0$，从而$\yc=2\yc''\afa=0$，因此$\td\afa=0$.
+\end{proof}
+
 \begin{thm}（Laplace算子的对易性）
 \label{紧Kahler-Laplace算子对易性}
 
@@ -894,7 +904,7 @@ $0=\ppair{\td''\td''^*\td'\beta'}{\td'\beta'}
 $\afa=\td'\td''\beta$证毕。
 \end{proof}
 
-%\begin{thm}(Hodge decomposition)$X$ is a compact Kahler manifold, 
+%\begin{thm}(Hodge decomposition)$X$ is a compact Kahler manifold,
 %then we have a decomposition$$H_{\td}^k(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}_{\td''}(X,\bbC)$$
 %Equivalently, (sheaf cohomology)$$H^k(X,\bbC)\cong\bigoplus_{p+q=k}H^q(X,\Omg^p)$$\end{thm}
 %\begin{proof}take a Kahler metric $\omg$, we can define $\yc_d,\yc_{td'}
@@ -903,7 +913,7 @@ $\afa=\td'\td''\beta$证毕。
 %then $\Longrightarrow$ the decomposition for $H_\td^k(X,\bbC)$
 %the decomposition for $H^k_\td(X,\bbC)$ is independent of the choice of $\omg$
 %(Next time)\end{proof}%%%%%%%%%%%%%%2019.4.25第九周周四%%%%%%%%%%%%%%%%%%%%%
-%Recall: Hodge decomposition,$X$ compact Kahler manifold, 
+%Recall: Hodge decomposition,$X$ compact Kahler manifold,
 %$\dim_\bbC X=n$,Thm:(Hodge decomposition)
 %$$H^k_{DR}(X,\bbC)=\bigoplus_{p+q=k}H^{p,q}(X,\bbC)
 %\cong\bigoplus_{p+q=n}H^{p,q}_{\td''}(X,\bbC)$$where
@@ -967,7 +977,7 @@ $$\td\td''\gma=\td(\afa_1-\afa_2)=0$$
 %$\afa$ is $\td$-closed$\Rightarrow\td'\td''\beta^{p,q-1}=0$,
 %$\p\pbar$-lemma applying to $\td''\beta^{p,q-1}$, we have
 %$$\td''\beta^{p,q-1}=\td'\td''\gma=\td(\td''\gma)$$for some $\gma$.
-%Proof of $\p\pbar$-lemma:\begin{proof}Assume $\afa$ is $\td''$ exact, 
+%Proof of $\p\pbar$-lemma:\begin{proof}Assume $\afa$ is $\td''$ exact,
 %1.e. $\afa=\td''\beta$,write$$\beta=H(\beta)+\yc_\td\gma$$
 %where $H(\beta)$ is $\yc_\td$-harmonic, so
 %$$\afa=\td'' H(\beta)+\td''\yc_\td\gma-2\td''\yc_{\td'}\gma$$
@@ -999,8 +1009,8 @@ $$
   H^{p,q}_{\td''}(X,\bbC)
 $$
 
-%\begin{rem}(Deligne-Griffiths-Morrora)If $\widehat{X}$ is bimeromapic 
-%to $X$, where $X$ isacompact Kahler, then$\hat{X}$ is also satisfys the 
+%\begin{rem}(Deligne-Griffiths-Morrora)If $\widehat{X}$ is bimeromapic
+%to $X$, where $X$ isacompact Kahler, then$\hat{X}$ is also satisfys the
 %$\p\pbar$-lemma.$X$ is a kahler manifold, then
 %$$H^{p,q}_\td(X,\bbC)\cong H^{p,q}_{\td''}(C,\bbC)\cong
 %H^{p,q}——{X,\bbC}$$\end{rem}$X$ us a compact complex manifold,define
@@ -1116,13 +1126,13 @@ $$
 H^{p,q}_{\td''}(X,\bbC)$即可。
 \end{proof}
 
-%$X$ is a compact Kahler, $\dim_\bbC X=n$, denote$L=\{\omg\}\curvearrowright 
+%$X$ is a compact Kahler, $\dim_\bbC X=n$, denote$L=\{\omg\}\curvearrowright
 %H_{DR}^k(X,\bbC)$, $\omg$ is a Kahler metric,Then we have:$$L^{n-k}: H_{DR}^k
 %(X,\bbC)\cong H_{DR}^{2n-k}(X,\bbC)$$$$H^{p,q}(X,\bbC)
 %\cong H^{p+n-k,q+n-k}(X,\bbC)$$where $k\leq n$, $p+q\leq n$.
 %\begin{proof}Fox a Kahler metric $\omg$,$$L^{n-k}:H_{DR}^k
-%\to H_{DR}^{2n-k}$$($\cong \mcalH_\td^k$, $\cong\mcalH_{\td}^{2n-k}$ 
-%respectively)(there is a commutative diagram...)need to proof: 
+%\to H_{DR}^{2n-k}$$($\cong \mcalH_\td^k$, $\cong\mcalH_{\td}^{2n-k}$
+%respectively)(there is a commutative diagram...)need to proof:
 %For any $\fai\in\mcalH_\td^k$, then$$L^{n-k}(\fai)=\omg^{n-k}\wedge\fai$$
 %is also harmonic.\end{proof}\begin{lemma}$$[\yc_{\td},L]=0$$\end{lemma}\begin{proof}$
 %$[\yc_\td,L]=2[\yc_{\td'},L]=2\left([\td'\td'^*,L]+[\td'^*\td',L]\right)
@@ -1192,7 +1202,7 @@ $$
 
 %要求：对这三个定理非常熟悉！！！\begin{prop}$X$ is a compact Kahler, then
 %$$\overline{H^{p,q}(X,\bbC)}=H^{q,p}(X,\bbC)$$
-%\end{prop}\begin{proof}Use harmonic form.. 
+%\end{prop}\begin{proof}Use harmonic form..
 %and $\yc_\td$ is a real operator...\end{proof}
 %\textbf{Summary} $X$-compact Kahler with a Kahler metric $\omg$, then
 %define Lefschitz operator $L=[\omg]\wedge$, then:Hodge decomposition:
@@ -1205,7 +1215,7 @@ $$
 %\verb"Beillinson-Bernstein-Deligne-Gabber: Faisceaux Pervers"
 %\verb"Adiprasito: Combinatorial Lefschetz theorem beyond positivity, 2018"
 %%%%%%%%%%2019.5.7%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Recall: Kahler pairing:$X$-compact Kahler manifold of complex 
+%Recall: Kahler pairing:$X$-compact Kahler manifold of complex
 %dimension $n$, $\omg$-Kahler metric.Lefischitz operator
 %$$L=\{\omg\}\curvearrowright H\updot$$Hodge decomposition
 %$$H^k=\bigoplus_{p+q=k}H^{p,q},\qquad \overline{H^{p,q}}=H^{q,p}$$
@@ -1268,37 +1278,41 @@ $$
 %Rmk: if $X$ is compact complex surface($\dim_{\bbC}=2$),$X$ is Kahler $\iff b_1$ is even.
 %(The proof of "$\Leftarrow$" we not given...Ref: Kodaira\&Siu,Lamari 1999)
 
-\textbf{Exercise}:Consider $X$-compact Kahler,$\dim_\bbC X=n$, $\omg$-Kahler metric,
-Then $\forall\afa,\beta\in H^{1,1}(X,\bbR)=H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$,
-Then
+\begin{thm}（紧\Kahler 流形上的反向Cauchy不等式）
+
+设$(X,\omg)$为$n$维紧\Kahler 流形，则对任意
+实的$(1,1)$形式$\afa\in H^{1,1}_{\td''}(X,\bbC)\cap
+H^2_{\DR}(X,\bbR)$，则成立不等式
 $$
   \left(
-    \{\omg^{n-2}\}\cdot\afa\cdot\beta
+    \int_X\afa\wedge\omg^{n-1}
   \right)^2
 \geq
-  \left(
-    \{\omg^{n-2}\}\cdot\afa^2
-  \right)
-  \left(
-    \{\omg^{n-2}\}\cdot\beta^2
-  \right)
+  \left(\int_X\afa^2\wedge\omg^{n-2}\right)
+  \left(\int_X\omg^n\right)
 $$
-with equality if and only if $\afa=\lmd\beta$ for some $\lmd\in \bbR$
+\end{thm}
 
-Eg: $\bbC^2$, $\afa,\beta$ real $(1,1)$-forms,
-$$(\afa,\beta)^2\geq \afa^2\beta^2$$
-
-Hint: Using HRR, and Lefschitz decomposition...
-"Alg-Geom-inequality over Kahler manifold".
-
+%\textbf{Exercise}:Consider $X$-compact Kahler,$\dim_\bbC X=n$, $\omg$-Kahler metric,
+%Then $\forall\afa,\beta\in H^{1,1}(X,\bbR)=H^{1,1}(X,\bbC)\cap H^2(X,\bbR)$,
+%Then$$\left(\{\omg^{n-2}\}\cdot\afa\cdot\beta\right)^2\geq\left(
+%\{\omg^{n-2}\}\cdot\afa^2\right)\left(\{\omg^{n-2}\}\cdot\beta^2
+%\right)$$with equality if and only if $\afa=\lmd\beta$ for some $\lmd\in \bbR$
+%Eg: $\bbC^2$, $\afa,\beta$ real $(1,1)$-forms,$$(\afa,\beta)^2\geq \afa^2\beta^2$$
+%Hint: Using HRR, and Lefschitz decomposition..."Alg-Geom-inequality over Kahler manifold".
 %Hard Lef. ($p+q=k$)$$L^{n-k}:H^{p,q}\xra{\sim}H^{p+n-k,q+n-k}$$
 %Lef. decomposition:$$H^{p,q}=\bigoplus_{r\geq (k-n)_+} L^rH_{prim}^{p-r,q-r}$$
 %Denote $h^{p,q}:=\dim_{\bbC}H^{p,q}$,"Hodge number".Cor:$$h^{p,q}=
-%\left\{\begin{array}{lc}h_{prim}^{p,q}+h_{prim}^{p-1,q-1}+\cdots 
+%\left\{\begin{array}{lc}h_{prim}^{p,q}+h_{prim}^{p-1,q-1}+\cdots
 %& p+q\leq n\\h_{prim}^{n-q,n-p}+h_{prim}^{n-q-1,n-p-1}+\cdots & p+q\geq n
 %\end{array}\right.$$(Using the property of $L^r$)If $p+q\leq n$, $h^{p,q}
 %\geq h^{p-1,q-1}\Rightarrowb_k\geq b_{k-2}$ if $k\leq n$.
 %If $p+q\geq n$, $h^{p,q}\leq h^{p-1,q-1}\Rightarrow b_k\leq b_{k-2}$if $k\geq n$.
+
+\begin{proof}
+{\color{red}（待补）}
+注意利用Lefshitz分解定理以及Hodge-Riemann双线性型。
+\end{proof}
 
 \section{Hodge-Frolicher谱序列}
 %spectral sequence
@@ -1392,9 +1406,8 @@ then we still have the convergence of $\{E_r\}$
 
 (Deligne-Griffiths-Morgan)
 
-\textbf{Picard group $H^1(X,\mcalO^*)$}.
-
-Recall:
+\section{Picard群 $H^1(X,\mcalO^*)$}
+%\textbf{Picard group $H^1(X,\mcalO^*)$}.Recall:
 $$\{\text{isomorphic class of holomorphic line bundle}\}
 \xra{1-1} H^1(X,\mcalO^*)$$
 Consider the sequence
@@ -1430,16 +1443,16 @@ Assume $X$ is compact Kahler:
 
 \begin{lemma}
 $H^1(X,\bbZ)$ is also a lattice in $H^1(X,\mcalO)$of
-$$rank_{\bbZ}H^1(X,\bbZ)=2q$$
+$$\rank_{\bbZ}H^1(X,\bbZ)=2q$$
 $\Rightarrow H^1(X,\mcalO)/H^1(X,\bbZ)$ is a
 compact torus of $\dim_{\bbC}=q$.
 \end{lemma}
-$$H^1(C,\mcalO)/H^1(X,\bbZ):=
-\ker\{c_1:H^1(X,\mcalO^*)to H^2(X,\bbZ)\}$$
+$$H^1(X,\mcalO)/H^1(X,\bbZ):=
+\ker\{c_1:H^1(X,\mcalO^*)\to H^2(X,\bbZ)\}$$
 is called \textbf{Jacobian variety}($Jac(X)$) or \textbf{Picard variety}
 ($Pic^\circ(X)$)
 
-Denote $NS(X)_{\bbZ}=\im(c_1:H^1(X,\mcalO^*)to H^2(X,\bbZ))$
+Denote $NS(X)_{\bbZ}=\im(c_1:H^1(X,\mcalO^*)\to H^2(X,\bbZ))$
 the Neron-Severi group of $X$,
 $$
   \rightsquigarrow\quad
@@ -1467,9 +1480,8 @@ $H^1(X,\bbZ)$ is a lattice in $H^1(X,\bbR)$ of $rank_{\bbZ}=2q$
 
 \textbf{Albanese map, Albanese torus}
 
-$X$-compact Kahler $\Rightarrow$ any holomorphic $p$-forms are $\td$-closed.
-
-(Exercise!!)
+%$X$-compact Kahler $\Rightarrow$ any holomorphic
+%$p$-forms are $\td$-closed.(Exercise!!)
 
 Special case: holo 1-forms is $\td$-closed.
 
